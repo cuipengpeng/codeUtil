@@ -29,6 +29,7 @@ fi
 time gradle $buildMode assembleDebug -b "$androidStudioProjectDir/build.gradle" -c "$androidStudioProjectDir/settings.gradle" --daemon --parallel "$syncMode" -Dorg.gradle.jvmargs="-Xmx2048m -Xms512m -XX:MaxPermSize=1024m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8"
 
 
+#adb shell am start -n com.jfbank.qualitymarket/com.jfbank.qualitymarket.activity.WelcomeActivity
 adb shell am start -n com.jfbank.qualitymarket/com.jfbank.qualitymarket.activity.WelcomeActivity
 
 bash $HOME/submitapkfile.sh $buildNumber
