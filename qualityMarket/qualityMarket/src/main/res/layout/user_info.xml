@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_myAccountFragment_userInfo"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="@drawable/myaccount_page_bg" >
+
+    <com.jfbank.qualitymarket.widget.CircleImageView
+        android:id="@+id/iv_myAccountFragment_profile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/myaccount_page_no_real_name_profile" />
+
+    <TextView
+        android:id="@+id/tv_myAccountFragment_username"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_toRightOf="@id/iv_myAccountFragment_profile"
+        android:gravity="center_vertical|left"
+        android:text="未登录"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_myAccountFragment_phoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@id/tv_myAccountFragment_username"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/iv_myAccountFragment_profile"
+        android:gravity="center_vertical|left"
+        android:text="手机号码"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+
+</RelativeLayout>

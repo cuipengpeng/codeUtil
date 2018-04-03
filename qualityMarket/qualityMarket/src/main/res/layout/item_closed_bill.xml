@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:layout_marginBottom="5dp"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <View
+        android:id="@+id/v_myOrderActivity_orderItem_border1"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#e0e0e0" />
+
+    <TextView
+        android:id="@+id/tv_allBillFragment_billItem_instalmentPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v_myOrderActivity_orderItem_border1"
+        android:layout_marginLeft="@dimen/allBillFragment_billItem_marginLeftAndRight"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical|left"
+        android:maxLines="1"
+        android:text="0.00"
+        android:textColor="#333333"
+        android:textSize="15sp" />
+
+
+    <TextView
+        android:id="@+id/tv_allBillFragment_billItem_billStatus"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv_allBillFragment_billItem_instalmentPrice"
+        android:layout_below="@id/v_myOrderActivity_orderItem_border1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/allBillFragment_billItem_marginLeftAndRight"
+        android:layout_centerVertical="true"
+        android:ellipsize="end"
+        android:gravity="center_vertical|right"
+        android:maxLines="1"
+        android:text=""
+        android:textColor="@color/myOrderActivity_orderItem_textViewLight"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tv_allBillFragment_billItem_numberOfInstallments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_allBillFragment_billItem_instalmentPrice"
+        android:layout_marginLeft="@dimen/allBillFragment_billItem_marginLeftAndRight"
+        android:layout_marginTop="10dp"
+        android:ellipsize="end"
+        android:gravity="center_vertical|left"
+        android:maxLines="1"
+        android:text="aaaa"
+        android:textColor="@color/myOrderActivity_orderItem_textViewLight"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_allBillFragment_billItem_productName"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_allBillFragment_billItem_instalmentPrice"
+        android:layout_alignBaseline="@id/tv_allBillFragment_billItem_numberOfInstallments"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/tv_allBillFragment_billItem_numberOfInstallments"
+        android:ellipsize="end"
+        android:gravity="center_vertical|left"
+        android:maxLines="1"
+        android:text="ddddddddddddddddddddddddddd"
+        android:textColor="@color/myOrderActivity_orderItem_textViewLight"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_allBillFragment_billItem_repaymentDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_allBillFragment_billItem_instalmentPrice"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/allBillFragment_billItem_marginLeftAndRight"
+        android:layout_centerVertical="true"
+        android:ellipsize="end"
+        android:gravity="center_vertical|left"
+        android:maxLines="1"
+        android:text="12-23"
+        android:textColor="@color/myOrderActivity_orderItem_textViewLight"
+        android:textSize="15sp" />
+
+
+    <View
+        android:id="@+id/v_allbillFragment_billItem_border_white20dp"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@id/tv_allBillFragment_billItem_productName"
+        android:background="@color/white" />
+
+    <View
+        android:id="@+id/v_allbillFragment_billItem_border_warning"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_below="@id/v_allbillFragment_billItem_border_white20dp"
+        android:background="@color/myaccountFragment_item_borderColor" />
+
+
+    <TextView
+        android:id="@+id/tv_allbillFragment_billItem_warning"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_below="@id/v_allbillFragment_billItem_border_warning"
+        android:layout_marginLeft="@dimen/myaccountFragment_item_paddingLeft"
+        android:drawableLeft="@mipmap/ic_allbilling_activity_warning"
+        android:drawablePadding="@dimen/myaccountFragment_item_textViewPadding"
+        android:gravity="center_vertical|left"
+        android:text="分期账单"
+        android:textColor="#e1b13d"
+        android:textSize="@dimen/myaccountFragment_icon_textSize" />
+</RelativeLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/dp20"
+    android:paddingTop="@dimen/dp15">
+
+
+    <ImageView
+        android:id="@+id/iv_item_search_result_selecte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/dp13"
+        android:padding="@dimen/dp8"
+        android:src="@drawable/selector_search_item_selected" />
+
+    <LinearLayout
+        android:id="@+id/ll_item_search_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/iv_item_search_result_selecte"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_item_search_result_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="嘉实新兴消费股票"
+            android:textColor="@color/color_393b51" />
+
+        <TextView
+            android:id="@+id/tv_item_search_result_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:text="0814121"
+            android:textColor="@color/color_393b51" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:layout_below="@id/ll_item_search_result"
+        android:layout_marginTop="@dimen/dp15"
+        android:background="@color/color_ebebeb" />
+</RelativeLayout>

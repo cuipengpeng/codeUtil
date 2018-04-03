@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+    <include layout="@layout/title_back"></include>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/c_eeeeee" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="@dimen/bankCardListActivity_marginLeft"
+        android:layout_marginRight="@dimen/bankCardListActivity_marginRight"
+        android:gravity="left|center_vertical"
+        android:text="请绑定持卡人本人的银行卡"
+        android:textColor="#333333"
+        android:layout_marginTop="8dp"
+        android:textSize="14sp" />
+    <EditText
+        android:id="@+id/et_addBankCardActivity_name"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="@dimen/bankCardListActivity_marginLeft"
+        android:layout_marginRight="@dimen/bankCardListActivity_marginRight"
+        android:paddingLeft="10dp"
+        android:background="@drawable/circle_corner_gray_border_bg"
+        android:ellipsize="end"
+        android:hint="请输入您的姓名"
+        android:maxLength="10"
+        android:inputType="text"
+        android:textColor="@color/c_333333"
+        android:gravity="left|center_vertical"
+        android:layout_marginTop="8dp"
+        android:textSize="@dimen/loginActivity_bottom_textSize" />
+    <EditText
+        android:id="@+id/et_addBankCardActivity_idcard"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="@dimen/bankCardListActivity_marginLeft"
+        android:layout_marginRight="@dimen/bankCardListActivity_marginRight"
+        android:paddingLeft="10dp"
+        android:background="@drawable/circle_corner_gray_border_bg"
+        android:ellipsize="end"
+        android:hint="请输入您的身份证号"
+        android:digits="1234567890xX"
+        android:gravity="left|center_vertical"
+        android:maxLength="18"
+        android:layout_marginTop="8dp"
+        android:inputType="text"
+        android:textColor="@color/c_333333"
+        android:textSize="@dimen/loginActivity_bottom_textSize" />
+    <EditText
+        android:id="@+id/et_addBankCardActivity_inputBankCardNum"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="@dimen/bankCardListActivity_marginLeft"
+        android:layout_marginRight="@dimen/bankCardListActivity_marginRight"
+        android:paddingLeft="10dp"
+        android:background="@drawable/circle_corner_gray_border_bg"
+        android:digits="0123456789"
+        android:ellipsize="end"
+        android:hint="请输入您的储蓄卡号"
+        android:layout_marginTop="8dp"
+        android:gravity="left|center_vertical"
+        android:maxLength="19"
+        android:phoneNumber="true"
+        android:textColor="@color/c_333333"
+        android:textSize="@dimen/loginActivity_bottom_textSize" />
+
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/bankCardListActivity_marginLeft"
+        android:layout_marginRight="@dimen/bankCardListActivity_marginRight"
+        android:background="#ffffff" >
+
+        <EditText
+            android:id="@+id/et_addBankCardActivity_phoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/loginActivity_edittext_marginTop"
+            android:background="@drawable/circle_corner_gray_border_bg"
+            android:ellipsize="end"
+            android:gravity="center_vertical|left"
+            android:hint="输入您的银行预留手机号"
+            android:maxLength="11"
+            android:paddingLeft="10dp"
+
+            android:phoneNumber="true"
+            android:textColor="@color/c_333333"
+            android:textSize="@dimen/loginActivity_bottom_textSize" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/loginActivity_edittext_marginTop"
+            android:layout_below="@id/et_addBankCardActivity_phoneNumber"
+            android:background="#ffffff"
+            android:visibility="gone"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/et_addBankCardActivity_verifyCode"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="11"
+                android:background="@drawable/circle_corner_gray_border_bg"
+                android:ellipsize="end"
+                android:gravity="center_vertical|left"
+                android:hint="输入短信验证码"
+                android:visibility="gone"
+                android:maxLength="6"
+                android:paddingLeft="10dp"
+                android:phoneNumber="true"
+                android:textColor="@color/c_333333"
+                android:textSize="@dimen/loginActivity_bottom_textSize" />
+
+            <Button
+                android:id="@+id/btn_addBankCardActivity_getVerifyCode"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:layout_marginLeft="10dp"
+                android:visibility="gone"
+                android:background="@drawable/button_selector"
+                android:gravity="center"
+                android:text="获取验证码"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/loginActivity_bottom_textSize" />
+        </LinearLayout>
+    </RelativeLayout>
+    
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/loginActivity_marginLeftAndRight"
+        android:layout_marginRight="@dimen/loginActivity_marginLeftAndRight"
+        android:layout_marginTop="40dp" >
+
+        <TextView
+            android:id="@+id/tv_addBankCardActivity_viewSupportedBankCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="right|top"
+            android:text="查看支持的银行卡"
+            android:textColor="#005555"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btn_addBankCardActivity_bindBankCard"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/tv_addBankCardActivity_viewSupportedBankCard"
+            android:background="@drawable/button_selector"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+</LinearLayout>

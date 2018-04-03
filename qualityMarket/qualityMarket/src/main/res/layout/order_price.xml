@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/confirmOrderActivity_marginLeft"
+    android:layout_marginRight="@dimen/confirmOrderActivity_marginRight"
+    android:background="#ffffff" >
+
+    <TextView
+        android:id="@+id/tv_orderDetailActivity_orderMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/confirmOrderActivity_item_height"
+        android:layout_alignParentLeft="true"
+        android:gravity="center"
+        android:text="订单金额: "
+        android:textColor="@color/c_333333"
+        android:textSize="@dimen/confirmOrderActivity_item_textSize" />
+
+    <TextView
+        android:id="@+id/tv_orderDetailActivity_setOrderMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/confirmOrderActivity_item_height"
+        android:layout_alignBaseline="@id/tv_orderDetailActivity_orderMoney"
+        android:layout_toRightOf="@id/tv_orderDetailActivity_orderMoney"
+        android:gravity="center"
+        android:text="...元"
+        android:textColor="@color/c_333333"
+        android:textSize="@dimen/confirmOrderActivity_item_textSize" />
+
+    <View
+        android:id="@+id/v_orderDetailActivity_border_redMoney"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/orderDetailActivity_border_height"
+        android:layout_below="@id/tv_orderDetailActivity_orderMoney"
+        android:background="@color/myaccountFragment_item_borderColor" />
+
+    <TextView
+        android:id="@+id/tv_orderDetailActivity_redMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/confirmOrderActivity_item_height"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/v_orderDetailActivity_border_redMoney"
+        android:gravity="center"
+        android:text="红包优惠: "
+        android:textColor="@color/c_333333"
+        android:textSize="@dimen/confirmOrderActivity_item_textSize" />
+
+    <TextView
+        android:id="@+id/tv_orderDetailActivity_setRedMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/confirmOrderActivity_item_height"
+        android:layout_alignBaseline="@id/tv_orderDetailActivity_redMoney"
+        android:layout_toRightOf="@id/tv_orderDetailActivity_redMoney"
+        android:gravity="center"
+        android:text="...元"
+        android:textColor="@color/themeRed"
+        android:textSize="@dimen/confirmOrderActivity_item_textSize" />
+
+    <View
+        android:id="@+id/v_orderDetailActivity_border_actualMoney"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/orderDetailActivity_border_height"
+        android:layout_below="@id/tv_orderDetailActivity_redMoney"
+        android:background="@color/myaccountFragment_item_borderColor" />
+
+    <TextView
+        android:id="@+id/tv_orderDetailActivity_actualMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/confirmOrderActivity_item_height"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/v_orderDetailActivity_border_actualMoney"
+        android:gravity="center"
+        android:text="实际金额: "
+        android:textColor="@color/c_333333"
+        android:textSize="@dimen/confirmOrderActivity_item_textSize" />
+
+    <TextView
+        android:id="@+id/tv_orderDetailActivity_setActualMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/confirmOrderActivity_item_height"
+        android:layout_alignBaseline="@id/tv_orderDetailActivity_actualMoney"
+        android:layout_toRightOf="@id/tv_orderDetailActivity_actualMoney"
+        android:gravity="center"
+        android:text="...元"
+        android:textColor="@color/c_333333"
+        android:textSize="@dimen/confirmOrderActivity_item_textSize" />
+
+</RelativeLayout>

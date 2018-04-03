@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffe8e8e8"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/title_back" />
+
+
+    <com.jfbank.qualitymarket.widget.TwinklingRefreshLayoutView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:tr_head_height="80dp"
+        app:tr_wave_height="100dp">
+        <!-- 支持所有实现Pullable接口的View -->
+
+        <ListView
+            android:id="@+id/lv_discoverFragment_discoverList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:descendantFocusability="afterDescendants"
+            android:divider="#00000000"
+            android:dividerHeight="0dip"
+            android:listSelector="@android:color/transparent">
+
+        </ListView>
+
+    </com.jfbank.qualitymarket.widget.TwinklingRefreshLayoutView>
+
+    <ImageView
+        android:id="@+id/iv_discoverFragment_noData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/ic_no_data" />
+</LinearLayout>

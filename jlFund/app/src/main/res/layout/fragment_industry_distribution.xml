@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_industryDistributionFragment_investPeriod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="@dimen/positionAllocationFragment_contentMarginTopAndBottom_15dp"
+        android:layout_marginTop="@dimen/positionAllocationFragment_contentMarginTopAndBottom_15dp"
+        android:layout_marginLeft="@dimen/positionAllocationFragment_marginLeftAndRight_15dp"
+        android:gravity="left|center_vertical"
+        android:maxLines="1"
+        android:text="2017一季度"
+        android:textColor="@color/fundInfoActivityBlack"
+        android:textSize="@dimen/fundInfoActivity_textSize_15sp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/appBackgroundColor"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/positionAllocationFragment_contentMarginTopAndBottom_15dp"
+            android:layout_marginTop="@dimen/positionAllocationFragment_contentMarginTopAndBottom_15dp"
+            android:layout_marginLeft="@dimen/positionAllocationFragment_marginLeftAndRight_15dp"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:maxLines="1"
+            android:text="行业"
+            android:textColor="@color/appContentColor"
+            android:textSize="@dimen/positionAllocationFragment_contentTextSize_13sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/positionAllocationFragment_contentMarginTopAndBottom_15dp"
+            android:layout_marginTop="@dimen/positionAllocationFragment_contentMarginTopAndBottom_15dp"
+            android:layout_marginRight="@dimen/positionAllocationFragment_marginLeftAndRight_15dp"
+            android:layout_weight="1"
+            android:gravity="right|center_vertical"
+            android:maxLines="1"
+            android:text="占净值比"
+            android:textColor="@color/appContentColor"
+            android:textSize="@dimen/positionAllocationFragment_contentTextSize_13sp" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_industryDistributionFragment_industryDistribution"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <include
+        layout="@layout/list_no_data_view"
+        android:visibility="gone" />
+</LinearLayout>

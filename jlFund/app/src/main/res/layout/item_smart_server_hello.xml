@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/dp10">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_robot" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp20"
+        android:background="@drawable/bg_smart_answer"
+        android:text="通过智能投顾客服咨询，让我们了解您的需求，力求为您的基金投资过程排忧解难。"
+        android:textColor="@color/color_393b51"
+        android:textSize="@dimen/dp14" />
+
+</LinearLayout>

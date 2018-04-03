@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dividerView_height_1dp"
+        android:layout_marginTop="@dimen/dividendInfoActivity_item_marginTopAndBottom_18dp"
+        android:background="@color/fundInfoActivity_dividerColor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/app_marginLeftAndRight_15dp"
+        android:paddingRight="@dimen/app_marginLeftAndRight_15dp">
+
+
+        <TextView
+            android:id="@+id/tv_sevenDayYieldListActivity_popupWindow_sevenDayYield"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="七日年化"
+            android:textColor="@color/appTitleColor"
+            android:textSize="@dimen/currentPlusActivity_popupTextSize_15sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dividerView_height_1dp"
+            android:background="@color/fundInfoActivity_dividerColor" />
+
+        <TextView
+            android:id="@+id/tv_sevenDayYieldListActivity_popupWindow_wanfenIncome"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="万份收益"
+            android:textColor="@color/appTitleColor"
+            android:textSize="@dimen/currentPlusActivity_popupTextSize_15sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dividerView_height_1dp"
+            android:background="@color/fundInfoActivity_dividerColor" />
+
+        <TextView
+            android:id="@+id/tv_sevenDayYieldListActivity_popupWindow_accumulatedIncome"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="收益"
+            android:textColor="@color/appTitleColor"
+            android:textSize="@dimen/currentPlusActivity_popupTextSize_15sp" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_ffffff"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/dp15"
+    android:paddingRight="@dimen/dp15">
+
+    <RelativeLayout
+        android:id="@+id/rl_holderRiskAddr_province"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dp15"
+        android:paddingTop="@dimen/dp15">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="所在省"
+            android:textColor="@color/color_393b51"
+            android:textSize="@dimen/dp15" />
+
+        <TextView
+            android:id="@+id/tv_holderRiskAddr_province"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawablePadding="@dimen/dp10"
+            android:drawableRight="@drawable/right_arrow"
+            android:textColor="@color/color_b9bbca"
+            android:textSize="@dimen/dp15" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:background="@color/color_ebebeb" />
+
+    <RelativeLayout
+        android:id="@+id/rl_holderRiskAddr_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dp15"
+        android:paddingTop="@dimen/dp15">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="所在市"
+            android:textColor="@color/color_393b51"
+            android:textSize="@dimen/dp15" />
+
+        <TextView
+            android:id="@+id/tv_holderRiskAddr_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawablePadding="@dimen/dp10"
+            android:drawableRight="@drawable/right_arrow"
+            android:textColor="@color/color_b9bbca"
+            android:textSize="@dimen/dp15" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:background="@color/color_ebebeb" />
+
+    <EditText
+        android:id="@+id/et_holderRiskAddr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:hint="请填写详细地址，不少于8个字"
+        android:paddingBottom="@dimen/dp10"
+        android:paddingTop="@dimen/dp10"
+        android:textColor="@color/color_393b51"
+        android:textColorHint="@color/color_b9bbca"
+        android:textSize="@dimen/dp15" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:background="@color/color_ebebeb" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp15">
+
+        <TextView
+            android:id="@+id/tv_holderRiskAddr_lastQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp10"
+            android:text="上一题"
+            android:textColor="@color/color_393b51"
+            android:textSize="@dimen/dp15" />
+
+        <TextView
+            android:id="@+id/tv_holderRiskAddr_nextQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/dp10"
+            android:text="下一题"
+            android:textColor="@color/color_0084ff"
+            android:textSize="@dimen/dp15" />
+    </RelativeLayout>
+</LinearLayout>

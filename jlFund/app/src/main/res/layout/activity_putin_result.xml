@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <include layout="@layout/trade_record_in_putin_activity" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dividerView_height_1dp"
+        android:background="@color/fundInfoActivity_dividerColor" />
+
+    <RelativeLayout
+        android:id="@+id/rl_putInResultActivity_flowStep1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_putInResultActivity_image1"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="15dp"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/tv_putInResultActivity_flowLineUp1"
+                android:layout_width="1dp"
+                android:layout_height="@dimen/putInResultActivity_lineUpAndDownHeight_25dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="invisible"
+                android:background="@color/fundInfoActivity_dividerColor" />
+
+            <ImageView
+                android:id="@+id/tv_putInResultActivity_flowIcon1"
+                android:layout_width="@dimen/putInResultActivity_iconWidthAndHeight_25dp"
+                android:layout_height="@dimen/putInResultActivity_iconWidthAndHeight_25dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@mipmap/put_in_result_activity_flow_step1_selected" />
+
+            <View
+                android:id="@+id/tv_putInResultActivity_flowLineDown1"
+                android:layout_width="1dp"
+                android:layout_height="@dimen/putInResultActivity_lineUpAndDownHeight_25dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/fundInfoActivity_dividerColor" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_putInResultActivity_flowDesc1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/putInResultActivity_descMarginLeft_25dp"
+            android:layout_toRightOf="@id/ll_putInResultActivity_image1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text=""
+            android:textColor="@color/appViewFullTextColor"
+            android:textSize="@dimen/putInResultActivity_descTextSize_15sp" />
+
+        <TextView
+            android:id="@+id/tv_putInResultActivity_flowDate1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_putInResultActivity_flowDesc1"
+            android:layout_alignLeft="@id/tv_putInResultActivity_flowDesc1"
+            android:layout_marginTop="@dimen/putInResultActivity_dateMarginTop_30dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text=""
+            android:textColor="@color/appCommentColor"
+            android:textSize="@dimen/putInResultActivity_dateTextSize_12sp" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_putInResultActivity_flowStep2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_putInResultActivity_image2"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="15dp"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/tv_putInResultActivity_flowLineUp2"
+                android:layout_width="1dp"
+                android:layout_height="@dimen/putInResultActivity_lineUpAndDownHeight_25dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/fundInfoActivity_dividerColor" />
+
+            <ImageView
+                android:id="@+id/tv_putInResultActivity_flowIcon2"
+                android:layout_width="@dimen/putInResultActivity_iconWidthAndHeight_25dp"
+                android:layout_height="@dimen/putInResultActivity_iconWidthAndHeight_25dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@mipmap/put_in_result_activity_flow_step2_unselected" />
+
+            <View
+                android:id="@+id/tv_putInResultActivity_flowLineDown2"
+                android:layout_width="1dp"
+                android:layout_height="@dimen/putInResultActivity_lineUpAndDownHeight_25dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/fundInfoActivity_dividerColor" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_putInResultActivity_flowDesc2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/putInResultActivity_descMarginLeft_25dp"
+            android:layout_toRightOf="@id/ll_putInResultActivity_image2"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text=""
+            android:textColor="@color/appTitleColor"
+            android:textSize="@dimen/putInResultActivity_descTextSize_15sp" />
+
+        <TextView
+            android:id="@+id/tv_putInResultActivity_flowDate2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_putInResultActivity_flowDesc2"
+            android:layout_alignLeft="@id/tv_putInResultActivity_flowDesc2"
+            android:layout_marginTop="@dimen/putInResultActivity_dateMarginTop_30dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text=""
+            android:textColor="@color/appCommentColor"
+            android:textSize="@dimen/putInResultActivity_dateTextSize_12sp" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_putInResultActivity_flowStep3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_putInResultActivity_image3"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="15dp"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/tv_putInResultActivity_flowLineUp3"
+                android:layout_width="1dp"
+                android:layout_height="@dimen/putInResultActivity_lineUpAndDownHeight_25dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/fundInfoActivity_dividerColor" />
+
+            <ImageView
+                android:id="@+id/tv_putInResultActivity_flowIcon3"
+                android:layout_width="@dimen/putInResultActivity_iconWidthAndHeight_25dp"
+                android:layout_height="@dimen/putInResultActivity_iconWidthAndHeight_25dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@mipmap/put_in_result_activity_flow_step3_unselected" />
+
+            <View
+                android:id="@+id/tv_putInResultActivity_flowLineDown3"
+                android:layout_width="1dp"
+                android:layout_height="@dimen/putInResultActivity_lineUpAndDownHeight_25dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="invisible"
+                android:background="@color/fundInfoActivity_dividerColor" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_putInResultActivity_flowDesc3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/putInResultActivity_descMarginLeft_25dp"
+            android:layout_toRightOf="@id/ll_putInResultActivity_image3"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text=""
+            android:textColor="@color/appTitleColor"
+            android:textSize="@dimen/putInResultActivity_descTextSize_15sp" />
+
+        <TextView
+            android:id="@+id/tv_putInResultActivity_flowDate3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_putInResultActivity_flowDesc3"
+            android:layout_alignLeft="@id/tv_putInResultActivity_flowDesc3"
+            android:layout_marginTop="@dimen/putInResultActivity_dateMarginTop_30dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text=""
+            android:textColor="@color/appCommentColor"
+            android:textSize="@dimen/putInResultActivity_dateTextSize_12sp" />
+
+    </RelativeLayout>
+    <View
+        android:id="@+id/v_putInResultActivity_bottomDivider"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="#ffffff" />
+    <TextView
+        android:id="@+id/tv_putInResultActivity_contactCustomerService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:paddingTop="18dp"
+        android:paddingBottom="18dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:gravity="center"
+        android:background="@color/appBackgroundColor"
+        android:maxLines="2"
+        android:text="资金将退回到您的银行卡，如有疑问，请联系客服"
+        android:textColor="@color/appContentColor"
+        android:textSize="@dimen/putInResultActivity_descTextSize_15sp" />
+
+</LinearLayout>

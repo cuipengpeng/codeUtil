@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--标题-->
+    <include layout="@layout/title_back"></include>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/c_eeeeee" />
+
+    <!--所在城市-->
+    <RelativeLayout
+        android:id="@+id/rl_social_insurance_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="所在城市"
+            android:textColor="#333"
+            android:textSize="18sp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_social_insurance_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="北京"
+                android:textSize="18sp"
+                android:textColor="#333"
+                android:background="@null"/>
+
+            <ImageView
+                android:id="@+id/iv_social_insurance_authorization_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+    <!--身份证号-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="身份证号"
+            android:textColor="#333"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/tv_social_insurance_id_card_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="110110110110110110"
+            android:textColor="#999"
+            android:textSize="18sp"
+            android:gravity="end"/>
+
+    </RelativeLayout>
+
+
+    <!--社保号码-->
+    <RelativeLayout
+        android:id="@+id/rl_social_insurance_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="社保号码"
+            android:textColor="#333"
+            android:textSize="18sp"/>
+
+        <EditText
+            android:id="@+id/et_social_insurance_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:hint="请输入社保号码"
+            android:textColor="#333"
+            android:maxLines="1"
+            android:gravity="end"
+            android:background="@null"/>
+
+    </RelativeLayout>
+
+
+    <!--个人编号-->
+    <RelativeLayout
+        android:id="@+id/rl_social_insurance_person_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="个人编号"
+            android:textColor="#333"
+            android:textSize="18sp"/>
+
+        <EditText
+            android:id="@+id/et_social_insurance_person_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:hint="请输入个人编号"
+            android:textColor="#333"
+            android:maxLines="1"
+            android:gravity="end"
+            android:background="@null"/>
+
+    </RelativeLayout>
+
+
+
+    <!--社保密码-->
+    <RelativeLayout
+        android:id="@+id/rl_social_insurance_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="社保密码"
+            android:textColor="#333"
+            android:textSize="18sp"/>
+
+        <EditText
+            android:id="@+id/et_social_insurance_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:hint="请输入社保密码"
+            android:password="true"
+            android:textColor="#333"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:gravity="end"
+            android:background="@null"/>
+
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_gravity="center_vertical"
+        android:padding="10dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cb_agree_social_insurance_authorization"
+            style="@style/MyCheckBox"
+            android:checked="true"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:id="@+id/tv_agree_social_insurance_authorization"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@id/cb_agree_social_insurance_authorization"
+            android:text="同意"
+            android:textColor="#333"/>
+
+        <TextView
+            android:id="@+id/tv_agree_credit_authorization_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_agree_social_insurance_authorization"
+            android:text="《社保账号授权协议》"
+            android:textColor="#333"/>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_social_insurance_authorization"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:background="@drawable/button_selector"
+        android:text="确定"
+        android:textColor="#ffffff"
+        android:textSize="18sp"/>
+
+
+</LinearLayout>

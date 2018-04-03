@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="5dp"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/v_myOrderActivity_orderItem_divider1"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/myaccountFragment_item_borderColor" />
+
+    <TextView
+        android:id="@+id/tv_myOrderActivity_orderItem_orderStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/v_myOrderActivity_orderItem_divider1"
+        android:layout_marginRight="@dimen/myOrderActivity_orderItem_marginRight"
+        android:gravity="center"
+        android:text="状态"
+        android:textColor="@color/myOrderActivity_orderItem_gray"
+        android:textSize="12sp" />
+
+    <View
+        android:id="@+id/v_myOrderActivity_orderItem_border1"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_below="@id/tv_myOrderActivity_orderItem_orderStatus"
+        android:background="@color/myaccountFragment_item_borderColor" />
+
+    <ImageView
+        android:id="@+id/iv_myOrderActivity_orderItem_productImage"
+        android:layout_width="@dimen/product_image_width"
+        android:layout_height="@dimen/product_image_width"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/v_myOrderActivity_orderItem_border1"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/tv_myOrderActivity_orderItem_productName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v_myOrderActivity_orderItem_border1"
+        android:layout_marginLeft="@dimen/myOrderActivity_orderItem_marginLeft"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@id/iv_myOrderActivity_orderItem_productImage"
+        android:ellipsize="end"
+        android:gravity="center_vertical|left"
+        android:maxLines="2"
+        android:text=""
+        android:textColor="@color/myOrderActivity_orderItem_textViewDark"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_myOrderActivity_orderItem_productPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_myOrderActivity_orderItem_productName"
+        android:layout_marginLeft="@dimen/myOrderActivity_orderItem_marginLeft"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/iv_myOrderActivity_orderItem_productImage"
+        android:gravity="center_vertical|left"
+        android:text="售价:"
+        android:textColor="@color/myOrderActivity_orderItem_textViewDark"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_myOrderActivity_orderItem_spuparams"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_myOrderActivity_orderItem_productPrice"
+        android:layout_marginLeft="@dimen/myOrderActivity_orderItem_marginLeft"
+        android:layout_marginRight="@dimen/myOrderActivity_orderItem_marginRight"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/iv_myOrderActivity_orderItem_productImage"
+        android:ellipsize="end"
+        android:gravity="center_vertical|left"
+        android:maxLines="2"
+        android:text=""
+        android:lineSpacingExtra="4dp"
+        android:textColor="@color/c_999999"
+        android:textSize="12sp" />
+
+    <View
+        android:id="@+id/v_myOrderActivity_orderItem_border2"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_below="@id/tv_myOrderActivity_orderItem_spuparams"
+        android:layout_marginTop="10dp"
+        android:background="@color/myaccountFragment_item_borderColor" />
+
+    <TextView
+        android:id="@+id/tv_myOrderActivity_orderItem_productAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/v_myOrderActivity_orderItem_border2"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="@dimen/myOrderActivity_orderItem_marginLeft"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="共1件商品"
+        android:textColor="@color/myOrderActivity_orderItem_textViewDark"
+        android:textSize="@dimen/myOrderActivity_orderItem_bottom_textSize" />
+
+    <TextView
+        android:id="@+id/tv_myOrderActivity_orderItem_downPaymentPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv_myOrderActivity_orderItem_productAmount"
+        android:layout_below="@id/v_myOrderActivity_orderItem_border2"
+        android:layout_marginLeft="@dimen/myOrderActivity_orderItem_marginLeft"
+        android:layout_toRightOf="@id/tv_myOrderActivity_orderItem_productAmount"
+        android:gravity="center"
+        android:text="首付"
+        android:textColor="@color/myOrderActivity_orderItem_textViewDark"
+        android:textSize="@dimen/myOrderActivity_orderItem_bottom_textSize" />
+
+    <TextView
+        android:id="@+id/tv_myOrderActivity_orderItem_installment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv_myOrderActivity_orderItem_productAmount"
+        android:layout_below="@id/v_myOrderActivity_orderItem_border2"
+        android:layout_marginLeft="@dimen/myOrderActivity_orderItem_marginLeft"
+        android:layout_toRightOf="@id/tv_myOrderActivity_orderItem_downPaymentPrice"
+        android:gravity="center"
+        android:text="分期"
+        android:textColor="@color/myOrderActivity_orderItem_textViewDark"
+        android:textSize="@dimen/myOrderActivity_orderItem_bottom_textSize" />
+
+    <TextView
+        android:id="@+id/tv_myOrderActivity_orderItem_paidDownPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv_myOrderActivity_orderItem_productAmount"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/v_myOrderActivity_orderItem_border2"
+        android:layout_marginRight="@dimen/myOrderActivity_orderItem_marginRight"
+        android:background="@drawable/circle_corner_red_bg"
+        android:gravity="center"
+        android:paddingBottom="4dp"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp"
+        android:paddingTop="4dp"
+        android:text="支付"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/myOrderActivity_orderItem_bottom_textSize" />
+
+    <TextView
+        android:id="@+id/tv_myOrderActivity_orderItem_viewLogistics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv_myOrderActivity_orderItem_productAmount"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/v_myOrderActivity_orderItem_border2"
+        android:layout_marginRight="@dimen/myOrderActivity_orderItem_marginRight"
+        android:background="@drawable/circle_corner_gray_border_bg"
+        android:gravity="center"
+        android:paddingBottom="4dp"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp"
+        android:paddingTop="4dp"
+        android:text="查看物流"
+        android:textColor="@color/myOrderActivity_orderItem_gray"
+        android:textSize="@dimen/myOrderActivity_orderItem_bottom_textSize" />
+
+    <TextView
+        android:id="@+id/tv_myOrderActivity_orderItem_applyAfterSale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv_myOrderActivity_orderItem_productAmount"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/v_myOrderActivity_orderItem_border2"
+        android:layout_marginRight="@dimen/myOrderActivity_orderItem_marginRight"
+        android:background="@drawable/circle_corner_gray_border_bg"
+        android:gravity="center"
+        android:paddingBottom="4dp"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp"
+        android:paddingTop="4dp"
+        android:text="申请售后"
+        android:textColor="@color/myOrderActivity_orderItem_gray"
+        android:textSize="@dimen/myOrderActivity_orderItem_bottom_textSize"
+        android:visibility="gone" />
+
+</RelativeLayout>

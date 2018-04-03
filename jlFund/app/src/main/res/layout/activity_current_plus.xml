@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_currentPlusActivity_putInAndGetOut"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/currentPlusActivityGold"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_currentPlusActivity_getOut"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="取出"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/currentPlusActivity_textSize_17sp" />
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#e4d1b5"/>
+
+        <TextView
+            android:id="@+id/tv_currentPlusActivity_putIn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="存入"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/currentPlusActivity_textSize_17sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ll_currentPlusActivity_putInAndGetOut"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_ffffff"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_currentPlusActivity_notification"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="#e69822"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/currentPlusActivityGold"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp">
+
+                    <TextView
+                        android:id="@+id/tv_currentPlusActivity_totalAmountKey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:text="总金额(元)"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_currentPlusActivity_productDetail"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_toRightOf="@id/tv_currentPlusActivity_totalAmountKey"
+                        android:background="@mipmap/current_plus_activity_product_detail"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:id="@+id/tv_currentPlusActivity_totalAmountTips"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/tv_currentPlusActivity_totalAmountKey"
+                        android:background="@drawable/left_circle_corner_gold_bg"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="更新"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="12sp"
+                        android:visibility="visible" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_currentPlusActivity_totalAmountValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="25dp"
+                    android:gravity="center"
+                    android:text="0.00"
+                    android:textColor="@color/color_ffffff"
+                    android:textSize="36sp" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dividerView_height_1dp"
+                    android:layout_marginLeft="@dimen/currentPlusActivity_marginLeftAndRight_15dp"
+                    android:layout_marginRight="@dimen/currentPlusActivity_marginLeftAndRight_15dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@color/currentPlusActivity_goldButton_Unenable" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                    android:layout_marginRight="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="8"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="昨日收益(元)"
+                            android:textColor="@color/color_ffffff"
+                            android:textSize="@dimen/singleFundDetailActivity_yieldTextSize_12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_currentPlusActivity_yesterdayIncome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:text="0.00"
+                            android:textColor="@color/color_ffffff"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="8"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center"
+                            android:text="累计收益(元)"
+                            android:textColor="@color/color_ffffff"
+                            android:textSize="@dimen/singleFundDetailActivity_yieldTextSize_12sp" />
+
+
+                        <TextView
+                            android:id="@+id/tv_currentPlusActivity_accumulatedIncome"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text="0.00"
+                            android:textColor="@color/color_ffffff"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_currentPlusActivity_yieldTrend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/currentPlusActivity_marginLeftAndRight_15dp"
+                android:layout_marginRight="@dimen/currentPlusActivity_marginLeftAndRight_15dp"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:id="@+id/ll_currentPlusActivity_sevenDayYield"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_marginBottom="@dimen/positionAllocationFragment_contentMarginTopAndBottom_15dp"
+                        android:layout_marginTop="@dimen/positionAllocationFragment_contentMarginTopAndBottom_15dp"
+                        android:layout_weight="1"
+                        android:gravity="left|center_vertical"
+                        android:maxLines="1"
+                        android:text="七日年化收益率(%)"
+                        android:textColor="@color/appTitleColor"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_currentPlusActivity_wanFenYield"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|center_vertical"
+                        android:layout_marginBottom="@dimen/positionAllocationFragment_contentMarginTopAndBottom_15dp"
+                        android:layout_marginTop="@dimen/positionAllocationFragment_contentMarginTopAndBottom_15dp"
+                        android:layout_weight="1"
+                        android:drawablePadding="10dp"
+                        android:drawableRight="@drawable/right_arrow"
+                        android:gravity="right|center_vertical"
+                        android:maxLines="1"
+                        android:text="万份收益"
+                        android:textColor="@color/appContentColor"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+
+                <include layout="@layout/current_plus_activity_chart" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/currentPlusActivity_lineChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#ffffff"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_currentPlusActivity_noLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/currentPlusActivity_marginLeftAndRight_15dp"
+                android:layout_marginRight="@dimen/currentPlusActivity_marginLeftAndRight_15dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="359dp"
+                    android:layout_height="250dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:background="@mipmap/current_plus_activity_user_nologin" />
+
+                <TextView
+                    android:id="@+id/tv_currentPlusActivity_beginPutIn"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="35dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@mipmap/current_plus_activity_begin_put_in_enable"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="开始存入"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/currentPlusActivity_textSize_17sp" />
+            </LinearLayout>
+
+            <include
+                layout="@layout/divider_view_height_10dp" />
+            <LinearLayout
+                android:id="@+id/ll_currentPlusActivity_productDetail"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="@dimen/currentPlusActivity_marginLeftAndRight_15dp"
+                android:layout_marginRight="@dimen/currentPlusActivity_marginLeftAndRight_15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="left|center_vertical"
+                    android:maxLines="1"
+                    android:text="产品详情"
+                    android:textColor="@color/fundInfoActivityBlack"
+                    android:textSize="@dimen/fundInfoActivity_textSize_15sp" />
+
+                <TextView
+                    android:id="@+id/tv_singleFundDetailActivity_fundCompanyValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawablePadding="@dimen/app_rightArrow_paddingRight_4dp"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="right|center_vertical"
+                    android:maxLines="1"
+                    android:text=""
+                    android:textColor="@color/fundInfoActivityGray"
+                    android:textSize="@dimen/fundInfoActivity_textSize_15sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

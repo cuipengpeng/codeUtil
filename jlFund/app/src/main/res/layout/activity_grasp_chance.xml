@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jf.jlfund.view.activity.GraspChanceActivity">
+
+    <com.jf.jlfund.weight.CommonTitleBar
+        android:id="@+id/commonTitleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:statusBarTextColorStyle="dark"
+        app:title="抓机会" />
+
+    <View
+        android:id="@+id/v_split_gca"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:layout_below="@id/commonTitleBar"
+        android:background="@color/color_ebebeb" />
+
+
+    <com.jf.jlfund.weight.refreshlayout.AutoLoadMoreRecyclerView
+        android:id="@+id/recyclerView_graspChance"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/v_split_gca" />
+
+</RelativeLayout>

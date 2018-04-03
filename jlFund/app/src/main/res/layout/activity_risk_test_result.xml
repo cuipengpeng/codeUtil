@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_ffffff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_riskTestResultActivity_resultContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_ffffff"
+        android:orientation="vertical"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/rl_riskTestResultActivity_questionContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_ffffff"
+        android:paddingBottom="30dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circle_corner_white_bg">
+
+
+            <TextView
+                android:id="@+id/tv_riskTestResultActivity_commit"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="1dp"
+                android:gravity="center"
+                android:text="确认无误，提交"
+                android:textColor="@color/appViewFullTextColor"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/v_riskTestResultActivity_addressDivider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dividerView_height_1dp"
+                android:layout_above="@id/tv_riskTestResultActivity_commit"
+                android:background="@color/appDividerLineColor_1dp"/>
+
+            <ImageView
+                android:id="@+id/iv_riskTestResultActivity_store"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@mipmap/open_account_risk_test_bg" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_riskTestResultActivity_riskTestQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/v_riskTestResultActivity_addressDivider"
+                android:layout_below="@id/iv_riskTestResultActivity_store"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

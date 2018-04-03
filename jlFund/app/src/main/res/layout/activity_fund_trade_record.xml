@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f5f5f5"
+    android:orientation="vertical"
+    tools:context="com.jf.jlfund.view.activity.SingleFundTradeRecordActivity">
+
+    <com.jf.jlfund.weight.CommonTitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="交易记录" />
+
+    <LinearLayout
+        android:id="@+id/ll_sftr_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_tradeRecord_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_ffffff"
+            android:gravity="center"
+            android:paddingBottom="@dimen/dp25"
+            android:paddingTop="@dimen/dp25"
+            android:text="易方达新兴成长混合"
+            android:textColor="@color/color_393b51"
+            android:textSize="@dimen/dp17"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"
+            android:background="@color/color_ebebeb" />
+
+        <com.jf.jlfund.weight.refreshlayout.AutoLoadMoreRecyclerView
+            android:id="@+id/recyclerView_tradeFund"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</LinearLayout>

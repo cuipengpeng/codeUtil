@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f5f5f5"
+    android:orientation="vertical">
+
+    <com.jf.jlfund.weight.CommonTitleBar
+        android:id="@+id/commonTitleBar_makeMoney"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftAction="back"
+        app:pattern="titleWithRightImg"
+        app:rightBg="@drawable/icon_search_common_title"
+        app:statusBarTextColorStyle="dark"
+        app:title="基金" />
+
+    <ScrollView
+        android:id="@+id/scrollView_makeMoney_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <com.youth.banner.Banner
+                android:id="@+id/banner_makeMoney"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp175"
+                app:image_scale_type="fit_xy" />
+
+
+            <LinearLayout
+                android:id="@+id/ll_current_plus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="@color/color_ffffff"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_makeMoney_currentPlus_slogn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_ffffff"
+                        android:drawableLeft="@drawable/rect_f35857"
+                        android:drawablePadding="@dimen/dp10"
+                        android:padding="@dimen/dp15"
+                        android:text="活期+"
+                        android:textColor="@color/color_393b51"
+                        android:textSize="@dimen/dp16"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_makeMoney_currentPlus_secondTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dp5"
+                        android:layout_marginRight="@dimen/dp10"
+                        android:layout_toRightOf="@id/tv_makeMoney_currentPlus_slogn"
+                        android:text="小标题"
+                        android:textColor="@color/color_7e819b"
+                        android:textSize="@dimen/dp13" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp1"
+                    android:background="@color/color_ebebeb" />
+
+
+                <TextView
+                    android:id="@+id/tv_current_plus_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp30"
+                    android:textColor="@color/color_393b51"
+                    android:textSize="@dimen/dp18"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_current_plus_rate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp20"
+                    android:gravity="center"
+                    android:textColor="@color/color_f35857"
+                    android:textSize="@dimen/dp30"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_current_plus_period"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:textColor="@color/color_7e819b"
+                    android:textSize="@dimen/dp12" />
+
+                <TextView
+                    android:id="@+id/tv_current_plus_buy_now"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp30"
+                    android:layout_marginLeft="@dimen/dp36"
+                    android:layout_marginRight="@dimen/dp36"
+                    android:layout_marginTop="@dimen/dp20"
+                    android:background="@drawable/selector_btn_clickable_unclickable"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/dp10"
+                    android:paddingTop="@dimen/dp10"
+                    android:text="立即购买"
+                    android:textColor="@color/color_ffffff"
+                    android:textSize="@dimen/dp15"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_chase_hot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="@color/color_ffffff"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_ffffff">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/rect_f35857"
+                        android:drawablePadding="@dimen/dp10"
+                        android:padding="@dimen/dp15"
+                        android:text="追热点"
+                        android:textColor="@color/color_393b51"
+                        android:textSize="@dimen/dp16"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_chase_hot_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:drawablePadding="@dimen/dp10"
+                        android:drawableRight="@drawable/icon_right_arrow_0084ff"
+                        android:padding="@dimen/dp15"
+                        android:text="更多"
+                        android:textColor="@color/color_0084ff"
+                        android:textSize="@dimen/dp14" />
+
+                </RelativeLayout>
+
+                <HorizontalScrollView
+                    android:id="@+id/horizontalScrollView_chase_hot"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/ll_chase_hot_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" />
+
+                </HorizontalScrollView>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_grasp_chance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="@color/color_ebebeb"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_ffffff">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/rect_f35857"
+                        android:drawablePadding="@dimen/dp10"
+                        android:padding="@dimen/dp15"
+                        android:text="抓机会"
+                        android:textColor="@color/color_393b51"
+                        android:textSize="@dimen/dp16"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_grasp_chance_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:drawablePadding="@dimen/dp10"
+                        android:drawableRight="@drawable/icon_right_arrow_0084ff"
+                        android:padding="@dimen/dp15"
+                        android:text="更多"
+                        android:textColor="@color/color_0084ff"
+                        android:textSize="@dimen/dp14" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_grasp_chance_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp1"
+                    android:background="@color/color_ebebeb"
+                    android:orientation="vertical"/>
+
+            </LinearLayout>
+
+            <com.youth.banner.Banner
+                android:id="@+id/banner_ad"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp105"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="@color/color_ffffff"
+                app:image_scale_type="fit_xy" />
+
+            <LinearLayout
+                android:id="@+id/ll_buy_good_fund"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_ffffff">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/rect_f35857"
+                        android:drawablePadding="@dimen/dp10"
+                        android:padding="@dimen/dp15"
+                        android:text="买好基"
+                        android:textColor="@color/color_393b51"
+                        android:textSize="@dimen/dp16"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_buy_good_fund_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:drawablePadding="@dimen/dp10"
+                        android:drawableRight="@drawable/icon_right_arrow_0084ff"
+                        android:padding="@dimen/dp15"
+                        android:text="更多"
+                        android:textColor="@color/color_0084ff"
+                        android:textSize="@dimen/dp14" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp1"
+                    android:background="@color/color_ebebeb" />
+
+                <LinearLayout
+                    android:id="@+id/ll_buy_good_fund_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </LinearLayout>
+
+            <com.jf.jlfund.weight.CommonBottomDesc
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
