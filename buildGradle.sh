@@ -3,6 +3,16 @@ export GRADLE_USER_HOME="$HOME/.gradle/"
 
 buildNumber="$1"
 androidStudioProjectDir="/home/peng/project/QualityMarket_1.2.5"
+while getopts ":p:bc:" opt
+do
+case $opt in
+p )
+androidStudioProjectDir="$OPTARG";;
+esac
+done
+
+echo $androidStudioProjectDir
+
 
 cd $androidStudioProjectDir
 svn up
@@ -18,7 +28,10 @@ fi
 buildMode=""
 echo "$*" | grep -q "clean"
 if [ $? -eq 0 ];then
+        echo "clean---------"
 	buildMode="clean"
+else
+        echo "not clean-------------"
 fi
 
 #--max-workers 8 
@@ -33,3 +46,5 @@ time gradle $buildMode assembleDebug -b "$androidStudioProjectDir/build.gradle" 
 adb shell am start -n com.jfbank.qualitymarket/com.jfbank.qualitymarket.activity.WelcomeActivity
 
 bash $HOME/submitapkfile.sh $buildNumber
+
+
