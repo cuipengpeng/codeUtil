@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/icon_test_result_star_dark" android:state_selected="false" />
-    <item android:drawable="@drawable/icon_test_result_star" android:state_selected="true" />
-</selector>
