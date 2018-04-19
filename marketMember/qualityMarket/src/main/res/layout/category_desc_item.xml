@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="17dp"
+    android:paddingRight="17dp"
+    android:paddingTop="7dp"
+    android:paddingBottom="10dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="@drawable/myaccount_fragment_item_selector">
+
+        <ImageView
+            android:id="@+id/iv_category_desc_icon"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:maxHeight="60dp"
+            android:src="@drawable/icon_default_recommend_type" />
+
+        <TextView
+            android:id="@+id/tv_category_desc_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="手机"
+            android:textColor="#666666"
+            android:textSize="@dimen/categoryFragment_textSize" />
+</LinearLayout>

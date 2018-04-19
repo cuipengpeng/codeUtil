@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.jfbank.qualitymarket.widget.TwinklingRefreshLayoutView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:tr_head_height="80dp"
+            app:tr_wave_height="100dp">
+            <!-- 支持所有实现Pullable接口的View -->
+
+            <ListView
+                android:id="@+id/plv_billpending"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:descendantFocusability="afterDescendants"
+                android:divider="#e9e9e9"
+                android:dividerHeight="0.5dp"
+                android:listSelector="@android:color/transparent"
+                android:overScrollMode="ifContentScrolls">
+
+            </ListView>
+</com.jfbank.qualitymarket.widget.TwinklingRefreshLayoutView>
+
+        <ImageView
+            android:id="@+id/iv_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:background="@drawable/ic_no_data"></ImageView>
+    </FrameLayout>
+
+    <include layout="@layout/footer_billpending_pay"></include>
+</FrameLayout>

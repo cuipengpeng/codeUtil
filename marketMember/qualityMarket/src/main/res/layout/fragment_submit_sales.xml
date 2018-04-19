@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:orientation="vertical"
+        android:scrollbars="horizontal">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_salesreturn_reason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_weight="0"
+                    android:background="@color/c_e9e9e9" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center_vertical|left"
+                    android:lines="1"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:text="服务说明"
+                    android:textColor="@color/c_333333"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical|left"
+                    android:lineSpacingExtra="8dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:text="@string/sales_return_reason"
+                    android:textColor="#ffa944"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="0"
+                    android:background="@color/c_e9e9e9" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_weight="0"
+                    android:background="@color/c_e9e9e9" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:id="@+id/tv_aftersalesr_reason_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|left"
+                        android:lines="1"
+                        android:text="换货原因："
+                        android:textColor="@color/c_333333"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_select_aftersalesr_reason"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="12dp"
+                        android:background="@drawable/btn_grayline_white_selector"
+                        android:drawablePadding="10dp"
+                        android:drawableRight="@mipmap/ic_select_more_right"
+                        android:gravity="center_vertical|left"
+                        android:hint="请选择"
+                        android:lines="1"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/c_333333"
+                        android:textColorHint="@color/c_999999"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_salesreturn_money"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|left"
+                        android:lines="1"
+                        android:text="@string/sales_return_money"
+                        android:textColor="@color/c_333333"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_salesreturn_money"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="12dp"
+                        android:gravity="center_vertical|left"
+                        android:hint="0.00元"
+                        android:lines="1"
+                        android:paddingRight="10dp"
+                        android:textColorHint="@color/c_333333"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:id="@+id/tv_aftersales_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|left"
+                        android:gravity="center_vertical|left"
+                        android:lines="1"
+                        android:text="换货说明："
+                        android:textColor="@color/c_333333"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/et_aftersales_des"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="12dp"
+                        android:background="@drawable/btn_grayline_white_selector"
+                        android:gravity="top|left"
+                        android:padding="10dp"
+                        android:maxLength="300"
+                        android:scrollbars="horizontal"
+                        android:textColor="@color/c_333333"
+                        android:textColorHint="@color/c_999999"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_weight="0"
+                    android:background="@color/c_e9e9e9" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_weight="0"
+                    android:background="@color/c_e9e9e9" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|left"
+                    android:layout_marginTop="15dp"
+                    android:drawableLeft="@mipmap/ic_take_photo_flag"
+                    android:drawablePadding="7dp"
+                    android:gravity="center_vertical|left"
+                    android:lines="1"
+                    android:paddingLeft="15dp"
+                    android:text="上传凭证 最多3张"
+                    android:textColor="@color/c_333333"
+                    android:textSize="15sp" />
+
+                <com.jfbank.qualitymarket.widget.NoScrollGridView
+                    android:id="@+id/nsgv_item_add_pic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:columnWidth="60dp"
+                    android:horizontalSpacing="7.5dp"
+                    android:listSelector="@android:color/transparent"
+                    android:minHeight="60dp"
+                    android:numColumns="4"
+                    android:scrollbars="none"
+                    android:stretchMode="spacingWidthUniform" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center_vertical|left"
+                    android:lineSpacingExtra="8dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:text="@string/sales_take_pic_des"
+                    android:textColor="@color/c_666666"
+                    android:textSize="13sp" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="0"
+                    android:background="@color/c_e9e9e9" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_submit_aftersales"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/button_selector"
+        android:gravity="center"
+        android:text="提交申请"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/loginActivity_button_textSize" />
+
+</LinearLayout>

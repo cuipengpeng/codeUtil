@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/fragment_main_context"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"></LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_mainActivity_bottomMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#ffffffff"
+        android:orientation="vertical"
+        app:layout_behavior="com.jfbank.qualitymarket.widget.FooterBehavior">
+
+        <View
+            android:id="@+id/v_orderDetailActivity_border_bottomMenu"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/myaccountFragment_item_borderColor" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_alignParentBottom="true"
+            android:background="#ffffffff"
+            android:orientation="horizontal"
+            android:paddingTop="9dp">
+
+            <TextView
+                android:id="@+id/tv_mainActivity_01"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="@dimen/mainActivity_bottomMenu_textViewPadding"
+                android:drawableTop="@drawable/tab_home_selector"
+                android:gravity="center"
+                android:text="首页"
+                android:textColor="@color/color_maintab_selector"
+                android:textSize="@dimen/mainActivity_bottomMenu_textSize" />
+
+            <TextView
+                android:id="@+id/tv_mainActivity_02"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="@dimen/mainActivity_bottomMenu_textViewPadding"
+                android:drawableTop="@drawable/tab_category_selector"
+                android:gravity="center"
+                android:text="品类"
+                android:textColor="@color/color_maintab_selector"
+                android:textSize="@dimen/mainActivity_bottomMenu_textSize" />
+
+            <TextView
+                android:id="@+id/tv_mainActivity_03"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="@dimen/mainActivity_bottomMenu_textViewPadding"
+                android:drawableTop="@drawable/tab_discover_selector"
+                android:gravity="center"
+                android:text="发现"
+                android:textColor="@color/color_maintab_selector"
+                android:textSize="@dimen/mainActivity_bottomMenu_textSize" />
+
+            <TextView
+                android:id="@+id/tv_mainActivity_04"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/tab_myacount_selector"
+                android:gravity="center"
+                android:text="我的"
+                android:textColor="@color/color_maintab_selector"
+                android:textSize="@dimen/mainActivity_bottomMenu_textSize" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

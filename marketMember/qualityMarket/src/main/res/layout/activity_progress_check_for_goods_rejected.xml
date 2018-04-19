@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f5f5"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_back"></include>
+
+    <ScrollView
+        android:id="@+id/sl_progressCheckForGoodsRejectedActivity_returnGoodsToSeller"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/ll_progressCheckForGoodsRejectedActivity_returnGoodsToSeller"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"></LinearLayout>
+    </ScrollView>
+
+
+    <ScrollView
+        android:id="@+id/sl_progressCheckForGoodsRejectedActivity_allViewsExceptReturnGoodsToSeller"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff">
+
+        <LinearLayout
+            android:id="@+id/ll_progressCheckForGoodsRejectedActivity_allDataView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="#f5f5f5" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF">
+
+
+                <TextView
+                    android:id="@+id/tv_progressCheckForGoodsRejectedActivity_waitForSellerHandleApplyKey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/ProgressCheckForGoodsRejectedActivity_marginLeftAndRight_15dp"
+                    android:layout_marginTop="18dp"
+                    android:text="等待商家处理退货申请"
+                    android:textColor="#333333"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_progressCheckForGoodsRejectedActivity_cancelApply"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/ProgressCheckForGoodsRejectedActivity_marginLeftAndRight_15dp"
+                    android:layout_marginTop="18dp"
+                    android:background="@drawable/circle_corner_gray_border_bg"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="4dp"
+                    android:text="取消申请"
+                    android:textColor="#666666"
+                    android:textSize="13sp" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_progressCheckForGoodsRejectedActivity_waitForSellerHandleApply"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_progressCheckForGoodsRejectedActivity_waitForSellerHandleApplyKey"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginLeft="@dimen/ProgressCheckForGoodsRejectedActivity_marginLeftAndRight_15dp"
+                    android:layout_marginRight="@dimen/ProgressCheckForGoodsRejectedActivity_marginLeftAndRight_15dp"
+                    android:layout_marginTop="16dp">
+
+
+                    <TextView
+                        android:id="@+id/tv_progressCheckForGoodsRejectedActivity_sellerAgreeKey"
+                        style="@style/goods_rejected_no_margin_text_style_key_14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+
+                        android:gravity="center_vertical|right"
+                        android:text="如果商家同意:" />
+
+                    <TextView
+                        style="@style/goods_rejected_text_style_value_14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@id/tv_progressCheckForGoodsRejectedActivity_sellerAgreeKey"
+                        android:layout_marginLeft="@dimen/ProgressCheckForGoodsRejectedActivity_twoTextView_margin_4dp"
+                        android:layout_toRightOf="@id/tv_progressCheckForGoodsRejectedActivity_sellerAgreeKey"
+                        android:text="申请将达成并需要您退货给商家" />
+
+                    <TextView
+                        android:id="@+id/tv_progressCheckForGoodsRejectedActivity_sellerunHandleKey"
+                        style="@style/goods_rejected_no_margin_text_style_key_14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@id/tv_progressCheckForGoodsRejectedActivity_sellerAgreeKey"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center_vertical|right"
+                        android:text="如果商家未处理:" />
+
+                    <TextView
+                        android:id="@+id/tv_progressCheckForGoodsRejectedActivity_sellerunHandleCountDown"
+                        style="@style/goods_rejected_text_style_value_14sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/ProgressCheckForGoodsRejectedActivity_twoTextView_margin_4dp"
+                        android:layout_alignTop="@id/tv_progressCheckForGoodsRejectedActivity_sellerunHandleKey"
+                        android:layout_toRightOf="@id/tv_progressCheckForGoodsRejectedActivity_sellerunHandleKey"
+                        android:text="" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_progressCheckForGoodsRejectedActivity_sellerRefuseApply"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/rl_progressCheckForGoodsRejectedActivity_waitForSellerHandleApply"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginLeft="@dimen/ProgressCheckForGoodsRejectedActivity_marginLeftAndRight_15dp"
+                    android:layout_marginRight="@dimen/ProgressCheckForGoodsRejectedActivity_marginLeftAndRight_15dp"
+                    android:layout_marginTop="16dp">
+
+
+                    <TextView
+                        android:id="@+id/tv_progressCheckForGoodsRejectedActivity_timeOfSellerRefuseApplyKey"
+                        style="@style/goods_rejected_no_margin_text_style_key_14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="27dp"
+                        android:gravity="center_vertical|right"
+                        android:text="修改时间:" />
+
+                    <TextView
+                        android:id="@+id/tv_progressCheckForGoodsRejectedActivity_timeOfSellerRefuseApplyValue"
+                        style="@style/goods_rejected_text_style_value_14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@id/tv_progressCheckForGoodsRejectedActivity_timeOfSellerRefuseApplyKey"
+                        android:layout_marginLeft="@dimen/ProgressCheckForGoodsRejectedActivity_twoTextView_margin_4dp"
+                        android:layout_toRightOf="@id/tv_progressCheckForGoodsRejectedActivity_timeOfSellerRefuseApplyKey"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/tv_progressCheckForGoodsRejectedActivity_reasonOfSellerRefuseApplyKey"
+                        style="@style/goods_rejected_no_margin_text_style_key_14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@id/tv_progressCheckForGoodsRejectedActivity_timeOfSellerRefuseApplyKey"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center_vertical|right"
+                        android:text="商家拒绝理由:" />
+
+                    <TextView
+                        android:id="@+id/tv_progressCheckForGoodsRejectedActivity_reasonOfSellerRefuseApplyValue"
+                        style="@style/goods_rejected_text_style_value_14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/ProgressCheckForGoodsRejectedActivity_twoTextView_margin_4dp"
+                        android:layout_marginRight="@dimen/ProgressCheckForGoodsRejectedActivity_marginLeftAndRight_15dp"
+                        android:layout_alignTop="@id/tv_progressCheckForGoodsRejectedActivity_reasonOfSellerRefuseApplyKey"
+                        android:layout_toRightOf="@id/tv_progressCheckForGoodsRejectedActivity_reasonOfSellerRefuseApplyKey"
+                        android:text="" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_progressCheckForGoodsRejectedActivity_applyClosed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/rl_progressCheckForGoodsRejectedActivity_sellerRefuseApply"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginLeft="@dimen/ProgressCheckForGoodsRejectedActivity_marginLeftAndRight_15dp"
+                    android:layout_marginRight="@dimen/ProgressCheckForGoodsRejectedActivity_marginLeftAndRight_15dp"
+                    android:layout_marginTop="16dp">
+
+
+                    <TextView
+                        android:id="@+id/tv_progressCheckForGoodsRejectedActivity_reasonOfClosedApplyKey"
+                        style="@style/goods_rejected_no_margin_text_style_key_14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|right"
+                        android:text="关闭原因:" />
+
+                    <TextView
+                        android:id="@+id/tv_progressCheckForGoodsRejectedActivity_reasonOfClosedApplyValue"
+                        style="@style/goods_rejected_text_style_value_14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@id/tv_progressCheckForGoodsRejectedActivity_reasonOfClosedApplyKey"
+                        android:layout_marginLeft="@dimen/ProgressCheckForGoodsRejectedActivity_twoTextView_margin_4dp"
+                        android:layout_toRightOf="@id/tv_progressCheckForGoodsRejectedActivity_reasonOfClosedApplyKey"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/tv_progressCheckForGoodsRejectedActivity_timeOfClosedApplyKey"
+                        style="@style/goods_rejected_no_margin_text_style_key_14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@id/tv_progressCheckForGoodsRejectedActivity_reasonOfClosedApplyKey"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center_vertical|right"
+                        android:text="关闭时间:" />
+
+                    <TextView
+                        android:id="@+id/tv_progressCheckForGoodsRejectedActivity_timeOfClosedApplyValue"
+                        style="@style/goods_rejected_text_style_value_14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@id/tv_progressCheckForGoodsRejectedActivity_timeOfClosedApplyKey"
+                        android:layout_marginLeft="@dimen/ProgressCheckForGoodsRejectedActivity_twoTextView_margin_4dp"
+                        android:layout_toRightOf="@id/tv_progressCheckForGoodsRejectedActivity_timeOfClosedApplyKey"
+                        android:text="" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="#f5f5f5" />
+
+
+            <include layout="@layout/goods_rejected_detail_info"></include>
+
+            <include layout="@layout/goods_rejected_three_images_and_apply_time" />
+            <Button
+                android:id="@+id/btn_progressCheckForGoodsRejectedActivity_modifyApplyOfExchangeGoods"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="@dimen/ProgressCheckForGoodsRejectedActivity_marginLeftAndRight_15dp"
+                android:layout_marginRight="@dimen/ProgressCheckForGoodsRejectedActivity_marginLeftAndRight_15dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/button_selector"
+                android:gravity="center"
+                android:text="修改申请"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/loginActivity_button_textSize" />
+        </LinearLayout>
+
+    </ScrollView>
+    <include
+        android:id="@+id/ll_progressCheckForGoodsRejectedActivity_netwrokErrorView"
+        layout="@layout/error_view"></include>
+</LinearLayout>
+

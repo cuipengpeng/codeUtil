@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#ffffffff">
+
+    <!-- 包含删除的我的收货地址的item -->
+
+    <View
+        style="@style/LineView"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"/>
+
+
+    <include layout="@layout/include_receiving_address" />
+
+    <View style="@style/LineView" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#ffffffff"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" >
+
+        <ImageView
+            android:id="@+id/contain_delete_iv_selection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/weixuanz"
+            android:paddingLeft="10dp" />
+
+        <TextView
+            android:id="@+id/contain_delete_tv_selection"
+            android:layout_width="36dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/contain_delete_iv_selection"
+            android:background="@drawable/mor1_button"
+            android:gravity="center" />
+
+        <RelativeLayout
+            android:id="@+id/contain_delete_rl_delete"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" >
+
+            <TextView
+                android:id="@+id/contain_delete_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:paddingRight="15dp"
+                android:text="删除"
+                android:textColor="#ff333333"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/contain_delete_text1"
+                android:background="@drawable/delete_icon" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/contain_delete_rl_redact"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/contain_delete_rl_delete" >
+
+            <TextView
+                android:id="@+id/contain_delete_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:paddingRight="15dp"
+                android:text="编辑"
+                android:textColor="#ff333333"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/contain_delete_text2"
+                android:background="@drawable/bianj_icon" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <View style="@style/LineView" />
+
+</LinearLayout>
