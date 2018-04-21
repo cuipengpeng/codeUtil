@@ -1,0 +1,130 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:id="@+id/rl_contactListActivity_title"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/search_bar_bg" >
+
+            <TextView
+                android:id="@+id/btn_contactListActivity_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="5dp"
+                android:text="分组索引listview列表"
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <ImageButton
+                android:id="@+id/ib_contactListActivity_search"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/search_contact_selector"
+                android:src="@drawable/search_contact" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_contactListActivity_searchBar"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/search_bar_bg"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/ib_contactListActivity_back"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/search_contact_selector"
+                android:scaleType="centerCrop"
+                android:src="@drawable/back" />
+
+            <LinearLayout
+                android:id="@+id/ll_contactListActivity_searchBar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/search_bar_edit_bg"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/et_contactListActivity_search"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffffff"
+                    android:drawableLeft="@drawable/search_bar_icon_normal"
+                    android:focusableInTouchMode="true"
+                    android:hint="搜索"
+                    android:singleLine="true"
+                    android:textColor="#000" >
+
+                    <requestFocus />
+                </EditText>
+
+                <ImageButton
+                    android:id="@+id/ib_contactListActivity_clearText"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="left|center_vertical"
+                    android:background="@drawable/clear_text"
+                    android:scaleType="centerCrop" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff" >
+
+        <ListView
+            android:id="@+id/lv_contactListActivity_contactInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null">
+        </ListView>
+
+        <TextView
+            android:id="@+id/tv_contactListActivity_noResult"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:text="无相关联系人 :("
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:background="@drawable/show_head_toast_bg"
+            android:gravity="center_vertical|center_horizontal"
+            android:textColor="@android:color/white"
+            android:textSize="50sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_contact_list_index"
+            android:layout_width="25dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="right"
+            android:gravity="center"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

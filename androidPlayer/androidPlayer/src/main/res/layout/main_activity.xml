@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_activity"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_media_library"
+    android:orientation="vertical" >
+
+    <TabHost
+        android:id="@android:id/tabhost"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+        </LinearLayout>
+    </TabHost>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/maintab_toolbar_bg"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/tab_main"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/home_btn_bg"
+            android:drawableTop="@drawable/icon_1_n"
+            android:text="首页" />
+
+        <Button
+            android:id="@+id/tab_random"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/home_btn_bg"
+            android:drawableTop="@drawable/icon_2_n"
+            android:text="新闻" />
+
+        <Button
+            android:id="@+id/tab_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/home_btn_bg"
+            android:drawableTop="@drawable/icon_3_n"
+            android:text="科技" />
+
+        <Button
+            android:id="@+id/tab_menu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/home_btn_bg"
+            android:drawableTop="@drawable/icon_4_n"
+            android:text="咨询" />
+
+        <Button
+            android:id="@+id/tab_more"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/home_btn_bg"
+            android:drawableTop="@drawable/icon_5_n"
+            android:text="更多" />
+    </LinearLayout>
+</LinearLayout>
