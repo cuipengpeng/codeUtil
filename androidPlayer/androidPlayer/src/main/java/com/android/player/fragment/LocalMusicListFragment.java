@@ -14,10 +14,10 @@ import android.widget.RelativeLayout;
 import com.android.player.R;
 import com.android.player.dao.AudioDao;
 import com.android.player.dao.impl.AudioDaoImpl;
-import com.android.player.domain.Audio;
-import com.android.player.ui.activity.HomeContainerActivity;
-import com.android.player.ui.activity.PlayingActivity;
-import com.android.player.ui.adapter.MusicListAdapter;
+import com.android.player.model.Audio;
+import com.android.player.activity.HomeContainerActivity;
+import com.android.player.activity.PlayingActivity;
+import com.android.player.adapter.MusicListAdapter;
 
 public class LocalMusicListFragment extends Fragment implements View.OnClickListener{
 	private AudioDao audioDao ;

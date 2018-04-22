@@ -4,7 +4,7 @@ import java.util.List;
 
 import android.content.ContentValues;
 
-import com.android.player.domain.Audio;
+import com.android.player.model.Audio;
 
 public interface AudioDao {
 	List<String> getMusicListByPId(String id);

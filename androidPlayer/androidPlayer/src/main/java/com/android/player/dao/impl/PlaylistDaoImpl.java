@@ -13,7 +13,7 @@ import android.net.Uri;
 
 import com.android.player.builder.ContentValuesBuilder;
 import com.android.player.dao.PlaylistDao;
-import com.android.player.domain.Playlist;
+import com.android.player.model.Playlist;
 import com.android.player.utils.Constants;
 
 public class PlaylistDaoImpl extends ContextWrapper implements PlaylistDao {

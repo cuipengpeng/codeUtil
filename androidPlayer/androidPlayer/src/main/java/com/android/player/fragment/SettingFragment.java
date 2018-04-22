@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.android.player.R;
-import com.android.player.ui.activity.ContactListActivity;
-import com.android.player.ui.activity.xiyou3;
+import com.android.player.activity.ContactListActivity;
+import com.android.player.activity.xiyou3;
 
 public class SettingFragment extends Fragment implements View.OnClickListener{
 	private RelativeLayout userInfoRelativeLayout;

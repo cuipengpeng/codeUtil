@@ -12,7 +12,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 
 import com.android.player.dao.AudioDao;
-import com.android.player.domain.Audio;
+import com.android.player.model.Audio;
 import com.android.player.utils.Constants;
 
 public class AudioDaoImpl extends ContextWrapper implements AudioDao {

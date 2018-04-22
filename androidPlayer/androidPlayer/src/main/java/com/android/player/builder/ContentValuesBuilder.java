@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 
 import android.content.ContentValues;
 
-import com.android.player.domain.BaseDomain;
+import com.android.player.model.BaseDomain;
 import com.android.player.orm.annotation.Column;
 
 public class ContentValuesBuilder {

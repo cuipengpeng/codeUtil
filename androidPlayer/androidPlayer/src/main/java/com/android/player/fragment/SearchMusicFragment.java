@@ -16,7 +16,7 @@ import android.widget.RelativeLayout;
 import com.android.player.R;
 import com.android.player.dao.AudioDao;
 import com.android.player.dao.impl.AudioDaoImpl;
-import com.android.player.ui.activity.FunActivity;
+import com.android.player.activity.FunActivity;
 
 public class SearchMusicFragment extends Fragment implements View.OnClickListener{
 	private AudioDao audioDao = new AudioDaoImpl(getActivity());

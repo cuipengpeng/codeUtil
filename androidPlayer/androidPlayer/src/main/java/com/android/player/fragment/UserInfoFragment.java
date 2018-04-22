@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.android.player.R;
-import com.android.player.ui.activity.MoreActivity;
+import com.android.player.activity.MoreActivity;
 
 public class UserInfoFragment extends Fragment implements View.OnClickListener {
 	private ImageButton settingImageButton;

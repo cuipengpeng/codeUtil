@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.android.player.builder.ContentValuesBuilder;
-import com.android.player.domain.Playlist;
+import com.android.player.model.Playlist;
 
 public final class DataBaseHelper extends SQLiteOpenHelper {
 	public static final String PLAYLIST_TABLE_NAME = "hrw_playlist";
