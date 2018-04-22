@@ -58,4 +58,16 @@
 		<item name="android:windowBackground">@color/transparent</item><!--背景透明-->
 		<item name="android:backgroundDimEnabled">true</item><!--模糊-->
 	</style>
+
+
+	<declare-styleable name="CircleImageView">
+		<attr name="border_width" format="dimension" />
+		<attr name="border_color" format="color" />
+	</declare-styleable>
+
+	<declare-styleable name="AutoLoadMoreRecyclerView">
+		<attr name="refreshEnable" format="boolean" />      <!-- 默认禁止刷新 -->
+		<attr name="offsetToLoadMore" format="integer" />   <!-- 当剩余几条自动加载更多，默认2条 -->
+	</declare-styleable>
+
 </resources>
