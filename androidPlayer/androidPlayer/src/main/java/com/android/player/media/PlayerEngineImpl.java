@@ -11,13 +11,13 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.util.Log;
 
-import com.android.player.MyApplication;
+import com.android.player.base.BaseApplication;
 
 public class PlayerEngineImpl implements IPlayerEngine {
 
 	public PlayerEngineImpl() {
 		if (null == mediaPlayerEngine) {
-			Log.i(MyApplication.TAG + "---PlayerEngineImpl---",
+			Log.i(BaseApplication.TAG + "---PlayerEngineImpl---",
 					"Line 19 New MediaPlayerEngine();");
 			mediaPlayerEngine = new MediaPlayerEngine();
 			// mediaPlayerEngine
@@ -58,7 +58,7 @@ public class PlayerEngineImpl implements IPlayerEngine {
 	@Override
 	public void setOnCompletionListener(
 			OnCompletionListener onCompletionListener) {
-		Log.i(MyApplication.TAG + "---PlayerEngineImpl---",
+		Log.i(BaseApplication.TAG + "---PlayerEngineImpl---",
 				"Line 56 setOnCompletionListener;");
 		mediaPlayerEngine.setOnCompletionListener(onCompletionListener);
 	}
@@ -127,7 +127,7 @@ public class PlayerEngineImpl implements IPlayerEngine {
 			selectedOrderIndex = mediaList.indexOf(path);
 			Log
 					.i(
-							MyApplication.TAG + "---PlayerEngineImpl---",
+							BaseApplication.TAG + "---PlayerEngineImpl---",
 							"Line 123 next():Path="
 									+ path
 									+ "***********selectedOrderIndex="
@@ -140,7 +140,7 @@ public class PlayerEngineImpl implements IPlayerEngine {
 			this.path = getPathByPlaybackOrderIndex(selectedOrderIndex);
 			Log
 					.i(
-							MyApplication.TAG + "---PlayerEngineImpl---",
+							BaseApplication.TAG + "---PlayerEngineImpl---",
 							"Line 123 next():next Path="
 									+ path
 									+ "***********next selectedOrderIndex="
@@ -215,7 +215,7 @@ public class PlayerEngineImpl implements IPlayerEngine {
 			playbackOrder.clear();
 		}
 		Log
-				.i(MyApplication.TAG + "---PlayerEngineImpl---",
+				.i(BaseApplication.TAG + "---PlayerEngineImpl---",
 						"Line 200 calculateOrder():beforeSelected="
 								+ beforeSelected
 								+ "***********selectedOrderIndex="
@@ -297,7 +297,7 @@ public class PlayerEngineImpl implements IPlayerEngine {
 
 		public void previousOrNext() {
 			reset();
-			Log.i(MyApplication.TAG, "previousOrNext:path = " + path);
+			Log.i(BaseApplication.TAG, "previousOrNext:path = " + path);
 			play(path);
 
 		}

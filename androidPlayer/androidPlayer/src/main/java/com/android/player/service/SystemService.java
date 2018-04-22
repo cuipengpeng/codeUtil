@@ -11,7 +11,7 @@ import android.database.Cursor;
 import android.provider.MediaStore;
 import android.util.Log;
 
-import com.android.player.MyApplication;
+import com.android.player.base.BaseApplication;
 
 public class SystemService {
 
@@ -33,7 +33,7 @@ public class SystemService {
 	}
 
 	public String getRealPathByAudioName(String name) {
-		Log.i(MyApplication.TAG + "SystemService",
+		Log.i(BaseApplication.TAG + "SystemService",
 				"getRealPathByAudioName name=" + name);
 		ContentResolver resolver = context.getContentResolver();
 		String[] proj = { MediaStore.Images.Media.DATA };

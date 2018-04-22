@@ -1,4 +1,4 @@
-package com.android.player;
+package com.android.player.base;
 
 import android.app.Application;
 import android.content.pm.PackageInfo;
@@ -8,8 +8,8 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import com.android.player.media.IPlayerEngine;
 import com.android.player.media.PlayerEngineImpl;
 
-public class MyApplication extends Application {
-	public static final String TAG = "MyApplication";
+public class BaseApplication extends Application {
+	public static final String TAG = "BaseApplication";
 
 	private IPlayerEngine playerEngine;
 
@@ -20,7 +20,7 @@ public class MyApplication extends Application {
 		return playerEngine;
 	}
 
-	private static MyApplication instance;
+	private static BaseApplication instance;
 
 	@Override
 	public void onCreate() {
@@ -28,7 +28,7 @@ public class MyApplication extends Application {
 		super.onCreate();
 	}
 
-	public static MyApplication getInstance() {
+	public static BaseApplication getInstance() {
 		return instance;
 	}
 

@@ -1,24 +1,89 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 16
+    compileSdkVersion 22
     buildToolsVersion "26.0.2"
 
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
     defaultConfig {
         applicationId "com.android.player"
-        minSdkVersion 8
-        targetSdkVersion 17
+        minSdkVersion 15
+        targetSdkVersion 26
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_7
+            targetCompatibility JavaVersion.VERSION_1_7
+        }
+        multiDexEnabled true
+//        versionCode 191
+//        versionName "1.9.1"
+        manifestPlaceholders = [JPUSH_PKGNAME      : applicationId,
+                                JPUSH_APPKEY       : rootProject.ext.JPUSH_APPKEY, //JPush上注册的包名对应的appkey.
+                                JPUSH_CHANNEL      : "developer-default", //暂时填写默认值即可.
+                                BAIDU_APPKEY       : rootProject.ext.BAIDU_APPKEY, //百度appkey
+                                TENCENT_ID         : rootProject.ext.TENCENT_ID,  //腾讯ID
+                                LAUNCHER_ICON      : rootProject.ext.LAUNCHER_ICON,//launcherIcon
+                                WCHAT_APPID        : rootProject.ext.WCHAT_APPID,//微信SDK appid wx8c608041be0260ec 新手版
+                                WCHAT_TEMPLETE_ID  : rootProject.ext.WCHAT_TEMPLETE_ID,//微信SDK  订阅id
+                                WCHAT_SECRET       : rootProject.ext.WCHAT_SECRET, //微信SDK  WCHAT_SECRET
+                                UMENG_CHANNEL_VALUE: "baidu",
+        ]
     }
-
+    signingConfigs {
+        release {
+            storeFile file("qualitymarket")
+            storePassword "jfmarket"
+            keyAlias "qmarket"
+            keyPassword "jfmarket"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
+        debug {
+            signingConfig signingConfigs.release
+        }
+
     }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    //    productFlavors {
+//        anzi {}//安智 1002
+//        yingyonghui {}//应用汇1003
+//        xiaomi {}//小米1004
+//        sougou {}//搜狗1005
+//        baidu {}//百度1006
+//        wandoujia {}//豌豆荚1007
+//        store91 {}//91市场1008
+//        liantongwo {}//联通沃1009
+//        mumayi {}//木蚂蚁1010
+//        android {}//Android市场1011
+//        yingyongbao {}//应拥宝1012
+//        shougoustore {}//搜狗手机助手1013
+//        huawei {}//华为市场1014
+//        feifansoftware {}//非凡软件1015
+//        android3G {}//3G安卓1016
+//        c360 {}//应用市场
+//        productFlavors.all { flavor ->
+//            flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+//        }
+//
+//    }
+//    useLibrary 'org.apache.http.legacy'
 }
 
 dependencies {
     compile project(':slidingmenu')
     compile files('libs/pinyin4j-2.5.0.jar')
+    compile 'com.android.support:multidex:1.0.1'
 }

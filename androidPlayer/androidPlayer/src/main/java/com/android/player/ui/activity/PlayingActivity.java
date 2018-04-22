@@ -13,13 +13,13 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-import com.android.player.MyApplication;
+import com.android.player.base.BaseApplication;
 import com.android.player.R;
 import com.android.player.media.PlayerEngineImpl.PlaybackMode;
 import com.android.player.utils.Constants;
 
 public class PlayingActivity extends Activity {
-	private MyApplication myApplication;
+	private BaseApplication baseApplication;
 	private ImageButton back_btn;
 	private Intent intent;
 	private TextView playback_audio_name_tv;
@@ -41,7 +41,7 @@ public class PlayingActivity extends Activity {
 		public void run() {
 			int currently_Progress = seek_bar.getProgress() + 1000;// 加1秒
 			seek_bar.setProgress(currently_Progress);
-			playback_current_time_tv.setText(myApplication.getPlayerEngine()
+			playback_current_time_tv.setText(baseApplication.getPlayerEngine()
 					.getCurrentTime());// 每1000m刷新歌曲音轨
 			seek_bar_handler.postDelayed(refresh, 1000);
 		}
@@ -51,16 +51,16 @@ public class PlayingActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		intent = this.getIntent();
-		if (null == myApplication) {
-			myApplication = MyApplication.getInstance();
+		if (null == baseApplication) {
+			baseApplication = BaseApplication.getInstance();
 		}
 		setContentView(R.layout.playback_activity);
 		back_btn = (ImageButton) findViewById(R.id.playback_list);
 		back_btn.setOnTouchListener(back_btn_listener);
 
 		playback_audio_name_tv = (TextView) findViewById(R.id.playback_audio_name);
-		playback_audio_name_tv.setText(myApplication.getPlayerEngine()
-				.getPlayingPath().split("/")[myApplication.getPlayerEngine()
+		playback_audio_name_tv.setText(baseApplication.getPlayerEngine()
+				.getPlayingPath().split("/")[baseApplication.getPlayerEngine()
 				.getPlayingPath().split("/").length - 1]);
 
 		playback_mode_btn = (ImageButton) findViewById(R.id.playback_mode);
@@ -68,7 +68,7 @@ public class PlayingActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				myApplication.getPlayerEngine().setPlaybackMode(
+				baseApplication.getPlayerEngine().setPlaybackMode(
 						PlaybackMode.SHUFFLE);
 			}
 		});
@@ -76,11 +76,11 @@ public class PlayingActivity extends Activity {
 		playback_current_time_tv = (TextView) findViewById(R.id.playback_current_time);
 		playback_total_time_tv = (TextView) findViewById(R.id.playback_total_time);
 
-		if (myApplication.getPlayerEngine().getPlayingPath() != ""
-				&& null != myApplication.getPlayerEngine().getPlayingPath()) {
-			playback_current_time_tv.setText(myApplication.getPlayerEngine()
+		if (baseApplication.getPlayerEngine().getPlayingPath() != ""
+				&& null != baseApplication.getPlayerEngine().getPlayingPath()) {
+			playback_current_time_tv.setText(baseApplication.getPlayerEngine()
 					.getCurrentTime());
-			playback_total_time_tv.setText(myApplication.getPlayerEngine()
+			playback_total_time_tv.setText(baseApplication.getPlayerEngine()
 					.getDurationTime());
 		}
 
@@ -92,7 +92,7 @@ public class PlayingActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				myApplication.getPlayerEngine().previous();
+				baseApplication.getPlayerEngine().previous();
 
 			}
 		});
@@ -101,7 +101,7 @@ public class PlayingActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				myApplication.getPlayerEngine().next();
+				baseApplication.getPlayerEngine().next();
 
 			}
 		});
@@ -116,8 +116,8 @@ public class PlayingActivity extends Activity {
 
 			}
 		});
-		if (myApplication.getPlayerEngine().isPlaying()) {
-			seek_bar.setMax(Integer.valueOf(myApplication.getPlayerEngine()
+		if (baseApplication.getPlayerEngine().isPlaying()) {
+			seek_bar.setMax(Integer.valueOf(baseApplication.getPlayerEngine()
 					.getDuration()));
 			seek_bar_handler.postDelayed(refresh, 1000);
 			playback_toggle_btn
@@ -133,11 +133,11 @@ public class PlayingActivity extends Activity {
 		public void onProgressChanged(SeekBar seekBar, int progress,
 				boolean fromUser) {
 			if (fromUser) {
-				if (myApplication.getPlayerEngine().getPlayingPath() != ""
-						&& null != myApplication.getPlayerEngine()
+				if (baseApplication.getPlayerEngine().getPlayingPath() != ""
+						&& null != baseApplication.getPlayerEngine()
 								.getPlayingPath()) {
 					seek_bar_handler.removeCallbacks(refresh);
-					playback_current_time_tv.setText(myApplication
+					playback_current_time_tv.setText(baseApplication
 							.getPlayerEngine().getCurrentTime());
 				}
 			}
@@ -151,9 +151,9 @@ public class PlayingActivity extends Activity {
 
 		@Override
 		public void onStopTrackingTouch(SeekBar seekBar) {
-			if (myApplication.getPlayerEngine().getPlayingPath() != ""
-					&& null != myApplication.getPlayerEngine().getPlayingPath()) {
-				myApplication.getPlayerEngine().forward(seekBar.getProgress());
+			if (baseApplication.getPlayerEngine().getPlayingPath() != ""
+					&& null != baseApplication.getPlayerEngine().getPlayingPath()) {
+				baseApplication.getPlayerEngine().forward(seekBar.getProgress());
 				seek_bar_handler.postDelayed(refresh, 1000);
 			} else {
 				seek_bar.setProgress(0);
@@ -176,22 +176,22 @@ public class PlayingActivity extends Activity {
 
 	@Override
 	protected void onResume() {
-		if (myApplication.getPlayerEngine().getPlayingPath() != ""
-				&& null != myApplication.getPlayerEngine().getPlayingPath()) {
-			seek_bar.setProgress(myApplication.getPlayerEngine()
+		if (baseApplication.getPlayerEngine().getPlayingPath() != ""
+				&& null != baseApplication.getPlayerEngine().getPlayingPath()) {
+			seek_bar.setProgress(baseApplication.getPlayerEngine()
 					.getCurrentPosition());
 		}
 		super.onResume();
 	}
 
 	private void play() {
-		if (myApplication.getPlayerEngine().isPlaying()) {
-			myApplication.getPlayerEngine().pause();
+		if (baseApplication.getPlayerEngine().isPlaying()) {
+			baseApplication.getPlayerEngine().pause();
 			seek_bar_handler.removeCallbacks(refresh);
 			playback_toggle_btn
 					.setBackgroundResource(R.drawable.play_button_default);
-		} else if (myApplication.getPlayerEngine().isPause()) {
-			myApplication.getPlayerEngine().start();
+		} else if (baseApplication.getPlayerEngine().isPause()) {
+			baseApplication.getPlayerEngine().start();
 			seek_bar_handler.postDelayed(refresh, 1000);
 			playback_toggle_btn
 					.setBackgroundResource(R.drawable.pause_button_default);

@@ -25,7 +25,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.player.MyApplication;
+import com.android.player.base.BaseApplication;
 import com.android.player.R;
 import com.android.player.dao.AudioDao;
 import com.android.player.dao.impl.AudioDaoImpl;
@@ -41,7 +41,7 @@ public class MusicListAdapter extends BaseAdapter {
 	private List<Boolean> checkBoxesStatus;
 	private Context context;
 	private Set<Integer> checkedBoxIds;
-	private MyApplication myApplication;
+	private BaseApplication baseApplication;
 	private List<Audio> audioList;
 	private List<String> checkedAudioPathList;
 	private List<String> checkedAudioIdList;
@@ -72,8 +72,8 @@ public class MusicListAdapter extends BaseAdapter {
 	}
 
 	private void initApplication() {
-		if (null == myApplication) {
-			myApplication = MyApplication.getInstance();
+		if (null == baseApplication) {
+			baseApplication = BaseApplication.getInstance();
 		}
 	}
 
@@ -167,17 +167,17 @@ public class MusicListAdapter extends BaseAdapter {
 	}
 
 	private void initPlayerEngineView(final int position, ViewHolder holder) {
-		if (null != myApplication.getPlayerEngine()) {
+		if (null != baseApplication.getPlayerEngine()) {
 			String path = audioList.get(position).getPath();
-			if (myApplication.getPlayerEngine().isPlaying()
-					&& myApplication.getPlayerEngine().getPlayingPath().equals(
+			if (baseApplication.getPlayerEngine().isPlaying()
+					&& baseApplication.getPlayerEngine().getPlayingPath().equals(
 							path)) {
 				holder.index_tv.setPadding(30, 0, 0, 0);
 				holder.play_btn.setVisibility(ImageButton.VISIBLE);
 				holder.play_btn
 						.setImageResource(R.drawable.list_playing_indicator);
-			} else if (myApplication.getPlayerEngine().isPause()
-					&& myApplication.getPlayerEngine().getPlayingPath().equals(
+			} else if (baseApplication.getPlayerEngine().isPause()
+					&& baseApplication.getPlayerEngine().getPlayingPath().equals(
 							path)) {
 
 				holder.index_tv.setPadding(30, 0, 0, 0);
@@ -236,7 +236,7 @@ public class MusicListAdapter extends BaseAdapter {
 	}
 
 	public void next() {
-		myApplication.getPlayerEngine().next();
+		baseApplication.getPlayerEngine().next();
 		notifyDataSetChanged();
 	}
 
@@ -246,34 +246,34 @@ public class MusicListAdapter extends BaseAdapter {
 			for (Audio audio : audioList) {
 				audioPathList.add(audio.getPath());
 			}
-			myApplication.getPlayerEngine().setMediaPathList(audioPathList);
+			baseApplication.getPlayerEngine().setMediaPathList(audioPathList);
 		}
-		myApplication.getPlayerEngine().setOnCompletionListener(
+		baseApplication.getPlayerEngine().setOnCompletionListener(
 				new OnCompletionListener() {
 					@Override
 					public void onCompletion(MediaPlayer mp) {
 						next();
 					}
 				});
-		myApplication.getPlayerEngine().setPlaybackMode(PlaybackMode.NORMAL);
+		baseApplication.getPlayerEngine().setPlaybackMode(PlaybackMode.NORMAL);
 
 	}
 
 	private void play(String path) {
 		initPlayerEngine();
-		if (myApplication.getPlayerEngine().isPlaying()
-				&& myApplication.getPlayerEngine().getPlayingPath().equals(path)) {
-			myApplication.getPlayerEngine().pause();
-		} else if (myApplication.getPlayerEngine().isPause()
-				&& myApplication.getPlayerEngine().getPlayingPath().equals(path)) {
-			myApplication.getPlayerEngine().start();
+		if (baseApplication.getPlayerEngine().isPlaying()
+				&& baseApplication.getPlayerEngine().getPlayingPath().equals(path)) {
+			baseApplication.getPlayerEngine().pause();
+		} else if (baseApplication.getPlayerEngine().isPause()
+				&& baseApplication.getPlayerEngine().getPlayingPath().equals(path)) {
+			baseApplication.getPlayerEngine().start();
 		} else {
-			if (myApplication.getPlayerEngine().isPlaying()
-					|| myApplication.getPlayerEngine().isPause()) {
-				myApplication.getPlayerEngine().reset();
+			if (baseApplication.getPlayerEngine().isPlaying()
+					|| baseApplication.getPlayerEngine().isPause()) {
+				baseApplication.getPlayerEngine().reset();
 			}
-			myApplication.getPlayerEngine().setPlayingPath(path);
-			myApplication.getPlayerEngine().play();
+			baseApplication.getPlayerEngine().setPlayingPath(path);
+			baseApplication.getPlayerEngine().play();
 		}
 
 	}
@@ -283,22 +283,22 @@ public class MusicListAdapter extends BaseAdapter {
 				.getInstance(context);
 		final String path = ((Audio) getItem(position)).getPath();
 		if (context instanceof LocalMusicListActivity) {
-			if (path == myApplication.getPlayerEngine().getPlayingPath()
-					&& myApplication.getPlayerEngine().isPlaying()) {
+			if (path == baseApplication.getPlayerEngine().getPlayingPath()
+					&& baseApplication.getPlayerEngine().isPlaying()) {
 				longClickDialogItems = new String[] { "暂停", "添加到播放列表" };
 			} else {
 				longClickDialogItems = new String[] { "播放", "添加到播放列表" };
 			}
 		} else if (context instanceof MusicListActivity) {
-			if (path == myApplication.getPlayerEngine().getPlayingPath()
-					&& myApplication.getPlayerEngine().isPlaying()) {
+			if (path == baseApplication.getPlayerEngine().getPlayingPath()
+					&& baseApplication.getPlayerEngine().isPlaying()) {
 				longClickDialogItems = new String[] { "暂停", "移除歌曲" };
 			} else {
 				longClickDialogItems = new String[] { "播放", "移除歌曲" };
 			}
 		} else if (context instanceof SearchMusicActivity) {
-			if (path == myApplication.getPlayerEngine().getPlayingPath()
-					&& myApplication.getPlayerEngine().isPlaying()) {
+			if (path == baseApplication.getPlayerEngine().getPlayingPath()
+					&& baseApplication.getPlayerEngine().isPlaying()) {
 				longClickDialogItems = new String[] { "暂停", "添加到播放列表" };
 			} else {
 				longClickDialogItems = new String[] { "播放", "添加到播放列表" };
