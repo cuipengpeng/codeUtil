@@ -29,6 +29,7 @@ android {
             storePassword "jfmarket"
             keyAlias "qmarket"
             keyPassword "jfmarket"
+            v2SigningEnabled false
         }
     }
     buildTypes {
@@ -137,6 +138,6 @@ dependencies {
     compile files('libs/huoyan.jar')
 //    compile 'io.fotoapparat.fotoapparat:library:1.2.0'
     compile 'com.growingio.android:vds-android-agent:0.9.103@aar'
-    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.android.support:multidex:1.0.1'
     compile 'com.jakewharton:disklrucache:2.0.2'
 }

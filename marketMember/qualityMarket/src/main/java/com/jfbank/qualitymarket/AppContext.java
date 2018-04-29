@@ -3,6 +3,7 @@ package com.jfbank.qualitymarket;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -24,6 +25,7 @@ import com.growingio.android.sdk.collection.Configuration;
 import com.growingio.android.sdk.collection.GrowingIO;
 import com.jfbank.qualitymarket.activity.WelcomeActivity;
 import com.jfbank.qualitymarket.dao.StoreService;
+import com.jfbank.qualitymarket.helper.DiskLruCacheHelper;
 import com.jfbank.qualitymarket.helper.ImageLoaderHelper;
 import com.jfbank.qualitymarket.helper.PicassoImageLoaderHelper;
 import com.jfbank.qualitymarket.model.AddressInfoBean;
@@ -32,7 +34,6 @@ import com.jfbank.qualitymarket.model.User;
 import com.jfbank.qualitymarket.net.HttpRequest;
 import com.jfbank.qualitymarket.util.CommonUtils;
 import com.jfbank.qualitymarket.util.ConstantsUtil;
-import com.jfbank.qualitymarket.helper.DiskLruCacheHelper;
 import com.jfbank.qualitymarket.util.JumpUtil;
 import com.jfbank.qualitymarket.util.LogUtil;
 import com.jfbank.qualitymarket.util.StringUtil;
@@ -48,8 +49,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.Collections;
+import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.TagAliasCallback;
@@ -304,4 +308,41 @@ public class AppContext extends Application {
         return appIconFile;
     }
 
+
+    public static String getChannel(Context context) {
+        ApplicationInfo appinfo = context.getApplicationInfo();
+        String sourceDir = appinfo.sourceDir;
+        String ret = "";
+        ZipFile zipfile = null;
+        try {
+            zipfile = new ZipFile(sourceDir);
+            Enumeration<?> entries = zipfile.entries();
+            while (entries.hasMoreElements()) {
+                ZipEntry entry = ((ZipEntry) entries.nextElement());
+                String entryName = entry.getName();
+                if (entryName.startsWith("channel")) {
+                    ret = entryName;
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (zipfile != null) {
+                try {
+                    zipfile.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        String[] split = ret.split("_");
+        if (split != null && split.length >= 2) {
+            return ret.substring(split[0].length() + 1);
+
+        } else {
+            return "";
+        }
+    }
 }
