@@ -2,7 +2,7 @@
 export GRADLE_USER_HOME="$HOME/.gradle/"
 
 buildNumber="$1"
-androidStudioProjectDir="/home/peng/project/QualityMarket_1.2.5"
+androidStudioProjectDir="/home/dsafdsa/project"
 
 
 while getopts ":p:bc:" opt
@@ -47,7 +47,7 @@ fi
 #--max-workers 8 
 #gradle uninstallDebug -b "$androidStudioProjectDir/build.gradle" -c "$androidStudioProjectDir/settings.gradle"
 
-time gradle $buildMode $assembleMode $installMode -b "$androidStudioProjectDir/build.gradle" -c "$androidStudioProjectDir/settings.gradle" --daemon --parallel $syncMode -Dorg.gradle.jvmargs="-Xmx2048m -Xms512m -XX:MaxPermSize=1024m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8" --continue
+time gradle $buildMode $assembleMode $installMode -b "$androidStudioProjectDir/build.gradle" -c "$androidStudioProjectDir/settings.gradle" --daemon --parallel $syncMode -Dorg.gradle.jvmargs="-Xmx2048m -Xms512m -XX:MaxPermSize=1024m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8" --continue  
 
 adb shell am start -n com.jfbank.qualitymarket/com.jfbank.qualitymarket.activity.WelcomeActivity
 
