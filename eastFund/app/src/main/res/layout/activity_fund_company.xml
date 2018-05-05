@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/divider_view_height_10dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+                android:layout_marginRight="@dimen/fundCompanyActivity_marginLeftAndRight_15dp">
+
+                <TextView
+                    android:id="@+id/tv_fundCompanyActivity_fundCompanyNameKey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:gravity="right|center_vertical"
+                    android:maxLines="1"
+                    android:text="基金公司"
+                    android:textColor="@color/fundCompanyActivityBlack"
+                    android:textSize="@dimen/fundCompanyActivity_textSize_16sp" />
+
+                <TextView
+                    android:id="@+id/tv_fundCompanyActivity_fundCompanyNameValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:gravity="right|center_vertical"
+                    android:maxLines="1"
+                    android:text=""
+                    android:textColor="@color/fundCompanyActivityGray"
+                    android:textSize="@dimen/fundCompanyActivity_textSize_16sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dividerView_height_1dp"
+                    android:layout_below="@id/tv_fundCompanyActivity_fundCompanyNameKey"
+                    android:background="@color/fundCompanyActivity_dividerColor" />
+
+                <TextView
+                    android:id="@+id/tv_fundCompanyActivity_setupTimeKey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/tv_fundCompanyActivity_fundCompanyNameKey"
+                    android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:gravity="right|center_vertical"
+                    android:maxLines="1"
+                    android:text="成立时间"
+                    android:textColor="@color/fundCompanyActivityBlack"
+                    android:textSize="@dimen/fundCompanyActivity_textSize_16sp" />
+
+                <TextView
+                    android:id="@+id/tv_fundCompanyActivity_setupTimeValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/tv_fundCompanyActivity_fundCompanyNameKey"
+                    android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:gravity="right|center_vertical"
+                    android:maxLines="1"
+                    android:text=""
+                    android:textColor="@color/fundCompanyActivityGray"
+                    android:textSize="@dimen/fundCompanyActivity_textSize_16sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dividerView_height_1dp"
+                    android:layout_below="@id/tv_fundCompanyActivity_setupTimeKey"
+                    android:background="@color/fundCompanyActivity_dividerColor" />
+
+                <TextView
+                    android:id="@+id/tv_fundCompanyActivity_manageMoneyKey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/tv_fundCompanyActivity_setupTimeKey"
+                    android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:gravity="right|center_vertical"
+                    android:maxLines="1"
+                    android:text="管理规模"
+                    android:textColor="@color/fundCompanyActivityBlack"
+                    android:textSize="@dimen/fundCompanyActivity_textSize_16sp" />
+
+                <TextView
+                    android:id="@+id/tv_fundCompanyActivity_manageMoneyValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/tv_fundCompanyActivity_setupTimeKey"
+                    android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:gravity="right|center_vertical"
+                    android:maxLines="1"
+                    android:text=""
+                    android:textColor="@color/fundCompanyActivityGray"
+                    android:textSize="@dimen/fundCompanyActivity_textSize_16sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dividerView_height_1dp"
+                    android:layout_below="@id/tv_fundCompanyActivity_manageMoneyKey"
+                    android:background="@color/fundCompanyActivity_dividerColor" />
+
+                <TextView
+                    android:id="@+id/tv_fundCompanyActivity_rankKey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/tv_fundCompanyActivity_manageMoneyKey"
+                    android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:gravity="right|center_vertical"
+                    android:maxLines="1"
+                    android:text="规模排名"
+                    android:textColor="@color/fundCompanyActivityBlack"
+                    android:textSize="@dimen/fundCompanyActivity_textSize_16sp" />
+
+                <TextView
+                    android:id="@+id/tv_fundCompanyActivity_rankValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/tv_fundCompanyActivity_manageMoneyKey"
+                    android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:gravity="right|center_vertical"
+                    android:maxLines="1"
+                    android:text=""
+                    android:textColor="@color/fundCompanyActivityGray"
+                    android:textSize="@dimen/fundCompanyActivity_textSize_16sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dividerView_height_1dp"
+                    android:layout_below="@id/tv_fundCompanyActivity_rankKey"
+                    android:background="@color/fundCompanyActivity_dividerColor" />
+
+                <TextView
+                    android:id="@+id/tv_fundCompanyActivity_managerPersonKey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/tv_fundCompanyActivity_rankKey"
+                    android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:gravity="right|center_vertical"
+                    android:maxLines="1"
+                    android:text="经理人数"
+                    android:textColor="@color/fundCompanyActivityBlack"
+                    android:textSize="@dimen/fundCompanyActivity_textSize_16sp" />
+
+                <TextView
+                    android:id="@+id/tv_fundCompanyActivity_managerPersonValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/tv_fundCompanyActivity_rankKey"
+                    android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:gravity="right|center_vertical"
+                    android:maxLines="1"
+                    android:text=""
+                    android:textColor="@color/fundCompanyActivityGray"
+                    android:textSize="@dimen/fundCompanyActivity_textSize_16sp" />
+            </RelativeLayout>
+
+            <include layout="@layout/divider_view_height_10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/tv_fundCompanyActivity_rankKey"
+                android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                android:layout_marginLeft="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+                android:layout_marginRight="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+                android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                android:gravity="right|center_vertical"
+                android:maxLines="1"
+                android:text="旗下基金"
+                android:textColor="@color/fundCompanyActivityBlack"
+                android:textSize="@dimen/fundCompanyActivity_textSize_16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/appBackgroundColor"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+                android:paddingRight="@dimen/fundCompanyActivity_marginLeftAndRight_15dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/tv_fundCompanyActivity_rankKey"
+                    android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_weight="5"
+                    android:gravity="left|center_vertical"
+                    android:maxLines="1"
+                    android:text="基金名称"
+                    android:textColor="@color/fundCompanyActivityGray"
+                    android:textSize="@dimen/fundCompanyActivity_textSize_13sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/tv_fundCompanyActivity_rankKey"
+                    android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="基金类型"
+                    android:textColor="@color/fundCompanyActivityGray"
+                    android:textSize="@dimen/fundCompanyActivity_textSize_13sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/tv_fundCompanyActivity_rankKey"
+                    android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_weight="3"
+                    android:gravity="right|center_vertical"
+                    android:maxLines="1"
+                    android:text="近一年收益"
+                    android:textColor="@color/fundCompanyActivityGray"
+                    android:textSize="@dimen/fundCompanyActivity_textSize_13sp" />
+            </LinearLayout>
+
+            <com.test.bank.weight.NoScrollRecycleView
+                android:id="@+id/rv_fundCompanyActivity_manageFundList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

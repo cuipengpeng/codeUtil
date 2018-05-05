@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <include layout="@layout/divider_view_height_10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+        android:layout_marginRight="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_fundAnnouncementDetailActivity_fundAnnouncementTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:gravity="left|center_vertical"
+            android:maxLines="1"
+            android:text=""
+            android:textColor="@color/appTitleColor"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/tv_fundAnnouncementDetailActivity_fundAnnouncementDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+            android:layout_gravity="right|center_vertical"
+            android:gravity="right|center_vertical"
+            android:maxLines="1"
+            android:text=""
+            android:textColor="@color/appCommentColor"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_fundAnnouncementDetailActivity_announcementAttachment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:gravity="left|center_vertical"
+                android:maxLines="1"
+                android:text="公告附件:"
+                android:textColor="@color/appTitleColor"
+                android:textSize="15sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="bottom|center_horizontal"
+                android:maxLines="1"
+                android:text="..."
+                android:textColor="#0084ff"
+                android:textSize="@dimen/fundCompanyActivity_textSize_13sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentLeft="true"
+                android:gravity="right|center_vertical"
+                android:padding="6dp"
+                android:maxLines="1"
+                android:text="查看原文"
+                android:textColor="@color/appRedColor"
+                android:textSize="12sp"
+                android:background="@drawable/circle_corner_red_border_bg"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_fundAnnouncementDetailActivity_tempAnnouncement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp"
+            android:gravity="right|center_vertical"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="临时公告"
+            android:textColor="@color/appTitleColor"
+            android:textSize="@dimen/fundCompanyActivity_textSize_16sp" />
+
+        <TextView
+            android:id="@+id/tv_fundAnnouncementDetailActivity_fundCompanyName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="20dp"
+            android:gravity="right|center_vertical"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text=""
+            android:textColor="@color/appTitleColor"
+            android:textSize="@dimen/fundCompanyActivity_textSize_16sp" />
+
+        <TextView
+            android:id="@+id/tv_fundAnnouncementDetailActivity_fundCompanyDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+            android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+            android:gravity="right|center_vertical"
+            android:maxLines="6"
+            android:ellipsize="end"
+            android:text=""
+            android:textColor="@color/appTitleColor"
+            android:textSize="@dimen/fundCompanyActivity_textSize_15sp" />
+
+        <TextView
+            android:id="@+id/tv_fundAnnouncementDetailActivity_viewFullText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+            android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+            android:gravity="right|center_vertical"
+            android:maxLines="1"
+            android:text="查看全文"
+            android:textColor="#0084ff"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

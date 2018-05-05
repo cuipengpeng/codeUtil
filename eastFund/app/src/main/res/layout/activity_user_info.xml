@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f5f5f5"
+    android:orientation="vertical"
+    tools:context="com.test.bank.view.activity.UserInfoActivity">
+
+    <com.test.bank.weight.CommonTitleBar
+        android:id="@+id/commonTitleBar_userInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:statusBarTextColorStyle="dark"
+        app:title="个人信息" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/commonTitleBar_userInfo"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:id="@+id/rl_userInfo_phone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp50"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="@color/color_ffffff"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15">
+
+                <ImageView
+                    android:id="@+id/iv_icon_userInfo_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_userinfo_tel" />
+
+                <TextView
+                    android:id="@+id/tv_icon_userInfo_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_toRightOf="@id/iv_icon_userInfo_phone"
+                    android:text="手机号"
+                    android:textColor="@color/color_393b51"
+                    android:textSize="@dimen/dp15" />
+
+
+                <TextView
+                    android:id="@+id/tv_userInfo_phoneNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:text="188****8888"
+                    android:textColor="@color/color_7e819b"
+                    android:textSize="@dimen/dp14" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp1"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/color_ebebeb" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_userInfo_bankCard"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp50"
+                android:background="@color/color_ffffff"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15">
+
+                <ImageView
+                    android:id="@+id/iv_icon_userInfo_bankCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_userinfo_bank" />
+
+                <TextView
+                    android:id="@+id/tv_icon_userInfo_bankCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_toRightOf="@id/iv_icon_userInfo_bankCard"
+                    android:text="银行卡"
+                    android:textColor="@color/color_393b51"
+                    android:textSize="@dimen/dp15" />
+
+
+                <TextView
+                    android:id="@+id/tv_userInfo_bankCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:drawablePadding="@dimen/dp10"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:text="未绑定"
+                    android:textColor="@color/color_7e819b"
+                    android:textSize="@dimen/dp14" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp1"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/color_ebebeb" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_userInfo_riskPreference"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp50"
+                android:background="@color/color_ffffff"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15">
+
+                <ImageView
+                    android:id="@+id/iv_icon_userInfo_riskPreference"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_userinfo_risk" />
+
+                <TextView
+                    android:id="@+id/tv_icon_userInfo_riskPreference"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_toRightOf="@id/iv_icon_userInfo_riskPreference"
+                    android:text="风险偏好"
+                    android:textColor="@color/color_393b51"
+                    android:textSize="@dimen/dp15" />
+
+
+                <TextView
+                    android:id="@+id/tv_userInfo_riskPreference"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:drawablePadding="@dimen/dp10"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:text="未测评"
+                    android:textColor="@color/color_7e819b"
+                    android:textSize="@dimen/dp14" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp1"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/color_ebebeb" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_userInfo_pwdManager"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp50"
+                android:background="@color/color_ffffff"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15">
+
+                <ImageView
+                    android:id="@+id/iv_icon_userInfo_pwdManager"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_userinfo_pwd" />
+
+                <TextView
+                    android:id="@+id/tv_icon_userInfo_pwdManager"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_toRightOf="@id/iv_icon_userInfo_pwdManager"
+                    android:text="密码管理"
+                    android:textColor="@color/color_393b51"
+                    android:textSize="@dimen/dp15" />
+
+
+                <TextView
+                    android:id="@+id/tv_userInfo_pwdManager"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:drawablePadding="@dimen/dp10"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:textColor="@color/color_7e819b"
+                    android:textSize="@dimen/dp14" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp1"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/color_ebebeb" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_userInfo_hotline"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp50"
+                android:background="@color/color_ffffff"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15">
+
+                <ImageView
+                    android:id="@+id/iv_icon_userInfo_hotline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_userinfo_hotline" />
+
+                <TextView
+                    android:id="@+id/tv_icon_userInfo_hotline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_toRightOf="@id/iv_icon_userInfo_hotline"
+                    android:text="客服热线"
+                    android:textColor="@color/color_393b51"
+                    android:textSize="@dimen/dp15" />
+
+
+                <TextView
+                    android:id="@+id/tv_userInfo_hotline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:drawablePadding="@dimen/dp10"
+                    android:text="@string/hotline"
+                    android:textColor="@color/color_0084ff"
+                    android:textSize="@dimen/dp14" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp15"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="客服热线服务时间：工作日8:30-17:00"
+                android:textColor="@color/color_b9bbca"
+                android:textSize="@dimen/dp12" />
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tv_userInfo_logout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp45"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_ffffff"
+        android:gravity="center"
+        android:text="退出当前账号"
+        android:textColor="@color/color_f35857"
+        android:textSize="@dimen/dp15" />
+</RelativeLayout>

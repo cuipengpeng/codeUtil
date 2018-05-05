@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_pord_rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2ffffff"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_posOrRateDetail_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp40"
+        android:src="@drawable/icon_bottom_close" />
+
+
+    <TextView
+        android:id="@+id/tv_posOrRateDialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp90"
+        android:text="持仓成本价"
+        android:textColor="@color/color_393b51"
+        android:textSize="@dimen/dp20"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_posOrRateDialog_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_posOrRateDialog_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/dp40"
+        android:layout_marginRight="@dimen/dp40"
+        android:layout_marginTop="@dimen/dp40"
+        android:gravity="center"
+        android:text="您当前持有该基金的每份平均成本，持仓单价=持有份额买入金额总和/持有份额，买入手续费已摊薄到单价中"
+        android:textColor="@color/color_393b51"
+        android:textSize="@dimen/dp15"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/ll_sheet_rate_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_posOrRateDialog_title"
+        android:layout_marginLeft="@dimen/dp15"
+        android:layout_marginRight="@dimen/dp15"
+        android:layout_marginTop="@dimen/dp40"
+        android:background="@drawable/border_ebebeb_rect"
+        android:orientation="vertical"
+        android:padding="@dimen/dp1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp45"
+            android:background="@color/color_f9f9f9"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_dialog_titleLeft"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp15"
+                android:layout_weight="5"
+                android:text="金额" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp10"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="费率" />
+
+            <TextView
+                android:id="@+id/tv_titleReduceRate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp10"
+                android:layout_weight="2"
+                android:gravity="right"
+                android:text="优惠费率" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"
+            android:background="@color/color_ebebeb" />
+
+        <LinearLayout
+            android:id="@+id/ll_rateContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_saleOutRateDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_sheet_rate_detail"
+        android:layout_marginLeft="@dimen/dp15"
+        android:layout_marginRight="@dimen/dp15"
+        android:layout_marginTop="@dimen/dp25"
+        android:text="费率的高低根据基金持有时间长短决定，基金卖出时一般按照先进先出的原则，实际费用收取以基金公司计算为准。"
+        android:textColor="@color/color_393b51"
+        android:textSize="@dimen/dp14"
+        android:visibility="gone" />
+
+</RelativeLayout>

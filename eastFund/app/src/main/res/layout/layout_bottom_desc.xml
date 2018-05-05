@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_f5f5f5"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp20"
+        android:text="基金销售服务由金牛理财提供"
+        android:textColor="@color/color_7e819b"
+        android:textSize="@dimen/dp12" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp5"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="基金销售资格证号：000000382"
+            android:textColor="@color/color_b9bbca"
+            android:textSize="@dimen/dp12" />
+
+        <TextView
+            android:id="@+id/tv_commonbottom_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp8"
+            android:autoLink="all"
+            android:padding="@dimen/dp5"
+            android:text="详情"
+            android:textColor="@color/color_0084ff"
+            android:textSize="@dimen/dp12" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp20"
+        android:layout_marginTop="@dimen/dp8"
+        android:text="产品历史业绩不预示其未来表现，市场有风险，投资需谨慎。"
+        android:textColor="@color/color_b9bbca"
+        android:textSize="@dimen/dp10" />
+
+</LinearLayout>

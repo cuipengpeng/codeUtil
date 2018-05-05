@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="1dp"
+    android:background="@drawable/circle_corner_white_bg_bottom">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="30dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp">
+
+    <RelativeLayout
+        android:id="@+id/rl_holderRiskAddr_province"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dp15"
+        android:paddingTop="@dimen/dp15">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="所在省"
+            android:textColor="@color/color_393b51"
+            android:textSize="@dimen/dp15" />
+
+        <TextView
+            android:id="@+id/tv_holderRiskAddr_province"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawablePadding="@dimen/dp10"
+            android:drawableRight="@drawable/right_arrow"
+            android:textColor="@color/color_b9bbca"
+            android:textSize="@dimen/dp15" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/v_holderRiskAddr_provinceDivider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:layout_below="@id/rl_holderRiskAddr_province"
+        android:background="@color/color_ebebeb" />
+
+    <RelativeLayout
+        android:id="@+id/rl_holderRiskAddr_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v_holderRiskAddr_provinceDivider"
+        android:paddingBottom="@dimen/dp15"
+        android:paddingTop="@dimen/dp15">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="所在市"
+            android:textColor="@color/color_393b51"
+            android:textSize="@dimen/dp15" />
+
+        <TextView
+            android:id="@+id/tv_holderRiskAddr_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawablePadding="@dimen/dp10"
+            android:drawableRight="@drawable/right_arrow"
+            android:textColor="@color/color_b9bbca"
+            android:textSize="@dimen/dp15" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/v_holderRiskAddr_cityDivider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:layout_below="@id/rl_holderRiskAddr_city"
+        android:background="@color/color_ebebeb" />
+
+    <EditText
+        android:id="@+id/et_holderRiskAddr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v_holderRiskAddr_cityDivider"
+        android:background="@null"
+        android:hint="请填写详细地址，不少于8个字"
+        android:paddingBottom="@dimen/dp10"
+        android:paddingTop="@dimen/dp10"
+        android:textColor="@color/color_393b51"
+        android:textColorHint="@color/color_b9bbca"
+        android:textSize="@dimen/dp15" />
+
+    <View
+        android:id="@+id/v_holderRiskAddr_streetDivider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:layout_below="@id/et_holderRiskAddr"
+        android:background="@color/color_ebebeb" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v_holderRiskAddr_streetDivider"
+        android:layout_marginTop="@dimen/dp15"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_holderRiskAddr_lastQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp10"
+            android:text="上一题"
+            android:textColor="@color/color_393b51"
+            android:textSize="@dimen/dp15" />
+
+        <TextView
+            android:id="@+id/tv_holderRiskAddr_nextQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/dp10"
+            android:text="下一题"
+            android:textColor="@color/color_0084ff"
+            android:textSize="@dimen/dp15" />
+    </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_holderTestOptionActivity_confirmModify"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="确认修改"
+        android:textColor="@color/appViewFullTextColor"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+    <View
+        android:id="@+id/v_holderTestOptionActivity_addressDivider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dividerView_height_1dp"
+        android:layout_above="@id/tv_holderTestOptionActivity_confirmModify"
+        android:background="@color/appDividerLineColor_1dp"/>
+
+</RelativeLayout>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.test.bank.view.activity.RiskPreferenceActivity">
+
+    <com.test.bank.weight.CommonTitleBar
+        android:id="@+id/commonTitleBar_riskPreference"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:pattern="titleWithLeftImgRightTxt"
+        app:rightTxt="重测"
+        app:statusBarTextColorStyle="dark"
+        app:title="测评结果" />
+
+    <View
+        android:id="@+id/progress_risk"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp3"
+        android:background="@color/color_f35857" />
+
+    <LinearLayout
+        android:id="@+id/ll_riskResult_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_riskQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_ffffff">
+
+        <TextView
+            android:id="@+id/tv_riskQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp50"
+            android:textColor="@color/color_393b51"
+            android:textSize="@dimen/dp18" />
+
+        <View
+            android:id="@+id/v_split_risk"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"
+            android:layout_below="@id/tv_riskQuestion"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginRight="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp40"
+            android:background="@color/color_ebebeb" />
+
+
+        <TextView
+            android:id="@+id/tv_riskCheckResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/selector_btn_gradient_with_no_radius"
+            android:enabled="false"
+            android:gravity="center"
+            android:paddingBottom="@dimen/dp10"
+            android:paddingTop="@dimen/dp10"
+            android:text="查看测评结果"
+            android:textColor="@color/color_ffffff"
+            android:textSize="@dimen/dp17"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/ll_risk_agree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tv_riskCheckResult"
+            android:layout_marginBottom="@dimen/dp10"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginRight="@dimen/dp15"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iv_riskAgreeCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_radiobutton" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp10"
+                android:text="确认评测回答均为本人意愿真实表达。"
+                android:textColor="@color/color_393b51"
+                android:textSize="@dimen/dp14" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_riskEvaluation_questionContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/v_split_risk"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dp60">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView_riskQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp10"
+                android:layout_marginLeft="@dimen/dp15"
+                android:layout_marginRight="@dimen/dp15" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_riskPreference_lastQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_riskEvaluation_questionContainer"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp10"
+            android:layout_marginTop="-50dp"
+            android:padding="@dimen/dp10"
+            android:text="上一题"
+            android:textColor="@color/color_0084ff"
+            android:textSize="@dimen/dp15" />
+
+    </RelativeLayout>
+</LinearLayout>

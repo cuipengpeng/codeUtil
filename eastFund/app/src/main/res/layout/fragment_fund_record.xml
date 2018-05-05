@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f5f5f5"
+    android:orientation="vertical"
+    tools:context="com.test.bank.view.fragment.FundRecordFragment">
+
+    <com.test.bank.weight.refreshlayout.AutoLoadMoreRecyclerView
+        android:id="@+id/recyclerView_fundRecord"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <TextView
+        android:id="@+id/tv_fragmentFundRecord_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="@dimen/dp50"
+        android:paddingTop="@dimen/dp50"
+        android:text="暂无记录"
+        android:textColor="@color/color_393b51"
+        android:textSize="@dimen/dp15"
+        android:visibility="gone" />
+</LinearLayout>

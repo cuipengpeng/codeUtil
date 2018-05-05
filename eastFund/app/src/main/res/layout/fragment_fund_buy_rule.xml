@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+                android:layout_marginRight="@dimen/fundCompanyActivity_marginLeftAndRight_15dp">
+
+                <TextView
+                    android:id="@+id/tv_tradeNoticeActivity_tradeStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginBottom="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                    android:layout_marginTop="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                    android:gravity="right|center_vertical"
+                    android:maxLines="1"
+                    android:text="交易状态"
+                    android:textColor="@color/appTitleColor"
+                    android:textSize="@dimen/tradeNoticeActivity_titleTextSize_15sp" />
+
+
+                <LinearLayout
+                    android:id="@+id/ll_tradeNoticeActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/tv_tradeNoticeActivity_tradeStatus"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv_tradeNoticeActivity_fundBuy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@mipmap/trade_rules_correct" />
+
+                    <TextView
+                        android:id="@+id/tv_tradeNoticeActivity_fundBuy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginBottom="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:gravity="left|center_vertical"
+                        android:maxLines="1"
+                        android:text=""
+                        android:textColor="@color/appTitleColor"
+                        android:textSize="15sp" />
+
+
+                    <ImageView
+                        android:id="@+id/iv_tradeNoticeActivity_fundSell"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="50dp"
+                        android:background="@mipmap/trade_rules_error" />
+
+
+                    <TextView
+                        android:id="@+id/tv_tradeNoticeActivity_fundSell"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="left|center_vertical"
+                        android:maxLines="1"
+                        android:text=""
+                        android:textColor="@color/appTitleColor"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_tradeNoticeActivity_tradeStatusComment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/ll_tradeNoticeActivity"
+                    android:layout_marginBottom="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                    android:layout_marginTop="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                    android:ellipsize="end"
+                    android:gravity="left|center_vertical"
+                    android:maxLines="2"
+                    android:text=""
+                    android:textColor="@color/appCommentColor"
+                    android:textSize="@dimen/tradeNoticeActivity_commentTextSize_13sp" />
+            </RelativeLayout>
+
+            <include layout="@layout/divider_view_height_10dp" />
+
+
+            <TextView
+                android:id="@+id/tv_tradeNoticeActivity_buyFlowKey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/app_marginLeftAndRight_15dp"
+                android:layout_marginTop="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                android:gravity="right|center_vertical"
+                android:maxLines="1"
+                android:text="流程"
+                android:textColor="@color/appTitleColor"
+                android:textSize="@dimen/tradeNoticeActivity_titleTextSize_15sp" />
+
+            <include layout="@layout/view_fund_buy_rule" />
+
+
+            <TextView
+                android:id="@+id/tv_tradeNoticeActivity_buyFlowDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="@dimen/app_marginLeftAndRight_15dp"
+                android:layout_marginRight="@dimen/app_marginLeftAndRight_15dp"
+                android:background="@color/appGrayTitleBackgroundColor"
+                android:padding="@dimen/fundBuyRuleFragment_textPadding_15dp"
+                android:text="T日：交易日，以每天15:00为界限，15:00之前为T日，之后为T+1日，周末和法定节假日不属于交易日。\n\nT日申请，将按T日基金净值确认份额。份额确认后，基金净值更新后即可查看首笔盈亏，确认后下一个T日可卖出。"
+                android:textColor="@color/appContentColor"
+                android:textSize="@dimen/fundBuyRuleFragment_descTextSize_13sp" />
+
+            <include layout="@layout/divider_view_height_10dp" />
+
+            <TextView
+                android:id="@+id/tv_tradeNoticeActivity_preferredRatesTitleKey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                android:layout_marginLeft="@dimen/app_marginLeftAndRight_15dp"
+                android:layout_marginTop="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                android:gravity="right|center_vertical"
+                android:maxLines="1"
+                android:text="申购费率"
+                android:textColor="@color/appTitleColor"
+                android:textSize="@dimen/tradeNoticeActivity_titleTextSize_15sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_tradeNoticeActivity_preferredRatesChart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/app_marginLeftAndRight_15dp"
+                android:layout_marginRight="@dimen/app_marginLeftAndRight_15dp"
+                android:background="@drawable/rect_border_ebebeb_bg_ffffff"
+                android:orientation="vertical"
+                android:padding="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/appGrayTitleBackgroundColor"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginBottom="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:layout_marginLeft="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+                        android:layout_marginTop="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:layout_weight="1"
+                        android:gravity="left|center_vertical"
+                        android:maxLines="1"
+                        android:text="金额"
+                        android:textColor="@color/appContentColor"
+                        android:textSize="@dimen/tradeNoticeActivity_commentTextSize_13sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginBottom="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:layout_marginRight="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+                        android:layout_marginTop="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:layout_weight="1"
+                        android:gravity="right|center_vertical"
+                        android:maxLines="1"
+                        android:text="优惠费率"
+                        android:textColor="@color/appContentColor"
+                        android:textSize="@dimen/tradeNoticeActivity_commentTextSize_13sp" />
+                </LinearLayout>
+
+                <com.test.bank.weight.NoScrollRecycleView
+                    android:id="@+id/rv_tradeNoticeActivity_preferredRates"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_tradeNoticeActivity_preferredRatesDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="@dimen/app_marginLeftAndRight_15dp"
+                android:layout_marginRight="@dimen/app_marginLeftAndRight_15dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/appGrayTitleBackgroundColor"
+                android:lineSpacingExtra="15dp"
+                android:padding="@dimen/fundBuyRuleFragment_textPadding_15dp"
+                android:text="申购计算：\n净申购基金=申购金额/1+(申购费率)\n申购费用=申购金额-净申购金额\n申购份额=净申购金额/T日基金份额净值"
+                android:textColor="@color/appContentColor"
+                android:textSize="@dimen/fundBuyRuleFragment_descTextSize_13sp" />
+
+            <TextView
+                android:id="@+id/tv_tradeNoticeActivity_ransomRatesTitleKey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                android:layout_marginLeft="@dimen/app_marginLeftAndRight_15dp"
+                android:layout_marginTop="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                android:gravity="right|center_vertical"
+                android:maxLines="1"
+                android:text="赎回费率"
+                android:textColor="@color/appTitleColor"
+                android:textSize="@dimen/tradeNoticeActivity_titleTextSize_15sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_tradeNoticeActivity_ransomRatesChart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/app_marginLeftAndRight_15dp"
+                android:layout_marginRight="@dimen/app_marginLeftAndRight_15dp"
+                android:background="@drawable/rect_border_ebebeb_bg_ffffff"
+                android:orientation="vertical"
+                android:padding="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/appGrayTitleBackgroundColor"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginBottom="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:layout_marginLeft="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+                        android:layout_marginTop="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:layout_weight="1"
+                        android:gravity="left|center_vertical"
+                        android:maxLines="1"
+                        android:text="时间"
+                        android:textColor="@color/appContentColor"
+                        android:textSize="@dimen/tradeNoticeActivity_commentTextSize_13sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginBottom="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:layout_marginRight="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+                        android:layout_marginTop="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:layout_weight="1"
+                        android:gravity="right|center_vertical"
+                        android:maxLines="1"
+                        android:text="费率"
+                        android:textColor="@color/appContentColor"
+                        android:textSize="@dimen/tradeNoticeActivity_commentTextSize_13sp" />
+                </LinearLayout>
+
+                <com.test.bank.weight.NoScrollRecycleView
+                    android:id="@+id/rv_tradeNoticeActivity_ransomRates"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tv_tradeNoticeActivity_ransomRatesDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="@dimen/app_marginLeftAndRight_15dp"
+                android:layout_marginRight="@dimen/app_marginLeftAndRight_15dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/appGrayTitleBackgroundColor"
+                android:lineSpacingExtra="15dp"
+                android:padding="@dimen/fundBuyRuleFragment_textPadding_15dp"
+                android:text="基金卖出费率由基金持有天数(自然日)长短决定，基金卖出时一般按照先进先出规则，实际费用收取以基金公司计算为准。\n赎回计算：\n赎回总额=赎回数量xT日基金份额净值\n赎回费用=赎回总额x赎回费率\n赎回金额=赎回总额-赎回费用"
+                android:textColor="@color/appContentColor"
+                android:textSize="@dimen/fundBuyRuleFragment_descTextSize_13sp" />
+
+            <include layout="@layout/divider_view_height_10dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                android:layout_marginLeft="@dimen/app_marginLeftAndRight_15dp"
+                android:layout_marginTop="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                android:gravity="right|center_vertical"
+                android:maxLines="1"
+                android:text="运作费率"
+                android:textColor="@color/appTitleColor"
+                android:textSize="@dimen/tradeNoticeActivity_titleTextSize_15sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/app_marginLeftAndRight_15dp"
+                android:layout_marginRight="@dimen/app_marginLeftAndRight_15dp"
+                android:background="@drawable/rect_border_ebebeb_bg_ffffff"
+                android:orientation="vertical"
+                android:padding="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/appGrayTitleBackgroundColor"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginBottom="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:layout_marginLeft="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+                        android:layout_marginTop="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:layout_weight="1"
+                        android:gravity="left|center_vertical"
+                        android:maxLines="1"
+                        android:text="金额"
+                        android:textColor="@color/appContentColor"
+                        android:textSize="@dimen/tradeNoticeActivity_commentTextSize_13sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginBottom="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:layout_marginRight="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+                        android:layout_marginTop="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:layout_weight="1"
+                        android:gravity="right|center_vertical"
+                        android:maxLines="1"
+                        android:text="优惠费率"
+                        android:textColor="@color/appContentColor"
+                        android:textSize="@dimen/tradeNoticeActivity_commentTextSize_13sp" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_tradeNoticeActivity_fundManageRatesKey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginBottom="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:layout_marginLeft="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+                        android:layout_marginTop="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:gravity="right|center_vertical"
+                        android:maxLines="1"
+                        android:text="基金管理费"
+                        android:textColor="@color/appTitleColor"
+                        android:textSize="@dimen/tradeNoticeActivity_titleTextSize_15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_tradeNoticeActivity_fundManageRatesValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:layout_marginRight="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+                        android:layout_marginTop="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:gravity="right|center_vertical"
+                        android:maxLines="1"
+                        android:text=""
+                        android:textColor="@color/appContentColor"
+                        android:textSize="@dimen/tradeNoticeActivity_titleTextSize_15sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dividerView_height_1dp"
+                        android:layout_below="@id/tv_tradeNoticeActivity_fundManageRatesKey"
+                        android:background="@color/fundCompanyActivity_dividerColor" />
+
+                    <TextView
+                        android:id="@+id/tv_tradeNoticeActivity_fundTrusteeshipRatesKey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@id/tv_tradeNoticeActivity_fundManageRatesKey"
+                        android:layout_marginBottom="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:layout_marginLeft="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+                        android:layout_marginTop="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:gravity="right|center_vertical"
+                        android:maxLines="1"
+                        android:text="基金托管费"
+                        android:textColor="@color/appTitleColor"
+                        android:textSize="@dimen/tradeNoticeActivity_titleTextSize_15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_tradeNoticeActivity_fundTrusteeshipRatesValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@id/tv_tradeNoticeActivity_fundManageRatesKey"
+                        android:layout_marginBottom="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:layout_marginRight="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+                        android:layout_marginTop="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:gravity="right|center_vertical"
+                        android:maxLines="1"
+                        android:text=""
+                        android:textColor="@color/appContentColor"
+                        android:textSize="@dimen/tradeNoticeActivity_titleTextSize_15sp" />
+                    <View
+                        android:id="@+id/v_tradeNoticeActivity_fundServiceRatesDivider"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dividerView_height_1dp"
+                        android:layout_below="@id/tv_tradeNoticeActivity_fundTrusteeshipRatesKey"
+                        android:background="@color/fundCompanyActivity_dividerColor" />
+
+                    <TextView
+                        android:id="@+id/tv_tradeNoticeActivity_fundServiceRatesKey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@id/tv_tradeNoticeActivity_fundTrusteeshipRatesKey"
+                        android:layout_marginBottom="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:layout_marginLeft="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+                        android:layout_marginTop="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:gravity="right|center_vertical"
+                        android:maxLines="1"
+                        android:text="基金服务费"
+                        android:textColor="@color/appTitleColor"
+                        android:textSize="@dimen/tradeNoticeActivity_titleTextSize_15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_tradeNoticeActivity_fundServiceRatesValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@id/tv_tradeNoticeActivity_fundTrusteeshipRatesKey"
+                        android:layout_marginBottom="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:layout_marginRight="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+                        android:layout_marginTop="@dimen/tradeNoticeActivity_title_marginTopAndBottom_15dp"
+                        android:gravity="right|center_vertical"
+                        android:maxLines="1"
+                        android:text=""
+                        android:textColor="@color/appContentColor"
+                        android:textSize="@dimen/tradeNoticeActivity_titleTextSize_15sp" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/app_marginLeftAndRight_15dp"
+                android:layout_marginRight="@dimen/app_marginLeftAndRight_15dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/appGrayTitleBackgroundColor"
+                android:padding="@dimen/fundBuyRuleFragment_textPadding_15dp"
+                android:text="基金管理费、托管费从基金资产中美日计提，每个工作日公告的基金净值已扣除相应费用，无需投资者在每笔交易中另行支付。运作费用详细信息请参考基金招募说明。"
+                android:textColor="@color/appContentColor"
+                android:textSize="@dimen/fundBuyRuleFragment_descTextSize_13sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:background="@color/appGrayTitleBackgroundColor"
+                android:gravity="center"
+                android:padding="@dimen/fundBuyRuleFragment_textPadding_15dp"
+                android:text="基金费率的信息以基金公司最新披露的基金信息为准"
+                android:textColor="@color/appContentColor"
+                android:textSize="@dimen/fundBuyRuleFragment_descTextSize_13sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

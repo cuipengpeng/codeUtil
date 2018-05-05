@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBackgroundColor"
+    android:orientation="vertical">
+
+    <include layout="@layout/divider_view_height_10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:maxLines="1"
+        android:text="华融消费金融消费贷款申请安全提醒"
+        android:textColor="#333333"
+        android:textSize="15sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:maxLines="1"
+        android:text="特别提示：为了您的贷款资金安全，请仔细阅读以下文字"
+        android:textColor="#e1393b"
+        android:textSize="12sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:gravity="left|center_vertical"
+        android:layout_gravity="center_horizontal"
+        android:lineSpacingExtra="10dp"
+        android:text="(1)请您务必妥善保管您提供给我公司用于发放贷款的银行卡和银行卡密码。不要将银行卡交由任何第三方个人或机构保管，请勿泄露您的银行卡密码。同时，我公司不会以任何形式和名义要求您提供用于贷款发放的银行卡密码或代为保管银行卡。\n(2) 我公司除正常收取贷款本金和应收利息外，不会以任何形式和名义收取其他费用，若您在贷款办理过程中遇到不合理的收费情况请及时告知我司。\n(3) 目前已开放区域：北京、天津、上海、广东、安徽、湖南，其他地区详询各营销中心！"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+</LinearLayout>
+</LinearLayout>

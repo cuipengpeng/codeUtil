@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_ffffff"
+    android:orientation="vertical"
+    tools:context="com.test.bank.view.activity.RapidBindCardActivity">
+
+    <com.test.bank.weight.CommonTitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="快速绑卡" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp20"
+        android:paddingLeft="@dimen/dp15"
+        android:paddingRight="@dimen/dp15"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="身份信息"
+                android:textColor="@color/color_7e819b"
+                android:textSize="@dimen/dp13" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp15"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/dp20"
+                android:paddingTop="@dimen/dp15">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="姓   名"
+                    android:textColor="@color/color_393b51"
+                    android:textSize="@dimen/dp14"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/et_rapidBindCard_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp30"
+                    android:background="@null"
+                    android:hint="请输入您的姓名"
+                    android:maxLength="20"
+                    android:singleLine="true"
+                    android:textColor="@color/color_393b51"
+                    android:textColorHint="@color/color_b9bbca"
+                    android:textSize="@dimen/dp15" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:background="@color/color_ebebeb" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp10"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/dp10"
+                android:paddingTop="@dimen/dp10">
+
+                <TextView
+                    android:id="@+id/tv_rapidBindCard_idcard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="身份证"
+                    android:textColor="@color/color_393b51"
+                    android:textSize="@dimen/dp14"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iv_rapidBindCard_clearIdCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/dp5"
+                    android:src="@drawable/icon_content_clear"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/et_rapidBindCard_idCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp30"
+                    android:layout_marginRight="@dimen/dp10"
+                    android:layout_toLeftOf="@id/iv_rapidBindCard_clearIdCard"
+                    android:layout_toRightOf="@id/tv_rapidBindCard_idcard"
+                    android:background="@null"
+                    android:hint="请输入您的身份证号码"
+                    android:maxLength="18"
+                    android:singleLine="true"
+                    android:textColor="@color/color_393b51"
+                    android:textColorHint="@color/color_b9bbca"
+                    android:textSize="@dimen/dp15" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:background="@color/color_ebebeb" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp30">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="银行卡信息"
+                    android:textColor="@color/color_7e819b"
+                    android:textSize="@dimen/dp13" />
+
+                <TextView
+                    android:id="@+id/tv_rapidBindCard_checkSupportBankAndAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/dp5"
+                    android:text="查看支持银行及额度"
+                    android:textColor="@color/color_0084ff"
+                    android:textSize="@dimen/dp12" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp10"
+                android:paddingBottom="@dimen/dp10"
+                android:paddingTop="@dimen/dp10">
+
+                <TextView
+                    android:id="@+id/tv_rapidBindCard_bankNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="银行卡"
+                    android:textColor="@color/color_393b51"
+                    android:textSize="@dimen/dp14"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iv_rapidBindCard_clearBankNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/dp5"
+                    android:src="@drawable/icon_content_clear"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/et_rapidBindCard_bankNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp30"
+                    android:layout_marginRight="@dimen/dp10"
+                    android:layout_toLeftOf="@id/iv_rapidBindCard_clearBankNo"
+                    android:layout_toRightOf="@id/tv_rapidBindCard_bankNo"
+                    android:background="@null"
+                    android:hint="请输入银行卡账号"
+                    android:inputType="number"
+                    android:maxLength="26"
+                    android:singleLine="true"
+                    android:textColor="@color/color_393b51"
+                    android:textColorHint="@color/color_b9bbca"
+                    android:textSize="@dimen/dp15" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:background="@color/color_ebebeb" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:paddingBottom="@dimen/dp20"
+                android:paddingTop="@dimen/dp10">
+
+                <TextView
+                    android:id="@+id/tv_rapidBindCard_phoneNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="手机号"
+                    android:textColor="@color/color_393b51"
+                    android:textSize="@dimen/dp14"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_rapidBindCard_getCheckCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="获取验证码"
+                    android:textColor="@color/color_0084ff"
+                    android:textSize="@dimen/dp13" />
+
+                <EditText
+                    android:id="@+id/et_rapidBindCard_phoneNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp30"
+                    android:layout_marginRight="@dimen/dp10"
+                    android:layout_toLeftOf="@id/tv_rapidBindCard_getCheckCode"
+                    android:layout_toRightOf="@id/tv_rapidBindCard_phoneNum"
+                    android:background="@null"
+                    android:hint="请输入银行预留手机号"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:singleLine="true"
+                    android:textColor="@color/color_393b51"
+                    android:textColorHint="@color/color_b9bbca"
+                    android:textSize="@dimen/dp15" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:background="@color/color_ebebeb" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/dp20"
+                android:paddingTop="@dimen/dp10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="验证码"
+                    android:textColor="@color/color_393b51"
+                    android:textSize="@dimen/dp14"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/et_rapidBindCard_checkCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp30"
+                    android:background="@null"
+                    android:hint="请输入短信验证码"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:singleLine="true"
+                    android:textColor="@color/color_393b51"
+                    android:textColorHint="@color/color_b9bbca"
+                    android:textSize="@dimen/dp15" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:background="@color/color_ebebeb" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp15">
+
+                <ImageView
+                    android:id="@+id/iv_rapidBindCard_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/selector_protocal_radiobutton" />
+
+                <TextView
+                    android:id="@+id/tv_rapidBindCard_bankProtocal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/iv_rapidBindCard_check"
+                    android:textColor="@color/color_0084ff"
+                    android:textSize="@dimen/dp11" />
+
+                <TextView
+                    android:id="@+id/tv_rapidBindCard_protocalAgree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:layout_toRightOf="@id/iv_rapidBindCard_check"
+                    android:text="已阅读并同意"
+                    android:textColor="@color/color_b9bbca"
+                    android:textSize="@dimen/dp11" />
+
+                <TextView
+                    android:id="@+id/tv_rapidBindCard_jinniuProtocal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tv_rapidBindCard_protocalAgree"
+                    android:text="《金牛基金服务协议》"
+                    android:textColor="@color/color_0084ff"
+                    android:textSize="@dimen/dp11" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_rapidBindCard_nextStep"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp36"
+                android:layout_marginRight="@dimen/dp36"
+                android:layout_marginTop="@dimen/dp25"
+                android:background="@drawable/selector_btn_clickable_unclickable"
+                android:gravity="center"
+                android:paddingBottom="@dimen/dp8"
+                android:paddingTop="@dimen/dp8"
+                android:text="下一步"
+                android:textColor="@color/color_ffffff"
+                android:textSize="@dimen/dp18" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

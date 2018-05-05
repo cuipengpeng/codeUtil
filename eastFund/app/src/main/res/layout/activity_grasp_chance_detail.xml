@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.test.bank.view.activity.GraspChanceDetailActivity">
+
+    <com.test.bank.weight.CommonTitleBar
+        android:id="@+id/commonTitleBar_graspChaceDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:pattern="doubleTitleWithLeftImgAndRightTxt"
+        app:rightTxt="详情"
+        app:statusBarTextColorStyle="dark"
+        app:subtitle="100100"
+        app:title="易方达新型成长" />
+
+
+    <TextView
+        android:id="@+id/btn_gcda_buy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:padding="@dimen/dp10"
+        android:text="立即购买"
+        android:textColor="@color/color_ffffff"
+        android:textSize="@dimen/dp17" />
+
+
+    <ScrollView
+        android:id="@+id/scrollView_graspChanceDetail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btn_gcda_buy"
+        android:layout_below="@id/commonTitleBar_graspChaceDetail"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_ffffff"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_ffffff"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_percent_yesterday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="昨日涨幅"
+                        android:textColor="@color/color_7e819b"
+                        android:textSize="@dimen/dp12" />
+
+                    <TextView
+                        android:id="@+id/tv_yesterday_increase"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_percent_yesterday"
+                        android:layout_marginBottom="@dimen/dp15"
+                        android:layout_marginTop="@dimen/dp15"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_f35857"
+                        android:textSize="@dimen/dp32" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/dp1"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/dp10"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="@color/color_ebebeb" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_net_value_and_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/tv_percent_yesterday"
+                        android:text="净值"
+                        android:textColor="@color/color_7e819b"
+                        android:textSize="@dimen/dp12" />
+
+                    <TextView
+                        android:id="@+id/tv_net_worth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_below="@id/tv_percent_yesterday"
+                        android:layout_marginBottom="@dimen/dp15"
+                        android:layout_marginTop="@dimen/dp15"
+                        android:textColor="@color/color_393b51"
+                        android:textSize="@dimen/dp32" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:background="@color/color_ebebeb" />
+
+            <LinearLayout
+                android:id="@+id/ll_make_money_detail_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_ffffff"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/dp10"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingTop="@dimen/dp10">
+
+                <TextView
+                    android:id="@+id/tv_grasp_chance_detail_fund_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selector_border_f35857_7e819b"
+                    android:enabled="false"
+                    android:paddingBottom="@dimen/dp5"
+                    android:paddingLeft="@dimen/dp10"
+                    android:paddingRight="@dimen/dp10"
+                    android:paddingTop="@dimen/dp5"
+                    android:textColor="@color/color_7e819b"
+                    android:textSize="@dimen/dp11" />
+
+                <TextView
+                    android:id="@+id/tv_grasp_chance_detail_fund_risk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:background="@drawable/selector_border_f35857_7e819b"
+                    android:enabled="true"
+                    android:paddingBottom="@dimen/dp5"
+                    android:paddingLeft="@dimen/dp10"
+                    android:paddingRight="@dimen/dp10"
+                    android:paddingTop="@dimen/dp5"
+                    android:textColor="@color/color_f35857"
+                    android:textSize="@dimen/dp11" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp10"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginRight="@dimen/dp10"
+                android:background="@drawable/bg_radius5_f5f5f5"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/dp15"
+                android:paddingLeft="@dimen/dp5"
+                android:paddingRight="@dimen/dp5"
+                android:paddingTop="@dimen/dp15">
+
+                <ImageView
+                    android:id="@+id/iv_quote_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_quote_left" />
+
+                <ImageView
+                    android:id="@+id/iv_quote_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/icon_quote_right" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:layout_marginRight="@dimen/dp5"
+                    android:layout_marginTop="@dimen/dp20"
+                    android:layout_toLeftOf="@id/iv_quote_right"
+                    android:layout_toRightOf="@id/iv_quote_left"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_grasp_chance_detail_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/dp15"
+                        android:textColor="@color/color_7e819b"
+                        android:textSize="@dimen/dp14" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_container_lineChart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <com.test.bank.weight.CommonBottomDesc
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

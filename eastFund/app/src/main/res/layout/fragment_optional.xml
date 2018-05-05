@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_optionalFragment_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+
+        <LinearLayout
+            android:id="@+id/ll_optionalFragment_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="@color/appBackgroundColor"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+            android:paddingRight="@dimen/fundCompanyActivity_marginLeftAndRight_15dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/tv_fundCompanyActivity_rankKey"
+                android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                android:layout_weight="7"
+                android:gravity="left|center_vertical"
+                android:maxLines="1"
+                android:text="基金名称"
+                android:textColor="@color/fundCompanyActivityGray"
+                android:textSize="@dimen/fundCompanyActivity_textSize_13sp" />
+
+
+            <LinearLayout
+                android:id="@+id/ll_optionalFragment_netValueSort"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/tv_fundCompanyActivity_rankKey"
+                    android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="单位净值"
+                    android:textColor="@color/fundCompanyActivityGray"
+                    android:textSize="@dimen/fundCompanyActivity_textSize_13sp" />
+
+                <ImageView
+                    android:id="@+id/iv_optionalFragment_netValueSort"
+                    android:layout_width="7dp"
+                    android:layout_height="14dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:background="@mipmap/optional_sort_no" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_optionalFragment_changeSort"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/tv_fundCompanyActivity_rankKey"
+                    android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:gravity="right|center_vertical"
+                    android:maxLines="1"
+                    android:text="涨跌幅"
+                    android:textColor="@color/fundCompanyActivityGray"
+                    android:textSize="@dimen/fundCompanyActivity_textSize_13sp" />
+
+                <ImageView
+                    android:id="@+id/iv_optionalFragment_changeSort"
+                    android:layout_width="7dp"
+                    android:layout_height="14dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:background="@mipmap/optional_sort_no" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_optionalFragment_title">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_optionalFragment_optionalFundList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <RelativeLayout
+                android:id="@+id/rl_optionalFragment_addOptional"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
+
+                <TextView
+                    android:id="@+id/tv_optionalFragment_addOptional"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:text="添加自选基金"
+                    android:textColor="@color/appTitleColor"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/tv_optionalFragment_addOptional"
+                    android:background="@mipmap/plus_add_optional" />
+            </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_optionalFragment_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="130dp"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_optionalFragment_no_data"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:background="@mipmap/optional_fragment_no_data" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_optionalFragment_no_data"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="50dp"
+                    android:gravity="center"
+                    android:lineSpacingExtra="8dp"
+                    android:text="你还没有自选基金\n请点击加号按钮开始添加"
+                    android:textColor="@color/appCommentColor"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

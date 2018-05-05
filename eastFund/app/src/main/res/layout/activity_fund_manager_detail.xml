@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <include layout="@layout/divider_view_height_10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+                android:layout_marginRight="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_fundManagerDetailActivity_fundManagerName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_marginTop="20dp"
+                    android:maxLines="1"
+                    android:text=""
+                    android:textColor="@color/appTitleColor"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/tv_fundManagerDetailActivity_workingDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:maxLines="1"
+                    android:text=""
+                    android:textColor="@color/appContentColor"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_fundManagerDetailActivity_workingExperience"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:ellipsize="end"
+                    android:gravity="left|center_vertical"
+                    android:maxLines="4"
+                    android:text=""
+                    android:textColor="@color/appContentColor"
+                    android:lineSpacingExtra="4dp"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_fundManagerDetailActivity_viewFullText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:maxLines="1"
+                    android:text="查看全文"
+                    android:textColor="@color/appViewFullTextColor"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <include layout="@layout/divider_view_height_10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/tv_fundCompanyActivity_rankKey"
+                    android:layout_marginBottom="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_marginTop="@dimen/fundCompanyActivity_textView_marginTopAndBottom_15dp"
+                    android:layout_marginLeft="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+                    android:gravity="right|center_vertical"
+                    android:maxLines="1"
+                    android:text="管理基金"
+                    android:textColor="@color/appTitleColor"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/fundCompanyActivity_marginLeftAndRight_15dp"
+                    android:background="@color/appGrayTitleBackgroundColor"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_weight="3"
+                        android:gravity="left|center_vertical"
+                        android:maxLines="1"
+                        android:text="时间"
+                        android:textColor="@color/appContentColor"
+                        android:textSize="@dimen/fundCompanyActivity_textSize_13sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="基金名称"
+                        android:textColor="@color/appContentColor"
+                        android:textSize="@dimen/fundCompanyActivity_textSize_13sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_weight="3"
+                        android:gravity="right|center_vertical"
+                        android:maxLines="1"
+                        android:text="任期内回报"
+                        android:textColor="@color/appContentColor"
+                        android:textSize="@dimen/fundCompanyActivity_textSize_13sp" />
+                </LinearLayout>
+
+                <com.test.bank.weight.NoScrollRecycleView
+                    android:id="@+id/rv_fundManagerDetailActivity_manageFundList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.test.bank.view.activity.BuyGoodFundDetailActivity">
+
+    <com.test.bank.weight.CompatScrollView
+        android:id="@+id/scrollView_bgfd"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/ll_content_bgfd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:id="@+id/iv_bg_bgfd"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp190"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/tv_prime_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dp75"
+                    android:maxLines="1"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/dp24" />
+
+                <TextView
+                    android:id="@+id/tv_sub_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_prime_title"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:maxLines="1"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/dp15" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/tv_recommand_reason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_header_bgfd"
+                android:drawableLeft="@drawable/rect_f35857"
+                android:drawablePadding="@dimen/dp10"
+                android:maxLines="1"
+                android:paddingBottom="@dimen/dp10"
+                android:paddingTop="@dimen/dp10"
+                android:textColor="@color/color_393b51"
+                android:textSize="@dimen/dp16"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:background="@color/color_ebebeb" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/ll_recommand_reason"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/dp15" />
+
+                <TextView
+                    android:id="@+id/tv_show_more_bgfd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:drawablePadding="@dimen/dp10"
+                    android:maxLines="1"
+                    android:padding="@dimen/dp5"
+                    android:text="展开全部"
+                    android:textColor="@color/color_0084ff"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+
+            <View
+                android:id="@+id/view_split_bgfd"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp10"
+                android:background="@color/color_ebebeb" />
+
+
+            <LinearLayout
+                android:id="@+id/ll_bug_good_fund_detail_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <com.test.bank.weight.CommonBottomDesc
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </com.test.bank.weight.CompatScrollView>
+
+    <RelativeLayout
+        android:id="@+id/rl_header_bgfd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp10">
+
+        <ImageView
+            android:id="@+id/iv_back_bgfd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/dp10"
+            android:src="@mipmap/left_arrow_white" />
+
+        <TextView
+            android:id="@+id/tv_float_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:maxLines="1"
+            android:text="ahahha"
+            android:textColor="@color/transparent"
+            android:textSize="@dimen/dp16" />
+    </RelativeLayout>
+</RelativeLayout>

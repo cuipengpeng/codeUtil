@@ -1,0 +1,819 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_singleFundDetailActivity_buyNow"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/appRedColor"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="立即购买"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_singleFundDetailActivity_buyNow"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_ffffff"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/ll_singleFundDetailActivity_yesterdayRise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:layout_marginLeft="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                android:layout_marginRight="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                android:layout_marginTop="30dp"
+                android:background="@color/color_ffffff"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_singleFundDetailActivity_yesterdayRiseKey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="昨日涨幅"
+                        android:textColor="@color/color_7e819b"
+                        android:textSize="@dimen/singleFundDetailActivity_yieldTextSize_12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_singleFundDetailActivity_yesterdayRiseValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_percent_yesterday"
+                        android:layout_marginTop="@dimen/singleFundDetailActivity_yesterdayRaiseValueMarginTop_20dp"
+                        android:text="--"
+                        android:textColor="@color/appContentColor"
+                        android:textSize="@dimen/singleFundDetailActivity_yesterdayRaiseValueTextSize_34sp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/fundInfoActivity_dividerColor" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/fundInfoActivity_dividerColor" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
+                            android:drawableRight="@drawable/right_arrow"
+                            android:gravity="right|center_vertical"
+                            android:maxLines="1"
+                            android:text=""
+                            android:textColor="@color/fundInfoActivityGray"
+                            android:textSize="@dimen/fundInfoActivity_textSize_15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_singleFundDetailActivity_netValueKey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/tv_percent_yesterday"
+                            android:text="净值(--)"
+                            android:textColor="@color/color_7e819b"
+                            android:textSize="@dimen/singleFundDetailActivity_yieldTextSize_12sp" />
+
+
+                        <TextView
+                            android:id="@+id/tv_singleFundDetailActivity_netValueValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_percent_yesterday"
+                            android:layout_marginTop="@dimen/singleFundDetailActivity_yesterdayRaiseValueMarginTop_20dp"
+                            android:text="--"
+                            android:textColor="@color/appTitleColor"
+                            android:textSize="@dimen/singleFundDetailActivity_yesterdayRaiseValueTextSize_34sp" />
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dividerView_height_1dp"
+                android:background="@color/fundInfoActivity_dividerColor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                android:layout_marginRight="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                android:background="@color/color_ffffff"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_singleFundDetailActivity_fundTypeTag1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="@dimen/dp5"
+                            android:paddingRight="@dimen/dp10"
+                            android:paddingTop="@dimen/dp5"
+                            android:text="混合型"
+                            android:textColor="@color/appTitleColor"
+                            android:textSize="@dimen/singleFundDetailActivity_yieldTextSize_12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_singleFundDetailActivity_fundTypeTag2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp10"
+                            android:paddingBottom="@dimen/dp5"
+                            android:paddingLeft="@dimen/dp10"
+                            android:paddingRight="@dimen/dp10"
+                            android:paddingTop="@dimen/dp5"
+                            android:text="高风险"
+                            android:textColor="@color/color_f35857"
+                            android:textSize="@dimen/singleFundDetailActivity_yieldTextSize_12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/fundInfoActivity_dividerColor" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingBottom="@dimen/dp5"
+                            android:paddingLeft="@dimen/dp10"
+                            android:paddingRight="8dp"
+                            android:paddingTop="@dimen/dp5"
+                            android:text="机构评级"
+                            android:textColor="@color/appTitleColor"
+                            android:textSize="@dimen/singleFundDetailActivity_yieldTextSize_12sp" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_singleFundDetailActivity_allStar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/iv_singleFundDetailActivity_star1"
+                                android:layout_width="@dimen/singleFundDetailActivity_starWidthAndHeight_15dp"
+                                android:layout_height="@dimen/singleFundDetailActivity_starWidthAndHeight_15dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/singleFundDetailActivity_starMarginLeftAndRight_2dp"
+                                android:layout_marginRight="@dimen/singleFundDetailActivity_starMarginLeftAndRight_2dp"
+                                android:background="@mipmap/star_unselected" />
+
+                            <ImageView
+                                android:id="@+id/iv_singleFundDetailActivity_star2"
+                                android:layout_width="@dimen/singleFundDetailActivity_starWidthAndHeight_15dp"
+                                android:layout_height="@dimen/singleFundDetailActivity_starWidthAndHeight_15dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/singleFundDetailActivity_starMarginLeftAndRight_2dp"
+                                android:layout_marginRight="@dimen/singleFundDetailActivity_starMarginLeftAndRight_2dp"
+                                android:background="@mipmap/star_unselected" />
+
+                            <ImageView
+                                android:id="@+id/iv_singleFundDetailActivity_star3"
+                                android:layout_width="@dimen/singleFundDetailActivity_starWidthAndHeight_15dp"
+                                android:layout_height="@dimen/singleFundDetailActivity_starWidthAndHeight_15dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/singleFundDetailActivity_starMarginLeftAndRight_2dp"
+                                android:layout_marginRight="@dimen/singleFundDetailActivity_starMarginLeftAndRight_2dp"
+                                android:background="@mipmap/star_unselected" />
+
+                            <ImageView
+                                android:id="@+id/iv_singleFundDetailActivity_star4"
+                                android:layout_width="@dimen/singleFundDetailActivity_starWidthAndHeight_15dp"
+                                android:layout_height="@dimen/singleFundDetailActivity_starWidthAndHeight_15dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/singleFundDetailActivity_starMarginLeftAndRight_2dp"
+                                android:layout_marginRight="@dimen/singleFundDetailActivity_starMarginLeftAndRight_2dp"
+                                android:background="@mipmap/star_unselected" />
+
+                            <ImageView
+                                android:id="@+id/iv_singleFundDetailActivity_star5"
+                                android:layout_width="@dimen/singleFundDetailActivity_starWidthAndHeight_15dp"
+                                android:layout_height="@dimen/singleFundDetailActivity_starWidthAndHeight_15dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/singleFundDetailActivity_starMarginLeftAndRight_2dp"
+                                android:layout_marginRight="@dimen/singleFundDetailActivity_starMarginLeftAndRight_2dp"
+                                android:background="@mipmap/star_unselected" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_singleFundDetailActivity_noStar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="暂无评级"
+                            android:textColor="@color/appCommentColor"
+                            android:textSize="@dimen/singleFundDetailActivity_yieldTextSize_12sp" />
+
+                        <ImageView
+                            android:id="@+id/iv_singleFundDetailActivity_starAsk"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@mipmap/ask" />
+
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <include
+                android:id="@+id/v_singleFundDetailActivity_fundTypeTagDivider01"
+                layout="@layout/divider_view_height_10dp" />
+
+            <LinearLayout
+                android:id="@+id/ll_singleFundDetailActivity_yieldTrend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                        android:layout_marginTop="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                        android:background="@color/color_ffffff"
+                        android:text="收益率走势"
+                        android:textColor="@color/appTitleColor"
+                        android:textSize="@dimen/dp15" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginTop="25dp"
+                        android:background="@color/color_ffffff">
+
+                        <View
+                            android:id="@+id/tv_singleFundDetailActivity_selfFundYieldCircleIcon"
+                            android:layout_width="@dimen/singleFundDetailActivity_circleRadius_7dp"
+                            android:layout_height="@dimen/singleFundDetailActivity_circleRadius_7dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/dp15"
+                            android:background="@drawable/circle_red_radius7" />
+
+                        <TextView
+                            android:id="@+id/tv_singleFundDetailActivity_selfFundYieldKey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/dp10"
+                            android:layout_toRightOf="@id/tv_singleFundDetailActivity_selfFundYieldCircleIcon"
+                            android:text="本基金："
+                            android:textColor="@color/appTitleColor"
+                            android:textSize="@dimen/singleFundDetailActivity_yieldTextSize_12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_singleFundDetailActivity_selfFundYield"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/tv_singleFundDetailActivity_selfFundYieldKey"
+                            android:text="+6.17%"
+                            android:textColor="@color/appRedColor"
+                            android:textSize="@dimen/singleFundDetailActivity_yieldTextSize_12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_singleFundDetailActivity_hs300Yield"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/dp15"
+                            android:text="-6.17%"
+                            android:textColor="#18b293"
+                            android:textSize="@dimen/singleFundDetailActivity_yieldTextSize_12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_singleFundDetailActivity_hs300YieldKey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/dp10"
+                            android:layout_toLeftOf="@id/tv_singleFundDetailActivity_hs300Yield"
+                            android:text="沪深300："
+                            android:textColor="@color/appTitleColor"
+                            android:textSize="@dimen/singleFundDetailActivity_yieldTextSize_12sp" />
+
+                        <View
+                            android:id="@+id/tv_singleFundDetailActivity_hs300YieldCircleIcon"
+                            android:layout_width="@dimen/singleFundDetailActivity_circleRadius_7dp"
+                            android:layout_height="@dimen/singleFundDetailActivity_circleRadius_7dp"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@id/tv_singleFundDetailActivity_hs300YieldKey"
+                            android:background="@drawable/circle_blue_radius7" />
+
+                    </RelativeLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_singleFundDetailActivity_yieldTrendChartFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone" />
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/lineChart"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:background="#ffffff" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/color_ffffff"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/dp36"
+                        android:paddingRight="@dimen/dp36">
+
+                        <TextView
+                            android:id="@+id/tv_singleFundDetailActivity_last1Month"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/selector_border_month_indicator"
+                            android:gravity="center"
+                            android:text="近一月"
+                            android:textColor="@color/appCommentColor"
+                            android:textSize="@dimen/singleFundDetailActivity_yieldTextSize_12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_singleFundDetailActivity_last3Month"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="-1dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/selector_border_month_indicator"
+                            android:gravity="center"
+                            android:text="近三月"
+                            android:textColor="@color/appCommentColor"
+                            android:textSize="@dimen/singleFundDetailActivity_yieldTextSize_12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_singleFundDetailActivity_last6Month"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="-1dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/selector_border_month_indicator"
+                            android:gravity="center"
+                            android:text="近六月"
+                            android:textColor="@color/appCommentColor"
+                            android:textSize="@dimen/singleFundDetailActivity_yieldTextSize_12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_singleFundDetailActivity_last12Month"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="-1dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/selector_border_month_indicator"
+                            android:gravity="center"
+                            android:text="近一年"
+                            android:textColor="@color/appCommentColor"
+                            android:textSize="@dimen/singleFundDetailActivity_yieldTextSize_12sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <include
+                    android:id="@+id/v_singleFundDetailActivity_fundTypeTagDivider"
+                    layout="@layout/divider_view_height_10dp" />
+
+
+                <LinearLayout
+                    android:id="@+id/ll_singleFundDetailActivity_tradeRule"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/singleFundDetailActivity_itemMarginTopAndBottom_20dp"
+                    android:layout_marginLeft="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                    android:layout_marginRight="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                    android:layout_marginTop="@dimen/singleFundDetailActivity_itemMarginTopAndBottom_20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left|center_vertical"
+                        android:maxLines="1"
+                        android:text="交易规则"
+                        android:textColor="@color/fundInfoActivityBlack"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawablePadding="@dimen/app_rightArrow_paddingRight_4dp"
+                        android:drawableRight="@drawable/right_arrow"
+                        android:gravity="right|center_vertical"
+                        android:maxLines="1"
+                        android:text="买入、卖出规则"
+                        android:textColor="@color/fundInfoActivityGray"
+                        android:textSize="@dimen/singleFundDetailActivity_tradeRuleTextSize_13sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dividerView_height_1dp"
+                    android:background="@color/fundInfoActivity_dividerColor" />
+
+                <include layout="@layout/view_fund_buy_rule" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_singleFundDetailActivity_buyFlow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                    android:paddingBottom="@dimen/singleFundDetailActivity_itemMarginTopAndBottom_15dp"
+                    android:paddingTop="@dimen/singleFundDetailActivity_itemMarginTopAndBottom_15dp"
+                    android:text="认购流程"
+                    android:textColor="@color/appTitleColor"
+                    android:textSize="@dimen/singleFundDetailActivity_titleItemTextSize_15sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dividerView_height_1dp"
+                    android:background="@color/fundInfoActivity_dividerColor" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                    android:background="#ffffff"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_singleFundDetailActivity_buyFlowStep1Icon"
+                            android:layout_width="@dimen/singleFundDetailActivity_buyFlowIconWidthAndHeight_17dp"
+                            android:layout_height="@dimen/singleFundDetailActivity_buyFlowIconWidthAndHeight_17dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                            android:layout_marginTop="@dimen/singleFundDetailActivity_titleMarginTop_25dp"
+                            android:background="@mipmap/buy_flow_step_1"
+                            android:gravity="center"
+                            android:text=""
+                            android:textColor="@color/appRedColor"
+                            android:textSize="@dimen/singleFundDetailActivity_buyFlowtitleTextSize_16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_singleFundDetailActivity_buyFlowStep1Title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBaseline="@id/tv_singleFundDetailActivity_buyFlowStep1Icon"
+                            android:layout_marginLeft="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                            android:layout_toRightOf="@id/tv_singleFundDetailActivity_buyFlowStep1Icon"
+                            android:gravity="center"
+                            android:text="认购募集期"
+                            android:textColor="@color/appTitleColor"
+                            android:textSize="@dimen/singleFundDetailActivity_buyFlowtitleTextSize_16sp" />
+
+                        <TextView
+                            android:id="@+id/ll_singleFundDetailActivity_buyFlowStep1Content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@id/tv_singleFundDetailActivity_buyFlowStep1Title"
+                            android:layout_below="@id/tv_singleFundDetailActivity_buyFlowStep1Icon"
+                            android:layout_marginTop="@dimen/singleFundDetailActivity_contentMarginTop_18dp"
+                            android:gravity="left|center_vertical"
+                            android:text="认购募集期投资者提交基金认购申请，至基金成立期间，认购金额享受活期收益"
+                            android:textColor="@color/appContentColor"
+                            android:textSize="@dimen/singleFundDetailActivity_buyFlowContentTextSize_13sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_singleFundDetailActivity_buyFlowStep2Icon"
+                            android:layout_width="@dimen/singleFundDetailActivity_buyFlowIconWidthAndHeight_17dp"
+                            android:layout_height="@dimen/singleFundDetailActivity_buyFlowIconWidthAndHeight_17dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                            android:layout_marginTop="@dimen/singleFundDetailActivity_titleMarginTop_25dp"
+                            android:background="@mipmap/buy_flow_step_2"
+                            android:gravity="center"
+                            android:text=""
+                            android:textColor="@color/appRedColor"
+                            android:textSize="@dimen/singleFundDetailActivity_buyFlowtitleTextSize_16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_singleFundDetailActivity_buyFlowStep2Title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBaseline="@id/tv_singleFundDetailActivity_buyFlowStep2Icon"
+                            android:layout_marginLeft="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                            android:layout_toRightOf="@id/tv_singleFundDetailActivity_buyFlowStep2Icon"
+                            android:gravity="center"
+                            android:text="基金成立"
+                            android:textColor="@color/appTitleColor"
+                            android:textSize="@dimen/singleFundDetailActivity_buyFlowtitleTextSize_16sp" />
+
+                        <TextView
+                            android:id="@+id/ll_singleFundDetailActivity_buyFlowStep2Content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@id/tv_singleFundDetailActivity_buyFlowStep2Title"
+                            android:layout_below="@id/tv_singleFundDetailActivity_buyFlowStep2Icon"
+                            android:layout_marginTop="@dimen/singleFundDetailActivity_contentMarginTop_18dp"
+                            android:gravity="left|center_vertical"
+                            android:text="基金一般会在募集期结束后一周左右成立，成立后下一工作日可在持有详情中查询到对应的基金份额"
+                            android:textColor="@color/appContentColor"
+                            android:textSize="@dimen/singleFundDetailActivity_buyFlowContentTextSize_13sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_singleFundDetailActivity_buyFlowStep3Icon"
+                            android:layout_width="@dimen/singleFundDetailActivity_buyFlowIconWidthAndHeight_17dp"
+                            android:layout_height="@dimen/singleFundDetailActivity_buyFlowIconWidthAndHeight_17dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                            android:layout_marginTop="@dimen/singleFundDetailActivity_titleMarginTop_25dp"
+                            android:background="@mipmap/buy_flow_step_3"
+                            android:gravity="center"
+                            android:text=""
+                            android:textColor="@color/appRedColor"
+                            android:textSize="@dimen/singleFundDetailActivity_buyFlowtitleTextSize_16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_singleFundDetailActivity_buyFlowStep3Title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBaseline="@id/tv_singleFundDetailActivity_buyFlowStep3Icon"
+                            android:layout_marginLeft="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                            android:layout_toRightOf="@id/tv_singleFundDetailActivity_buyFlowStep3Icon"
+                            android:gravity="center"
+                            android:text="封闭期"
+                            android:textColor="@color/appTitleColor"
+                            android:textSize="@dimen/singleFundDetailActivity_buyFlowtitleTextSize_16sp" />
+
+                        <TextView
+                            android:id="@+id/ll_singleFundDetailActivity_buyFlowStep3Content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@id/tv_singleFundDetailActivity_buyFlowStep3Title"
+                            android:layout_below="@id/tv_singleFundDetailActivity_buyFlowStep3Icon"
+                            android:layout_marginTop="@dimen/singleFundDetailActivity_contentMarginTop_18dp"
+                            android:gravity="left|center_vertical"
+                            android:text="封闭期运作期一般3个月内，封闭期间基金经理将会对基金进行投资。封闭期间基金会定期公布净值，但封闭期不可卖出"
+                            android:textColor="@color/appContentColor"
+                            android:textSize="@dimen/singleFundDetailActivity_buyFlowContentTextSize_13sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_singleFundDetailActivity_buyFlowStep4Icon"
+                            android:layout_width="@dimen/singleFundDetailActivity_buyFlowIconWidthAndHeight_17dp"
+                            android:layout_height="@dimen/singleFundDetailActivity_buyFlowIconWidthAndHeight_17dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                            android:layout_marginTop="@dimen/singleFundDetailActivity_titleMarginTop_25dp"
+                            android:background="@mipmap/buy_flow_step_4"
+                            android:gravity="center"
+                            android:text=""
+                            android:textColor="@color/appRedColor"
+                            android:textSize="@dimen/singleFundDetailActivity_buyFlowtitleTextSize_16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_singleFundDetailActivity_buyFlowStep4Title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBaseline="@id/tv_singleFundDetailActivity_buyFlowStep4Icon"
+                            android:layout_marginLeft="@dimen/singleFundDetailActivity_pageMarginLeftAndRight_15dp"
+                            android:layout_toRightOf="@id/tv_singleFundDetailActivity_buyFlowStep4Icon"
+                            android:gravity="center"
+                            android:text="开放期"
+                            android:textColor="@color/appTitleColor"
+                            android:textSize="@dimen/singleFundDetailActivity_buyFlowtitleTextSize_16sp" />
+
+                        <TextView
+                            android:id="@+id/ll_singleFundDetailActivity_buyFlowStep4Content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@id/tv_singleFundDetailActivity_buyFlowStep4Title"
+                            android:layout_below="@id/tv_singleFundDetailActivity_buyFlowStep4Icon"
+                            android:layout_marginBottom="@dimen/singleFundDetailActivity_contentMarginTop_18dp"
+                            android:layout_marginTop="@dimen/singleFundDetailActivity_contentMarginTop_18dp"
+                            android:gravity="left|center_vertical"
+                            android:text="基金开放申购赎回"
+                            android:textColor="@color/appContentColor"
+                            android:textSize="@dimen/singleFundDetailActivity_buyFlowContentTextSize_13sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <include layout="@layout/divider_view_height_10dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:id="@+id/ll_singleFundDetailActivity_archivesTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_singleFundDetailActivity_archivesTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginBottom="12dp"
+                                android:layout_marginTop="@dimen/singleFundDetailActivity_itemMarginTopAndBottom_15dp"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="基金档案"
+                                android:textColor="@color/appTitleColor"
+                                android:textSize="@dimen/singleFundDetailActivity_titleItemTextSize_15sp" />
+
+                            <View
+                                android:id="@+id/v_singleFundDetailActivity_archivesTitleRedLine"
+                                android:layout_width="15dp"
+                                android:layout_height="3dp"
+                                android:layout_gravity="center_horizontal"
+                                android:background="@color/color_f35857" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_singleFundDetailActivity_announcementTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_singleFundDetailActivity_announcementTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginBottom="12dp"
+                                android:layout_marginTop="@dimen/singleFundDetailActivity_itemMarginTopAndBottom_15dp"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="公告"
+                                android:textColor="@color/appTitleColor"
+                                android:textSize="@dimen/singleFundDetailActivity_titleItemTextSize_15sp" />
+
+                            <View
+                                android:id="@+id/v_singleFundDetailActivity_announcementTitleRedLine"
+                                android:layout_width="15dp"
+                                android:layout_height="3dp"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center_horizontal"
+                                android:background="@color/color_f35857" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dividerView_height_1dp"
+                        android:background="@color/fundInfoActivity_dividerColor" />
+
+                </LinearLayout>
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/vp_aftersales"
+                    android:layout_width="match_parent"
+                    android:layout_height="290dp"
+                    android:background="@color/transparent" />
+            </LinearLayout>
+
+
+            <com.test.bank.weight.CommonBottomDesc
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

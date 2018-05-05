@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.test.bank.view.activity.BuyGoodFundActivity">
+
+
+    <com.test.bank.weight.CommonTitleBar
+        android:id="@+id/commonTitleBar_buyGoodFund"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:statusBarTextColorStyle="dark"
+        app:title="买好基" />
+
+    <View
+        android:id="@+id/v_split_gca"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:background="@color/color_ebebeb" />
+
+
+    <com.test.bank.weight.refreshlayout.AutoLoadMoreRecyclerView
+        android:id="@+id/recyclerView_buyGoodFund"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:offsetToLoadMore="2" />
+
+</LinearLayout>

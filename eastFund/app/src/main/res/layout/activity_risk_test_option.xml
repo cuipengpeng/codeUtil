@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_ffffff"
+    android:paddingBottom="30dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="10dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/circle_corner_white_bg">
+
+        <TextView
+            android:id="@+id/tv_riskTestOptionActivity_confirmModify"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="1dp"
+            android:gravity="center"
+            android:text="确认修改"
+            android:textColor="@color/appViewFullTextColor"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/v_riskTestOptionActivity_singleOptionDivider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dividerView_height_1dp"
+            android:layout_above="@id/tv_riskTestOptionActivity_confirmModify"
+            android:background="@color/appDividerLineColor_1dp"/>
+
+        <TextView
+            android:id="@+id/iv_riskTestOptionActivity_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/appViewFullTextColor"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/v_riskTestOptionActivity_titleDivider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dividerView_height_1dp"
+            android:layout_below="@id/iv_riskTestOptionActivity_title"
+            android:background="@color/fundInfoActivity_dividerColor" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_riskTestOptionActivity_questionContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/v_riskTestOptionActivity_singleOptionDivider"
+            android:layout_below="@id/v_riskTestOptionActivity_titleDivider"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_riskTestOptionActivity_riskTestQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+</RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
