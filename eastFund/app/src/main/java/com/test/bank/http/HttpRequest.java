@@ -38,9 +38,9 @@ public class HttpRequest {
     //测试环境
     public static final String APP_INTERFACE_WEB_URL_ENV_TEST = HttpConfig.BASE_URL;
     //预发环境
-    public static final String APP_INTERFACE_WEB_URL_ENV_PRE = "https://123.56.167.11:8102/app/";
+    public static final String APP_INTERFACE_WEB_URL_ENV_PRE ="https://www.baidu.com/";
     // 正式环境
-    public static final String APP_INTERFACE_WEB_URL_ENV_ONLINE = "https://sc.9fbank.com/";
+    public static final String APP_INTERFACE_WEB_URL_ENV_ONLINE ="https://www.baidu.com/";
 
     //图片上传       测试环境
     public static final String UPLOAD_IMAGE_TEST_ENV_WEB_URL = "https://www.baidu.com/";

@@ -9,7 +9,7 @@ import java.net.HttpURLConnection;
 public class HttpConfig {
 
     //--------------------------服务器地址------------------------------------//
-    public static final String BASE_URL = "http://47.95.165.12:8181/jlapp-web/";//服务器地址【外网】
+    public static final String BASE_URL = "https://www.baidu.com/";//服务器地址【外网】
 
     public static final int SUCCESS = 200;  //请求数据成功
     public static final int EMPTY_DATA = -11;  //数据为空
