@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -261,6 +262,16 @@ public class PutInActivity extends BaseLocalDataActivity {
         lp.alpha = 1f; // 透明度
         dialogWindow.setAttributes(lp);
         tradePasswordDialog.show();
+
+        /**
+         * 设置宽度全屏，要设置在show的后面。
+         * 这个把整个你自定义的布局全屏显示。
+         */
+//        WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
+//        layoutParams.width= ViewGroup.LayoutParams.MATCH_PARENT;
+//        layoutParams.height= ViewGroup.LayoutParams.MATCH_PARENT;
+//        getWindow().getDecorView().setPadding(0, 0, 0, 0);
+//        getWindow().setAttributes(layoutParams);
     }
 
 
