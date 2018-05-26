@@ -43,11 +43,13 @@ public class Aes {
 //	        encryptFile(secretKey,  "D:\\t_dwf_public.crt", "D:\\t_dwf_public_encrypted");
 //	        decryptFile(secretKey,  "D:\\t_dwf_public_encrypted", "D:\\t_dwf_public_decrypted");
 		    
-	        encryptFile(secretKey,  "D:\\t1.mp4", "D:\\t1-encrypted1.mp4");
-	        encryptFile(secretKey,  "D:\\t1-encrypted1.mp4", "D:\\t1-encrypted2.mp4");
-	        decryptFile(secretKey,  "D:\\t1-encrypted2.mp4", "D:\\t1_decrypted1.mp4");
-	        decryptFile(secretKey,  "D:\\t1_decrypted1.mp4", "D:\\t1_decrypted2.mp4");
+//	        encryptFile(secretKey,  "D:\\t1.mp4", "D:\\t1-encrypted1.mp4");
+//	        encryptFile(secretKey,  "D:\\t1-encrypted1.mp4", "D:\\t1-encrypted2.mp4");
+//	        decryptFile(secretKey,  "D:\\t1-encrypted2.mp4", "D:\\t1_decrypted1.mp4");
+//	        decryptFile(secretKey,  "D:\\t1_decrypted1.mp4", "D:\\t1_decrypted2.mp4");
 	        
+	        encryptFile(secretKey,  "F:\\github_project\\githubProject\\codeUtil\\keystore.zip", "F:\\github_project\\githubProject\\codeUtil\\keystore-encrypt.zip");
+	        decryptFile(secretKey,  "F:\\github_project\\githubProject\\codeUtil\\keystore-encrypt.zip", "F:\\github_project\\githubProject\\codeUtil\\keystore-decrypt.zip");
 	        long end = System.currentTimeMillis();
 	        System.err.println("耗时：" + (end-begin)/1000 + "秒");
 		} catch (Exception e) {
