@@ -20,14 +20,15 @@ import javax.crypto.spec.SecretKeySpec;
 public class Aes {
 
 	//jdk默认只能使用16字节的秘钥，要使用24和32字节秘钥，需另下载jar包覆盖jdk自身的jar包(美国加密算法出口限制)
-	public final static String secretKey = "Px0D34a7VnT6sqkn";// (128、192、256位即16字节，24字节，32字节)
+//	public final static String secretKey = "Px0D34a7VnT6sqkn";// (128、192、256位即16字节，24字节，32字节)
+	public final static String secretKey = "1234567890weixin";// (128、192、256位即16字节，24字节，32字节)
 	private static final String ALGORITHM = "AES";// 对称加密算法。可选AES，DES，DESede
 	private static final String TRANSFORMATION = "AES/CBC/PKCS5Padding";
 	private static final String TRANSFORMATION_FILE = "AES/ECB/PKCS5Padding";//"AES" 四种模式(ECB、CBC、CFB、OFB)
 	private final static String ENCODEING = "UTF-8";
 	private static final String IV_STRING = "16-Bytes--String";
 	//jdk默认只能使用16字节的秘钥，要使用24和32字节秘钥，需另下载jar包覆盖jdk自身的jar包(美国加密算法出口限制)
-    private static final int KEY_SIZE = 128;//(128、192、256位即16字节，24字节，32字节)
+    private static final int KEY_SIZE = 128;//秘钥长度(128、192、256位即16字节，24字节，32字节)
 
 
 	public static void main(String[] args) {

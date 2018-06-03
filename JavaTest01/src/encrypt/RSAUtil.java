@@ -2,23 +2,30 @@ package encrypt;
 
 
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.KeyFactory;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
 import java.security.KeyStore;
 import java.security.NoSuchAlgorithmException;
-import java.security.PKCS12Attribute;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.security.SecureRandom;
 import java.security.Signature;
 import java.security.SignatureException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Enumeration;
@@ -40,40 +47,61 @@ public class RSAUtil {
 	public static final String SIGNATURE_ALGORITHM = "SHA1withRSA";
 	//缓存密钥
 	private static final Map<String, Object> keyMap = new HashMap<String, Object>();
-
+	
+	private static final int KEY_SIZE = 1024;//秘钥长度(1024，2048，3072 ，4096位)
 	
 	public static void main(String[] args) {
-		String strModel = "123333333333334534254";
+		String plainString = "123333333333334534254";
+		String seed = "111222";
 		
-//		PublicKey publicKey = RSAUtil.getPublicKey("MIIB7TCCAVagAwIBAgIQO9/ktLH3p61McDiYKTrLdjANBgkqhkiG9w0BAQQFADARMQ8wDQYDVQQDEwY5ZmJhbmswHhcNMTExMjMxMTYwMDAwWhcNMTkxMjMxMTYwMDAwWjARMQ8wDQYDVQQDEwY5ZmJhbmswgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBANuqa7U2mm5/afsgi9HkDJw44HSr0A/jaZnWLoNZaBveQ95conmlYBTHB+8o+7u+FDwZOI0TwIgPJ5k4iU63/nKvqqc83H2zh7ATA3FzIMQlaXT1vxlQGenbECFuZedF5FYbXiU4n32XAUAb0KZOzANXSZuKgiDFp9NxcE7El9DVAgMBAAGjRjBEMEIGA1UdAQQ7MDmAENTa02T4R/m7ylslbZdY80GhEzARMQ8wDQYDVQQDEwY5ZmJhbmuCEDvf5LSx96etTHA4mCk6y3YwDQYJKoZIhvcNAQEEBQADgYEAoBsrm8Zal5+JGP7iGPt0SGK9ul/WKgl5cfOOJjBYyANV/VhSCAJNkwBFI0xx3PJzMFh844T9CUYZIiW57oy9FWtehmYqhELy4oNarhn+RbFlcY7TMxFSOt1QkWfuDYU2v9LBpYjYQ07WpZ8Wi27z5U3EgJ0K8E385iI53vSTQWE=");
-//		PublicKey publicKey = RSAUtil.getPublicKey("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuuagL40kzjTviFy4OTMDsoxpOj0QjMjqZ/fy9dOJppvUP/m2u2Ftu4v6fmMCOyjZGZ52ohNS3pw684fL4E4+XYgGK1M6PNtIMDUmXspDQeJjxsrSsb6KxAvmTtTn+09WXnE2VuG1C6fqAZgBbVCl5pHn3aaKEz2AiBJYuH1jBQ0n0WucYoOz8Lk4XGV+DTbJiQI0Sa92q3Z/qrjPOMHbwzVG1HyKopUFMAz5PVogBi5+BHR+teA27K4A/fv2hL7S4TBqP05c6ySGUvqlnfbKCvCJ9nfbZjMxWCI6HmiCcOCLzG2dTUJViQJARXMR96JzjlO+7vcXLuZ8ANtrT57epwIDAQAB");
-		PublicKey publicKey = RSAUtil.loadPublicKey("d:\\cipher\\cert.crt");
-		
-//		PublicKey publicKey = RSAUtil.loadPublicKey("d:\\t_dwf_public.crt");
-//		PublicKey publicKey = RSAUtil.loadPublicKey("d:\\t_dwf_public_encrypted");
-//		PublicKey publicKey = RSAUtil.loadPublicKey("d:\\certificate.der");
-//		PublicKey publicKey = RSAUtil.loadPublicKey("d:\\t_dwf_public_decrypted");
-		//Zef6tQ8fY 	YgDc2nm7i 	FtmyJzEo8v
-//		PrivateKey privateKey = RSAUtil.getPrivateKey("MIICXAIBAAKBgQDbqmu1Nppuf2n7IIvR5AycOOB0q9AP42mZ1i6DWWgb3kPeXKJ5pWAUxwfvKPu7vhQ8GTiNE8CIDyeZOIlOt/5yr6qnPNx9s4ewEwNxcyDEJWl09b8ZUBnp2xAhbmXnReRWG14lOJ99lwFAG9CmTswDV0mbioIgxafTcXBOxJfQ1QIDAQABAoGAGNjFCCFeBIOrBDnhNuOZvY39bZUFmtZ5WmpMppTVXtmcSammwyW+oXsF3bqABvNwLIAZ0nNagslcDEvF1D6hrDej3gUJg2pHr6fTxvLePr7D7wOo0yZQsXpqO8DtkYqe58ebNq868sSLNtty0nYPENUsBo6muTdPb1uusMnZsL0CQQDyNbZ5WxQHmrJVoKlA2WPLUsgP7RkVYf/f2O+90qkaq3LJO0sZnodcNqUuTnQ7OR1nzrn/yZaTySt/ZhNAXlh3AkEA6CwexCSsbswVItTjzR9LvBthLctpWIbQWnhakoT/p+im3mnGUV3tXzmv3fHhpquPJLx4ZbDX5RzlyqtrrDLAEwJAcsHmOetgOxYdhpp/dr1JHg2Two/4wXvUKu/y7wI/ouY2lYdlVrcYtSUi8CS1x1WRTBzTXZDaqhy3Yj4vwuCwkwJBAKwq45nCNFhpYJcW1eLrfUb96r+B4xnxxxn/u/KBS/Bg1zWBrL3z8C24YpEsaJAnEpxEYufODxtopYL4QX1NmR8CQDgePnGZt/jtoCOw7QHrOkPiXW6USE9nASP8k9b1Yvc2nQvjNWNWXTVdfngTw1/uMV7eMDM4SX6Ra6rhC3VXnaI=");
-		
-//		PrivateKey privateKey = RSAUtil.loadPrivateKey("d:\\dwf_private.pfx", "Zef6tQ8fY");
-//		PrivateKey privateKey = RSAUtil.loadPrivateKey("d:\\Cert.p12", "111222");
-		
-		PrivateKey privateKey = RSAUtil.getPrivateKey("MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC65qAvjSTONO+IXLg5MwOyjGk6PRCMyOpn9/L104mmm9Q/+ba7YW27i/p+YwI7KNkZnnaiE1LenDrzh8vgTj5diAYrUzo820gwNSZeykNB4mPGytKxvorEC+ZO1Of7T1ZecTZW4bULp+oBmAFtUKXmkefdpooTPYCIEli4fWMFDSfRa5xig7PwuThcZX4NNsmJAjRJr3ardn+quM84wdvDNUbUfIqilQUwDPk9WiAGLn4EdH614DbsrgD9+/aEvtLhMGo/TlzrJIZS+qWd9soK8In2d9tmMzFYIjoeaIJw4IvMbZ1NQlWJAkBFcxH3onOOU77u9xcu5nwA22tPnt6nAgMBAAECggEAQ8yxw04yUdOGKTNpaOaGqtigu423WTrxPbIGowKP5q6Uunh9v0/CnMxUnFCSWJ+i0dZYNsdHwpVuFTXn0YDQwuE7S7AvajAp6cL+HljFOTtE8rJU6EG02RVwAJzfYp0POcdb7PyHzqilDNr1eZBN/mxjblahtAUVgUcWhCaIKyZQne42754sYr/qpnW1obULgGeSDXP7O4nnEBvmz6j4zFrpkLEcmyXrkBm2w0TiXUc53829eVrOn0GFSwNiLVeuYouhqTLHHYwpuhvkcO9vifLoJPNG7YiQeDOkCpQ6kQH6O3UzvpJZ8H+qfR+oppMGMI97TugIUnsjumga+rKjgQKBgQD3+0t6GAPkkKMeLyeRSZD9Cam9/cA+LrcjAfMFQyidOyUlDANUv6J19XzeCSoPMy8VWPKfwKh6VphJ5UDu3D2DbBh6OkExLtXd9W+mn++vH8bTMkJg1NVImeQNpeHvnCMzDgEwkLTsbzj6o6vJ95uXZknQw9aQcsNo5qtnRQ/cYQKBgQDA8bnT90WOBleOmNUhCemq7bTpavI08GJiTTZOJyJRGlbsDgGgvvn7VwUaT29MvGkjjKZycnKCTw6fuWICHZk9beD0H8tq60kLaDqeBxiF1KGgSMUgR5bqTpkuy1nJoI0+PSt1dgrEUZGtNlVFelWAcEDDQ6nvZR2EG3XBov7YBwKBgQDMpDlWKWlU/rNN3nYVpJMc7hOA8V3rMtv47MvjJNfoYP23Q+Gf14E3PP3tsbxezMtnH38hrHicdMe5+5GJTIEK6nKMs3RHJTJit/+KjuPaLiwC76/tftX/0tdrF+CKvtwhbsY2kMRtdR+dXuIOiuKAn2389RAlJj/yWqFKWKjNIQKBgGc7rpqr7cosuIIyYa54uE5dOvO85fTPPUStXUX5iFHujt1kLRjNtcD18WP/ZmSfVn3Pzmrjs0Lne8KYFMle/tOwS7EypcsCMqXo0Zwl3cgVWZkB9n7r7uJUxX8VDGhl/8xyPCNv0hjyL8iGjp9K8h5zcSNIu867wkwhySKezE3XAoGBAOXOqaeHumqM5C4rCkPu0Ffv2ubUVcjbKSkcfVoCMKN4uwHsDzWKS6bovDyeVdfj+60I+tVWoZPOyLCFi7bI7lVAJZrdAdA1s1/dKs+WTqFJuaNjJ/yewJ88n1erUBk1pVGK8KqIfjEVQNFFWMhwIwkCtZ3ftpVCwFlYJkX4SwOF");
-//		PrivateKey privateKey = RSAUtil.loadPrivateKey("d:\\cipher\\Cert.p12", "111222");
-		
-		
-		// 公钥加密
-		String currData = RSAUtil.encrypt(publicKey, strModel);
-		System.out.println(currData);
-		// 私钥解密
-		System.out.println(RSAUtil.decrypt(privateKey, currData));
-
-		//私钥签名
-		String currSign = RSAUtil.generateSignature(currData, privateKey);
-		System.out.println(currSign);
-		 //公钥验证签名
-		 System.out.println(RSAUtil.verifySignature(currData, publicKey, currSign));
+		try {
+			KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");
+	        SecureRandom secureRandom;
+	        if (seed != null && !"".equals(seed)) {
+	            secureRandom = new SecureRandom(seed.getBytes());
+	        } else {
+	            secureRandom = new SecureRandom();
+	        }
+			keyPairGen.initialize(KEY_SIZE, secureRandom);//秘钥长度
+			KeyPair keyPair = keyPairGen.generateKeyPair();
+			// Generate keys
+			RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
+			RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
+			System.out.println("privateKey="+Base64.encode(privateKey.getEncoded()));
+			System.out.println("publicKey="+Base64.encode(publicKey.getEncoded()));
+			
+	//		PublicKey publicKey = RSAUtil.loadPublicKey("d:\\t_dwf_public.crt");
+	//		PublicKey publicKey = RSAUtil.loadPublicKey("d:\\t_dwf_public_encrypted");
+//			PublicKey publicKey = RSAUtil.loadPublicKey("d:\\t01_dwf_public_decrypted");
+			//Zef6tQ8fY 	YgDc2nm7i 	FtmyJzEo8v
+//			PrivateKey privateKey = RSAUtil.loadPrivateKey("d:\\dwf_private.pfx", "Zef6tQ8fY");
+	
+			//4096
+	//		PublicKey publicKey = RSAUtil.getPublicKey("MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA66UuFgI3mmeBXaCSyjUhYdA/yyV+GlHzX+PgNNoCivFt7aVR7klM+khkzlfofHVsVjat8SmBO1qNK9IHC3cV3Km31qlk+EErbAcw0P3mirjZW+cKvtkb9hElE3tciku9MmWkWSx/IBJsF64nnaZlM+iiTi+ULi1ET6SkSUfS0DROTVQWJ8q3FEBrMWD5uEoJz8wfgUjS4KLqdZfgzdMO/DWRJNAsZ9j/XXFBEe9+lCuu17zd3yQjHKB1NZU+vZ/922AOJhNO+ema5bWvANFkOD5d53ea8dTl69LC2l06LJvQOQ2I2dK02mB0uiW4U2+mjLfALi4GRgqNwVp+Ug+z4MJWG+MptIQn9IgSYtJ4whSmCa1SkvJsE2Aw7bQN9Iyg+vUlgepBqpmF2olCv+2/Ye0YoGO0ml38j+qcWOoyc1EUu8UA+3+MxQbUTVJo8s6rHxRt55uQax1gqgF3dpesntD/2/5dqnF4tJOwe+vP6EGVgu7mGIIAO81XF+hYXOO62MjUbo69cJe6fvm5Ix7DEGK/BkK8wR2sqsYEOEZBI//cYfT9xP38Tuu2DzcK2XoNHQ+fJoNe1bXcvbmGmrzk320GrmyRmd/NR+X9feZIgeZi8Yo2Dj5DiPo8ZgOkoCO0ECRFNX0uTde5sXnM8isohQqiRpJXEy3FDmkU3wysVhcCAwEAAQ==");
+	//		PrivateKey privateKey = RSAUtil.getPrivateKey("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");
+	//		System.out.println(RSAUtil.decrypt(privateKey, "eNBwKijqWLhMLwq7VSZ3kVdF5xrYceb3kYAA2wnOInukXYXTs1HekqUmGOtsNlZ8RRPTwnhj+AJNhU5JGt3hiiS4lRlVySI8Zo/ScSIYRcB6sMFavGEjIkFSxaqu+U7d0UkT9LC3ATkU4Wi4QEJWBMgZjdFjp5yEvo1VH+ctkod13lFAi5z9s7SOJUIYxcfhT5EPP8Rns5vpXQC4zc5CFT6rJDnv4gfIa3QVM4myL/AP8uFXuc0lBESjNooj/ldUd5OSrUN0Kelvhj5XavJzZO8QN0VH54BnfMGvX04g8RgiKyMleWUzteT6XSAhEkPsU2ghcPUxKnGqWB1TwN09MnM3Srz5MsdRNai3AnZSwXhVv3KHCc0cUQoG0NM1GSYf++6zY1zeDQaWEXSmyDj4lg0kj5WXoSd/WZ86kE2imX7/Hx3WbnFDH3Mk9sHS6AYZkya7M1a5KRFaqTEJkv7KCgT5dENOKCL4IYZQCXiWO4ot+bq/Tr87PUeooUN02O/OQzTAS1DZC8It3EzJ9EbLhqzjbYsUJc+fpctvnI/O4eGeZGf2YqwsqigvhnrgQU+yrU9s+xDxlj9+yqAe7f2WmtJe2aOBmFIrdxSGbr3o9uQioYqhHMS/F0gTszWe1DTrJkMH5hFhC8oKGldLIMDUFt1pFSARxnhVwAK3XWR9wrA="));
+	
+			System.out.println("-----------------------------------");
+			// 公钥加密
+			String encryptedData = RSAUtil.encrypt(publicKey, plainString);
+			System.out.println(encryptedData);
+			// 私钥解密
+			System.out.println(RSAUtil.decrypt(privateKey, encryptedData));
+	
+			//私钥签名
+			String signString = RSAUtil.generateSignature(encryptedData, privateKey);
+			System.out.println(signString);
+			 //公钥验证签名
+			System.out.println(RSAUtil.verifySignature(encryptedData, publicKey, signString));
+			
+			File file = new File("D:\\t_dwf_public.crt");
+			File encryptedFile = new File("D:\\t01_dwf_public_encrypted");
+			File decryptedFile1 = new File("D:\\t01_dwf_public_decrypted");
+			encryptFile(publicKey, file, encryptedFile);
+			decryptFile(privateKey, encryptedFile, decryptedFile1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -186,10 +214,10 @@ public class RSAUtil {
 	 * @return
 	 * @throws RuntimeException
 	 */
-	public static String encrypt(Key key, String dataStr)
+	public static String encrypt(Key key, String plainString)
 			throws RuntimeException {
 		try {
-			byte[] data = dataStr.getBytes("UTF-8");
+			byte[] data = plainString.getBytes("UTF-8");
 			Cipher cipher = Cipher.getInstance(transformation);
 			cipher.init(Cipher.ENCRYPT_MODE, key);
 			
@@ -200,12 +228,12 @@ public class RSAUtil {
 			byte[] raw = new byte[outputSize * blocksSize];
 			int i = 0;
 			while (data.length - i * MAX_ENCRYPT_BLOCK > 0) {
-				if (data.length - i * MAX_ENCRYPT_BLOCK > MAX_ENCRYPT_BLOCK)
-					cipher.doFinal(data, i * MAX_ENCRYPT_BLOCK,
-							MAX_ENCRYPT_BLOCK, raw, i * outputSize);
-				else
-					cipher.doFinal(data, i * MAX_ENCRYPT_BLOCK, data.length - i
-							* MAX_ENCRYPT_BLOCK, raw, i * outputSize);
+				if (data.length - i * MAX_ENCRYPT_BLOCK > MAX_ENCRYPT_BLOCK){
+					cipher.doFinal(data, i * MAX_ENCRYPT_BLOCK,MAX_ENCRYPT_BLOCK, raw, i * outputSize);
+				}
+				else{
+					cipher.doFinal(data, i * MAX_ENCRYPT_BLOCK, data.length - i* MAX_ENCRYPT_BLOCK, raw, i * outputSize);
+				}
 				i++;
 			}
 			return Base64.encode(raw);
@@ -225,13 +253,10 @@ public class RSAUtil {
 	 * @return
 	 * @throws RuntimeException
 	 */
-	public static String decrypt(Key key, String decryptData)
+	public static String decrypt(Key key, String encryptedData)
 			throws RuntimeException {
 		try {
-			byte[] base64Bytes = decryptData.getBytes("UTF-8");
-			
-//			byte[] data = Base64.decode(base64Bytes);
-			byte[] data = Base64.decode(decryptData);
+			byte[] data = Base64.decode(encryptedData);
 			
 			Cipher cipher = Cipher.getInstance(transformation);
 			cipher.init(Cipher.DECRYPT_MODE, key);
@@ -343,10 +368,8 @@ public class RSAUtil {
 //		priKeyStr = "MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAJVGIOQQpfL8oFN75SaQD596rXMZYiAHGSBvPtoEkZvn54woqiINGgQfOUad3AUqbiZBY1+24w581yiDNikYpIR8Luyp8E8MewY9mLExbMvcnXTOQxNajowMhcoqowbU+B6rXAQ18mNxhJT96dhJmSDesVM5oFIUh36us+M+jtjjAgMBAAECgYABtnxKIabF0wBD9Pf8KUsEmXPEDlaB55LyPFSMS+Ef2NlfUlgha+UQhwsxND6CEKqS5c0uG/se/2+4l0jXz+CTYBEh+USYB3gxcMKEo5XDFOGaM2Ncbc7FAKJIkYYN2DHmr4voSM5YkVibw5Lerw0kKdYyr0Xd0kmqTok3JLiLgQJBAOGZ1ao9oqWUzCKnpuTmXre8pZLmpWPhm6S1FU0vHjI0pZh/jusc8UXSRPnx1gLsgXq0ux30j968x/DmkESwxX8CQQCpY1+2p1aX2EzYO3UoTbBUTg7lCsopVNVf41xriek7XF1YyXOwEOSokp2SDQcRoKJ2PyPc2FJ/f54pigdsW0adAkAM8JTnydc9ZhZ7WmBhOrFuGnzoux/7ZaJWxSguoCg8OvbQk2hwJd3U4mWgbHWY/1XB4wHkivWBkhRpxd+6gOUjAkBH9qscS52zZzbGiwQsOk1Wk88qKdpXku4QDeUe3vmSuZwC85tNyu+KWrfM6/H74DYFbK/MzK7H8iz80uJye5jVAkAEqEB/LwlpXljFAxTID/SLZBb+bCIoV/kvg+2145F+CSSUjEWRhG/+OH0cQfqomfg36WrvHl0g/Xw06fg31HgK";
 		
 		PrivateKey privateKey = null;
-		PKCS8EncodedKeySpec priPKCS8;
-//		PKCS12Attribute
 		try {
-			priPKCS8 = new PKCS8EncodedKeySpec(Base64.decode(priKeyStr));
+			PKCS8EncodedKeySpec priPKCS8 = new PKCS8EncodedKeySpec(Base64.decode(priKeyStr));
 			KeyFactory keyFactory = KeyFactory.getInstance("RSA");
 			privateKey = keyFactory.generatePrivate(priPKCS8);
 		} catch (Exception e) {
@@ -354,5 +377,77 @@ public class RSAUtil {
 		} 
 		System.out.println("privateKey--"+privateKey.toString());
 		return privateKey;
+	}
+	
+	public static void encryptFile(PublicKey publicKey, File file, File newFile) {
+		try {
+			InputStream is = new FileInputStream(file);
+			OutputStream os = new FileOutputStream(newFile);
+
+			byte[] bytes = new byte[53];
+			while (is.read(bytes) > 0) {
+				byte[] e = encrypt(publicKey, bytes);
+				bytes = new byte[53];
+				os.write(e, 0, e.length);
+			}
+			os.close();
+			is.close();
+			System.out.println("encrypt write success");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void decryptFile(PrivateKey privateKey, File file, File newFile) {
+		try {
+			InputStream is = new FileInputStream(file);
+			OutputStream os = new FileOutputStream(newFile);
+			byte[] bytes1 = new byte[64];
+			while (is.read(bytes1) > 0) {
+				byte[] de = decrypt(privateKey, bytes1);
+				bytes1 = new byte[64];
+				os.write(de, 0, de.length);
+			}
+			os.close();
+			is.close();
+			System.out.println("decrypt write success");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * * Encrypt String. *
+	 * @return byte[]
+	 */
+	private static byte[] encrypt(Key key, byte[] obj) {
+		if (key != null) {
+			try {
+				Cipher cipher = Cipher.getInstance("RSA");
+				cipher.init(Cipher.ENCRYPT_MODE, key);
+				return cipher.doFinal(obj);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * * Basic decrypt method *
+	 * @return byte[]
+	 */
+	private static byte[] decrypt(Key key, byte[] obj) {
+		if (key != null) {
+			try {
+				Cipher cipher = Cipher.getInstance("RSA");
+				cipher.init(Cipher.DECRYPT_MODE, key);
+				return cipher.doFinal(obj);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
 	}
 }
