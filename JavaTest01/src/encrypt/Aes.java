@@ -20,8 +20,7 @@ import javax.crypto.spec.SecretKeySpec;
 public class Aes {
 
 	//jdk默认只能使用16字节的秘钥，要使用24和32字节秘钥，需另下载jar包覆盖jdk自身的jar包(美国加密算法出口限制)
-//	public final static String secretKey = "Px0D34a7VnT6sqkn";// (128、192、256位即16字节，24字节，32字节)
-	public final static String secretKey = "1234567890weixin";// (128、192、256位即16字节，24字节，32字节)
+	public final static String secretKey = "Px0D34a7VnT6sqkn";// (128、192、256位即16字节，24字节，32字节)
 	private static final String ALGORITHM = "AES";// 对称加密算法。可选AES，DES，DESede
 	private static final String TRANSFORMATION = "AES/CBC/PKCS5Padding";
 	private static final String TRANSFORMATION_FILE = "AES/ECB/PKCS5Padding";//"AES" 四种模式(ECB、CBC、CFB、OFB)
@@ -35,22 +34,17 @@ public class Aes {
 		String content = "打发打发的撒safdsafd1231232";
 		String aesResult;
 		try {
-			aesResult = encryptAES(content);
 			System.out.println("加密内容： " + content);
-			System.out.println("AES加密结果： " + encryptAES(content) );
-			System.out.println("AES解密结果： " + decryptAES(aesResult));
+			aesResult = encryptString(secretKey, content);
+			System.out.println("AES加密结果： " + aesResult);
+			System.out.println("AES解密结果： " + decryptString(secretKey, aesResult));
 			
-		    long begin = System.currentTimeMillis();
-//	        encryptFile(secretKey,  "D:\\t_dwf_public.crt", "D:\\t_dwf_public_encrypted");
-//	        decryptFile(secretKey,  "D:\\t_dwf_public_encrypted", "D:\\t_dwf_public_decrypted");
-		    
+		    long begin = System.currentTimeMillis();		    
 //	        encryptFile(secretKey,  "D:\\t1.mp4", "D:\\t1-encrypted1.mp4");
 //	        encryptFile(secretKey,  "D:\\t1-encrypted1.mp4", "D:\\t1-encrypted2.mp4");
 //	        decryptFile(secretKey,  "D:\\t1-encrypted2.mp4", "D:\\t1_decrypted1.mp4");
 //	        decryptFile(secretKey,  "D:\\t1_decrypted1.mp4", "D:\\t1_decrypted2.mp4");
 	        
-	        encryptFile(secretKey,  "F:\\github_project\\githubProject\\codeUtil\\keystore.zip", "F:\\github_project\\githubProject\\codeUtil\\keystore-encrypt.zip");
-	        decryptFile(secretKey,  "F:\\github_project\\githubProject\\codeUtil\\keystore-encrypt.zip", "F:\\github_project\\githubProject\\codeUtil\\keystore-decrypt.zip");
 	        long end = System.currentTimeMillis();
 	        System.err.println("耗时：" + (end-begin)/1000 + "秒");
 		} catch (Exception e) {
@@ -87,7 +81,7 @@ public class Aes {
 	 * @param content
 	 * @return
 	 */
-	public static String encryptAES(String content) {
+	public static String encryptString(String secretKey, String content) {
 		if ("".equals(content) || content == null) {
 			return "";
 		}
@@ -116,15 +110,15 @@ public class Aes {
 	 *
 	 * @param content
 	 */
-	public static String decryptAES(String content) {
+	public static String decryptString(String secretKey, String content) {
 		try {
 			byte[] encryptedBytes = Base64.decode(content);
 			byte[] enCodeFormat = secretKey.getBytes();
-			SecretKeySpec secretKey = new SecretKeySpec(enCodeFormat, ALGORITHM);
+			SecretKeySpec secretKeySpec = new SecretKeySpec(enCodeFormat, ALGORITHM);
 			byte[] initParam = IV_STRING.getBytes();
 			IvParameterSpec ivParameterSpec = new IvParameterSpec(initParam);
 			Cipher cipher = Cipher.getInstance(TRANSFORMATION);
-			cipher.init(Cipher.DECRYPT_MODE, secretKey, ivParameterSpec);
+			cipher.init(Cipher.DECRYPT_MODE, secretKeySpec, ivParameterSpec);
 			byte[] result = cipher.doFinal(encryptedBytes);
 			return new String(result, ENCODEING);
 		} catch (Exception e) {
