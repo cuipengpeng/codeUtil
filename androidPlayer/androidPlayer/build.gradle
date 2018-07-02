@@ -9,6 +9,8 @@ android {
     }
     defaultConfig {
         applicationId "com.android.player"
+//        versionCode 191
+//        versionName "1.9.1"
         minSdkVersion 15
         targetSdkVersion 26
         compileOptions {
@@ -16,8 +18,10 @@ android {
             targetCompatibility JavaVersion.VERSION_1_7
         }
         multiDexEnabled true
-//        versionCode 191
-//        versionName "1.9.1"
+        ndk {
+            //添加极光推送对应的cpu类型的.so库
+            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a', 'x86', 'x86-64' //'mips','mips64'
+        }
         manifestPlaceholders = [JPUSH_PKGNAME      : applicationId,
                                 JPUSH_APPKEY       : rootProject.ext.JPUSH_APPKEY, //JPush上注册的包名对应的appkey.
                                 JPUSH_CHANNEL      : "developer-default", //暂时填写默认值即可.
@@ -30,6 +34,7 @@ android {
                                 UMENG_CHANNEL_VALUE: "baidu",
         ]
     }
+
     signingConfigs {
         release {
             storeFile file("qualitymarket")
@@ -38,6 +43,7 @@ android {
             keyPassword "jfmarket"
         }
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -83,12 +89,23 @@ android {
 }
 
 dependencies {
-    compile project(':slidingmenu')
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile files('libs/pinyin4j-2.5.0.jar')
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-
+    compile project(':slidingmenu')
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.android.support:design:26.0.0-alpha1'
     compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:support-v4:26.+'
     compile 'com.android.support:cardview-v7:26.0.0-alpha1'
+    compile 'com.jakewharton:butterknife:8.8.1'
+    compile 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile 'com.squareup.okhttp3:okhttp:3.9.0'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-scalars:2.3.0'
+    //compile 'com.github.bumptech.glide:glide:3.7.0'
+    //compile 'com.umeng.sdk:common:latest.integration'
+    //compile 'com.umeng.sdk:analytics:latest.integration'
+    //compile 'com.youth.banner:banner:1.4.10'
+    //compile 'com.jakewharton:disklrucache:2.0.2'
 }

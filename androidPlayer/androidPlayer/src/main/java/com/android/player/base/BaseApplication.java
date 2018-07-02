@@ -1,16 +1,19 @@
 package com.android.player.base;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.support.multidex.MultiDex;
 
+import com.android.player.http.HttpRequest;
 import com.android.player.media.IPlayerEngine;
 import com.android.player.media.PlayerEngineImpl;
 
 public class BaseApplication extends Application {
 	public static final String TAG = "BaseApplication";
-
+	public static Context applicationContext;
 	private IPlayerEngine playerEngine;
 
 	public IPlayerEngine getPlayerEngine() {
@@ -24,8 +27,10 @@ public class BaseApplication extends Application {
 
 	@Override
 	public void onCreate() {
-		instance = this;
 		super.onCreate();
+		instance = this;
+		applicationContext=this;
+		HttpRequest.initEnvironment();
 	}
 
 	public static BaseApplication getInstance() {
@@ -50,5 +55,11 @@ public class BaseApplication extends Application {
 		}
 
 		return version;
+	}
+
+	@Override
+	protected void attachBaseContext(Context base) {
+		super.attachBaseContext(base);
+		MultiDex.install(this);
 	}
 }
