@@ -93,13 +93,13 @@ public abstract class BaseUIFragment extends Fragment implements IBaseView {
     public void onStart() {
         super.onStart();
         initTitleBar();
-        initPageData();
         initPageSetting();
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        initPageData();
         if (isCountPage() && !TextUtils.isEmpty(mClassName)) {
 //            MobclickAgent.onPageStart(mClassName);
         }

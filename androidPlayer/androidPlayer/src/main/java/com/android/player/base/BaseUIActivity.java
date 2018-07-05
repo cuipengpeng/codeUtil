@@ -71,10 +71,14 @@ public abstract class BaseUIActivity extends FragmentActivity implements IBaseVi
 
         initLocalDataView();
         initTitleBar();
-        initPageData();
         initPageSetting();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initPageData();
+    }
 
     protected View getContentView() {
         return null;
