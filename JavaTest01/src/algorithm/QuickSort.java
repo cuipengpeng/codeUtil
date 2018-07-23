@@ -6,14 +6,14 @@ public class QuickSort {
 //		int[] arr = new int[]{4,1,5,12,7,13,2,11,6,3,8,50,9};
 		int[] arr = new int[]{5,4,3,2,1,6,4,3,2,1,12,7,13,2,11,6,3,8,50,9};
 		for(int i=0;i<=arr.length-1;i++){
-			System.out.println("--"+arr[i]);
+			System.out.print("--"+arr[i]);
 		}	
-		System.out.println("###############");
+		System.out.println("\n###############");
 	    quikSort(arr,0,arr.length-1);    
 //	    quikSort(arr,3, 9);    
 		
 		for(int i=0;i<=arr.length-1;i++){
-			System.out.println("--"+arr[i]);
+			System.out.print("--"+arr[i]);
 		}
 	}
 
@@ -27,7 +27,7 @@ public class QuickSort {
 	    int lowBaseValue = arr[lowPosition];
 	    int tmpLowPosition=lowPosition;
 	    for(int j=lowPosition+1;j<=highPosition;j++){
-	        if(arr[j]<=lowBaseValue){        //a[j] is smaller than pivot
+	        if(arr[j]<lowBaseValue){        //a[j] is smaller than pivot
 	            tmpLowPosition++;    //a[i] is bigger than pivot
 	            System.out.println("tmpLowPosition="+tmpLowPosition+"--j="+j);
 	            System.out.println("tmpLowPositionValue="+arr[tmpLowPosition]+"--jValue="+arr[j]);

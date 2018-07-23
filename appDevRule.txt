@@ -15,3 +15,40 @@ app多版本兼容：接口地址v1/v2路径
 标准化，自动化，参数化
 
 架构设计：既支持默认统一处理，又支持自定义处理
+
+
+
+
+扫描二维码
+
+所有请求都加token和版本号：
+token用于单设备登陆，
+版本号用于强制更新：登陆一定要检查版本更新
+
+http://blog.csdn.net/lmj623565791/article/details/43452969
+所有请求都传版本号，便于服务器端调试错误
+版本更新，各版本的兼容性：应用启动时，用户登录时
+单设备登录.验证请求的合法性：device_token、token
+整个应用初始化时的开发.测试.预发.线上环境初始化
+debug 版和release版
+渠道号、来源市场
+
+
+单链表反转: 两次赋值两次指向的数据交换
+Node first;
+Node head;
+Node node;
+first = head;
+while(first.next!=null){
+	tmp=first.next;
+	first.next = tmp.next;
+	tmp.next=head;
+	head=tmp;
+}
+二叉树左序，右序，中序遍历: 即递归调用
+层次遍历的实现？
+
+
+
+
+
