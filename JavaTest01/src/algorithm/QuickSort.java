@@ -19,22 +19,24 @@ public class QuickSort {
 
 	//low:�������߽�ֵ����ʼΪ0
 	//high:������ұ߽�ֵ����ʼΪlength-1
+	//https://blog.csdn.net/troubleshooter/article/details/80421861
+	//https://blog.csdn.net/china77536816/article/details/44966405
 	public static void quikSort(int arr[], int lowPosition, int highPosition){
-	    if(lowPosition>=highPosition){    //�ݹ��˳�������ֻ��һ��Ԫ��ʱ
+	    if(lowPosition>=highPosition){   
 	        return;
 	    }
 
 	    int lowBaseValue = arr[lowPosition];
-	    int tmpLowPosition=lowPosition;
+	    int swapMiddlePosition=lowPosition;
 	    for(int j=lowPosition+1;j<=highPosition;j++){
 	        if(arr[j]<lowBaseValue){        //a[j] is smaller than pivot
-	            tmpLowPosition++;    //a[i] is bigger than pivot
-	            System.out.println("tmpLowPosition="+tmpLowPosition+"--j="+j);
-	            System.out.println("tmpLowPositionValue="+arr[tmpLowPosition]+"--jValue="+arr[j]);
-	            if(tmpLowPosition!=j){
+	            swapMiddlePosition++;    
+	            //System.out.println("swapMiddlePosition="+swapMiddlePosition+"--j="+j);
+	            //System.out.println("swapMiddlePositionValue="+arr[swapMiddlePosition]+"--jValue="+arr[j]);
+	            if(swapMiddlePosition!=j){
 	     	       //Swap pivot to middle position
-	         	   int temp = arr[tmpLowPosition];
-	         	   arr[tmpLowPosition] = arr[j];
+	         	   int temp = arr[swapMiddlePosition];
+	         	   arr[swapMiddlePosition] = arr[j];
 	         	   arr[j] = temp;
 	            }
 
@@ -42,11 +44,10 @@ public class QuickSort {
 	    }
 	       //Swap pivot to middle position
 		   int temp2 = arr[lowPosition];
-		   arr[lowPosition] = arr[tmpLowPosition];
-		   arr[tmpLowPosition] = temp2;
+		   arr[lowPosition] = arr[swapMiddlePosition];
+		   arr[swapMiddlePosition] = temp2;
 		   
-	    //���зֻ�(partition),�ݹ�
-	    quikSort(arr,lowPosition,tmpLowPosition-1);        //a[i] is the pivot now
-	    quikSort(arr,tmpLowPosition+1,highPosition);
+	    quikSort(arr,lowPosition,swapMiddlePosition-1);       
+	    quikSort(arr,swapMiddlePosition+1,highPosition);
 	}
 }
