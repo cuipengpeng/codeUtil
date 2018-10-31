@@ -236,7 +236,7 @@ public class CurrentPlusActivity extends BaseUIActivity {
         Map<String, String> params = new HashMap<String, String>();
         params.put("token", SPUtil.getInstance().getToken());
 
-        HttpRequest.post(HttpRequest.APP_INTERFACE_WEB_URL_ENV_TEST + HttpRequest.BAOBAO_ASSERT_INFO, params, this, new HttpRequest.HttpResponseCallBank() {
+        HttpRequest.post(HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.BAOBAO_ASSERT_INFO, params, this, new HttpRequest.HttpResponseCallBank() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 baobaoAssertInfoBean = JSON.parseObject(response.body(), BaobaoAssertInfoBean.class);
@@ -337,7 +337,7 @@ public class CurrentPlusActivity extends BaseUIActivity {
     private void getSevenDayYield() {
         Map<String, String> params = new HashMap<String, String>();
 
-        HttpRequest.post(HttpRequest.APP_INTERFACE_WEB_URL_ENV_TEST + HttpRequest.SEVEN_DAY_YIELD_LIST, params, this, new HttpRequest.HttpResponseCallBank() {
+        HttpRequest.post(HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.SEVEN_DAY_YIELD_LIST, params, this, new HttpRequest.HttpResponseCallBank() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 SevenDayYieldTrendChartBean sevenDayYieldTrendChartBean = JSON.parseObject(response.body(), SevenDayYieldTrendChartBean.class);

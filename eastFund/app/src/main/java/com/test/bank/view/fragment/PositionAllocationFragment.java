@@ -313,7 +313,7 @@ public class PositionAllocationFragment extends BaseUIFragment {
         Map<String, String> params = new HashMap<String, String>();
         params.put("fundcode", ((PositionAllocationActivity) getActivity()).mFundCode);
 
-        HttpRequest.post(HttpRequest.APP_INTERFACE_WEB_URL_ENV_TEST + HttpRequest.POSITION_ALLOCATION, params, this, new HttpRequest.HttpResponseCallBank() {
+        HttpRequest.post(HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.POSITION_ALLOCATION, params, this, new HttpRequest.HttpResponseCallBank() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 PositionAllocationBean positionAllocationBean = JSON.parseObject(response.body(), PositionAllocationBean.class);

@@ -167,7 +167,7 @@ public class FundBuyRuleFragment extends BaseUIFragment {
         Map<String, String> params =  new HashMap<String, String>();
         params.put("fundcode", fundCode);
 
-        HttpRequest.post(HttpRequest.APP_INTERFACE_WEB_URL_ENV_TEST +HttpRequest.TRADE_NOTICE, params, this, new HttpRequest.HttpResponseCallBank() {
+        HttpRequest.post(HttpRequest.APP_INTERFACE_WEB_URL +HttpRequest.TRADE_NOTICE, params, this, new HttpRequest.HttpResponseCallBank() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 tradeNoticeBean = JSON.parseObject(response.body(), TradeNoticeBean.class);

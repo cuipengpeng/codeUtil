@@ -8,7 +8,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -183,7 +182,7 @@ public class PutInActivity extends BaseLocalDataActivity {
         params.put("fundcode", fundCode);
         params.put("type", "1"); //type为0时必须传入fundcode，为1时无需传入默认fundcode为宝宝代码: 按接口要求"活期+"页面type写死传1
 
-        HttpRequest.post(HttpRequest.APP_INTERFACE_WEB_URL_ENV_TEST + HttpRequest.PUT_IN_AND_GET_OUT_BANK_CARD_INFO, params, this, new HttpRequest.HttpResponseCallBank() {
+        HttpRequest.post(HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.PUT_IN_AND_GET_OUT_BANK_CARD_INFO, params, this, new HttpRequest.HttpResponseCallBank() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 getOutBankCardInfoBean = JSON.parseObject(response.body(), GetOutBankCardInfoBean.class);
@@ -214,7 +213,7 @@ public class PutInActivity extends BaseLocalDataActivity {
         params.put("pwd", Aes.encryptAES(tradePassword));
         params.put("fundType", getOutBankCardInfoBean.getFundType() + "");
 
-        HttpRequest.post(HttpRequest.APP_INTERFACE_WEB_URL_ENV_TEST + HttpRequest.CURRENT_PLUS_FUND_BUY, params, this, TAG, new HttpRequest.HttpResponseCallBank() {
+        HttpRequest.post(HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.CURRENT_PLUS_FUND_BUY, params, this, TAG, new HttpRequest.HttpResponseCallBank() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 PutInAndGetOutResultBean putInAndGetOutResultBean = JSON.parseObject(response.body(), PutInAndGetOutResultBean.class);

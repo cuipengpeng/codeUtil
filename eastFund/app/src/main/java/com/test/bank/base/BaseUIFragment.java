@@ -19,9 +19,6 @@ import com.umeng.analytics.MobclickAgent;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by 55 on 2017/11/3.
- */
 
 public abstract class BaseUIFragment extends Fragment implements IBaseView {
     public static String TAG = BaseFragment.class.getName();

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#ffffff"
     android:orientation="vertical">
 
     <include layout="@layout/title_base" />
@@ -12,7 +12,7 @@
         android:id="@+id/ll_baseActivity_contentView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/appBackgroundColor"
+        android:background="#f5f5f5"
         android:orientation="vertical">
     </LinearLayout>
 

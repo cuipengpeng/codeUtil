@@ -2,10 +2,6 @@ package com.test.bank.base;
 
 import com.test.bank.inter.OnResponseListener;
 
-/**
- * Created by 55 on 2017/11/6.
- * 所有V层的基类
- */
 
 public interface IBaseView {
     //显示进度加载框

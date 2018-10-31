@@ -14,9 +14,7 @@ import android.widget.TextView;
 
 import com.test.bank.R;
 
-/**
- * Created by yangcai on 2016/1/27.
- */
+
 public class YunRefreshHeader extends LinearLayout implements BaseRefreshHeader {
     private Context mContext;
     private AnimationDrawable animationDrawable;

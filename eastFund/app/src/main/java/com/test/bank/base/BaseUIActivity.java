@@ -15,9 +15,7 @@ import com.test.bank.inter.OnResponseListener;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/*
-* 描    述：<br>
-*/
+
 public abstract class BaseUIActivity extends CommonActivity {
     public static String TAG = BaseUIActivity.class.getName();
 

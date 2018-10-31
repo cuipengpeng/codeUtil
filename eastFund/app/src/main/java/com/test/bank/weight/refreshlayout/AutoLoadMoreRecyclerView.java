@@ -19,9 +19,7 @@ import android.view.ViewGroup;
 import com.test.bank.R;
 import com.test.bank.utils.LogUtils;
 
-/**
- * Created by jingbin on 2016/1/28.
- */
+
 public class AutoLoadMoreRecyclerView extends RecyclerView {
     private WrapAdapter mWrapAdapter;
     private SparseArray<View> mHeaderViews = new SparseArray<View>();

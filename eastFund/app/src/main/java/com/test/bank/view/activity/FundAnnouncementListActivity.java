@@ -85,7 +85,7 @@ public class FundAnnouncementListActivity extends BaseUIActivity {
         params.put("pageNo", pageNo+"");
         params.put("pageSize", ConstantsUtil.PAGE_SIZE+"");
 
-        HttpRequest.post(HttpRequest.APP_INTERFACE_WEB_URL_ENV_TEST +HttpRequest.FUND_ANNOUNCEMENT_LIST, params, this, new HttpRequest.HttpResponseCallBank() {
+        HttpRequest.post(HttpRequest.APP_INTERFACE_WEB_URL +HttpRequest.FUND_ANNOUNCEMENT_LIST, params, this, new HttpRequest.HttpResponseCallBank() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 FundAnnouncementListBean  fundAnnouncementListBean = JSON.parseObject(response.body(), FundAnnouncementListBean.class);

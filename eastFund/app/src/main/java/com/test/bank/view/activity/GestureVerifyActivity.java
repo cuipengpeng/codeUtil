@@ -741,7 +741,7 @@ public class GestureVerifyActivity extends BaseLocalDataActivity {
         Map<String, String> params = new HashMap<String, String>();
         params.put("mobile", SPUtil.getInstance().getUserInfo().getMobile().trim());
         params.put("password", MD5.md5(password));
-        HttpRequest.post(HttpRequest.APP_INTERFACE_WEB_URL_ENV_TEST + HttpRequest.FUND_LOGIN, params, this, new HttpRequest.HttpResponseCallBank() {
+        HttpRequest.post(HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.FUND_LOGIN, params, this, new HttpRequest.HttpResponseCallBank() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
 //                mFundTrendBean = JSON.parseObject(response.body(), FundTrendBean.class);
