@@ -6,6 +6,7 @@ import java.util.Map;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -20,7 +21,6 @@ import retrofit2.http.Url;
 
 public interface APIService {
     /**
-     * 、
      * * 纯文本接口
      *
      * @param url     请求URl
@@ -32,7 +32,6 @@ public interface APIService {
     Call<String> getRequestAPiString(@Url String url, @HeaderMap Map<String, String> headers, @QueryMap Map<String, String> params);
 
     /**
-     * 、
      * * 纯文本接口
      *
      * @param url     请求URl
@@ -42,7 +41,18 @@ public interface APIService {
      */
     @FormUrlEncoded
     @POST
-    Call<String> getAPiString(@Url String url, @HeaderMap Map<String, String> headers, @FieldMap Map<String, String> params);
+    Call<String> postFormAPiString(@Url String url, @HeaderMap Map<String, String> headers, @FieldMap Map<String, String> params);
+
+    /**
+     * * 纯文本接口
+     *
+     * @param url     请求URl
+     * @param headers 请求header
+     * @param params  请求参数
+     * @return
+     */
+    @POST
+    Call<String> postJsonAPiString(@Url String url, @HeaderMap Map<String, String> headers, @Body RequestBody  params);
 
 
     /**

@@ -3,6 +3,7 @@ package com.test.bank.http;
 import android.content.Context;
 import android.util.Log;
 
+import com.google.gson.Gson;
 import com.test.bank.base.BaseApplication;
 import com.test.bank.base.BaseUIActivity;
 import com.test.bank.base.BaseUIFragment;
@@ -186,7 +187,15 @@ public class HttpRequest {
             }
             call = apiService.uploadFileWithText(url, headers, params, filesMap);
         } else {
-            call = apiService.getAPiString(url, headers, params);
+//            if(getRequest){
+//                call = apiService.getRequestAPiString(url, headers, params);
+//            }else {
+                //application/x-www-form-urlencoded格式
+//                call = apiService.postFormAPiString(url, headers, params);
+                //application/json格式
+                RequestBody body = RequestBody.create(MediaType.parse("application/json"), new Gson().toJson(params));
+                call = apiService.postJsonAPiString(url, headers, body);
+//            }
         }
 
         LoadingAlertDialog loadingAlertDialog = null;
