@@ -28,6 +28,7 @@ public class AsyncResponseCallBack implements Callback<String> {
     private boolean showLoading = true;
     private Dialog mLoadingDialog;
     Context context = BaseApplication.applicationContext;
+    private int retryCount =0;
 
     public AsyncResponseCallBack(HttpRequest.HttpResponseCallBank onResultFailLisenter) {
         this.onResultFailLisenter = onResultFailLisenter;
@@ -131,7 +132,12 @@ public class AsyncResponseCallBack implements Callback<String> {
     @Override
     public void onFailure(Call<String> call, Throwable t) {
         LogUtils.printLog("AsyncResponse_onFailure--" + t.getMessage() + "--" + call.request().method());
-        onResultFailLisenter.onFailure(call, t);
+//        if(retryCount < 3){
+//            call.clone().enqueue(this);
+//            retryCount++;
+//        }else {
+            onResultFailLisenter.onFailure(call, t);
+//        }
         showMyaccounFragmentContentView();
     }
 }
