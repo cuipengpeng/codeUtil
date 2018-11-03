@@ -52,7 +52,7 @@ public class IndustryDistributionFragment extends BaseUIFragment {
 
     @Override
     protected void initPageData() {
-        industryDistributionAdapter = new IndustryDistributionAdapter(getActivity(), mIndustryDistributionList);
+        industryDistributionAdapter = new IndustryDistributionAdapter(getActivity());
         industryDistributionRecyclerView.setAdapter(industryDistributionAdapter);
         industryDistributionRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 

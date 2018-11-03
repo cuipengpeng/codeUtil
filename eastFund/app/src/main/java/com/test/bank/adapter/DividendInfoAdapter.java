@@ -24,10 +24,9 @@ public class DividendInfoAdapter extends RecyclerView.Adapter<DividendInfoAdapte
     Context mContext;
     List<FundInfoBean.Divlist> mDataList = new ArrayList<FundInfoBean.Divlist>();
 
-    public DividendInfoAdapter(Context context, List<FundInfoBean.Divlist> dataList) {
+    public DividendInfoAdapter(Context context) {
         this.mContext = context;
         this.mDataList.clear();
-        this.mDataList.addAll(dataList);
     }
 
     public void upateData(boolean isRefresh, List<FundInfoBean.Divlist> data) {

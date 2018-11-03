@@ -23,10 +23,9 @@ public class TradeNoticeRansomAdapter extends RecyclerView.Adapter<TradeNoticeRa
     Context mContext;
     List<TradeNoticeBean.Call_rate_list> mDataList = new ArrayList<>();
 
-    public TradeNoticeRansomAdapter(Context context, List<TradeNoticeBean.Call_rate_list> dataList) {
+    public TradeNoticeRansomAdapter(Context context) {
         this.mContext = context;
         this.mDataList.clear();
-        this.mDataList.addAll(dataList);
     }
 
     public void upateData(boolean isRefresh, List<TradeNoticeBean.Call_rate_list> data) {

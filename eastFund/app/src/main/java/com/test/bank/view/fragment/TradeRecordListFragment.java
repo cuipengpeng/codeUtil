@@ -62,7 +62,7 @@ public class TradeRecordListFragment extends BaseUIFragment {
 
     @Override
     protected void initPageData() {
-        tradeRecordListAdapter = new TradeRecordListAdapter(getActivity(), mIndustryDistributionList);
+        tradeRecordListAdapter = new TradeRecordListAdapter(getActivity());
         tradeRecordRecyclerView.setAdapter(tradeRecordListAdapter);
         tradeRecordRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         tradeRecordRecyclerView.setOnRefreshListener(new AutoLoadMoreRecyclerView.OnRefreshListener() {

@@ -24,9 +24,9 @@ public class IndustryDistributionAdapter extends RecyclerView.Adapter<IndustryDi
     Context mContext;
     List<IndustryDistributionBean.IndustryConf> mDataList = new ArrayList<>();
 
-    public IndustryDistributionAdapter(Context context, List<IndustryDistributionBean.IndustryConf> dataList) {
+    public IndustryDistributionAdapter(Context context) {
         this.mContext = context;
-        this.mDataList = dataList;
+        this.mDataList.clear();
     }
 
     public void upateData(boolean isRefresh, List<IndustryDistributionBean.IndustryConf> data) {

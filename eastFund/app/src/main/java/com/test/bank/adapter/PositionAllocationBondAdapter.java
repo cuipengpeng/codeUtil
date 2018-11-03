@@ -24,9 +24,9 @@ public class PositionAllocationBondAdapter extends RecyclerView.Adapter<Position
     Context mContext;
     List<PositionAllocationBean.BndAssetConf> mDataList = new ArrayList<>();
 
-    public PositionAllocationBondAdapter(Context context, List<PositionAllocationBean.BndAssetConf> dataList) {
+    public PositionAllocationBondAdapter(Context context) {
         this.mContext = context;
-        this.mDataList = dataList;
+        this.mDataList.clear();
     }
 
     public void upateData(boolean isRefresh, List<PositionAllocationBean.BndAssetConf> data) {

@@ -24,9 +24,9 @@ public class PositionAllocationStockAdapter extends RecyclerView.Adapter<Positio
     Context mContext;
     List<PositionAllocationBean.StockAssetConf> mDataList = new ArrayList<>();
 
-    public PositionAllocationStockAdapter(Context context, List<PositionAllocationBean.StockAssetConf> dataList) {
+    public PositionAllocationStockAdapter(Context context) {
         this.mContext = context;
-        this.mDataList = dataList;
+        this.mDataList.clear();
     }
 
     public void upateData(boolean isRefresh, List<PositionAllocationBean.StockAssetConf> data) {

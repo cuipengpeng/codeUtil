@@ -31,10 +31,9 @@ public class RiskTestResultAdapter extends RecyclerView.Adapter<RiskTestResultAd
     public static final int BENIFIT_QUESTION_POSITION = 10;
     public static final int TRUST_QUESTION_POSITION = 11;
 
-    public RiskTestResultAdapter(Context context, List<RiskEvaluationQuestionBean.RiskQuestionSubject> mData) {
+    public RiskTestResultAdapter(Context context) {
         this.mContext = context;
         this.mDataList.clear();
-        this.mDataList.addAll(mData);
     }
 
     public void upateData(boolean isRefresh, List<RiskEvaluationQuestionBean.RiskQuestionSubject> questionItems) {

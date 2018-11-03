@@ -28,10 +28,9 @@ public class FundManagerListAdapter extends RecyclerView.Adapter<FundManagerList
     Context mContext;
     List<FundManagerDetailBean.FundManager> mDataList = new ArrayList<FundManagerDetailBean.FundManager>();
 
-    public FundManagerListAdapter(Context context, List<FundManagerDetailBean.FundManager> dataList) {
+    public FundManagerListAdapter(Context context) {
         this.mContext = context;
         this.mDataList.clear();
-        this.mDataList.addAll(dataList);
     }
 
     public void upateData(boolean isRefresh, List<FundManagerDetailBean.FundManager> data) {

@@ -27,10 +27,9 @@ public class TradeRecordListAdapter extends RecyclerView.Adapter<TradeRecordList
     Context mContext;
     List<BaobaoBuyRecordBean.TradeHistory> mDataList = new ArrayList<>();
 
-    public TradeRecordListAdapter(Context context, List<BaobaoBuyRecordBean.TradeHistory> dataList) {
+    public TradeRecordListAdapter(Context context) {
         this.mContext = context;
         this.mDataList.clear();
-        this.mDataList.addAll(dataList);
     }
 
     public void upateData(boolean isRefresh, List<BaobaoBuyRecordBean.TradeHistory> data) {

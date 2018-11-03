@@ -103,7 +103,7 @@ public class RiskTestOptionActivity extends BaseLocalDataActivity {
             }
         });
 
-        riskTestOptionAdapter = new RiskTestOptionAdapter(this, riskQuestionSubject.getQitem(), riskQuestionSubject);
+        riskTestOptionAdapter = new RiskTestOptionAdapter(this, riskQuestionSubject);
         riskTestQuestionRecyclerView.setAdapter(riskTestOptionAdapter);
         riskTestQuestionRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         titleTextView.setText((questionNumber + 1) + "、" + riskQuestionSubject.getQtitle());

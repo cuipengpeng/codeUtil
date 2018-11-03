@@ -61,7 +61,7 @@ public class FundCompanyActivity extends BaseUIActivity {
 
 //        manageFundListRecyclerView.setItemAnimator(new DefaultItemAnimator());
 //        manageFundListRecyclerView.setHasFixedSize(true);
-        fundCompanyAdapter = new FundCompanyManageFundAdapter(this, fundCompanyList);
+        fundCompanyAdapter = new FundCompanyManageFundAdapter(this);
         manageFundListRecyclerView.setAdapter(fundCompanyAdapter);
         manageFundListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 

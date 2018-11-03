@@ -27,10 +27,9 @@ public class RiskTestOptionAdapter extends RecyclerView.Adapter<RiskTestOptionAd
     private List<RiskEvaluationQuestionBean.RiskQuestionSubject.RiskQuestionItem> mDataList = new ArrayList<RiskEvaluationQuestionBean.RiskQuestionSubject.RiskQuestionItem>();
     private RiskEvaluationQuestionBean.RiskQuestionSubject riskQuestionSubject = new RiskEvaluationQuestionBean.RiskQuestionSubject();
 
-    public RiskTestOptionAdapter(Context context, List<RiskEvaluationQuestionBean.RiskQuestionSubject.RiskQuestionItem> mData, RiskEvaluationQuestionBean.RiskQuestionSubject riskQuestionSubject) {
+    public RiskTestOptionAdapter(Context context, RiskEvaluationQuestionBean.RiskQuestionSubject riskQuestionSubject) {
         this.mContext = context;
         this.mDataList.clear();
-        this.mDataList.addAll(mData);
         this.riskQuestionSubject = riskQuestionSubject;
     }
 

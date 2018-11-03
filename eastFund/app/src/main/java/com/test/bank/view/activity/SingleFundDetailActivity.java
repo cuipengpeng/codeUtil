@@ -425,7 +425,7 @@ public class SingleFundDetailActivity extends BaseUIActivity {
         announcementListRecyclerView = announcementListLinearLayout.findViewById(R.id.rv_singleFundDetailActivity_announcementList);
         viewMoreTextView = announcementListLinearLayout.findViewById(R.id.tv_singleFundDetailActivity_viewMore);
         viewMoreTextView.setOnClickListener(myViewOnclickListener);
-        fundAnnouncementAdapter = new FundAnnouncementListShortAdapter(this, fundAnnouncementList);
+        fundAnnouncementAdapter = new FundAnnouncementListShortAdapter(this);
         announcementListRecyclerView.setAdapter(fundAnnouncementAdapter);
         announcementListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 

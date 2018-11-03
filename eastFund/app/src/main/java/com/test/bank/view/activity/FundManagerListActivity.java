@@ -48,7 +48,7 @@ public class FundManagerListActivity extends BaseUIActivity {
     @Override
     protected void initPageData() {
         mFundCode = getIntent().getStringExtra(SingleFundDetailActivity.KEY_OF_FUND_CODE);
-        fundManagerAdapter = new FundManagerListAdapter(this, fundManagerList);
+        fundManagerAdapter = new FundManagerListAdapter(this);
         fundManagerListRecyclerView.setAdapter(fundManagerAdapter);
         fundManagerListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 

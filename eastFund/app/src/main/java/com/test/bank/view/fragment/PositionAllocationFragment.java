@@ -187,11 +187,11 @@ public class PositionAllocationFragment extends BaseUIFragment {
     @Override
     protected void initPageData() {
         pieChartAndPercentRelativeLayout.setVisibility(View.INVISIBLE);
-        stockAdapter = new PositionAllocationStockAdapter(getActivity(), mStockList);
+        stockAdapter = new PositionAllocationStockAdapter(getActivity());
         stockRecyclerView.setAdapter(stockAdapter);
         stockRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        bondAdapter = new PositionAllocationBondAdapter(getActivity(), mBondList);
+        bondAdapter = new PositionAllocationBondAdapter(getActivity());
         bondRecyclerView.setAdapter(bondAdapter);
         bondRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 

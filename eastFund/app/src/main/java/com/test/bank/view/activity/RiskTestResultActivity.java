@@ -76,7 +76,7 @@ public class RiskTestResultActivity extends BaseLocalDataActivity {
 
     @Override
     protected void initPageData() {
-        riskTestResultAdapter = new RiskTestResultAdapter(this, mDataList);
+        riskTestResultAdapter = new RiskTestResultAdapter(this);
         riskTestQuestionRecyclerView.setAdapter(riskTestResultAdapter);
         riskTestQuestionRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 

@@ -127,11 +127,11 @@ public class FundBuyRuleFragment extends BaseUIFragment {
     @Override
     protected void initPageData() {
         fundCode = ((TradeNoticeActivity)getActivity()).fundCode;
-        preferredAdapter = new TradeNoticePreferredAdapter(getActivity(), mChag_rate_lists);
+        preferredAdapter = new TradeNoticePreferredAdapter(getActivity());
         preferredRatesRecyclerView.setAdapter(preferredAdapter);
         preferredRatesRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        ransomAdapter = new TradeNoticeRansomAdapter(getActivity(), mCall_rate_lists);
+        ransomAdapter = new TradeNoticeRansomAdapter(getActivity());
         ransomRatesRecyclerView.setAdapter(ransomAdapter);
         ransomRatesRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 

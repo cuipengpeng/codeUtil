@@ -26,10 +26,9 @@ public class SevenDayYieldListAdapter extends RecyclerView.Adapter<SevenDayYield
     private List<WanfenIncomeBean.List> mDataList = new ArrayList<>();
     private int mCurrentIncomeType = -1;
 
-    public SevenDayYieldListAdapter(Context context, List<WanfenIncomeBean.List> dataList, int incomeType) {
+    public SevenDayYieldListAdapter(Context context, int incomeType) {
         this.mContext = context;
         this.mDataList.clear();
-        this.mDataList.addAll(dataList);
         this.mCurrentIncomeType  = incomeType ;
     }
 

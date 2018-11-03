@@ -26,10 +26,9 @@ public class FundAnnouncementListAdapter extends RecyclerView.Adapter<FundAnnoun
     Context mContext;
     List<FundAnnouncementListBean.NoticeList> mDataList = new ArrayList<FundAnnouncementListBean.NoticeList>();
 
-    public FundAnnouncementListAdapter(Context context, List<FundAnnouncementListBean.NoticeList> dataList) {
+    public FundAnnouncementListAdapter(Context context) {
         this.mContext = context;
         this.mDataList.clear();
-        this.mDataList.addAll(dataList);
     }
 
     public void upateData(boolean isRefresh, List<FundAnnouncementListBean.NoticeList> data) {

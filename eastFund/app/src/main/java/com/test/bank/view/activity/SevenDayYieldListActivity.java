@@ -104,9 +104,9 @@ public class SevenDayYieldListActivity extends BaseUIActivity {
         baseTitleTextView.setCompoundDrawables(null, null, drawable, null);
 
 
-        sevenDayYieldAdapter = new SevenDayYieldListAdapter(this, mSevenDayYieldList, SEVEN_DAY_YIELD);
-        wanfenIncomeAdapter = new SevenDayYieldListAdapter(this, mWanfenIncomeList, WAN_FEN_INCOME);
-        accumulatedIncomeAdapter = new SevenDayYieldListAdapter(this, mAccumulatedIncomeList, ACCUMULATED_INCOME);
+        sevenDayYieldAdapter = new SevenDayYieldListAdapter(this, SEVEN_DAY_YIELD);
+        wanfenIncomeAdapter = new SevenDayYieldListAdapter(this, WAN_FEN_INCOME);
+        accumulatedIncomeAdapter = new SevenDayYieldListAdapter(this, ACCUMULATED_INCOME);
         yieldListRecyclerView.setAdapter(sevenDayYieldAdapter);
         yieldListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         wanfenIncomeListRecyclerView.setAdapter(wanfenIncomeAdapter);

@@ -69,7 +69,7 @@ public class FundManagerDetailActivity extends BaseUIActivity {
         showContentView();
 
         mFundManager = (FundManagerDetailBean.FundManager) getIntent().getSerializableExtra(FundManagerListAdapter.KEY_OF_FUND_MANAGER_MODEL);
-        fundCompanyAdapter = new FundManagerManageFundAdapter(this, mFundManager.getFundlist());
+        fundCompanyAdapter = new FundManagerManageFundAdapter(this);
         manageFundListRecyclerView.setAdapter(fundCompanyAdapter);
         manageFundListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 

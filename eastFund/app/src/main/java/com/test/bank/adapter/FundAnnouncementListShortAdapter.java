@@ -27,10 +27,9 @@ public class FundAnnouncementListShortAdapter extends RecyclerView.Adapter<FundA
     List<FundArchivesWithAnnouncementBean.Disc_main_list> mDataList = new ArrayList<FundArchivesWithAnnouncementBean.Disc_main_list>();
     private int count = 3;
 
-    public FundAnnouncementListShortAdapter(Context context, List<FundArchivesWithAnnouncementBean.Disc_main_list> dataList) {
+    public FundAnnouncementListShortAdapter(Context context) {
         this.mContext = context;
         this.mDataList.clear();
-        this.mDataList.addAll(dataList);
     }
 
     public void upateData(boolean isRefresh, List<FundArchivesWithAnnouncementBean.Disc_main_list> data) {

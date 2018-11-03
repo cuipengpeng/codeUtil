@@ -25,9 +25,9 @@ public class NetValueListAdapter extends RecyclerView.Adapter<NetValueListAdapte
     Context mContext;
     List<NetValueBean.Navs> mDataList = new ArrayList<NetValueBean.Navs>();
 
-    public NetValueListAdapter(Context context, List<NetValueBean.Navs> dataList) {
+    public NetValueListAdapter(Context context) {
         this.mContext = context;
-        this.mDataList = dataList;
+        this.mDataList.clear();
     }
 
     public void upateData(boolean isRefresh, List<NetValueBean.Navs> data) {

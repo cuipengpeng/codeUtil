@@ -58,7 +58,7 @@ public class TradeNoticeShortActivity extends BaseUIActivity {
     @Override
     protected void initPageData() {
         fundCode = getIntent().getStringExtra(SingleFundDetailActivity.KEY_OF_FUND_CODE);
-        preferredAdapter = new TradeNoticePreferredAdapter(this, mChag_rate_lists);
+        preferredAdapter = new TradeNoticePreferredAdapter(this);
         preferredRatesRecyclerView.setAdapter(preferredAdapter);
         preferredRatesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 

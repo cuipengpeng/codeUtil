@@ -45,7 +45,7 @@ public class DividendInfoActivity extends BaseLocalDataActivity{
     @Override
     protected void initPageData() {
         mFundInfoBean = (FundInfoBean) getIntent().getSerializableExtra(FundInfoActivity.KEY_OF_FUND_INFO_MODEL);
-        dividendInfoAdapter = new DividendInfoAdapter(this, mFundInfoBean.getDivlist());
+        dividendInfoAdapter = new DividendInfoAdapter(this);
         dividendInfoListRecyclerView.setAdapter(dividendInfoAdapter);
         dividendInfoListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 

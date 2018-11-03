@@ -62,7 +62,7 @@ public class NetValueListActivity extends BaseUIActivity {
             baseTitleTextView.setText(SingleFundDetailActivity.generateTitleText(this, titleArray[0], titleArray[1]));
         }
 
-        netValueListAdapter = new NetValueListAdapter(this, netValueListList);
+        netValueListAdapter = new NetValueListAdapter(this);
         netValueListRecyclerView.setAdapter(netValueListAdapter);
         netValueListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 

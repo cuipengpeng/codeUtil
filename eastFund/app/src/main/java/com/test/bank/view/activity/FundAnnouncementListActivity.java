@@ -50,7 +50,7 @@ public class FundAnnouncementListActivity extends BaseUIActivity {
     protected void initPageData() {
         fundCode = getIntent().getStringExtra(SingleFundDetailActivity.KEY_OF_FUND_CODE);
 
-        fundAnnouncementAdapter = new FundAnnouncementListAdapter(this, fundAnnouncementList);
+        fundAnnouncementAdapter = new FundAnnouncementListAdapter(this);
         fundAnnouncementListRecyclerView.setAdapter(fundAnnouncementAdapter);
         fundAnnouncementListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 

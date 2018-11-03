@@ -23,10 +23,9 @@ public class TradeNoticePreferredAdapter extends RecyclerView.Adapter<TradeNotic
     Context mContext;
     List<TradeNoticeBean.Chag_rate_list> mDataList = new ArrayList<>();
 
-    public TradeNoticePreferredAdapter(Context context, List<TradeNoticeBean.Chag_rate_list> dataList) {
+    public TradeNoticePreferredAdapter(Context context) {
         this.mContext = context;
         this.mDataList.clear();
-        this.mDataList.addAll(dataList);
     }
 
     public void upateData(boolean isRefresh, List<TradeNoticeBean.Chag_rate_list> data) {
