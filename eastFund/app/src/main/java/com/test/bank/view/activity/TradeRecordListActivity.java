@@ -165,9 +165,4 @@ public class TradeRecordListActivity extends BaseUIActivity {
                 break;
         }
     }
-
-    @Override
-    protected boolean isCountPage() {
-        return false;
-    }
 }

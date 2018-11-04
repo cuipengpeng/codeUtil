@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.test.bank.R;
 import com.test.bank.adapter.RiskTestOptionAdapter;
-import com.test.bank.base.BaseLocalDataActivity;
+import com.test.bank.base.BaseUILocalDataActivity;
 import com.test.bank.bean.RiskEvaluationQuestionBean;
 import com.test.bank.weight.holder.RiskEvaluationAddressHolder;
 
@@ -20,7 +20,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 
-public class RiskTestOptionActivity extends BaseLocalDataActivity {
+public class RiskTestOptionActivity extends BaseUILocalDataActivity {
     @BindView(R.id.tv_riskTestOptionActivity_confirmModify)
     TextView confirmModifyTextView;
     @BindView(R.id.iv_riskTestOptionActivity_title)

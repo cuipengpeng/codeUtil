@@ -59,11 +59,6 @@ public abstract class BaseUIFragment extends Fragment implements IBaseView {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        subLayoutId = getSubLayoutId();
-//        if (subLayoutId == 0) {
-//            throw new IllegalArgumentException("layoutResId error: " + subLayoutId);
-//        }
-
         subLayoutId = getSubLayoutId();
         if (subLayoutId != 0) {
             subScreenView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_base_ui, null);
@@ -78,11 +73,6 @@ public abstract class BaseUIFragment extends Fragment implements IBaseView {
             throw new IllegalArgumentException("layoutResId error: " + subLayoutId + " -- Or subScreenView is illegal: subScreenView = " + subScreenView);
         }
 
-
-//        View subScreenView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_base_ui, null);
-//        View contentView = LayoutInflater.from(getActivity()).inflate(subLayoutId, null);
-//        replaceViewLinearLayout = subScreenView.findViewById(R.id.ll_baseActivity_contentView);
-//        replaceViewLinearLayout.addView(contentView);
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this, subScreenView);
         hideAllViews();
@@ -99,9 +89,13 @@ public abstract class BaseUIFragment extends Fragment implements IBaseView {
     @Override
     public void onStart() {
         super.onStart();
+        initLocalDataView();
         initTitleBar();
         initPageData();
         initPageSetting();
+    }
+
+    protected void initLocalDataView() {
     }
 
     @Override
@@ -196,22 +190,15 @@ public abstract class BaseUIFragment extends Fragment implements IBaseView {
 
     @Override
     public void showProgressDialog() {
-        if (getActivity() instanceof CommonActivity)
-            ((CommonActivity) getActivity()).showProgressDialog();
     }
 
     @Override
     public void hideProgressDialog() {
-        if (getActivity() instanceof CommonActivity)
-            ((CommonActivity) getActivity()).hideProgressDialog();
     }
 
 
     @Override
     public void onTokenInvalid() {
-        if (getActivity() instanceof CommonActivity) {
-            ((CommonActivity) getActivity()).onTokenInvalid();
-        }
     }
 
     @Override

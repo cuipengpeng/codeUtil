@@ -26,7 +26,7 @@ import android.widget.Toast;
 
 import com.test.bank.R;
 import com.test.bank.base.BaseApplication;
-import com.test.bank.base.BaseLocalDataActivity;
+import com.test.bank.base.BaseUILocalDataActivity;
 import com.test.bank.bean.GestureVerify;
 import com.test.bank.bean.UserInfo;
 import com.test.bank.http.HttpRequest;
@@ -56,7 +56,7 @@ import static com.test.bank.view.activity.PutInActivity.popupDialog;
 /**
  * 手势绘制/校验界面
  */
-public class GestureVerifyActivity extends BaseLocalDataActivity {
+public class GestureVerifyActivity extends BaseUILocalDataActivity {
     @BindView(R.id.ll_gestureVerityActivity_gestureThumb)
     LinearLayout gestureThumbLinearLayout;
     @BindView(R.id.iv_gestureVerityActivity_userImage)

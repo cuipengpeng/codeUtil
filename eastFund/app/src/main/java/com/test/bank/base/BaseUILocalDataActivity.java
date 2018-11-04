@@ -1,7 +1,7 @@
 package com.test.bank.base;
 
 
-public abstract class BaseLocalDataActivity extends BaseUIActivity {
+public abstract class BaseUILocalDataActivity extends BaseUIActivity {
 
     @Override
     protected void initLocalDataView() {

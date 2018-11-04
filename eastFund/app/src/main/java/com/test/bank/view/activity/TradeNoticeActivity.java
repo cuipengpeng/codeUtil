@@ -133,9 +133,4 @@ public class TradeNoticeActivity extends BaseUIActivity {
         super.onNewIntent(intent);
         setIntent(intent);
     }
-
-    @Override
-    protected boolean isCountPage() {
-        return true;
-    }
 }

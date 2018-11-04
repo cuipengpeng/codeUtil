@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 
 import com.test.bank.R;
 import com.test.bank.adapter.DividendInfoAdapter;
-import com.test.bank.base.BaseLocalDataActivity;
+import com.test.bank.base.BaseUILocalDataActivity;
 import com.test.bank.bean.FundInfoBean;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ import butterknife.BindView;
 * 作    者：崔朋朋<br>
 * 时    间：2017/12/11<br>
 */
-public class DividendInfoActivity extends BaseLocalDataActivity{
+public class DividendInfoActivity extends BaseUILocalDataActivity {
 
     @BindView(R.id.rv_dividendInfoActivity_dividendInfoList)
     RecyclerView dividendInfoListRecyclerView;

@@ -1,7 +1,9 @@
 package com.test.bank.base;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,7 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public abstract class BaseUIActivity extends CommonActivity {
+public abstract class BaseUIActivity extends FragmentActivity implements IBaseView{
     public static String TAG = BaseUIActivity.class.getName();
 
     @BindView(R.id.rl_base_titleBar)
@@ -60,13 +62,13 @@ public abstract class BaseUIActivity extends CommonActivity {
             throw new IllegalArgumentException("layoutResId error: " + subLayoutId + " -- Or subScreenView is illegal: subScreenView = " + subScreenView);
         }
 
-
         setContentView(subScreenView);
         ButterKnife.bind(this, subScreenView);
+
         hideAllViews();
 //        showContentView();
-        TAG = this.getClass().getName();
 //        mDialog = new LoadingAlertDialog(this);
+        TAG = this.getClass().getName();
         mContext = this;
 
         initLocalDataView();
@@ -153,5 +155,22 @@ public abstract class BaseUIActivity extends CommonActivity {
 
     @Override
     public void onRefreshSuccess(OnResponseListener onResponseListener) {
+    }
+
+    @Override
+    public void showProgressDialog() {
+    }
+
+    @Override
+    public void hideProgressDialog() {
+    }
+
+
+    @Override
+    public void onTokenInvalid() {
+    }
+
+    @Override
+    public void onForceUpdate() {
     }
 }

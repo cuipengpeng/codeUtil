@@ -27,7 +27,7 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.test.bank.R;
-import com.test.bank.base.BaseLocalDataActivity;
+import com.test.bank.base.BaseUILocalDataActivity;
 import com.test.bank.inter.JsRequstInterface;
 import com.test.bank.utils.ConstantsUtil;
 import com.test.bank.utils.LogUtils;
@@ -47,7 +47,7 @@ import butterknife.BindView;
  *
  * @author 崔朋朋
  */
-public class WebViewActivity extends BaseLocalDataActivity {
+public class WebViewActivity extends BaseUILocalDataActivity {
     /**
      * Html加载地址
      */

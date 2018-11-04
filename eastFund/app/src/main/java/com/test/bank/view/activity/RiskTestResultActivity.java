@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.test.bank.R;
 import com.test.bank.adapter.RiskTestResultAdapter;
-import com.test.bank.base.BaseLocalDataActivity;
+import com.test.bank.base.BaseUILocalDataActivity;
 import com.test.bank.bean.RiskEvaluationQuestionBean;
 import com.test.bank.bean.RiskEvaluationResultBean;
 import com.test.bank.http.HttpRequest;
@@ -35,7 +35,7 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 
-public class RiskTestResultActivity extends BaseLocalDataActivity {
+public class RiskTestResultActivity extends BaseUILocalDataActivity {
     @BindView(R.id.tv_riskTestResultActivity_commit)
     TextView commitTextView;
     @BindView(R.id.iv_riskTestResultActivity_store)

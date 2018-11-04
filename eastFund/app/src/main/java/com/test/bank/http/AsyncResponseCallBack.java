@@ -67,34 +67,19 @@ public class AsyncResponseCallBack implements Callback<String> {
 
             if (response.code() == 200 && "0000".equals(responseJsonObject.getString("resCode"))) {
                 showPageContentView();
-                onResultFailLisenter.onResponse(call, response.success(responseJsonObject.getString(ConstantsUtil.Response.KEY_OF_RESPONSE_DATA)));
-            } else if (ConstantsUtil.Response.RESPONSE_CODE_TOKEN_FAIL_3004 == responseJsonObject.getIntValue("resCode")) {
+                onResultFailLisenter.onResponse(call, response.success(responseJsonObject.getString("data")));
+            } else if (3004 == responseJsonObject.getIntValue("resCode")) {
                 //3004  token失效
                 LogUtils.printLog(responseJsonObject.getString("resMsg"));
 
                 iBaseView.onTokenInvalid();
 
-                if (iBaseView != null && iBaseView instanceof MyaccountFragment) {
-                    ((MyaccountFragment) iBaseView).showUserLoginOrNologinView(false);
-                }
-            } else if ((call.request().url().encodedPath().contains(HttpRequest.CURRENT_PLUS_FUND_BUY) || call.request().url().encodedPath().contains(HttpRequest.CURRENT_PLUS_FUND_REDEMPTION)
-                    && responseJsonObject.getIntValue("resCode") != ConstantsUtil.Response.RESPONSE_CODE_TRADE_PASSWORD_ERROR_3011
-                    && responseJsonObject.getIntValue("resCode") != ConstantsUtil.Response.RESPONSE_CODE_TRADE_PASSWORD_ERROR_3013
-                    && responseJsonObject.getIntValue("resCode") != ConstantsUtil.Response.RESPONSE_CODE_TRADE_PASSWORD_ERROR_3014)) {
-                Toast.makeText(BaseApplication.getContext(), "服务异常，请重试~", Toast.LENGTH_SHORT).show();
+            } else if (responseJsonObject.getIntValue("resCode") != 3014) {
+                Toast.makeText(BaseApplication.applicationContext, "服务异常，请重试~", Toast.LENGTH_SHORT).show();
             } else if (responseJsonObject.getBoolean("msgStatus") && iBaseView != null) {
                 //显示服务器端返回的消息
                 showPageContentView();
                 LogUtils.printLog("AsyncResponse_onResponse--" + response.code() + "--" + response.message());
-
-
-                if ("com.jf.jlfund.view.activity.PutInActivity".equals(requestChannel)) {
-                    PutInActivity.popupDialog(((PutInActivity) iBaseView), responseJsonObject.getString("resMsg"), Integer.valueOf(responseJsonObject.getString("resCode")), ((PutInActivity) iBaseView).payPasswordView, true);
-                    return;
-                } else if ("com.jf.jlfund.view.activity.GetOutActivity".equals(requestChannel)) {
-                    PutInActivity.popupDialog(((BaseUIActivity) iBaseView), responseJsonObject.getString("resMsg"), Integer.valueOf(responseJsonObject.getString("resCode")), ((GetOutActivity) iBaseView).payPasswordView, true);
-                    return;
-                }
 
                 Toast.makeText(BaseApplication.applicationContext, responseJsonObject.getString("resMsg"), Toast.LENGTH_SHORT).show();
             } else {

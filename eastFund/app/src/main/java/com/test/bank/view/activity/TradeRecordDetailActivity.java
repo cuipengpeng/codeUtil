@@ -6,7 +6,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.test.bank.R;
-import com.test.bank.base.BaseLocalDataActivity;
+import com.test.bank.base.BaseUILocalDataActivity;
 import com.test.bank.bean.FundInfoBean;
 
 import butterknife.BindView;
@@ -16,7 +16,7 @@ import butterknife.BindView;
 * 作    者：崔朋朋<br>
 */
 
-public class TradeRecordDetailActivity extends BaseLocalDataActivity{
+public class TradeRecordDetailActivity extends BaseUILocalDataActivity {
 
     @BindView(R.id.tv_putInResultActivity_tradeType)
     TextView tradeTypeTextView;

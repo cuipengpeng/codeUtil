@@ -3,7 +3,7 @@ package com.test.bank.view.activity;
 import android.graphics.Canvas;
 
 import com.test.bank.R;
-import com.test.bank.base.BaseLocalDataActivity;
+import com.test.bank.base.BaseUILocalDataActivity;
 import com.test.bank.utils.LogUtils;
 import com.lidong.pdf.PDFView;
 import com.lidong.pdf.listener.OnDrawListener;
@@ -12,7 +12,7 @@ import com.lidong.pdf.listener.OnPageChangeListener;
 
 import butterknife.BindView;
 
-public class PDFViewerActivity extends BaseLocalDataActivity implements OnPageChangeListener, OnLoadCompleteListener, OnDrawListener {
+public class PDFViewerActivity extends BaseUILocalDataActivity implements OnPageChangeListener, OnLoadCompleteListener, OnDrawListener {
     @BindView(R.id.pdfView_net_new)
     PDFView pdfViewNet;//网络
 

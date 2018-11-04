@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.test.bank.R;
-import com.test.bank.base.BaseLocalDataActivity;
+import com.test.bank.base.BaseUILocalDataActivity;
 import com.test.bank.bean.FundCompanyBean;
 import com.test.bank.http.HttpRequest;
 
@@ -22,7 +22,7 @@ import retrofit2.Response;
 * 描    述：<br>
 * 作    者：崔朋朋<br>
 */
-public class GetOutResultActivity extends BaseLocalDataActivity {
+public class GetOutResultActivity extends BaseUILocalDataActivity {
 
     @BindView(R.id.tv_putInResultActivity_tradeType)
     TextView tradeTypeTextView;

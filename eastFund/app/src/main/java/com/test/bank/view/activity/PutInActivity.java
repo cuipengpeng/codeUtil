@@ -17,7 +17,7 @@ import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
 import com.test.bank.R;
 import com.test.bank.adapter.TradeRecordListAdapter;
-import com.test.bank.base.BaseLocalDataActivity;
+import com.test.bank.base.BaseUILocalDataActivity;
 import com.test.bank.bean.GetOutBankCardInfoBean;
 import com.test.bank.bean.PutInAndGetOutResultBean;
 import com.test.bank.http.HttpRequest;
@@ -44,7 +44,7 @@ import retrofit2.Response;
 * 描    述：<br>
 * 作    者：崔朋朋<br>
 */
-public class PutInActivity extends BaseLocalDataActivity {
+public class PutInActivity extends BaseUILocalDataActivity {
 
     @BindView(R.id.tv_putInActivity_bankIcon)
     ImageView bankIconImageView;

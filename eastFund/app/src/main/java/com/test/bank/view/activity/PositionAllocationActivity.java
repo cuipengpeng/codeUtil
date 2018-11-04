@@ -121,10 +121,6 @@ public class PositionAllocationActivity extends BaseUIActivity {
         }
     }
 
-    @Override
-    protected boolean isCountPage() {
-        return true;
-    }
 
     @Override
     protected void onNewIntent(Intent intent) {
