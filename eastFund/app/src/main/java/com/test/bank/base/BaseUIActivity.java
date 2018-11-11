@@ -1,6 +1,6 @@
 package com.test.bank.base;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
@@ -172,5 +172,9 @@ public abstract class BaseUIActivity extends FragmentActivity implements IBaseVi
 
     @Override
     public void onForceUpdate() {
+    }
+
+    public void open(Class activityClass){
+        mContext.startActivity(new Intent(mContext, activityClass));
     }
 }

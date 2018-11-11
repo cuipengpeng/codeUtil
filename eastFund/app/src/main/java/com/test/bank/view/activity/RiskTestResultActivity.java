@@ -109,7 +109,7 @@ public class RiskTestResultActivity extends BaseUILocalDataActivity {
         Map<String, String> params = new HashMap<String, String>();
         params.put("token", SPUtil.getInstance().getToken());
 
-        HttpRequest.post(HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.RISK_TEST_QUESTIONS, params, this, new HttpRequest.HttpResponseCallBank() {
+        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.RISK_TEST_QUESTIONS, params, new HttpRequest.HttpResponseCallBank() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 riskEvaluationQuestionBean = JSON.parseObject(response.body(), RiskEvaluationQuestionBean.class);
@@ -177,7 +177,7 @@ public class RiskTestResultActivity extends BaseUILocalDataActivity {
 //        }
         params.put("isYes", false + "");      //true 做过风险测评后四道题false未做过风险测评后四道题
 
-        HttpRequest.post(HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.SUBMIT_RISK_TEST_ANSWERS, params, this, new HttpRequest.HttpResponseCallBank() {
+        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.SUBMIT_RISK_TEST_ANSWERS, params, new HttpRequest.HttpResponseCallBank() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 riskEvaluationResultBean = JSON.parseObject(response.body(), RiskEvaluationResultBean.class);

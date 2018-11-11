@@ -14,6 +14,7 @@ import com.test.bank.utils.MD5;
 import com.test.bank.weight.dialog.LoadingAlertDialog;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,8 +22,10 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -94,30 +97,26 @@ public class HttpRequest {
 
     /**
      * 发送普通文本请求接口
-     *
      * @param url
      * @param params
+     * @param iBaseView  基view， 可为null。网络请求数据正常时，用iBaseView.showContentView();显示页面内容
      * @param responseHandler
      * @return
      */
-    public static Call<String> post(String url, Map<String, String> params, HttpResponseCallBank responseHandler) {
-        return post(url, params, responseHandler, requestReadTime, requestWriteTime, requestConnectTime, null, "", SHOW_LOADING);
+    public static Call<String> post(IBaseView iBaseView, String url, Map<String, String> params, HttpResponseCallBank responseHandler) {
+        return post(iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, "", SHOW_LOADING, responseHandler);
     }
 
-    public static Call<String> post(String url, Map<String, String> params, IBaseView iBaseView, HttpResponseCallBank responseHandler) {
-        return post(url, params, responseHandler, requestReadTime, requestWriteTime, requestConnectTime, iBaseView, "", SHOW_LOADING);
+    public static Call<String> post(IBaseView iBaseView, String url, Map<String, String> params, boolean showLoading, HttpResponseCallBank responseHandler) {
+        return post(iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, "", showLoading, responseHandler);
     }
 
-    public static Call<String> post(String url, Map<String, String> params, IBaseView iBaseView, boolean showLoading, HttpResponseCallBank responseHandler) {
-        return post(url, params, responseHandler, requestReadTime, requestWriteTime, requestConnectTime, iBaseView, "", showLoading);
+    public static Call<String> post( IBaseView iBaseView, String url, Map<String, String> params, String requestChannel, HttpResponseCallBank responseHandler) {
+        return post(iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, requestChannel, SHOW_LOADING, responseHandler);
     }
 
-    public static Call<String> post(String url, Map<String, String> params, IBaseView iBaseView, String requestChannel, HttpResponseCallBank responseHandler) {
-        return post(url, params, responseHandler, requestReadTime, requestWriteTime, requestConnectTime, iBaseView, requestChannel, SHOW_LOADING);
-    }
-
-    public static Call<String> post(String url, Map<String, String> params, HttpResponseCallBank responseHandler, long readTime, long writeTime, long timeOut, IBaseView iBaseView, String requestChannel, boolean showLoading) {
-        return execute(url, new HashMap<String, String>(), params, false, null, responseHandler, readTime, writeTime, timeOut, iBaseView, requestChannel, showLoading);
+    public static Call<String> post(IBaseView iBaseView, String url, Map<String, String> params, long readTime, long writeTime, long timeOut, String requestChannel, boolean showLoading, HttpResponseCallBank responseHandler) {
+        return execute(iBaseView, url, new HashMap<String, String>(), params, false, null, responseHandler, readTime, writeTime, timeOut, requestChannel, showLoading);
     }
 
     /**
@@ -134,7 +133,7 @@ public class HttpRequest {
     }
 
     public static Call<String> uploadFiles(String url, Map<String, String> headers, Map<String, String> params, Map<String, File> filesMap, HttpResponseCallBank responseHandler, long readTime, long writeTime, long timeOut, boolean showLoading) {
-        return execute(url, headers, params, true, filesMap, responseHandler, readTime, writeTime, timeOut, null, "", showLoading);
+        return execute(null, url, headers, params, true, filesMap, responseHandler, readTime, writeTime, timeOut, "", showLoading);
     }
 
     /**
@@ -163,11 +162,14 @@ public class HttpRequest {
      * @param showLoading
      * @return
      */
-    private static Call<String> execute(String url, Map<String, String> headers, Map<String, String> params, boolean uploadFile, Map<String, File> uploadFilesMap, HttpResponseCallBank responseHandler, long readTime, long writeTime, long timeOut, IBaseView iBaseView, String requestChannel, boolean showLoading) {
+    private static Call<String> execute(IBaseView iBaseView, String url, Map<String, String> headers, Map<String, String> params, boolean uploadFile, Map<String, File> uploadFilesMap, HttpResponseCallBank responseHandler, long readTime, long writeTime, long timeOut, String requestChannel, boolean showLoading) {
         params.put("version", DeviceUtil.getAppVersionName(BaseApplication.applicationContext));
         params.put("equipment", DeviceUtil.getDevicecId());
         params.put("mobileSystem", "android");
-//        params.put("channelCode", "app");
+        if(BaseApplication.userInfo!=null && BaseApplication.userInfo.getToken()!=null){
+            params.put("token", BaseApplication.userInfo.getToken());
+            params.put("userId", BaseApplication.userInfo.getMobile()+"");
+        }
         TreeMap<String, String> treeMap = new TreeMap<String, String>();
         treeMap.putAll(params);
         String signedContent = MD5.sign(treeMap); // Des3.signContent(params.toString());
@@ -192,6 +194,7 @@ public class HttpRequest {
 //            }else {
                 //application/x-www-form-urlencoded格式
 //                call = apiService.postFormAPiString(url, headers, params);
+
                 //application/json格式
                 RequestBody body = RequestBody.create(MediaType.parse("application/json"), new Gson().toJson(params));
                 call = apiService.postJsonAPiString(url, headers, body);
@@ -230,6 +233,18 @@ public class HttpRequest {
         if (apiService == null) {//为空，则创建
             synchronized (mapAPIService) { //锁定对象
                 OkHttpClient httpClient = new OkHttpClient.Builder()
+                        // 添加通用的Header
+                        .addInterceptor(new Interceptor() {
+                            @Override
+                            public okhttp3.Response intercept(Chain chain) throws IOException {
+                                Request.Builder builder = chain.request().newBuilder();
+                                if(BaseApplication.userInfo!=null && BaseApplication.userInfo.getToken()!=null){
+                                    builder.addHeader("token", BaseApplication.userInfo.getToken())
+                                            .addHeader("userId", BaseApplication.userInfo.getMobile()+"");
+                                }
+                                return chain.proceed(builder.build());
+                            }
+                        })
                         .connectTimeout(timeOut, TimeUnit.SECONDS)
                         .readTimeout(readTime, TimeUnit.SECONDS)
                         .writeTimeout(writeTime, TimeUnit.SECONDS).build();

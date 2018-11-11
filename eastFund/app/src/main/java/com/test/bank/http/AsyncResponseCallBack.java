@@ -27,7 +27,6 @@ public class AsyncResponseCallBack implements Callback<String> {
     private String requestChannel = null;
     private boolean showLoading = true;
     private Dialog mLoadingDialog;
-    Context context = BaseApplication.applicationContext;
     private int retryCount =0;
 
     public AsyncResponseCallBack(HttpRequest.HttpResponseCallBank onResultFailLisenter) {
@@ -55,61 +54,44 @@ public class AsyncResponseCallBack implements Callback<String> {
 
             JSONObject responseJsonObject = JSON.parseObject(resultString);
 
-            //TODO just for test
-//            responseJsonObject.put("msgStatus",  true);
-//            responseJsonObject.put("resMsg",  "11111111111111");
-//            responseJsonObject.put("resCode",  "0");
-
-            iBaseView.hideProgressDialog();
+//            iBaseView.hideProgressDialog();
 //            if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
 //                mLoadingDialog.dismiss();
 //            }
 
-            if (response.code() == 200 && "0000".equals(responseJsonObject.getString("resCode"))) {
+            if (response.code() == 200 && "00".equals(responseJsonObject.getString("resCode"))) {
                 showPageContentView();
                 onResultFailLisenter.onResponse(call, response.success(responseJsonObject.getString("data")));
             } else if (3004 == responseJsonObject.getIntValue("resCode")) {
                 //3004  token失效
                 LogUtils.printLog(responseJsonObject.getString("resMsg"));
-
                 iBaseView.onTokenInvalid();
-
-            } else if (responseJsonObject.getIntValue("resCode") != 3014) {
+            } else if (responseJsonObject.getIntValue("resCode") == 3014) {
+                //显示统一消息
                 Toast.makeText(BaseApplication.applicationContext, "服务异常，请重试~", Toast.LENGTH_SHORT).show();
             } else if (responseJsonObject.getBoolean("msgStatus") && iBaseView != null) {
                 //显示服务器端返回的消息
                 showPageContentView();
                 LogUtils.printLog("AsyncResponse_onResponse--" + response.code() + "--" + response.message());
-
                 Toast.makeText(BaseApplication.applicationContext, responseJsonObject.getString("resMsg"), Toast.LENGTH_SHORT).show();
             } else {
                 LogUtils.printLog("AsyncResponse_unHandle--" + response.code() + "--" + response.message());
                 if (iBaseView != null) {
                     iBaseView.showNoDataView();
                 }
-
             }
         } catch (Exception e) {
             e.printStackTrace();
-            LogUtils.printLog("AsyncResponse_Exception--" + e.getMessage());
+            LogUtils.printLog("Exception--" + e.getMessage());
         }
-
-        showMyaccounFragmentContentView();
     }
 
     private void showPageContentView() {
         if (iBaseView != null) {
-            if (iBaseView instanceof BaseUIFragment && !(iBaseView instanceof MyaccountFragment) && !(iBaseView instanceof OptionalFragment)) {
-                ((BaseUIActivity) ((BaseUIFragment) iBaseView).getActivity()).showContentView();
-                ((BaseUIFragment) iBaseView).showContentView();
-            }
-            iBaseView.showContentView();
-        }
-    }
-
-    private void showMyaccounFragmentContentView() {
-        //myaccountfragment页面始终显示，不管请求成功还是失败。
-        if (iBaseView != null && (iBaseView instanceof MyaccountFragment || iBaseView instanceof OptionalFragment)) {
+//            if (iBaseView instanceof BaseUIFragment) {
+//                ((BaseUIActivity) ((BaseUIFragment) iBaseView).getActivity()).showContentView();
+//                ((BaseUIFragment) iBaseView).showContentView();
+//            }
             iBaseView.showContentView();
         }
     }
@@ -117,12 +99,12 @@ public class AsyncResponseCallBack implements Callback<String> {
     @Override
     public void onFailure(Call<String> call, Throwable t) {
         LogUtils.printLog("AsyncResponse_onFailure--" + t.getMessage() + "--" + call.request().method());
+        //网络请求失败重试
 //        if(retryCount < 3){
 //            call.clone().enqueue(this);
 //            retryCount++;
 //        }else {
             onResultFailLisenter.onFailure(call, t);
 //        }
-        showMyaccounFragmentContentView();
     }
 }

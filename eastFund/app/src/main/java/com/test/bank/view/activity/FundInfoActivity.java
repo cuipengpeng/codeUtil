@@ -83,7 +83,7 @@ public class FundInfoActivity extends BaseUIActivity {
         Map<String, String> params =  new HashMap<String, String>();
         params.put("fundcode", fundCode);
 
-        HttpRequest.post(HttpRequest.APP_INTERFACE_WEB_URL +HttpRequest.FUND_INFO_DETAIL, params, this, new HttpRequest.HttpResponseCallBank() {
+        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL +HttpRequest.FUND_INFO_DETAIL, params, new HttpRequest.HttpResponseCallBank() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 mFundInfoBean = JSON.parseObject(response.body(), FundInfoBean.class);

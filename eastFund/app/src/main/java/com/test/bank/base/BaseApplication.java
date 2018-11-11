@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.multidex.MultiDex;
 
+import com.test.bank.bean.UserInfo;
 import com.test.bank.http.HttpRequest;
 import com.test.bank.utils.ConstantsUtil;
 import com.test.bank.utils.CrashHandler;
@@ -36,6 +37,7 @@ public class BaseApplication extends Application {
     private int foregroundActivityCount = 0;//activity的count数
     public List<String> accountPageList = new ArrayList<>();
     public static boolean goIntoAccountSecurity = false;
+    public static UserInfo userInfo = new UserInfo();
 
     @Override
     public void onCreate() {

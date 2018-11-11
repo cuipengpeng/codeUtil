@@ -62,7 +62,7 @@ public class IndustryDistributionFragment extends BaseUIFragment {
         Map<String, String> params =  new HashMap<String, String>();
         params.put("fundcode", ((PositionAllocationActivity)getActivity()).mFundCode);
 
-        HttpRequest.post(HttpRequest.APP_INTERFACE_WEB_URL +HttpRequest.INDUSTRY_DISTRIBUTION, params, this,  new HttpRequest.HttpResponseCallBank() {
+        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL +HttpRequest.INDUSTRY_DISTRIBUTION, params, new HttpRequest.HttpResponseCallBank() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 IndustryDistributionBean industryDistributionBean = JSON.parseObject(response.body(), IndustryDistributionBean.class);

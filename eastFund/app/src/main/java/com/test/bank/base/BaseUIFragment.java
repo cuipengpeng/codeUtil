@@ -1,8 +1,10 @@
 package com.test.bank.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,7 +48,7 @@ public abstract class BaseUIFragment extends Fragment implements IBaseView {
     private View subScreenView = null;
     LinearLayout replaceViewLinearLayout;
     protected boolean showBaseUITitle = false;
-    public BaseUIActivity mContext;
+    public FragmentActivity mContext;
     private int subLayoutId = 0;
 
     protected String mClassName;
@@ -78,6 +80,7 @@ public abstract class BaseUIFragment extends Fragment implements IBaseView {
         hideAllViews();
 //        showContentView();
         TAG = this.getClass().getName();
+        mContext = getActivity();
         return subScreenView;
     }
 
@@ -213,4 +216,7 @@ public abstract class BaseUIFragment extends Fragment implements IBaseView {
     public void onForceUpdate() {
     }
 
+    public void open(Class activityClass){
+        mContext.startActivity(new Intent(mContext, activityClass));
+    }
 }
