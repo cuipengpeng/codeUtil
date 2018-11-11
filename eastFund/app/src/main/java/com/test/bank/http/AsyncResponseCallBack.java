@@ -45,11 +45,10 @@ public class AsyncResponseCallBack implements Callback<String> {
 //            msgStatus: : 是否和用户展示提示语   true 需要向用户展示resMsg   false 不需要
 
             JSONObject responseJsonObject = JSON.parseObject(resultString);
-
 //            iBaseView.hideProgressDialog();
-//            if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
-//                mLoadingDialog.dismiss();
-//            }
+            if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+                mLoadingDialog.dismiss();
+            }
 
             if (response.code() == 200 && "00".equals(responseJsonObject.getString("resCode"))) {
                 showPageContentView();
