@@ -59,7 +59,7 @@ public class FundManagerListActivity extends BaseUIActivity {
         Map<String, String> params =  new HashMap<String, String>();
         params.put("fundcode", mFundCode);
 
-        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL +HttpRequest.FUND_MANAGER_DETAIL, params, new HttpRequest.HttpResponseCallBank() {
+        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL +HttpRequest.FUND_MANAGER_DETAIL, params, new HttpRequest.HttpResponseCallBack() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 FundManagerDetailBean fundManagerDetailBean = JSON.parseObject(response.body(), FundManagerDetailBean.class);

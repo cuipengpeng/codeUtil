@@ -94,7 +94,7 @@ public class NetValueListActivity extends BaseUIActivity {
         params.put("pageNo", pageNo + "");
         params.put("pageSize", ConstantsUtil.PAGE_SIZE + "");
 
-        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.SINGLE_FUND_NET_VALUE, params, new HttpRequest.HttpResponseCallBank() {
+        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.SINGLE_FUND_NET_VALUE, params, new HttpRequest.HttpResponseCallBack() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 NetValueBean netValueBean = JSON.parseObject(response.body(), NetValueBean.class);

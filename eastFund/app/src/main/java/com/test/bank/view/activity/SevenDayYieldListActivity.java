@@ -194,7 +194,7 @@ public class SevenDayYieldListActivity extends BaseUIActivity {
         params.put("pageNo", sevenDayYieldPageNo+"");
         params.put("rowsSize", ConstantsUtil.PAGE_SIZE+"");
 
-        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.BAOBAO_SEVEN_DAY_YIELD, params, new HttpRequest.HttpResponseCallBank() {
+        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.BAOBAO_SEVEN_DAY_YIELD, params, new HttpRequest.HttpResponseCallBack() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 WanfenIncomeBean wanfenIncomeBean = JSON.parseObject(response.body(), WanfenIncomeBean.class);
@@ -236,7 +236,7 @@ public class SevenDayYieldListActivity extends BaseUIActivity {
         params.put("pageNo", wanfenIncomePageNo+"");
         params.put("rowsSize", ConstantsUtil.PAGE_SIZE+"");
 
-        HttpRequest.post( this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.BAOBAO_WAN_FEN_INCOME, params, new HttpRequest.HttpResponseCallBank() {
+        HttpRequest.post( this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.BAOBAO_WAN_FEN_INCOME, params, new HttpRequest.HttpResponseCallBack() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 WanfenIncomeBean wanfenIncomeBean = JSON.parseObject(response.body(), WanfenIncomeBean.class);
@@ -279,7 +279,7 @@ public class SevenDayYieldListActivity extends BaseUIActivity {
         params.put("pageNo", accumulatedIncomePageNo+"");
         params.put("rowsSize", ConstantsUtil.PAGE_SIZE+"");
 
-        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.BAOBAO_ACCUMULATED_INCOME, params, new HttpRequest.HttpResponseCallBank() {
+        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.BAOBAO_ACCUMULATED_INCOME, params, new HttpRequest.HttpResponseCallBack() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 WanfenIncomeBean wanfenIncomeBean = JSON.parseObject(response.body(), WanfenIncomeBean.class);

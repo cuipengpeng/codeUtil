@@ -103,19 +103,19 @@ public class HttpRequest {
      * @param responseHandler
      * @return
      */
-    public static Call<String> post(IBaseView iBaseView, String url, Map<String, String> params, HttpResponseCallBank responseHandler) {
+    public static Call<String> post(IBaseView iBaseView, String url, Map<String, String> params, HttpResponseCallBack responseHandler) {
         return post(iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, "", SHOW_LOADING, responseHandler);
     }
 
-    public static Call<String> post(IBaseView iBaseView, String url, Map<String, String> params, boolean showLoading, HttpResponseCallBank responseHandler) {
+    public static Call<String> post(IBaseView iBaseView, String url, Map<String, String> params, boolean showLoading, HttpResponseCallBack responseHandler) {
         return post(iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, "", showLoading, responseHandler);
     }
 
-    public static Call<String> post( IBaseView iBaseView, String url, Map<String, String> params, String requestChannel, HttpResponseCallBank responseHandler) {
+    public static Call<String> post( IBaseView iBaseView, String url, Map<String, String> params, String requestChannel, HttpResponseCallBack responseHandler) {
         return post(iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, requestChannel, SHOW_LOADING, responseHandler);
     }
 
-    public static Call<String> post(IBaseView iBaseView, String url, Map<String, String> params, long readTime, long writeTime, long timeOut, String requestChannel, boolean showLoading, HttpResponseCallBank responseHandler) {
+    public static Call<String> post(IBaseView iBaseView, String url, Map<String, String> params, long readTime, long writeTime, long timeOut, String requestChannel, boolean showLoading, HttpResponseCallBack responseHandler) {
         return execute(iBaseView, url, new HashMap<String, String>(), params, false, null, responseHandler, readTime, writeTime, timeOut, requestChannel, showLoading);
     }
 
@@ -128,18 +128,18 @@ public class HttpRequest {
      * @param responseHandler
      * @return
      */
-    public static Call<String> uploadFiles(String url, Map<String, String> params, Map<String, File> filesMap, HttpResponseCallBank responseHandler) {
+    public static Call<String> uploadFiles(String url, Map<String, String> params, Map<String, File> filesMap, HttpResponseCallBack responseHandler) {
         return uploadFiles(url, new HashMap<String, String>(), params, filesMap, responseHandler, uploadReadTime, uploadWriteTime, uploadConnectTime, SHOW_LOADING);
     }
 
-    public static Call<String> uploadFiles(String url, Map<String, String> headers, Map<String, String> params, Map<String, File> filesMap, HttpResponseCallBank responseHandler, long readTime, long writeTime, long timeOut, boolean showLoading) {
+    public static Call<String> uploadFiles(String url, Map<String, String> headers, Map<String, String> params, Map<String, File> filesMap, HttpResponseCallBack responseHandler, long readTime, long writeTime, long timeOut, boolean showLoading) {
         return execute(null, url, headers, params, true, filesMap, responseHandler, readTime, writeTime, timeOut, "", showLoading);
     }
 
     /**
      * http请求回调
      */
-    public interface HttpResponseCallBank {
+    public interface HttpResponseCallBack {
         void onResponse(Call<String> call, Response<String> response);
 
         void onFailure(Call<String> call, Throwable t);
@@ -162,7 +162,7 @@ public class HttpRequest {
      * @param showLoading
      * @return
      */
-    private static Call<String> execute(IBaseView iBaseView, String url, Map<String, String> headers, Map<String, String> params, boolean uploadFile, Map<String, File> uploadFilesMap, HttpResponseCallBank responseHandler, long readTime, long writeTime, long timeOut, String requestChannel, boolean showLoading) {
+    private static Call<String> execute(IBaseView iBaseView, String url, Map<String, String> headers, Map<String, String> params, boolean uploadFile, Map<String, File> uploadFilesMap, HttpResponseCallBack responseHandler, long readTime, long writeTime, long timeOut, String requestChannel, boolean showLoading) {
         params.put("version", DeviceUtil.getAppVersionName(BaseApplication.applicationContext));
         params.put("equipment", DeviceUtil.getDevicecId());
         params.put("mobileSystem", "android");

@@ -1,39 +1,31 @@
 package com.test.bank.http;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.test.bank.base.BaseApplication;
-import com.test.bank.base.BaseUIActivity;
-import com.test.bank.base.BaseUIFragment;
 import com.test.bank.base.IBaseView;
-import com.test.bank.utils.ConstantsUtil;
 import com.test.bank.utils.LogUtils;
-import com.test.bank.view.activity.GetOutActivity;
-import com.test.bank.view.activity.PutInActivity;
-import com.test.bank.view.fragment.MyaccountFragment;
-import com.test.bank.view.fragment.OptionalFragment;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AsyncResponseCallBack implements Callback<String> {
-    private HttpRequest.HttpResponseCallBank onResultFailLisenter = null;
+    private HttpRequest.HttpResponseCallBack onResultFailLisenter = null;
     private IBaseView iBaseView = null;
     private String requestChannel = null;
     private boolean showLoading = true;
     private Dialog mLoadingDialog;
     private int retryCount =0;
 
-    public AsyncResponseCallBack(HttpRequest.HttpResponseCallBank onResultFailLisenter) {
+    public AsyncResponseCallBack(HttpRequest.HttpResponseCallBack onResultFailLisenter) {
         this.onResultFailLisenter = onResultFailLisenter;
     }
 
-    public AsyncResponseCallBack(HttpRequest.HttpResponseCallBank onResultFailLisenter, IBaseView context, String requestChannel, boolean showLoading, Dialog loadingDialog) {
+    public AsyncResponseCallBack(HttpRequest.HttpResponseCallBack onResultFailLisenter, IBaseView context, String requestChannel, boolean showLoading, Dialog loadingDialog) {
         this.onResultFailLisenter = onResultFailLisenter;
         this.iBaseView = context;
         this.requestChannel = requestChannel;

@@ -94,7 +94,7 @@ public class TradeRecordListFragment extends BaseUIFragment {
         params.put("pageNo", pageNo + "");
         params.put("rowsSize", ConstantsUtil.PAGE_SIZE + "");
 
-        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.BAOBAO_BUY_RECORD_LIST, params, new HttpRequest.HttpResponseCallBank() {
+        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.BAOBAO_BUY_RECORD_LIST, params, new HttpRequest.HttpResponseCallBack() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 BaobaoBuyRecordBean baobaoBuyRecordBean = JSON.parseObject(response.body(), BaobaoBuyRecordBean.class);

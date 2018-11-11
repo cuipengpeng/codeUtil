@@ -382,7 +382,7 @@ public class MyaccountFragment extends BaseUIFragment {
         Map<String, String> params = new HashMap<String, String>();
         params.put("token", SPUtil.getInstance().getToken());
 
-        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.GET_ACCOUNT_INFO, params, false, new HttpRequest.HttpResponseCallBank() {
+        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.GET_ACCOUNT_INFO, params, false, new HttpRequest.HttpResponseCallBack() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 accountInfoBean = JSON.parseObject(response.body(), AccountInfoBean.class);
