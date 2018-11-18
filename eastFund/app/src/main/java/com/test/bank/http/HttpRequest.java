@@ -1,9 +1,11 @@
 package com.test.bank.http;
 
 import android.content.Context;
+import android.os.Environment;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.test.bank.BuildConfig;
 import com.test.bank.base.BaseApplication;
 import com.test.bank.base.BaseUIActivity;
 import com.test.bank.base.BaseUIFragment;
@@ -34,13 +36,6 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 
 public class HttpRequest {
-    private enum Environment {
-        TEST, PRE, ONLINE
-    }
-
-    private static Environment currentEnv = Environment.TEST;
-
-
     //测试环境
     private static final String APP_INTERFACE_WEB_URL_ENV_TEST = HttpConfig.BASE_URL;
     //预发环境
@@ -63,11 +58,22 @@ public class HttpRequest {
     private static final String FACE_DETECT_ONLINE_ENV_URL = "https://www.baidu.com/";
 
 
+
+    private enum Environment {
+        TEST, PRE, ONLINE
+    }
+    private static Environment currentEnv = null;
     public static String APP_INTERFACE_WEB_URL = APP_INTERFACE_WEB_URL_ENV_TEST;
     public static String UPLOAD_IMAGE_WEB_URL = UPLOAD_IMAGE_TEST_ENV_WEB_URL;
     public static String FACE_DETECT_WEB_URL = FACE_DETECT_TEST_ENV_URL;
 
     public static void initEnvironment() {
+        if(BuildConfig.DEBUG){
+            currentEnv = Environment.ONLINE;
+        }else {
+            currentEnv = Environment.ONLINE;
+        }
+
         if (currentEnv == Environment.TEST) {
             APP_INTERFACE_WEB_URL = APP_INTERFACE_WEB_URL_ENV_TEST;
             FACE_DETECT_WEB_URL = FACE_DETECT_TEST_ENV_URL;

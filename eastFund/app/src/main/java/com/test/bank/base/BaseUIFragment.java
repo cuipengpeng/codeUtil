@@ -81,21 +81,17 @@ public abstract class BaseUIFragment extends Fragment implements IBaseView {
 //        showContentView();
         TAG = this.getClass().getName();
         mContext = getActivity();
+
+        initLocalDataView();
+        initTitleBar();
+        initPageData();
+        initPageSetting();
+
         return subScreenView;
     }
 
     protected View getContentView() {
         return null;
-    }
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        initLocalDataView();
-        initTitleBar();
-        initPageData();
-        initPageSetting();
     }
 
     protected void initLocalDataView() {
