@@ -33,6 +33,7 @@ import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
+import retrofit2.http.Headers;
 
 
 public class HttpRequest {
@@ -199,6 +200,10 @@ public class HttpRequest {
 //                call = apiService.getRequestAPiString(url, headers, params);
 //            }else {
                 //application/x-www-form-urlencoded格式
+//                    if(headers==null){
+//                        headers = new HashMap<>();
+//                    }
+//                    headers.put("Content-Type","application/x-www-form-urlencoded; charset=utf-8");
 //                call = apiService.postFormAPiString(url, headers, params);
 
                 //application/json格式
