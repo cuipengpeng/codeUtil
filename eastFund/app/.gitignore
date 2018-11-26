@@ -3,3 +3,6 @@ local.properties
 .gradle/
 .idea/
 *.iml
+gradle/
+gradlew
+gradlew.bat
