@@ -1,4 +1,4 @@
-package encrypt;
+package com.downloader;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -50,42 +50,40 @@ public class MD5 {
             // 使用指定的字节更新摘要
             mdInst.update(btInput);
             // 获得密文
-            byte[] md = mdInst.digest();
+            byte[] byteArr = mdInst.digest();
             
             // 把密文转换成十六进制的字符串形式
-            int j = md.length;
-            char str[] = new char[j * 2];
+            int j = byteArr.length;
+            char[] charArr = new char[j * 2];
             int k = 0;
             for (int i = 0; i < j; i++) {
-                byte byte0 = md[i];
-                str[k++] = hexDigits[byte0 >>> 4 & 0xf];
-                str[k++] = hexDigits[byte0 & 0xf];
+                byte byte0 = byteArr[i];
+                charArr[k++] = hexDigits[byte0 >>> 4 & 0xf];
+                charArr[k++] = hexDigits[byte0 & 0xf];
             }
-            return new String(str).toLowerCase();
+            return new String(charArr).toLowerCase();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
     
-	public static String sha1(String s) {
-		return messageDigest(s, "SHA-1"); //MD5 ，SHA-1,SHA-256，SHA-384，SHA-512
-	}
-	
 	/**
 	 * 
 	 * @param data
-	 * @param messageDigestName MD5 ，SHA-1,SHA-256，SHA-384，SHA-512
+	 * @param messageDigestName  MD5, SHA-1,SHA-256, SHA-384, SHA-512
 	 * @return
 	 */
-	private static String messageDigest(String data, String messageDigestName){
+	public static String messageDigest(String data, String messageDigestName){
 		try {
 			// Create MD5 Hash
-			MessageDigest digest = java.security.MessageDigest
-					.getInstance(messageDigestName);
+            if(messageDigestName==null || "".equals(messageDigestName)){
+                messageDigestName="MD5";
+            }
+			MessageDigest digest = MessageDigest.getInstance(messageDigestName);
 			digest.update(data.getBytes());
-			byte bytes[] = digest.digest();
-			return bytes2Hex(bytes);
+			byte[] byteArr = digest.digest();
+			return bytes2Hex(byteArr);
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
@@ -97,7 +95,7 @@ public class MD5 {
      * @param btArray
      * @return
      */
-    public static String bytes2Hex(byte[] btArray) {
+    private static String bytes2Hex(byte[] btArray) {
     	StringBuilder hexString = new StringBuilder();
         for (byte b: btArray) {
 //			//test
@@ -112,7 +110,7 @@ public class MD5 {
             }
             hexString.append(hex);
         }
-        return hexString.toString();
+        return hexString.toString().toLowerCase();
     }
 	
 	  /**

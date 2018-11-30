@@ -373,7 +373,7 @@ public class RSAUtil {
 		String signature = "";
 		if (!"".equals(encryptData) && encryptData != null) {//PRIVATE_KEY_PATH
 		
-			String messageDigest = MD5.sha1(encryptData);
+			String messageDigest = MD5.messageDigest(encryptData, "SHA-1");
 			signature = encryptString(key, messageDigest);
 		}
 		
