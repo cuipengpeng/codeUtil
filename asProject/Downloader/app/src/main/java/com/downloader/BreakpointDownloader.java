@@ -18,12 +18,13 @@ import java.util.concurrent.TimeUnit;
 
 public class BreakpointDownloader {
     private static final String DIR_PATH = "/mnt/sdcard/";    // 下载目录
-    private static final int THREAD_AMOUNT = 5;                // 总线程数
+    private static final int THREAD_AMOUNT = 5;                // 大文件下载总线程数
+    private static final int CORE_POOL_SIZE = 5;                // 线程池核心线程数
+    private static final int MAX_POOL_SIZE = 20;                // 线程池最大线程数
 
-    private long threadLen;        // 每个线程要下载的长度
-    private long totalFinish;    // 总共完成了多少
-    private long totalLen;        // 服务端文件总长度
+
     private long begin;            // 用来记录开始下载时的时间
+    private long totalFinish = 0;    // 总共完成了多少
 
     private static volatile BreakpointDownloader mBreakpointDownloader;
     private  ThreadPoolExecutor threadPoolExecutor;
@@ -44,7 +45,7 @@ public class BreakpointDownloader {
 
     public  void execute(Runnable r){
         if(threadPoolExecutor == null){
-            threadPoolExecutor = new ThreadPoolExecutor(10,20,0L, TimeUnit.MICROSECONDS,
+            threadPoolExecutor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, 0L, TimeUnit.MICROSECONDS,
                             new LinkedBlockingQueue<Runnable>(), Executors.defaultThreadFactory(),
                             new ThreadPoolExecutor.AbortPolicy());
         }
@@ -69,9 +70,7 @@ public class BreakpointDownloader {
                     conn.setRequestMethod("GET");
 
                     if (conn.getResponseCode() == 200) {
-                        totalLen = conn.getContentLength();                                    // 获取服务端发送过来的文件长度
-                        threadLen = (totalLen + THREAD_AMOUNT - 1) / THREAD_AMOUNT;            // 计算每个线程要下载的长度
-                        System.out.println("totalLen=" + totalLen + "--threadLen=" + threadLen);
+                        long totalLen = conn.getContentLength();                                    // 获取服务端发送过来的文件长度
                         Message msg = new Message();
                         msg.getData().putLong("totalLen", totalLen);
                         msg.what = 1;
@@ -94,7 +93,7 @@ public class BreakpointDownloader {
                         // 按照线程数循环
                         for (int i = 0; i < THREAD_AMOUNT; i++) {
 //                            new Thread(new DownloadThread(i, url, dataFile, tempFile, handler)).start();        // 开启线程, 每个线程将会下载一部分数据到本地文件中
-                            execute(new DownloadThread(i, url, dataFile, tempFile, handler));        // 开启线程, 每个线程将会下载一部分数据到本地文件中
+                            execute(new DownloadThread(i, url, dataFile, tempFile, totalLen, THREAD_AMOUNT, handler));        // 开启线程, 每个线程将会下载一部分数据到本地文件中
                         }
 
                         begin = System.currentTimeMillis();        // 记录开始时间
@@ -115,15 +114,20 @@ public class BreakpointDownloader {
         private URL url;            // 目标下载地址
         private File dataFile;        // 本地文件
         private File tempFile;        // 用来存储每个线程下载的进度的临时文件
+        private long totalLen;        // 服务端文件总长度
+        private long threadLen;        // 每个线程要下载的长度
+        private int threadAmount;                // 大文件下载总线程数
 
         private Handler handler;
 
-        public DownloadThread(int id, URL url, File dataFile, File tempFile, Handler handler) {
+        public DownloadThread(int id, URL url, File dataFile, File tempFile, long totalLen, int threadAmount, Handler handler) {
             this.id = id;
             this.url = url;
             this.dataFile = dataFile;
             this.tempFile = tempFile;
             this.handler = handler;
+            this.totalLen = totalLen;
+            this.threadAmount = threadAmount;
         }
 
         public void run() {
@@ -131,6 +135,8 @@ public class BreakpointDownloader {
             RandomAccessFile dataRaf = null;
             RandomAccessFile tempRaf = null;
             InputStream in = null;
+            threadLen = (totalLen + threadAmount - 1) / threadAmount;            // 计算每个线程要下载的长度
+            System.out.println("totalLen=" + totalLen + "--threadLen=" + threadLen);
 
             try {
                 tempRaf = new RandomAccessFile(tempFile, "rws");        // 用来记录下载进度的临时文件
@@ -156,7 +162,7 @@ public class BreakpointDownloader {
                 if (conn.getResponseCode() == 206) {
                     in = conn.getInputStream();                                // 获取连接的输入流
                     dataRaf = new RandomAccessFile(dataFile, "rws");    // 装载数据的本地文件(可以理解为输出流)
-                    dataRaf.seek(start);                                                // 设置当前线程保存数据的位置
+                    dataRaf.seek(start);                               // 设置当前线程保存数据的位置
 
                     byte[] buffer = new byte[1024 * 100];            // 每次拷贝100KB
                     int len;
@@ -176,10 +182,6 @@ public class BreakpointDownloader {
 
                     System.out.println("线程" + id + "下载完毕");
                     System.out.println("线程" + id + "--threadFinish=" + threadFinish + "--totalFinish=" + totalFinish + "\n");
-                    if (totalFinish == totalLen) {                    // 如果已完成长度等于服务端文件长度(代表下载完成)
-                        System.out.println("下载完成, 耗时: " + (System.currentTimeMillis() - begin));
-                        tempFile.delete();                            // 删除临时文件
-                    }
                 } else {
                     System.out.println("线程=" + id + "--Response Code != 206 (actualCode=" + conn.getResponseCode() + "),服务器不支持多线程下载。");
                 }
@@ -198,6 +200,11 @@ public class BreakpointDownloader {
                     }
                     if (null != dataRaf) {
                         dataRaf.close();
+                    }
+                    if (totalFinish == totalLen) {                    // 如果已完成长度等于服务端文件长度(代表下载完成)
+                        System.out.println("下载完成, 耗时: " + (System.currentTimeMillis() - begin));
+                        tempFile.delete();                            // 删除临时文件
+//                        dataFile.renameTo(new File(dataFile.getAbsolutePath()+".aaaaaa"));
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
