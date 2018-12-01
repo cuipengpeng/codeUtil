@@ -1,10 +1,11 @@
 package com.downloader;
 
-import java.io.IOException;
-
+import android.Manifest;
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -38,23 +39,40 @@ public class MainActivity extends Activity {
         addressET = (EditText) findViewById(R.id.addressET);
         downloadPB = (ProgressBar) findViewById(R.id.downloadPB);
         percentTV = (TextView) findViewById(R.id.percentTV);
+
+		if(Build.VERSION.SDK_INT>=23){
+			String[] mPermissionList = new String[]{
+					Manifest.permission.WRITE_EXTERNAL_STORAGE,
+					Manifest.permission.ACCESS_FINE_LOCATION,
+					Manifest.permission.CALL_PHONE,
+					Manifest.permission.READ_LOGS,
+					Manifest.permission.READ_PHONE_STATE,
+					Manifest.permission.READ_EXTERNAL_STORAGE,
+					Manifest.permission.SET_DEBUG_APP,
+					Manifest.permission.SYSTEM_ALERT_WINDOW,
+					Manifest.permission.GET_ACCOUNTS,
+					Manifest.permission.WRITE_APN_SETTINGS};
+			ActivityCompat.requestPermissions(this,mPermissionList,123);
+		}
     }
-    
-    public void download(View view) throws IOException {
+
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode,
+										   String permissions[], int[] grantResults) {
+
+	}
+
+    public void download(View view){
 //		https://blog.csdn.net/MyLoveyaqiong/article/details/53142521
 //		https://github.com/ljie/java-downFile/blob/master/downFile/src/main/java/com/softdu/utils/DownUtil.java
-
 
 //    	final String address = addressET.getText().toString().trim();
     	final String address = "http://down.360safe.com/se/360se9.1.0.426.exe";
 //    	final String address = "http://ftp.yz.yamagata-u.ac.jp/pub/eclipse/oomph/epp/2018-09/Ra/eclipse-inst-win64.exe";
 //    	final String address = "http://video.chaogevideo.com/download/chaoge/01/chaoge/v1.0/chaoge_v1.0_yueming.apk";
-    	new Thread(new Runnable() {
-			
-			public void run() {
-//				new BreakpointDownloader(address, handler).download();
-				BreakpointDownloader.getInstance().download(address, handler);
-			}
-		}).start();
+
+//		new BreakpointDownloader(address, handler).downloadBigFile();
+		BreakpointDownloader.getInstance().downloadBigFile(address, handler);
     }
 }
