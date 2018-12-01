@@ -88,8 +88,9 @@ public class BreakpointDownloader {
 
                         if (!tempFile.exists()) {                                            // 如果临时文件不存在
                             RandomAccessFile raf = new RandomAccessFile(tempFile, "rws");    // 创建临时文件, 用来记录每个线程已下载多少
-                            for (int i = 0; i < THREAD_AMOUNT; i++)                            // 按照线程数循环
+                            for (int i = 0; i < THREAD_AMOUNT; i++) {                            // 按照线程数循环
                                 raf.writeLong(0);                                            // 写入每个线程的开始位置(都是从0开始)
+                            }
                             raf.close();
                         }
 
@@ -228,12 +229,13 @@ public class BreakpointDownloader {
 //			fileName = httpUrl.substring(httpUrl.lastIndexOf("/"), httpUrl.length());
             fileName = MD5.messageDigest(httpUrl, "");
         }
-        final File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
+        final File dataFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
+        final File tempFile = new File(dataFile.getAbsolutePath()+".temp");
 
-        if (file.exists()) {
+        if (dataFile.exists()) {
             Message message = handler.obtainMessage();
             message.what = 3;                //1代码成功，2代表失败 3代表文件已存在
-            message.obj = file.getAbsolutePath();
+            message.obj = tempFile.getAbsolutePath();
             message.arg1 = itemPosition;
             handler.sendMessage(message);
         } else {
@@ -241,43 +243,68 @@ public class BreakpointDownloader {
 
                 public void run() {
                     Message message = handler.obtainMessage();
+                    HttpURLConnection connection = null;
+                    FileOutputStream fileOutputStream = null;
+                    InputStream inputStream = null;
+                    if (tempFile.exists()) {
+                        //上一次下载过程中，网络异常，下载失败
+                        tempFile.delete();
+                    }
+                    long totalLen=0;
+                    long totalFinish=0;
+
                     try {
                         URL url = new URL(httpUrl);
-                        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                        connection = (HttpURLConnection) url.openConnection();
                         connection.setRequestMethod("GET");
                         connection.setConnectTimeout(5000);
                         //加上这句是为了防止connection.getContentLength()获取不到
                         connection.setRequestProperty("Accept-Encoding", "identity");
 
-                        FileOutputStream fileOutputStream = null;
-                        InputStream inputStream;
                         if (connection.getResponseCode() == 200) {
                             inputStream = connection.getInputStream();
+                            totalLen = connection.getContentLength();
+                            System.out.println("totalLen="+totalLen);
 
                             if (inputStream != null) {
-                                fileOutputStream = new FileOutputStream(file);
+                                fileOutputStream = new FileOutputStream(tempFile);
                                 byte[] buffer = new byte[1024 * 100];
                                 int length = 0;
-
                                 while ((length = inputStream.read(buffer)) != -1) {
+                                    totalFinish += length;
+                                    System.out.println("totalFinish="+totalFinish);
                                     fileOutputStream.write(buffer, 0, length);
                                 }
                                 fileOutputStream.flush();
-                                fileOutputStream.close();
                             }
-                            inputStream.close();
                         }
-
-                        System.out.println("已经下载完成");
-
-                        message.what = 1;                //1代码成功，2代表失败 3代表文件已存在
-                        message.obj = file.getAbsolutePath();
-                        message.arg1 = itemPosition;
-                        handler.sendMessage(message);
                     } catch (IOException e) {
                         message.what = 2;
                         handler.sendMessage(message);
                         e.printStackTrace();
+                    }finally {
+                        try {
+                            if (null != fileOutputStream) {
+                                fileOutputStream.close();
+                            }
+                            if (null != connection) {
+                                connection.disconnect();
+                            }
+                            if (null != inputStream) {
+                                inputStream.close();
+                            }
+                            if (totalFinish == totalLen && totalFinish >0 && totalLen >0 ) {
+                                tempFile.renameTo(dataFile);
+
+                                System.out.println("已经下载完成");
+                                message.what = 1;                //1代码成功，2代表失败 3代表文件已存在
+                                message.obj = tempFile.getAbsolutePath();
+                                message.arg1 = itemPosition;
+                                handler.sendMessage(message);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             });

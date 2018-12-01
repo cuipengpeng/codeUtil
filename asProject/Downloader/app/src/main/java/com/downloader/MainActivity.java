@@ -69,12 +69,12 @@ public class MainActivity extends Activity {
 //		https://download.csdn.net/download/mlj1668956679/6669915
 //		https://blog.csdn.net/u013256816/article/details/50403962
 
-//    	final String address = addressET.getText().toString().trim();
-    	final String address = "http://down.360safe.com/se/360se9.1.0.426.exe";
-//    	final String address = "http://ftp.yz.yamagata-u.ac.jp/pub/eclipse/oomph/epp/2018-09/Ra/eclipse-inst-win64.exe";
-//    	final String address = "http://video.chaogevideo.com/download/chaoge/01/chaoge/v1.0/chaoge_v1.0_yueming.apk";
+//    	String address = addressET.getText().toString().trim();
+    	String address = "http://down.360safe.com/se/360se9.1.0.426.exe";
+//    	String address = "http://ftp.yz.yamagata-u.ac.jp/pub/eclipse/oomph/epp/2018-09/Ra/eclipse-inst-win64.exe";
+//    	String address = "http://video.chaogevideo.com/download/chaoge/01/chaoge/v1.0/chaoge_v1.0_yueming.apk";
 
-//		new BreakpointDownloader(address, handler).downloadBigFile();
 		BreakpointDownloader.getInstance().downloadBigFile(address, handler);
+//		BreakpointDownloader.getInstance().downloadSmallFile(address, null, 1, new Handler());
     }
 }
