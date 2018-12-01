@@ -66,6 +66,8 @@ public class MainActivity extends Activity {
     public void download(View view){
 //		https://blog.csdn.net/MyLoveyaqiong/article/details/53142521
 //		https://github.com/ljie/java-downFile/blob/master/downFile/src/main/java/com/softdu/utils/DownUtil.java
+//		https://download.csdn.net/download/mlj1668956679/6669915
+//		https://blog.csdn.net/u013256816/article/details/50403962
 
 //    	final String address = addressET.getText().toString().trim();
     	final String address = "http://down.360safe.com/se/360se9.1.0.426.exe";

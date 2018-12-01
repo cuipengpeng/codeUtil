@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BreakpointDownloader {
     private static final String DIR_PATH = "/mnt/sdcard/";    // 下载目录
-    private static final int THREAD_AMOUNT = 5;                // 大文件下载总线程数
+    private static final int THREAD_AMOUNT = 3;                // 大文件下载总线程数
     private static final int CORE_POOL_SIZE = 5;                // 线程池核心线程数
     private static final int MAX_POOL_SIZE = 20;                // 线程池最大线程数
 
@@ -60,14 +60,17 @@ public class BreakpointDownloader {
             public void run() {
                 HttpURLConnection conn = null;
                 try {
-                    URL url = new URL(address);                                                            // 记住下载地址
                     File dataFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), address.substring(address.lastIndexOf("/") + 1));    // 截取地址中的文件名, 创建本地文件
                     File tempFile = new File(dataFile.getAbsolutePath() + ".temp");                        // 在本地文件所在文件夹中创建临时文件
 
+                    URL url = new URL(address);
                     conn = (HttpURLConnection) url.openConnection();
                     conn.setConnectTimeout(3000);
                     conn.setReadTimeout(3000);
                     conn.setRequestMethod("GET");
+                    //加上这句是为了防止connection.getContentLength()获取不到
+                    conn.setRequestProperty("Accept-Encoding", "identity");
+
 
                     if (conn.getResponseCode() == 200) {
                         long totalLen = conn.getContentLength();                                    // 获取服务端发送过来的文件长度
@@ -202,9 +205,9 @@ public class BreakpointDownloader {
                         dataRaf.close();
                     }
                     if (totalFinish == totalLen) {                    // 如果已完成长度等于服务端文件长度(代表下载完成)
-                        System.out.println("下载完成, 耗时: " + (System.currentTimeMillis() - begin));
+                        System.out.println("下载完成, 耗时: " + (System.currentTimeMillis() - begin)+"--dataFile.length()="+dataFile.length());
                         tempFile.delete();                            // 删除临时文件
-//                        dataFile.renameTo(new File(dataFile.getAbsolutePath()+".aaaaaa"));
+//                        dataFile.renameTo(new File(dataFile.getAbsolutePath()+".aaaaaa")); //文件下载完成后重命名
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -243,6 +246,9 @@ public class BreakpointDownloader {
                         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                         connection.setRequestMethod("GET");
                         connection.setConnectTimeout(5000);
+                        //加上这句是为了防止connection.getContentLength()获取不到
+                        connection.setRequestProperty("Accept-Encoding", "identity");
+
                         FileOutputStream fileOutputStream = null;
                         InputStream inputStream;
                         if (connection.getResponseCode() == 200) {
