@@ -39,7 +39,7 @@ public abstract class BaseUIActivity extends FragmentActivity implements IBaseVi
     @BindView(R.id.ll_baseActivity_netwrokErrorView)
     protected LinearLayout baseNetwrokErrorViewLinearLayout;
 
-    LinearLayout replaceViewLinearLayout;
+    RelativeLayout replaceViewLinearLayout;
     private View subScreenView = null;
     private int subLayoutId = 0;
     protected boolean showBaseUITitle = true;
@@ -53,7 +53,8 @@ public abstract class BaseUIActivity extends FragmentActivity implements IBaseVi
             subScreenView = LayoutInflater.from(this).inflate(R.layout.activity_base_ui, null);
             View contentView = LayoutInflater.from(this).inflate(subLayoutId, null);
             replaceViewLinearLayout = subScreenView.findViewById(R.id.ll_baseActivity_contentView);
-            replaceViewLinearLayout.addView(contentView);
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+            replaceViewLinearLayout.addView(contentView, layoutParams);
         } else {
             subScreenView = getContentView();
         }

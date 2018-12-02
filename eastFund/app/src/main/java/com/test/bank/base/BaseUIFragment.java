@@ -46,7 +46,7 @@ public abstract class BaseUIFragment extends Fragment implements IBaseView {
 
 
     private View subScreenView = null;
-    LinearLayout replaceViewLinearLayout;
+    RelativeLayout replaceViewLinearLayout;
     protected boolean showBaseUITitle = false;
     public FragmentActivity mContext;
     private int subLayoutId = 0;
@@ -66,7 +66,8 @@ public abstract class BaseUIFragment extends Fragment implements IBaseView {
             subScreenView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_base_ui, null);
             View contentView = LayoutInflater.from(getActivity()).inflate(subLayoutId, null);
             replaceViewLinearLayout = subScreenView.findViewById(R.id.ll_baseActivity_contentView);
-            replaceViewLinearLayout.addView(contentView);
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+            replaceViewLinearLayout.addView(contentView, layoutParams);
         } else {
             subScreenView = getContentView();
         }
