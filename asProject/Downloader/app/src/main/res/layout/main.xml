@@ -32,7 +32,8 @@
         android:id="@+id/downloadPB"
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="10dp" />
+        android:layout_height="10dp"
+        android:layout_marginTop="10dp"/>
 
     <TextView
         android:layout_gravity="center_horizontal"
@@ -41,4 +42,43 @@
         android:layout_height="wrap_content"
         android:text="0%" />
 
+    <ProgressBar
+        android:id="@+id/downloadPB01"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/percentTV01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0%" />
+    <ProgressBar
+        android:id="@+id/downloadPB02"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/percentTV02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0%" />
+    <ProgressBar
+        android:id="@+id/downloadPB03"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/percentTV03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0%" />
 </LinearLayout>

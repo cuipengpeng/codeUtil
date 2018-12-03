@@ -22,14 +22,24 @@ public class BreakpointDownloader {
     private static final int CORE_POOL_SIZE = 5;                // 线程池核心线程数
     private static final int MAX_POOL_SIZE = 20;                // 线程池最大线程数
 
-
-    private long begin;            // 用来记录开始下载时的时间
-    private long totalFinish = 0;    // 总共完成了多少
+    private static int taskCount = -1;
+    private  int[] orderArr = new int[10];
+    private long[] begin = new long[10];            // 用来记录开始下载时的时间
+    private long[] totalFinish = new long[10];    // 总共完成了多少
 
     private static volatile BreakpointDownloader mBreakpointDownloader;
     private  ThreadPoolExecutor threadPoolExecutor;
 
     private BreakpointDownloader() {
+        for (int i=0; i<orderArr.length;i++){
+            begin[i]=i;
+        }
+        for (int i=0; i<begin.length;i++){
+            begin[i]=0;
+        }
+        for (int i=0; i<totalFinish.length;i++){
+            totalFinish[i]=0;
+        }
     }
 
     public static BreakpointDownloader getInstance() {
@@ -54,6 +64,11 @@ public class BreakpointDownloader {
         }
     }
 
+    /**
+     * 多线程下载，支持断点续传
+     * @param address
+     * @param handler
+     */
     public void downloadBigFile(final String address, final Handler handler) {
         new Thread(new Runnable() {
 
@@ -73,10 +88,13 @@ public class BreakpointDownloader {
 
 
                     if (conn.getResponseCode() == 200) {
+                        taskCount++;
                         long totalLen = conn.getContentLength();                                    // 获取服务端发送过来的文件长度
                         Message msg = new Message();
                         msg.getData().putLong("totalLen", totalLen);
-                        msg.what = 1;
+                        System.out.println("sendMsg--totalLen=" + totalLen + "--taskCount=" + taskCount);
+                        msg.what = taskCount;
+                        msg.arg1 = 1;
                         handler.sendMessage(msg);                                            // 发送文件总长度
 
                         if (!dataFile.exists()) {                                            // 如果本地文件不存在
@@ -97,10 +115,9 @@ public class BreakpointDownloader {
                         // 按照线程数循环
                         for (int i = 0; i < THREAD_AMOUNT; i++) {
 //                            new Thread(new DownloadThread(i, url, dataFile, tempFile, handler)).start();        // 开启线程, 每个线程将会下载一部分数据到本地文件中
-                            execute(new DownloadThread(i, url, dataFile, tempFile, totalLen, THREAD_AMOUNT, handler));        // 开启线程, 每个线程将会下载一部分数据到本地文件中
+                            execute(new DownloadThread(taskCount, i, address, dataFile, tempFile, totalLen, THREAD_AMOUNT, handler));        // 开启线程, 每个线程将会下载一部分数据到本地文件中
                         }
-
-                        begin = System.currentTimeMillis();        // 记录开始时间
+                        begin[taskCount] = System.currentTimeMillis();        // 记录开始时间
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -115,7 +132,8 @@ public class BreakpointDownloader {
 
     private class DownloadThread implements Runnable {
         private int id;    // 用来标记当前线程是下载任务中的第几个线程
-        private URL url;            // 目标下载地址
+        private int taskIndex;  // 目标下载地址
+        private String address;
         private File dataFile;        // 本地文件
         private File tempFile;        // 用来存储每个线程下载的进度的临时文件
         private long totalLen;        // 服务端文件总长度
@@ -124,9 +142,10 @@ public class BreakpointDownloader {
 
         private Handler handler;
 
-        public DownloadThread(int id, URL url, File dataFile, File tempFile, long totalLen, int threadAmount, Handler handler) {
+        public DownloadThread(int taskIndex, int id, String address, File dataFile, File tempFile, long totalLen, int threadAmount, Handler handler) {
+            this.taskIndex = taskIndex;
             this.id = id;
-            this.url = url;
+            this.address = address;
             this.dataFile = dataFile;
             this.tempFile = tempFile;
             this.handler = handler;
@@ -147,7 +166,7 @@ public class BreakpointDownloader {
                 tempRaf.seek(id * 8);                        // 将指针移动到当前线程的位置(每个线程写1个long值, 占8字节)
                 long threadFinish = tempRaf.readLong();        // 读取当前线程已完成了多少
                 synchronized (BreakpointDownloader.this) {    // 多个下载线程之间同步
-                    totalFinish += threadFinish;            // 统计所有线程总共完成了多少
+                    totalFinish[taskIndex] += threadFinish;            // 统计所有线程总共完成了多少
                 }
 
                 long start = id * threadLen + threadFinish;        // 计算当前线程的起始位置
@@ -157,10 +176,11 @@ public class BreakpointDownloader {
                 }
                 System.out.println("线程" + id + ": " + start + "-" + end);
 
+                URL url = new URL(address);
                 conn = (HttpURLConnection) url.openConnection();
                 conn.setConnectTimeout(3000);
                 conn.setRequestProperty("Range", "bytes=" + start + "-" + end);        // 设置当前线程下载的范围
-                System.out.println("线程" + id + "--conn.getResponseCode()=" + conn.getResponseCode());
+                System.out.println("线程" + id +"--taskIndex=" + taskIndex+ "--conn.getResponseCode()=" + conn.getResponseCode()+ "--address=" + address);
 
                 //当请求部分数据成功的时候, 返回http状态码206
                 if (conn.getResponseCode() == 206) {
@@ -176,16 +196,17 @@ public class BreakpointDownloader {
                         tempRaf.seek(id * 8);                        // 将临时文件的指针指向当前线程的位置
                         tempRaf.writeLong(threadFinish);            // 将当前线程完成了多少写入到临时文件
                         synchronized (BreakpointDownloader.this) {    // 多个下载线程之间同步
-                            totalFinish += len;                        // 统计所有线程总共完成了多少
+                            totalFinish[taskIndex] += len;                        // 统计所有线程总共完成了多少
                             Message msg = new Message();
-                            msg.getData().putLong("totalFinish", totalFinish);
-                            msg.what = 2;
+                            msg.getData().putLong("totalFinish", totalFinish[taskIndex]);
+                            msg.what = taskIndex;
+                            msg.arg1 = 2;
                             handler.sendMessage(msg);                // 发送当前进度
                         }
                     }
 
                     System.out.println("线程" + id + "下载完毕");
-                    System.out.println("线程" + id + "--threadFinish=" + threadFinish + "--totalFinish=" + totalFinish + "\n");
+                    System.out.println("线程" + id + "--threadFinish=" + threadFinish + "--totalFinish=" + totalFinish[taskIndex] + "--address=" + address+ "\n");
                 } else {
                     System.out.println("线程=" + id + "--Response Code != 206 (actualCode=" + conn.getResponseCode() + "),服务器不支持多线程下载。");
                 }
@@ -205,8 +226,8 @@ public class BreakpointDownloader {
                     if (null != dataRaf) {
                         dataRaf.close();
                     }
-                    if (totalFinish == totalLen) {                    // 如果已完成长度等于服务端文件长度(代表下载完成)
-                        System.out.println("下载完成, 耗时: " + (System.currentTimeMillis() - begin)+"--dataFile.length()="+dataFile.length());
+                    if (totalFinish[taskIndex] == totalLen) {                    // 如果已完成长度等于服务端文件长度(代表下载完成)
+                        System.out.println("下载完成, 耗时: " + (System.currentTimeMillis() - begin[taskIndex])+"--dataFile.length()="+dataFile.length()+ "--address=" + address);
                         tempFile.delete();                            // 删除临时文件
 //                        dataFile.renameTo(new File(dataFile.getAbsolutePath()+".aaaaaa")); //文件下载完成后重命名
                     }
@@ -219,7 +240,7 @@ public class BreakpointDownloader {
 
 
     /**
-     * 文件下载
+     *  单线程下载，不支持断点续传
      *
      * @param httpUrl
      * @return
@@ -294,6 +315,7 @@ public class BreakpointDownloader {
                                 inputStream.close();
                             }
                             if (totalFinish == totalLen && totalFinish >0 && totalLen >0 ) {
+                                //文件下载完成后重命名
                                 tempFile.renameTo(dataFile);
 
                                 System.out.println("已经下载完成");
