@@ -23,7 +23,7 @@ public class BreakpointDownloader {
     private static final int MAX_POOL_SIZE = 20;                // 线程池最大线程数
 
     private static int taskCount = -1;
-    private  int[] orderArr = new int[10];
+//    private  int[] orderArr = new int[10];
     private long[] begin = new long[10];            // 用来记录开始下载时的时间
     private long[] totalFinish = new long[10];    // 总共完成了多少
 
@@ -31,9 +31,9 @@ public class BreakpointDownloader {
     private  ThreadPoolExecutor threadPoolExecutor;
 
     private BreakpointDownloader() {
-        for (int i=0; i<orderArr.length;i++){
-            begin[i]=i;
-        }
+//        for (int i=0; i<orderArr.length;i++){
+//            orderArr[i]=i;
+//        }
         for (int i=0; i<begin.length;i++){
             begin[i]=0;
         }
@@ -88,11 +88,11 @@ public class BreakpointDownloader {
 
 
                     if (conn.getResponseCode() == 200) {
-                        taskCount++;
                         long totalLen = conn.getContentLength();                                    // 获取服务端发送过来的文件长度
                         Message msg = new Message();
                         msg.getData().putLong("totalLen", totalLen);
-                        System.out.println("sendMsg--totalLen=" + totalLen + "--taskCount=" + taskCount);
+                        taskCount++;
+                        System.out.println("#############sendMsg--totalLen=" + totalLen + "--taskCount=" + taskCount);
                         msg.what = taskCount;
                         msg.arg1 = 1;
                         handler.sendMessage(msg);                                            // 发送文件总长度

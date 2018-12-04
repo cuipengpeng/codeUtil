@@ -43,6 +43,7 @@ public class MainActivity extends Activity {
 							long totalFinish = msg.getData().getLong("totalFinish");
 							downloadPB.setProgress((int) totalFinish);                    // 更新进度条
 							percentTV.setText(totalFinish * 100 / totalLen + "%");        // 更新百分比
+							break;
 					}
 					break;
 				case 1:
@@ -55,6 +56,7 @@ public class MainActivity extends Activity {
 							long totalFinish = msg.getData().getLong("totalFinish");
 							downloadPB01.setProgress((int) totalFinish);                    // 更新进度条
 							percentTV01.setText(totalFinish * 100 / totalLen01 + "%");        // 更新百分比
+							break;
 					}
 					break;
 				case 2:
@@ -67,6 +69,7 @@ public class MainActivity extends Activity {
 							long totalFinish = msg.getData().getLong("totalFinish");
 							downloadPB02.setProgress((int) totalFinish);                    // 更新进度条
 							percentTV02.setText(totalFinish * 100 / totalLen02 + "%");        // 更新百分比
+							break;
 					}
 					break;
 				case 3:
@@ -79,6 +82,7 @@ public class MainActivity extends Activity {
 							long totalFinish = msg.getData().getLong("totalFinish");
 							downloadPB03.setProgress((int) totalFinish);                    // 更新进度条
 							percentTV03.setText(totalFinish * 100 / totalLen03 + "%");        // 更新百分比
+							break;
 					}
 					break;
 			}
@@ -134,15 +138,15 @@ public class MainActivity extends Activity {
 //    	String address = addressET.getText().toString().trim();
     	String address = "http://down.360safe.com/se/360se9.1.0.426.exe";
     	String address01 = "http://ftp.yz.yamagata-u.ac.jp/pub/eclipse/oomph/epp/2018-09/Ra/eclipse-inst-win64.exe";
-    	String address02 = "http://ftp.yz.yamagata-u.ac.jp/pub/eclipse/oomph/epp/2018-09/Ra/eclipse-inst-linux64.tar.gz";
-    	String address03 = "http://ftp.yz.yamagata-u.ac.jp/pub/eclipse/oomph/epp/2018-09/Ra/eclipse-inst-mac64.tar.gz";
-		String address04 = "http://dldir1.qq.com/weixin/android/weixin657android1040.apk";
-		String address05 = "https://qd.myapp.com/myapp/qqteam/AndroidQQ/mobileqq_android.apk";
+		String address02 = "http://dldir1.qq.com/weixin/android/weixin657android1040.apk";
+		String address03 = "https://qd.myapp.com/myapp/qqteam/AndroidQQ/mobileqq_android.apk";
+		String address04 = "http://ftp.yz.yamagata-u.ac.jp/pub/eclipse/oomph/epp/2018-09/Ra/eclipse-inst-linux64.tar.gz";
+		String address05 = "http://ftp.yz.yamagata-u.ac.jp/pub/eclipse/oomph/epp/2018-09/Ra/eclipse-inst-mac64.tar.gz";
 //    	String address = "http://video.chaogevideo.com/download/chaoge/01/chaoge/v1.0/chaoge_v1.0_yueming.apk";
 
+		BreakpointDownloader.getInstance().downloadBigFile(address02, handler);
 		BreakpointDownloader.getInstance().downloadBigFile(address, handler);
 		BreakpointDownloader.getInstance().downloadBigFile(address01, handler);
-		BreakpointDownloader.getInstance().downloadBigFile(address02, handler);
 		BreakpointDownloader.getInstance().downloadBigFile(address03, handler);
 //		BreakpointDownloader.getInstance().downloadSmallFile(address, null, 1, new Handler());
     }
