@@ -144,10 +144,10 @@ public class MainActivity extends Activity {
 		String address05 = "http://ftp.yz.yamagata-u.ac.jp/pub/eclipse/oomph/epp/2018-09/Ra/eclipse-inst-mac64.tar.gz";
 //    	String address = "http://video.chaogevideo.com/download/chaoge/01/chaoge/v1.0/chaoge_v1.0_yueming.apk";
 
-		BreakpointDownloader.getInstance().downloadBigFile(address02, handler);
-		BreakpointDownloader.getInstance().downloadBigFile(address, handler);
-		BreakpointDownloader.getInstance().downloadBigFile(address01, handler);
-		BreakpointDownloader.getInstance().downloadBigFile(address03, handler);
+		BreakpointDownloader.getInstance().downloadBigFile(address02, "", handler);
+		BreakpointDownloader.getInstance().downloadBigFile(address, "", handler);
+		BreakpointDownloader.getInstance().downloadBigFile(address01, "", handler);
+		BreakpointDownloader.getInstance().downloadBigFile(address03, "", handler);
 //		BreakpointDownloader.getInstance().downloadSmallFile(address, null, 1, new Handler());
     }
 }

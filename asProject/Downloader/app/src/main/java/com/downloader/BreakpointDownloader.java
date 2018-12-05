@@ -17,7 +17,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class BreakpointDownloader {
-    private static final String DIR_PATH = "/mnt/sdcard/";    // 下载目录
+    private static final File DIR_PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);    // 下载目录
     private static final int THREAD_AMOUNT = 3;                // 大文件下载总线程数
     private static final int CORE_POOL_SIZE = 5;                // 线程池核心线程数
     private static final int MAX_POOL_SIZE = 20;                // 线程池最大线程数
@@ -69,65 +69,86 @@ public class BreakpointDownloader {
      * @param address
      * @param handler
      */
-    public void downloadBigFile(final String address, final Handler handler) {
-        new Thread(new Runnable() {
+    public File downloadBigFile(final String address, String fileName, final Handler handler) {
+        File file = new File("");
+        if (fileName == null || "".equals(fileName)) {
+			fileName = address.substring(address.lastIndexOf("/"), address.length());
+//            fileName = MD5.messageDigest(address, "");
+        }
+        File dataFile = new File(DIR_PATH, fileName);    // 截取地址中的文件名, 创建本地文件
+        File tempFile = new File(dataFile.getAbsolutePath() + ".temp");                        // 在本地文件所在文件夹中创建临时文件
 
-            public void run() {
-                HttpURLConnection conn = null;
-                try {
-                    File dataFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), address.substring(address.lastIndexOf("/") + 1));    // 截取地址中的文件名, 创建本地文件
-                    File tempFile = new File(dataFile.getAbsolutePath() + ".temp");                        // 在本地文件所在文件夹中创建临时文件
+        if(dataFile.exists() && !tempFile.exists()){
+            Message message = handler.obtainMessage();
+            message.what = 1000;
+            message.obj = dataFile.getAbsolutePath();
+            handler.sendMessage(message);
+            file = dataFile;
+            return file;
+        }else {
+            new Thread(new Runnable() {
 
-                    URL url = new URL(address);
-                    conn = (HttpURLConnection) url.openConnection();
-                    conn.setConnectTimeout(3000);
-                    conn.setReadTimeout(3000);
-                    conn.setRequestMethod("GET");
-                    //加上这句是为了防止connection.getContentLength()获取不到
-                    conn.setRequestProperty("Accept-Encoding", "identity");
+                public void run() {
+                    HttpURLConnection conn = null;
+                    try {
+                        File dataFile = new File(DIR_PATH, address.substring(address.lastIndexOf("/") + 1));    // 截取地址中的文件名, 创建本地文件
+                        File tempFile = new File(dataFile.getAbsolutePath() + ".temp");                        // 在本地文件所在文件夹中创建临时文件
 
+                        URL url = new URL(address);
+                        conn = (HttpURLConnection) url.openConnection();
+                        conn.setConnectTimeout(3000);
+                        conn.setReadTimeout(3000);
+                        conn.setRequestMethod("GET");
+                        //加上这句是为了防止connection.getContentLength()获取不到
+                        conn.setRequestProperty("Accept-Encoding", "identity");
 
-                    if (conn.getResponseCode() == 200) {
-                        long totalLen = conn.getContentLength();                                    // 获取服务端发送过来的文件长度
-                        Message msg = new Message();
-                        msg.getData().putLong("totalLen", totalLen);
-                        taskCount++;
-                        System.out.println("#############sendMsg--totalLen=" + totalLen + "--taskCount=" + taskCount);
-                        msg.what = taskCount;
-                        msg.arg1 = 1;
-                        handler.sendMessage(msg);                                            // 发送文件总长度
+                        if (conn.getResponseCode() == 200) {
+                            long totalLen = conn.getContentLength();                                    // 获取服务端发送过来的文件长度
 
-                        if (!dataFile.exists()) {                                            // 如果本地文件不存在
-                            RandomAccessFile raf = new RandomAccessFile(dataFile, "rws");    // 在本地创建文件
-                            //setLength是先在存储设备占用一块空间,防止下载到一半空间不足, 设置文件的大小和服务端相同
-                            raf.setLength(totalLen);
-                            raf.close();
-                        }
-
-                        if (!tempFile.exists()) {                                            // 如果临时文件不存在
-                            RandomAccessFile raf = new RandomAccessFile(tempFile, "rws");    // 创建临时文件, 用来记录每个线程已下载多少
-                            for (int i = 0; i < THREAD_AMOUNT; i++) {                            // 按照线程数循环
-                                raf.writeLong(0);                                            // 写入每个线程的开始位置(都是从0开始)
+                            if (!dataFile.exists()) {                                            // 如果本地文件不存在
+                                RandomAccessFile raf = new RandomAccessFile(dataFile, "rws");    // 在本地创建文件
+                                //setLength是先在存储设备占用一块空间,防止下载到一半空间不足, 设置文件的大小和服务端相同
+                                raf.setLength(totalLen);
+                                raf.close();
                             }
-                            raf.close();
-                        }
 
-                        // 按照线程数循环
-                        for (int i = 0; i < THREAD_AMOUNT; i++) {
-//                            new Thread(new DownloadThread(i, url, dataFile, tempFile, handler)).start();        // 开启线程, 每个线程将会下载一部分数据到本地文件中
-                            execute(new DownloadThread(taskCount, i, address, dataFile, tempFile, totalLen, THREAD_AMOUNT, handler));        // 开启线程, 每个线程将会下载一部分数据到本地文件中
+                            if (!tempFile.exists()) {                                            // 如果临时文件不存在
+                                RandomAccessFile raf = new RandomAccessFile(tempFile, "rws");    // 创建临时文件, 用来记录每个线程已下载多少
+                                for (int i = 0; i < THREAD_AMOUNT; i++) {                            // 按照线程数循环
+                                    raf.writeLong(0);                                            // 写入每个线程的开始位置(都是从0开始)
+                                }
+                                raf.close();
+                            }
+
+                            Message msg = new Message();
+                            msg.getData().putLong("totalLen", totalLen);
+                            msg.arg1 = 1;
+                            synchronized (BreakpointDownloader.this){
+                                taskCount++;
+                                System.out.println("#############sendMsg--totalLen=" + totalLen + "--taskCount=" + taskCount);
+                                msg.what = taskCount;
+                                handler.sendMessage(msg);                                            // 发送文件总长度
+
+                                // 按照线程数循环
+                                for (int i = 0; i < THREAD_AMOUNT; i++) {
+        //                            new Thread(new DownloadThread(i, url, dataFile, tempFile, handler)).start();        // 开启线程, 每个线程将会下载一部分数据到本地文件中
+                                    execute(new DownloadThread(taskCount, i, address, dataFile, tempFile, totalLen, THREAD_AMOUNT, handler));        // 开启线程, 每个线程将会下载一部分数据到本地文件中
+                                }
+                                begin[taskCount] = System.currentTimeMillis();        // 记录开始时间
+                            }
                         }
-                        begin[taskCount] = System.currentTimeMillis();        // 记录开始时间
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } finally {
-                    if (null != conn) {
-                        conn.disconnect();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } finally {
+                        if (null != conn) {
+                            conn.disconnect();
+                        }
                     }
                 }
-            }
-        }).start();
+            }).start();
+        }
+
+        return file;
     }
 
     private class DownloadThread implements Runnable {
@@ -195,7 +216,8 @@ public class BreakpointDownloader {
                         threadFinish += len;                        // 每次写入数据之后, 统计当前线程完成了多少
                         tempRaf.seek(id * 8);                        // 将临时文件的指针指向当前线程的位置
                         tempRaf.writeLong(threadFinish);            // 将当前线程完成了多少写入到临时文件
-                        synchronized (BreakpointDownloader.this) {    // 多个下载线程之间同步
+                        synchronized (dataFile) {    // 多个下载线程之间同步
+                        // synchronized (BreakpointDownloader.this){       // 多个下载线程之间同步
                             totalFinish[taskIndex] += len;                        // 统计所有线程总共完成了多少
                             Message msg = new Message();
                             msg.getData().putLong("totalFinish", totalFinish[taskIndex]);
@@ -245,12 +267,13 @@ public class BreakpointDownloader {
      * @param httpUrl
      * @return
      */
-    public void downloadSmallFile(final String httpUrl, String fileName, final int itemPosition, final Handler handler) {
+    public File downloadSmallFile(final String httpUrl, String fileName, final int itemPosition, final Handler handler) {
+        File file = new File("");
         if (fileName == null || "".equals(fileName)) {
 //			fileName = httpUrl.substring(httpUrl.lastIndexOf("/"), httpUrl.length());
             fileName = MD5.messageDigest(httpUrl, "");
         }
-        final File dataFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
+        final File dataFile = new File(DIR_PATH, fileName);
         final File tempFile = new File(dataFile.getAbsolutePath()+".temp");
 
         if (dataFile.exists()) {
@@ -259,6 +282,8 @@ public class BreakpointDownloader {
             message.obj = tempFile.getAbsolutePath();
             message.arg1 = itemPosition;
             handler.sendMessage(message);
+            file = tempFile;
+            return file;
         } else {
             execute(new Runnable() {
 
@@ -331,6 +356,7 @@ public class BreakpointDownloader {
                 }
             });
         }
+        return file;
     }
 }
 
