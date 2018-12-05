@@ -142,12 +142,18 @@ public class MainActivity extends Activity {
 		String address03 = "https://qd.myapp.com/myapp/qqteam/AndroidQQ/mobileqq_android.apk";
 		String address04 = "http://ftp.yz.yamagata-u.ac.jp/pub/eclipse/oomph/epp/2018-09/Ra/eclipse-inst-linux64.tar.gz";
 		String address05 = "http://ftp.yz.yamagata-u.ac.jp/pub/eclipse/oomph/epp/2018-09/Ra/eclipse-inst-mac64.tar.gz";
-//    	String address = "http://video.chaogevideo.com/download/chaoge/01/chaoge/v1.0/chaoge_v1.0_yueming.apk";
+		String address06 = "https://movies.ds.9wuli.com/movies/20181203/3b9565b7fb4a82414a3fa6960be9c847?sign=9fcc7b78d7b69a4d7a0203967a6cf3b0&t=5c07b6b9";
+		String address07 = "https://movies.ds.9wuli.com/movies/20181203/b720d45bc5f2727a41a299613cec8803?sign=ae84dca5d0c4b429c38826e94d3f7daf&t=5c07b6b9";
+		String address08 = "https://movies.ds.9wuli.com/movies/20181203/2221778d06cede6662921ca45b4883c6?sign=fbd888479baac9179ad4f1a319d45e77&t=5c07b6b9";
+    	String address09 = "http://video.chaogevideo.com/download/chaoge/01/chaoge/v1.0/chaoge_v1.0_yueming.apk";
 
 		BreakpointDownloader.getInstance().downloadBigFile(address02, "", handler);
-		BreakpointDownloader.getInstance().downloadBigFile(address, "", handler);
-		BreakpointDownloader.getInstance().downloadBigFile(address01, "", handler);
-		BreakpointDownloader.getInstance().downloadBigFile(address03, "", handler);
-//		BreakpointDownloader.getInstance().downloadSmallFile(address, null, 1, new Handler());
+//		BreakpointDownloader.getInstance().downloadBigFile(address, "", handler);
+//		BreakpointDownloader.getInstance().downloadBigFile(address01, "", handler);
+//		BreakpointDownloader.getInstance().downloadBigFile(address03, "", handler);
+		BreakpointDownloader.getInstance().downloadBigFile(address06, "", handler);
+		BreakpointDownloader.getInstance().downloadBigFile(address07, "", handler);
+		BreakpointDownloader.getInstance().downloadBigFile(address08, "", handler);
+		BreakpointDownloader.getInstance().downloadSmallFile(address09, null, 1, new Handler());
     }
 }

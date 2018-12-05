@@ -70,7 +70,6 @@ public class BreakpointDownloader {
      * @param handler
      */
     public File downloadBigFile(final String address, String fileName, final Handler handler) {
-        File file = new File("");
         if (fileName == null || "".equals(fileName)) {
 			fileName = address.substring(address.lastIndexOf("/"), address.length());
 //            fileName = MD5.messageDigest(address, "");
@@ -79,12 +78,13 @@ public class BreakpointDownloader {
         File tempFile = new File(dataFile.getAbsolutePath() + ".temp");                        // 在本地文件所在文件夹中创建临时文件
 
         if(dataFile.exists() && !tempFile.exists()){
-            Message message = handler.obtainMessage();
-            message.what = 1000;
-            message.obj = dataFile.getAbsolutePath();
-            handler.sendMessage(message);
-            file = dataFile;
-            return file;
+            if(handler!=null){
+                Message message = handler.obtainMessage();
+                message.what = 1000;
+                message.obj = dataFile.getAbsolutePath();
+                handler.sendMessage(message);
+            }
+            return dataFile;
         }else {
             new Thread(new Runnable() {
 
@@ -127,7 +127,9 @@ public class BreakpointDownloader {
                                 taskCount++;
                                 System.out.println("#############sendMsg--totalLen=" + totalLen + "--taskCount=" + taskCount);
                                 msg.what = taskCount;
-                                handler.sendMessage(msg);                                            // 发送文件总长度
+                                if(handler!=null){
+                                    handler.sendMessage(msg);                                            // 发送文件总长度
+                                }
 
                                 // 按照线程数循环
                                 for (int i = 0; i < THREAD_AMOUNT; i++) {
@@ -148,7 +150,7 @@ public class BreakpointDownloader {
             }).start();
         }
 
-        return file;
+        return null;
     }
 
     private class DownloadThread implements Runnable {
@@ -223,7 +225,9 @@ public class BreakpointDownloader {
                             msg.getData().putLong("totalFinish", totalFinish[taskIndex]);
                             msg.what = taskIndex;
                             msg.arg1 = 2;
-                            handler.sendMessage(msg);                // 发送当前进度
+                            if(handler!=null){
+                                handler.sendMessage(msg);                // 发送当前进度
+                            }
                         }
                     }
 
@@ -268,7 +272,6 @@ public class BreakpointDownloader {
      * @return
      */
     public File downloadSmallFile(final String httpUrl, String fileName, final int itemPosition, final Handler handler) {
-        File file = new File("");
         if (fileName == null || "".equals(fileName)) {
 //			fileName = httpUrl.substring(httpUrl.lastIndexOf("/"), httpUrl.length());
             fileName = MD5.messageDigest(httpUrl, "");
@@ -277,18 +280,19 @@ public class BreakpointDownloader {
         final File tempFile = new File(dataFile.getAbsolutePath()+".temp");
 
         if (dataFile.exists()) {
-            Message message = handler.obtainMessage();
-            message.what = 3;                //1代码成功，2代表失败 3代表文件已存在
-            message.obj = tempFile.getAbsolutePath();
-            message.arg1 = itemPosition;
-            handler.sendMessage(message);
-            file = tempFile;
-            return file;
+            if(handler!=null){
+                Message message = handler.obtainMessage();
+                message.what = 3;                //1代码成功，2代表失败 3代表文件已存在
+                message.obj = tempFile.getAbsolutePath();
+                message.arg1 = itemPosition;
+                handler.sendMessage(message);
+            }
+            return tempFile;
         } else {
             execute(new Runnable() {
 
                 public void run() {
-                    Message message = handler.obtainMessage();
+                    Message message = new Message();
                     HttpURLConnection connection = null;
                     FileOutputStream fileOutputStream = null;
                     InputStream inputStream = null;
@@ -326,7 +330,9 @@ public class BreakpointDownloader {
                         }
                     } catch (IOException e) {
                         message.what = 2;
-                        handler.sendMessage(message);
+                        if(handler!=null){
+                            handler.sendMessage(message);
+                        }
                         e.printStackTrace();
                     }finally {
                         try {
@@ -347,7 +353,9 @@ public class BreakpointDownloader {
                                 message.what = 1;                //1代码成功，2代表失败 3代表文件已存在
                                 message.obj = tempFile.getAbsolutePath();
                                 message.arg1 = itemPosition;
-                                handler.sendMessage(message);
+                                if(handler!=null){
+                                    handler.sendMessage(message);
+                                 }
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -356,7 +364,7 @@ public class BreakpointDownloader {
                 }
             });
         }
-        return file;
+        return null;
     }
 }
 
