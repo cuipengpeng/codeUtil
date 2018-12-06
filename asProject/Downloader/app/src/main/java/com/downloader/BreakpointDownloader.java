@@ -74,8 +74,8 @@ public class BreakpointDownloader {
 			fileName = address.substring(address.lastIndexOf("/"), address.length());
 //            fileName = MD5.messageDigest(address, "");
         }
-        File dataFile = new File(DIR_PATH, fileName);    // 截取地址中的文件名, 创建本地文件
-        File tempFile = new File(dataFile.getAbsolutePath() + ".temp");                        // 在本地文件所在文件夹中创建临时文件
+        final File dataFile = new File(DIR_PATH, fileName);    // 截取地址中的文件名, 创建本地文件
+        final File tempFile = new File(dataFile.getAbsolutePath() + ".temp");                        // 在本地文件所在文件夹中创建临时文件
 
         if(dataFile.exists() && !tempFile.exists()){
             if(handler!=null){
@@ -91,9 +91,6 @@ public class BreakpointDownloader {
                 public void run() {
                     HttpURLConnection conn = null;
                     try {
-                        File dataFile = new File(DIR_PATH, address.substring(address.lastIndexOf("/") + 1));    // 截取地址中的文件名, 创建本地文件
-                        File tempFile = new File(dataFile.getAbsolutePath() + ".temp");                        // 在本地文件所在文件夹中创建临时文件
-
                         URL url = new URL(address);
                         conn = (HttpURLConnection) url.openConnection();
                         conn.setConnectTimeout(3000);
@@ -287,8 +284,12 @@ public class BreakpointDownloader {
                 message.arg1 = itemPosition;
                 handler.sendMessage(message);
             }
-            return tempFile;
+            return dataFile;
         } else {
+            if(!httpUrl.startsWith("http")){
+                return null;
+            }
+
             execute(new Runnable() {
 
                 public void run() {

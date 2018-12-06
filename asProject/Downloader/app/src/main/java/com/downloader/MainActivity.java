@@ -131,9 +131,11 @@ public class MainActivity extends Activity {
 
     public void download(View view){
 //		https://blog.csdn.net/MyLoveyaqiong/article/details/53142521
+//        https://blog.csdn.net/zengrenyuan/article/details/78117559
 //		https://github.com/ljie/java-downFile/blob/master/downFile/src/main/java/com/softdu/utils/DownUtil.java
 //		https://download.csdn.net/download/mlj1668956679/6669915
 //		https://blog.csdn.net/u013256816/article/details/50403962
+//      https://blog.csdn.net/guoshengkai373/article/details/78457928
 
 //    	String address = addressET.getText().toString().trim();
     	String address = "http://down.360safe.com/se/360se9.1.0.426.exe";
@@ -142,18 +144,12 @@ public class MainActivity extends Activity {
 		String address03 = "https://qd.myapp.com/myapp/qqteam/AndroidQQ/mobileqq_android.apk";
 		String address04 = "http://ftp.yz.yamagata-u.ac.jp/pub/eclipse/oomph/epp/2018-09/Ra/eclipse-inst-linux64.tar.gz";
 		String address05 = "http://ftp.yz.yamagata-u.ac.jp/pub/eclipse/oomph/epp/2018-09/Ra/eclipse-inst-mac64.tar.gz";
-		String address06 = "https://movies.ds.9wuli.com/movies/20181203/3b9565b7fb4a82414a3fa6960be9c847?sign=9fcc7b78d7b69a4d7a0203967a6cf3b0&t=5c07b6b9";
-		String address07 = "https://movies.ds.9wuli.com/movies/20181203/b720d45bc5f2727a41a299613cec8803?sign=ae84dca5d0c4b429c38826e94d3f7daf&t=5c07b6b9";
-		String address08 = "https://movies.ds.9wuli.com/movies/20181203/2221778d06cede6662921ca45b4883c6?sign=fbd888479baac9179ad4f1a319d45e77&t=5c07b6b9";
     	String address09 = "http://video.chaogevideo.com/download/chaoge/01/chaoge/v1.0/chaoge_v1.0_yueming.apk";
 
 		BreakpointDownloader.getInstance().downloadBigFile(address02, "", handler);
-//		BreakpointDownloader.getInstance().downloadBigFile(address, "", handler);
-//		BreakpointDownloader.getInstance().downloadBigFile(address01, "", handler);
-//		BreakpointDownloader.getInstance().downloadBigFile(address03, "", handler);
-		BreakpointDownloader.getInstance().downloadBigFile(address06, "", handler);
-		BreakpointDownloader.getInstance().downloadBigFile(address07, "", handler);
-		BreakpointDownloader.getInstance().downloadBigFile(address08, "", handler);
-		BreakpointDownloader.getInstance().downloadSmallFile(address09, null, 1, new Handler());
+		BreakpointDownloader.getInstance().downloadBigFile(address, "", handler);
+		BreakpointDownloader.getInstance().downloadBigFile(address01, "", handler);
+		BreakpointDownloader.getInstance().downloadBigFile(address03, "", handler);
+//		BreakpointDownloader.getInstance().downloadSmallFile(address09, null, 1, new Handler());
     }
 }
