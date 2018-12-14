@@ -269,6 +269,15 @@ public class BreakpointDownloader {
      * @return
      */
     public File downloadSmallFile(final String httpUrl, String fileName, final int itemPosition, final Handler handler) {
+        if (httpUrl == null || "".equals(httpUrl)) {
+            if(handler!=null){
+                Message message = handler.obtainMessage();
+                message.what = 2;
+                handler.sendMessage(message);
+            }
+            return null;
+        }
+
         if (fileName == null || "".equals(fileName)) {
 //			fileName = httpUrl.substring(httpUrl.lastIndexOf("/"), httpUrl.length());
             fileName = MD5.messageDigest(httpUrl, "");
@@ -280,7 +289,7 @@ public class BreakpointDownloader {
             if(handler!=null){
                 Message message = handler.obtainMessage();
                 message.what = 3;                //1代码成功，2代表失败 3代表文件已存在
-                message.obj = tempFile.getAbsolutePath();
+                message.obj = dataFile.getAbsolutePath();
                 message.arg1 = itemPosition;
                 handler.sendMessage(message);
             }
@@ -352,7 +361,7 @@ public class BreakpointDownloader {
 
                                 System.out.println("已经下载完成");
                                 message.what = 1;                //1代码成功，2代表失败 3代表文件已存在
-                                message.obj = tempFile.getAbsolutePath();
+                                message.obj = dataFile.getAbsolutePath();
                                 message.arg1 = itemPosition;
                                 if(handler!=null){
                                     handler.sendMessage(message);
