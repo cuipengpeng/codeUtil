@@ -28,7 +28,7 @@ public class BreakpointDownloader {
     private long[] totalFinish = new long[10];    // 总共完成了多少
 
     private static volatile BreakpointDownloader mBreakpointDownloader;
-    private  ThreadPoolExecutor threadPoolExecutor;
+    public ThreadPoolExecutor threadPoolExecutor;
 
     private BreakpointDownloader() {
 //        for (int i=0; i<orderArr.length;i++){
@@ -40,6 +40,9 @@ public class BreakpointDownloader {
         for (int i=0; i<totalFinish.length;i++){
             totalFinish[i]=0;
         }
+        threadPoolExecutor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, 0L, TimeUnit.MICROSECONDS,
+                new LinkedBlockingQueue<Runnable>(), Executors.defaultThreadFactory(),
+                new ThreadPoolExecutor.AbortPolicy());
     }
 
     public static BreakpointDownloader getInstance() {
@@ -54,7 +57,7 @@ public class BreakpointDownloader {
     }
 
     public  void execute(Runnable r){
-        if(threadPoolExecutor == null){
+        if(threadPoolExecutor == null || threadPoolExecutor.isTerminated()){
             threadPoolExecutor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, 0L, TimeUnit.MICROSECONDS,
                             new LinkedBlockingQueue<Runnable>(), Executors.defaultThreadFactory(),
                             new ThreadPoolExecutor.AbortPolicy());
