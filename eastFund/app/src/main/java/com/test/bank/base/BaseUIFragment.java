@@ -46,7 +46,7 @@ public abstract class BaseUIFragment extends Fragment implements IBaseView {
 
 
     private View subScreenView = null;
-    RelativeLayout replaceViewLinearLayout;
+    RelativeLayout replaceViewRelativeLayout;
     protected boolean showBaseUITitle = false;
     public FragmentActivity mContext;
     private int subLayoutId = 0;
@@ -65,9 +65,9 @@ public abstract class BaseUIFragment extends Fragment implements IBaseView {
         if (subLayoutId != 0) {
             subScreenView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_base_ui, null);
             View contentView = LayoutInflater.from(getActivity()).inflate(subLayoutId, null);
-            replaceViewLinearLayout = subScreenView.findViewById(R.id.ll_baseActivity_contentView);
+            replaceViewRelativeLayout = subScreenView.findViewById(R.id.ll_baseActivity_contentView);
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-            replaceViewLinearLayout.addView(contentView, layoutParams);
+            replaceViewRelativeLayout.addView(contentView, layoutParams);
         } else {
             subScreenView = getContentView();
         }
@@ -78,6 +78,7 @@ public abstract class BaseUIFragment extends Fragment implements IBaseView {
 
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this, subScreenView);
+
         hideAllViews();
 //        showContentView();
         TAG = this.getClass().getName();
@@ -162,28 +163,28 @@ public abstract class BaseUIFragment extends Fragment implements IBaseView {
     }
 
     public void hideAllViews() {
-        replaceViewLinearLayout.setVisibility(View.GONE);
+        replaceViewRelativeLayout.setVisibility(View.GONE);
         netwrokErrorViewLinearLayout.setVisibility(View.GONE);
         noDataViewLinearLayout.setVisibility(View.GONE);
     }
 
     @Override
     public void showContentView() {
-        replaceViewLinearLayout.setVisibility(View.VISIBLE);
+        replaceViewRelativeLayout.setVisibility(View.VISIBLE);
         netwrokErrorViewLinearLayout.setVisibility(View.GONE);
         noDataViewLinearLayout.setVisibility(View.GONE);
     }
 
     @Override
     public void showNoDataView() {
-        replaceViewLinearLayout.setVisibility(View.GONE);
+        replaceViewRelativeLayout.setVisibility(View.GONE);
         netwrokErrorViewLinearLayout.setVisibility(View.GONE);
         noDataViewLinearLayout.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void showNetworkErrorView() {
-        replaceViewLinearLayout.setVisibility(View.GONE);
+        replaceViewRelativeLayout.setVisibility(View.GONE);
         netwrokErrorViewLinearLayout.setVisibility(View.VISIBLE);
         noDataViewLinearLayout.setVisibility(View.GONE);
     }

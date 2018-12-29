@@ -39,7 +39,7 @@ public abstract class BaseUIActivity extends FragmentActivity implements IBaseVi
     @BindView(R.id.ll_baseActivity_netwrokErrorView)
     protected LinearLayout baseNetwrokErrorViewLinearLayout;
 
-    RelativeLayout replaceViewLinearLayout;
+    RelativeLayout replaceViewRelativeLayout;
     private View subScreenView = null;
     private int subLayoutId = 0;
     protected boolean showBaseUITitle = true;
@@ -52,9 +52,9 @@ public abstract class BaseUIActivity extends FragmentActivity implements IBaseVi
         if (subLayoutId != 0) {
             subScreenView = LayoutInflater.from(this).inflate(R.layout.activity_base_ui, null);
             View contentView = LayoutInflater.from(this).inflate(subLayoutId, null);
-            replaceViewLinearLayout = subScreenView.findViewById(R.id.ll_baseActivity_contentView);
+            replaceViewRelativeLayout = subScreenView.findViewById(R.id.ll_baseActivity_contentView);
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-            replaceViewLinearLayout.addView(contentView, layoutParams);
+            replaceViewRelativeLayout.addView(contentView, layoutParams);
         } else {
             subScreenView = getContentView();
         }
@@ -68,9 +68,9 @@ public abstract class BaseUIActivity extends FragmentActivity implements IBaseVi
 
         hideAllViews();
 //        showContentView();
-//        mDialog = new LoadingAlertDialog(this);
         TAG = this.getClass().getName();
         mContext = this;
+//        mDialog = new LoadingAlertDialog(this);
 
         initLocalDataView();
         initTitleBar();
@@ -124,28 +124,28 @@ public abstract class BaseUIActivity extends FragmentActivity implements IBaseVi
     protected abstract void initPageData();
 
     public void hideAllViews() {
-        replaceViewLinearLayout.setVisibility(View.GONE);
+        replaceViewRelativeLayout.setVisibility(View.GONE);
         baseNetwrokErrorViewLinearLayout.setVisibility(View.GONE);
         baseNoDataViewLinearLayout.setVisibility(View.GONE);
     }
 
     @Override
     public void showContentView() {
-        replaceViewLinearLayout.setVisibility(View.VISIBLE);
+        replaceViewRelativeLayout.setVisibility(View.VISIBLE);
         baseNetwrokErrorViewLinearLayout.setVisibility(View.GONE);
         baseNoDataViewLinearLayout.setVisibility(View.GONE);
     }
 
     @Override
     public void showNoDataView() {
-        replaceViewLinearLayout.setVisibility(View.GONE);
+        replaceViewRelativeLayout.setVisibility(View.GONE);
         baseNetwrokErrorViewLinearLayout.setVisibility(View.GONE);
         baseNoDataViewLinearLayout.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void showNetworkErrorView() {
-        replaceViewLinearLayout.setVisibility(View.GONE);
+        replaceViewRelativeLayout.setVisibility(View.GONE);
         baseNetwrokErrorViewLinearLayout.setVisibility(View.VISIBLE);
         baseNoDataViewLinearLayout.setVisibility(View.GONE);
     }

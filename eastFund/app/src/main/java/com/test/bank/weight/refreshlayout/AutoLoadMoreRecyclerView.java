@@ -10,17 +10,18 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.test.bank.R;
 import com.test.bank.utils.LogUtils;
 
+import org.litepal.util.LogUtil;
+
 
 public class AutoLoadMoreRecyclerView extends RecyclerView {
+    private static final String TAG = "XRecyclerView";
     private WrapAdapter mWrapAdapter;
     private SparseArray<View> mHeaderViews = new SparseArray<View>();
     private SparseArray<View> mFootViews = new SparseArray<View>();
@@ -29,12 +30,12 @@ public class AutoLoadMoreRecyclerView extends RecyclerView {
     private YunRefreshHeader mRefreshHeader;
     public boolean isLoadingData;
     public int previousTotal;
-    public boolean isnomore;
+    public boolean isnomore = false;
     private float mLastY = -1;
     private static final float DRAG_RATE = 1.75f;
     // 是否是额外添加FooterView
     private boolean isOther = false;
-    private int offsetToLoadMore = 3;   //默认剩余两条加载更多
+    private int offsetToLoadMore = 1;   //默认剩余两条加载更多
 
     public static boolean isRefreshing = true;
 
@@ -54,7 +55,7 @@ public class AutoLoadMoreRecyclerView extends RecyclerView {
     private void init(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.AutoLoadMoreRecyclerView);
         pullRefreshEnabled = typedArray.getBoolean(R.styleable.AutoLoadMoreRecyclerView_refreshEnable, false);
-        offsetToLoadMore = typedArray.getInteger(R.styleable.AutoLoadMoreRecyclerView_offsetToLoadMore, 2);
+        offsetToLoadMore = typedArray.getInteger(R.styleable.AutoLoadMoreRecyclerView_offsetToLoadMore, 1);
         if (pullRefreshEnabled) {
             YunRefreshHeader refreshHeader = new YunRefreshHeader(context);
             mHeaderViews.put(0, refreshHeader);
@@ -100,12 +101,12 @@ public class AutoLoadMoreRecyclerView extends RecyclerView {
      */
     public void clearHeader() {
         mHeaderViews.clear();
-        final float scale = getContext().getResources().getDisplayMetrics().density;
-        int height = (int) (1.0f * scale + 0.5f);
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height);
-        View view = new View(getContext());
-        view.setLayoutParams(params);
-        mHeaderViews.put(0, view);
+//        final float scale = getContext().getResources().getDisplayMetrics().density;
+//        int height = (int) (1.0f * scale + 0.5f);
+//        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height);
+//        View view = new View(getContext());
+//        view.setLayoutParams(params);
+//        mHeaderViews.put(0, view);
     }
 
     public void addHeaderView(View view) {
@@ -117,7 +118,7 @@ public class AutoLoadMoreRecyclerView extends RecyclerView {
         mHeaderViews.put(mHeaderViews.size(), view);
     }
 
-    private void loadMoreComplete() {
+    public void loadMoreComplete() {
         isLoadingData = false;
         View footView = mFootViews.get(0);
         if (previousTotal <= getLayoutManager().getItemCount()) {
@@ -132,13 +133,12 @@ public class AutoLoadMoreRecyclerView extends RecyclerView {
             } else {
                 footView.setVisibility(View.GONE);
             }
-            isnomore = true;
         }
         previousTotal = getLayoutManager().getItemCount();
     }
 
     public void noMoreLoading() {
-        LogUtils.e("AutoLoadMore.noMoreLoading......");
+        LogUtils.printLog("AutoLoadMore.noMoreLoading......");
         isLoadingData = false;
         final View footView = mFootViews.get(0);
         isnomore = true;
@@ -175,13 +175,17 @@ public class AutoLoadMoreRecyclerView extends RecyclerView {
         return mWrapAdapter;
     }
 
-    private static final String TAG = "XRecyclerView";
-
     @Override
     public void onScrollStateChanged(int state) {
         super.onScrollStateChanged(state);
 
-        if (state == RecyclerView.SCROLL_STATE_IDLE && onLoadMoreListener != null && !isLoadingData && loadingMoreEnabled) {
+    }
+
+    @Override
+    public void onScrolled(int dx, int dy) {
+        super.onScrolled(dx, dy);
+        //        if (state == RecyclerView.SCROLL_STATE_IDLE && onLoadMoreListener != null && !isLoadingData && loadingMoreEnabled) {
+        if (onLoadMoreListener!=null && !isLoadingData && loadingMoreEnabled) {
             LayoutManager layoutManager = getLayoutManager();
             int lastVisibleItemPosition;
             if (layoutManager instanceof GridLayoutManager) {
@@ -193,14 +197,13 @@ public class AutoLoadMoreRecyclerView extends RecyclerView {
             } else {
                 lastVisibleItemPosition = ((LinearLayoutManager) layoutManager).findLastVisibleItemPosition();
             }
-//            Log.e(TAG, "onScrollStateChanged: lastVisibleItemPosition: " + lastVisibleItemPosition + " itemCount: " + layoutManager.getItemCount() + " offsetToLoadMore: " + offsetToLoadMore);
+//            LogUtils.printLog("lastVisibleItemPosition=" + lastVisibleItemPosition + "--itemCount=" + layoutManager.getItemCount() + "--offsetToLoadMore=" + offsetToLoadMore);
+//            LogUtils.printLog("isnomore=" + isnomore + "--isBeforeRefreshing()=" + isBeforeRefreshing()+"--layoutManager.getChildCount()="+layoutManager.getChildCount());
             if (layoutManager.getChildCount() > 0
                     && lastVisibleItemPosition >= layoutManager.getItemCount() - offsetToLoadMore
-//                    && lastVisibleItemPosition >= layoutManager.getItemCount() - 1
                     && layoutManager.getItemCount() > layoutManager.getChildCount()
                     && !isnomore
                     && isBeforeRefreshing()) {
-
                 View footView = mFootViews.get(0);
                 isLoadingData = true;
                 if (footView instanceof LoadingMoreFooter) {
@@ -208,18 +211,7 @@ public class AutoLoadMoreRecyclerView extends RecyclerView {
                 } else {
                     footView.setVisibility(View.VISIBLE);
                 }
-                if (isNetWorkConnected(getContext())) {
-                    Log.e(TAG, "onScrollStateChanged: 加载更多。。。。。。。。。。。。。");
-                    onLoadMoreListener.onLoadMore();
-                } else {
-                    postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            Log.e(TAG, "onScrollStateChanged: 加载更多。。。。。。。。。。。。。");
-                            onLoadMoreListener.onLoadMore();
-                        }
-                    }, 1000);
-                }
+                onLoadMoreListener.onLoadMore();
             }
         }
     }
