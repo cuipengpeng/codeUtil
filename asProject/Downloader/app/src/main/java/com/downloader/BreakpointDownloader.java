@@ -273,11 +273,6 @@ public class BreakpointDownloader {
      */
     public File downloadSmallFile(final String httpUrl, String fileName, final int itemPosition, final Handler handler) {
         if (httpUrl == null || "".equals(httpUrl)) {
-            if(handler!=null){
-                Message message = handler.obtainMessage();
-                message.what = 2;
-                handler.sendMessage(message);
-            }
             return null;
         }
 

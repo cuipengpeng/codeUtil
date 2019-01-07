@@ -144,7 +144,8 @@ public class MainActivity extends Activity {
 		String address03 = "https://qd.myapp.com/myapp/qqteam/AndroidQQ/mobileqq_android.apk";
 		String address04 = "http://ftp.yz.yamagata-u.ac.jp/pub/eclipse/oomph/epp/2018-09/Ra/eclipse-inst-linux64.tar.gz";
 		String address05 = "http://ftp.yz.yamagata-u.ac.jp/pub/eclipse/oomph/epp/2018-09/Ra/eclipse-inst-mac64.tar.gz";
-    	String address09 = "http://video.chaogevideo.com/download/chaoge/01/chaoge/v1.0/chaoge_v1.0_yueming.apk";
+    	String address08 = "http://video.chaogevideo.com/download/chaoge/01/chaoge/v1.0/chaoge_v1.0_yueming.apk";
+    	String address09 = "https://movies.ds.9wuli.com/movies/20190104/a150e1493a545c7a6160dd698958c20b?sign=2deffe6d417e9c1267afa7241ec30223&t=5c354791";
 
 		BreakpointDownloader.getInstance().downloadBigFile(address02, "", handler);
 		BreakpointDownloader.getInstance().downloadBigFile(address, "", handler);
