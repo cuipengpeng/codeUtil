@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import com.test.bank.R;
 import com.test.bank.inter.OnResponseListener;
+import com.umeng.analytics.MobclickAgent;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -78,6 +80,33 @@ public abstract class BaseUIActivity extends FragmentActivity implements IBaseVi
         initPageSetting();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (isCountPage()) {
+            MobclickAgent.onPageStart(TAG);
+            MobclickAgent.onResume(this); //统计时长
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (isCountPage()) {
+            MobclickAgent.onPageEnd(TAG);//必须保证 onPageEnd 在 onPause 之前调用，因为SDK会在 onPause 中保存onPageEnd统计到的页面数据。
+            MobclickAgent.onPause(this); //统计时长
+        }
+    }
+
+
+    /**
+     * 是否统计该页面，默认true. 若忽略统计该页面时，则重写该方法并返回false
+     *
+     * @return
+     */
+    protected boolean isCountPage() {
+        return true;
+    }
 
     protected View getContentView() {
         return null;

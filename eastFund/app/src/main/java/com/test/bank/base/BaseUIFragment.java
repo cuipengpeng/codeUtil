@@ -51,14 +51,6 @@ public abstract class BaseUIFragment extends Fragment implements IBaseView {
     public FragmentActivity mContext;
     private int subLayoutId = 0;
 
-    protected String mClassName;
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mClassName = getClass().getName();
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         subLayoutId = getSubLayoutId();
@@ -102,16 +94,18 @@ public abstract class BaseUIFragment extends Fragment implements IBaseView {
     @Override
     public void onResume() {
         super.onResume();
-        if (isCountPage() && !TextUtils.isEmpty(mClassName)) {
-            MobclickAgent.onPageStart(mClassName);
+        if (isCountPage()) {
+            MobclickAgent.onPageStart(TAG);
+            MobclickAgent.onResume(getActivity()); //统计时长
         }
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        if (isCountPage() && !TextUtils.isEmpty(mClassName)) {
-            MobclickAgent.onPageEnd(mClassName);
+        if (isCountPage()) {
+            MobclickAgent.onPageEnd(TAG);//必须保证 onPageEnd 在 onPause 之前调用，因为SDK会在 onPause 中保存onPageEnd统计到的页面数据。
+            MobclickAgent.onPause(getActivity()); //统计时长
         }
     }
 
