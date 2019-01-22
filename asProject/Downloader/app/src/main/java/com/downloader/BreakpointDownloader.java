@@ -42,7 +42,7 @@ public class BreakpointDownloader {
         }
         threadPoolExecutor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, 0L, TimeUnit.MICROSECONDS,
                 new LinkedBlockingQueue<Runnable>(), Executors.defaultThreadFactory(),
-                new ThreadPoolExecutor.AbortPolicy());
+                new ThreadPoolExecutor.DiscardPolicy());
     }
 
     public static BreakpointDownloader getInstance() {
@@ -60,7 +60,7 @@ public class BreakpointDownloader {
         if(threadPoolExecutor == null || threadPoolExecutor.isTerminated()){
             threadPoolExecutor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, 0L, TimeUnit.MICROSECONDS,
                             new LinkedBlockingQueue<Runnable>(), Executors.defaultThreadFactory(),
-                            new ThreadPoolExecutor.AbortPolicy());
+                            new ThreadPoolExecutor.DiscardPolicy());
         }
         if(threadPoolExecutor != null){
             threadPoolExecutor.execute(r);
@@ -271,16 +271,29 @@ public class BreakpointDownloader {
      * @param httpUrl
      * @return
      */
-    public File downloadSmallFile(final String httpUrl, String fileName, final int itemPosition, final Handler handler) {
+    public File downloadSmallFile(final String httpUrl, String savedDir, String fileName, final int itemPosition, final Handler handler) {
         if (httpUrl == null || "".equals(httpUrl)) {
             return null;
         }
 
         if (fileName == null || "".equals(fileName)) {
-//			fileName = httpUrl.substring(httpUrl.lastIndexOf("/"), httpUrl.length());
             fileName = MD5.messageDigest(httpUrl, "");
+            String tmpFileName = httpUrl.substring(httpUrl.lastIndexOf("/"), httpUrl.length());
+            String extensionName = tmpFileName.substring(tmpFileName.lastIndexOf("."), tmpFileName.length());
+            fileName=fileName+extensionName;
         }
-        final File dataFile = new File(DIR_PATH, fileName);
+
+        File dir;
+        if(!"".equals(savedDir) && savedDir !=null){
+            dir = new File(savedDir);
+        }else{
+            dir = DIR_PATH;
+        }
+        if(!dir.exists()){
+            dir.mkdirs();
+        }
+
+        final File dataFile = new File(dir, fileName);
         final File tempFile = new File(dataFile.getAbsolutePath()+".temp");
 
         if (dataFile.exists()) {
@@ -337,8 +350,8 @@ public class BreakpointDownloader {
                             }
                         }
                     } catch (IOException e) {
-                        message.what = 2;
                         if(handler!=null){
+                            message.what = 2;
                             handler.sendMessage(message);
                         }
                         e.printStackTrace();
@@ -358,10 +371,10 @@ public class BreakpointDownloader {
                                 tempFile.renameTo(dataFile);
 
                                 System.out.println("已经下载完成");
-                                message.what = 1;                //1代码成功，2代表失败 3代表文件已存在
-                                message.obj = dataFile.getAbsolutePath();
-                                message.arg1 = itemPosition;
                                 if(handler!=null){
+                                    message.what = 1;                //1代码成功，2代表失败 3代表文件已存在
+                                    message.obj = dataFile.getAbsolutePath();
+                                    message.arg1 = itemPosition;
                                     handler.sendMessage(message);
                                  }
                             }
