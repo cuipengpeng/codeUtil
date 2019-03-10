@@ -29,17 +29,17 @@ android {
 //        jniLibs.srcDir 'src/main/libs'
         jni.srcDirs = []
     }
-    task ndkBuild(type:Exec,description:'Compile JNI source via NDK'){
-        commandLine "D:\\software_installl\\android-ndk-r13b-windows-x86_64\\ndk-build.cmd",//配置ndk的路径
-                'NDK_PROJECT_PATH=build/intermediates/ndk',//ndk默认的生成so的文件
-//                'NDK_LIBS_OUT=src/main/jniLibs',//配置的我们想要生成的so文件所在的位置
-                'NDK_LIBS_OUT=libs',//配置的我们想要生成的so文件所在的位置
-                'APP_BUILD_SCRIPT=src/main/jni/Android.mk',//指定项目以这个mk的方式
-                'NDK_APPLOCATION_MK=src/main/jni/Application.mk'//指定项目以这个mk的方式
-    }
-    tasks.withType(JavaCompile){//使用ndkBuild
-        compileTask ->compileTask.dependsOn ndkBuild
-    }
+//    task ndkBuild(type:Exec,description:'Compile JNI source via NDK'){
+//        commandLine "D:\\software_installl\\android-ndk-r13b-windows-x86_64\\ndk-build.cmd",//配置ndk的路径
+//                'NDK_PROJECT_PATH=build/intermediates/ndk',//ndk默认的生成so的文件
+////                'NDK_LIBS_OUT=src/main/jniLibs',//配置的我们想要生成的so文件所在的位置
+//                'NDK_LIBS_OUT=libs',//配置的我们想要生成的so文件所在的位置
+//                'APP_BUILD_SCRIPT=src/main/jni/Android.mk',//指定项目以这个mk的方式
+//                'NDK_APPLOCATION_MK=src/main/jni/Application.mk'//指定项目以这个mk的方式
+//    }
+//    tasks.withType(JavaCompile){//使用ndkBuild
+//        compileTask ->compileTask.dependsOn ndkBuild
+//    }
 }
 
 dependencies {
