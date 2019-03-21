@@ -38,6 +38,8 @@ public abstract class BaseUIFragment extends Fragment implements IBaseView {
     protected ImageView baseBackImageView;
     @BindView(R.id.tv_base_title)
     protected TextView titleTextView;
+    @BindView(R.id.v_base_statusBar)
+    protected View baseStatusBarView;
 
     @BindView(R.id.ll_baseActivity_noDataView)
     protected LinearLayout noDataViewLinearLayout;
@@ -128,6 +130,7 @@ public abstract class BaseUIFragment extends Fragment implements IBaseView {
     private void initPageSetting() {
         if (!showBaseUITitle) {
             titleBarRelativeLayout.setVisibility(View.GONE);
+            baseStatusBarView.setVisibility(View.GONE);
         }
 
     }

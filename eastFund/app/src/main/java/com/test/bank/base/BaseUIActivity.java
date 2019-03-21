@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.test.bank.R;
 import com.test.bank.inter.OnResponseListener;
+import com.test.bank.utils.StatusBarUtil;
 import com.umeng.analytics.MobclickAgent;
 
 import butterknife.BindView;
@@ -35,6 +36,8 @@ public abstract class BaseUIActivity extends FragmentActivity implements IBaseVi
     protected ImageView baseRightMenuImageView;
     @BindView(R.id.tv_base_title)
     protected TextView baseTitleTextView;
+    @BindView(R.id.v_base_statusBar)
+    protected View baseStatusBarView;
 
     @BindView(R.id.ll_baseActivity_noDataView)
     protected LinearLayout baseNoDataViewLinearLayout;
@@ -73,6 +76,10 @@ public abstract class BaseUIActivity extends FragmentActivity implements IBaseVi
         TAG = this.getClass().getName();
         mContext = this;
 //        mDialog = new LoadingAlertDialog(this);
+        StatusBarUtil.translucentStatusBar(this);
+        LinearLayout.LayoutParams viewLayoutParams = (LinearLayout.LayoutParams) baseStatusBarView.getLayoutParams();
+        viewLayoutParams.height = StatusBarUtil.getStatusBarHeight(this);
+        baseStatusBarView.setLayoutParams(viewLayoutParams);
 
         initLocalDataView();
         initTitleBar();
@@ -118,6 +125,7 @@ public abstract class BaseUIActivity extends FragmentActivity implements IBaseVi
     private void initPageSetting() {
         if (!showBaseUITitle) {
             baseTitleBarRelativeLayout.setVisibility(View.GONE);
+            baseStatusBarView.setVisibility(View.GONE);
         }
 
     }
