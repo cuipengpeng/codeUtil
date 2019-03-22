@@ -11,6 +11,7 @@ import com.test.bank.base.BaseUIActivity;
 import com.test.bank.base.BaseUIFragment;
 import com.test.bank.base.IBaseView;
 import com.test.bank.utils.DeviceUtil;
+import com.test.bank.utils.LogInterceptor;
 import com.test.bank.utils.LogUtils;
 import com.test.bank.utils.MD5;
 import com.test.bank.weight.dialog.LoadingAlertDialog;
@@ -258,7 +259,9 @@ public class HttpRequest {
                         })
                         .connectTimeout(timeOut, TimeUnit.SECONDS)
                         .readTimeout(readTime, TimeUnit.SECONDS)
-                        .writeTimeout(writeTime, TimeUnit.SECONDS).build();
+                        .writeTimeout(writeTime, TimeUnit.SECONDS)
+                        .addInterceptor(new LogInterceptor())
+                        .build();
                 //设置日志拦截器
                 Retrofit retrofit = new Retrofit.Builder().client(httpClient)
                         .baseUrl(HttpRequest.APP_INTERFACE_WEB_URL)
