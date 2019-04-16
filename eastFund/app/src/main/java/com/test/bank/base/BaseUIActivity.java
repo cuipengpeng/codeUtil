@@ -77,6 +77,7 @@ public abstract class BaseUIActivity extends FragmentActivity implements IBaseVi
         mContext = this;
 //        mDialog = new LoadingAlertDialog(this);
         StatusBarUtil.translucentStatusBar(this);
+        StatusBarUtil.setStatusBarTextColorStyle(this, true);
         LinearLayout.LayoutParams viewLayoutParams = (LinearLayout.LayoutParams) baseStatusBarView.getLayoutParams();
         viewLayoutParams.height = StatusBarUtil.getStatusBarHeight(this);
         baseStatusBarView.setLayoutParams(viewLayoutParams);
