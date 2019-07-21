@@ -64,7 +64,7 @@ public class LogUtils {
             String funcName2 = new Throwable().getStackTrace()[1].getMethodName();
             int lineNumber = new Throwable().getStackTrace()[1].getLineNumber();
 
-            int maxLogLength = 4000;
+            int maxLogLength = 3000;
             if (log.length() > 0 && log.length() <= maxLogLength) {
                 Log.d(clazzName2 + "--" + funcName2+"("+lineNumber+")--##########", "jsonStr = " + log);
             } else {
@@ -84,7 +84,7 @@ public class LogUtils {
     // 使用分段的方式来输出足够长度的message
     public static void showAll(String str) {
         str = str.trim();
-        int maxLength = 2000;
+        int maxLength = 3000;
         if (TextUtils.isEmpty(str)) {
             e(" ");
         } else if (str.length() > 0 && str.length() <= maxLength) {
