@@ -48,6 +48,8 @@ while(first.next!=null){
 二叉树左序，右序，中序遍历: 即递归调用
 层次遍历的实现？
 
+hashmap数据结构：数组和链表
+hashmap如何解决冲突？
 
 
 
