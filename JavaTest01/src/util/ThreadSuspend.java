@@ -4,6 +4,10 @@ import java.util.concurrent.locks.LockSupport;
 
 public class ThreadSuspend {
 
+	//suspend() 和 resume() 方法：两个方法配套使用，suspend()使得线程进入阻塞状态，并且不会自动恢复，必须其对应的resume() 被调用，才能使得线程重新进入可执行状态。
+    //suspend() 和 resume() 方法阻塞时都不会释放占用的锁（如果占用了的话），而wait() 和 notify() 方法这一对方法阻塞时会释放占用的锁
+    //yield() 使得线程放弃当前分得的 CPU 时间，但是不使线程阻塞，即线程仍处于可执行状态，随时可能再次分得 CPU 时间
+    
     public static void main(String[] args){
         ThreadExt threadExt = new ThreadExt();
 
@@ -43,6 +47,7 @@ public class ThreadSuspend {
         public void run() {
 
             final Thread currentThread = Thread.currentThread();
+            currentThread.suspend();
             while (!currentThread.isInterrupted()) {
                 try {
 //                	System.out.println("currentThread.isInterrupted()="+currentThread.isInterrupted());
@@ -63,6 +68,6 @@ public class ThreadSuspend {
             Thread.sleep(1000);
         }
     }
-
+    
 }
 

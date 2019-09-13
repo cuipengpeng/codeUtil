@@ -12,7 +12,7 @@ public class SingleChainRevert {
 		        tmp=first.next;
 		        first.next = tmp.next;
 		        tmp.next=head;
-		        head=tmp;
+		        head=tmp;//更新head节点是为了最后拿到链表的句柄
 		}
 		
 //		二叉树左序，右序，中序遍历: 即递归调用

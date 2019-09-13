@@ -58,4 +58,11 @@ public class MultiThreadShareData {
 			}
 		}
 	}
+	
+//	从线程中获取返回数据的三种方法
+//	1、通过回调函数获取返回数据
+//	2、thread.join()
+//	3、实现 Callable<V>接口，通过Future.get()获取返回数据。其中 V 代表 返回值类型
+//	https://blog.csdn.net/qq_18505715/article/details/78726164
+
 }
