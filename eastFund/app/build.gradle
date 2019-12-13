@@ -14,6 +14,14 @@ android {
 
         multiDexEnabled true
 
+//        externalNativeBuild {
+//            cmake {
+//                cppFlags "-frtti -fexceptions -std=c++11"
+//                cppFlags "-frtti -fexceptions -std=gnu++11"
+//                arguments "-DANDROID_ARM_NEON=TRUE"
+//            }
+//        }
+
         ndk {
             //添加极光推送对应的cpu类型的.so库
             abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a', 'x86', 'x86-64' //'mips','mips64'
@@ -27,7 +35,17 @@ android {
         ]
     }
 
-
+//    externalNativeBuild {
+//        cmake {
+//            path "CMakeLists.txt"
+//        }
+//    }
+//    sourceSets {
+//        main {
+//            jniLibs.srcDirs = ['libs']
+//            jni.srcDirs = []
+//        }
+//    }
 
     signingConfigs {
         release {
@@ -52,10 +70,10 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled true //启用Proguard
+            shrinkResources true //是否清理无用资源,依赖于minifyEnabled
+            zipAlignEnabled true //是否启用zipAlign压缩
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            zipAlignEnabled true
-            shrinkResources true
             debuggable false
             jniDebuggable false
             signingConfig signingConfigs.release
@@ -73,10 +91,10 @@ android {
             signingConfig signingConfigs.pre_release
         }
         debug {
-            minifyEnabled false
+            minifyEnabled false  //不启用Proguard
+            shrinkResources false //是否清理无用资源,依赖于minifyEnabled
+            zipAlignEnabled false //是否启用zipAlign压缩
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            zipAlignEnabled true
-            shrinkResources false
             manifestPlaceholders = [app_name: "@string/app_name_debug", UMENG_APPKEY: "5aa898ce8f4a9d161a0000cd",]
             signingConfig signingConfigs.debug
         }

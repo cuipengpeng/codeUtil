@@ -1,7 +1,6 @@
 package com.test.bank.http;
 
 import android.content.Context;
-import android.os.Environment;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -11,7 +10,6 @@ import com.test.bank.base.BaseUIActivity;
 import com.test.bank.base.BaseUIFragment;
 import com.test.bank.base.IBaseView;
 import com.test.bank.utils.DeviceUtil;
-import com.test.bank.utils.LogInterceptor;
 import com.test.bank.utils.LogUtils;
 import com.test.bank.utils.MD5;
 import com.test.bank.weight.dialog.LoadingAlertDialog;
@@ -34,7 +32,6 @@ import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
-import retrofit2.http.Headers;
 
 
 public class HttpRequest {

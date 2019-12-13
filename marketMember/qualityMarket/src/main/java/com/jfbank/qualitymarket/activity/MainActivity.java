@@ -98,6 +98,7 @@ public class MainActivity extends BaseActivity implements AMapLocationListener {
     private BaseFragment categoryFragment;//分类
     private BaseFragment borrowMoneyFragment;//发现
     private BaseFragment myaccountFragment;//我的
+    private BaseFragment mCurrentFragment = null;
     ArrayList<TextView> tabTextView;
     /*
      * 定位
@@ -151,6 +152,19 @@ public class MainActivity extends BaseActivity implements AMapLocationListener {
         mFragmentManager = getSupportFragmentManager();
         //设置状态栏的颜色
         CommonUtils.setStatusTransColor(this);
+
+        
+        mFragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+        homeFragment = new HomeFragment();
+        categoryFragment = new CategoryFragment();
+        borrowMoneyFragment = new DiscoverFragment();
+        myaccountFragment = new MyAccountFragment();
+        fragmentTransaction.add(R.id.fragment_main_context, homeFragment);
+        fragmentTransaction.add(R.id.fragment_main_context, categoryFragment);
+        fragmentTransaction.add(R.id.fragment_main_context, borrowMoneyFragment);
+        fragmentTransaction.add(R.id.fragment_main_context, myaccountFragment);
+        fragmentTransaction.commit();
         initSelect();
     }
 
@@ -260,6 +274,33 @@ public class MainActivity extends BaseActivity implements AMapLocationListener {
             showFragent(4);
         }
 
+    }
+
+    /**
+     * 选择切换fragment
+     */
+    public void showFragentSimple(int position) {
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+        fragmentTransaction.hide(homeFragment);
+        fragmentTransaction.hide(categoryFragment);
+        fragmentTransaction.hide(borrowMoneyFragment);
+        fragmentTransaction.hide(myaccountFragment);
+
+        if (position == 1) {//首页
+            mCurrentFragment = homeFragment;
+            fragmentTransaction.show(homeFragment);
+        } else if (position == 2) {//分类
+            mCurrentFragment = categoryFragment;
+            fragmentTransaction.show(categoryFragment);
+        } else if (position == 3) {//发现
+            mCurrentFragment = borrowMoneyFragment;
+            fragmentTransaction.show(borrowMoneyFragment);
+        } else if (position == 4) {//我的
+            mCurrentFragment = myaccountFragment;
+            fragmentTransaction.show(myaccountFragment);
+        }
+
+        fragmentTransaction.commit();
     }
 
     /**

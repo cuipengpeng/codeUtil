@@ -1,5 +1,7 @@
-package com.test.bank.utils;
+package com.test.bank.http;
 
+
+import com.test.bank.utils.LogUtils;
 
 import java.io.EOFException;
 import java.io.IOException;
