@@ -108,20 +108,20 @@ public class HttpRequest {
      * @param responseHandler
      * @return
      */
-    public static Call<String> post(IBaseView iBaseView, String url, Map<String, String> params, HttpResponseCallBack responseHandler) {
-        return post(iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, "", SHOW_LOADING, responseHandler);
+    public static Call<String> post(boolean getRequest, IBaseView iBaseView, String url, Map<String, String> params, HttpResponseCallBack responseHandler) {
+        return post(false, iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, "", SHOW_LOADING, responseHandler);
     }
 
-    public static Call<String> post(IBaseView iBaseView, String url, Map<String, String> params, boolean showLoading, HttpResponseCallBack responseHandler) {
-        return post(iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, "", showLoading, responseHandler);
+    public static Call<String> post(boolean getRequest, IBaseView iBaseView, String url, Map<String, String> params, boolean showLoading, HttpResponseCallBack responseHandler) {
+        return post(false, iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, "", showLoading, responseHandler);
     }
 
-    public static Call<String> post( IBaseView iBaseView, String url, Map<String, String> params, String requestChannel, HttpResponseCallBack responseHandler) {
-        return post(iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, requestChannel, SHOW_LOADING, responseHandler);
+    public static Call<String> post(boolean getRequest, IBaseView iBaseView, String url, Map<String, String> params, String requestChannel, HttpResponseCallBack responseHandler) {
+        return post(false, iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, requestChannel, SHOW_LOADING, responseHandler);
     }
 
-    public static Call<String> post(IBaseView iBaseView, String url, Map<String, String> params, long readTime, long writeTime, long timeOut, String requestChannel, boolean showLoading, HttpResponseCallBack responseHandler) {
-        return execute(iBaseView, url, new HashMap<String, String>(), params, false, null, responseHandler, readTime, writeTime, timeOut, requestChannel, showLoading);
+    public static Call<String> post(boolean getRequest, IBaseView iBaseView, String url, Map<String, String> params, long readTime, long writeTime, long timeOut, String requestChannel, boolean showLoading, HttpResponseCallBack responseHandler) {
+        return execute(false, iBaseView, url, new HashMap<String, String>(), params, false, null, responseHandler, readTime, writeTime, timeOut, requestChannel, showLoading);
     }
 
     /**
@@ -138,7 +138,7 @@ public class HttpRequest {
     }
 
     public static Call<String> uploadFiles(String url, Map<String, String> headers, Map<String, String> params, Map<String, File> filesMap, HttpResponseCallBack responseHandler, long readTime, long writeTime, long timeOut, boolean showLoading) {
-        return execute(null, url, headers, params, true, filesMap, responseHandler, readTime, writeTime, timeOut, "", showLoading);
+        return execute(false, null, url, headers, params, true, filesMap, responseHandler, readTime, writeTime, timeOut, "", showLoading);
     }
 
     /**
@@ -167,7 +167,7 @@ public class HttpRequest {
      * @param showLoading
      * @return
      */
-    private static Call<String> execute(IBaseView iBaseView, String url, Map<String, String> headers, Map<String, String> params, boolean uploadFile, Map<String, File> uploadFilesMap, HttpResponseCallBack responseHandler, long readTime, long writeTime, long timeOut, String requestChannel, boolean showLoading) {
+    private static Call<String> execute(boolean getRequest, IBaseView iBaseView, String url, Map<String, String> headers, Map<String, String> params, boolean uploadFile, Map<String, File> uploadFilesMap, HttpResponseCallBack responseHandler, long readTime, long writeTime, long timeOut, String requestChannel, boolean showLoading) {
         params.put("version", DeviceUtil.getAppVersionName(BaseApplication.applicationContext));
         params.put("equipment", DeviceUtil.getDevicecId());
         params.put("mobileSystem", "android");
@@ -194,20 +194,20 @@ public class HttpRequest {
             }
             call = apiService.uploadFileWithText(url, headers, params, filesMap);
         } else {
-//            if(getRequest){
-//                call = apiService.getRequestAPiString(url, headers, params);
-//            }else {
-                //application/x-www-form-urlencoded格式
+            if(getRequest){
+                call = apiService.getRequestAPiString(url, headers, params);
+            }else {
+                //格式: application/x-www-form-urlencoded
 //                    if(headers==null){
 //                        headers = new HashMap<>();
 //                    }
 //                    headers.put("Content-Type","application/x-www-form-urlencoded; charset=utf-8");
 //                call = apiService.postFormAPiString(url, headers, params);
 
-                //application/json格式
+                //格式: application/json
                 RequestBody body = RequestBody.create(MediaType.parse("application/json"), new Gson().toJson(params));
                 call = apiService.postJsonAPiString(url, headers, body);
-//            }
+            }
         }
 
         LoadingAlertDialog loadingAlertDialog = null;

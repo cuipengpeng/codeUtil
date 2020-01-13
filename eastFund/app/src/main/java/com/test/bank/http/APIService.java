@@ -60,14 +60,13 @@ public interface APIService {
      *
      * @param url     请求URl
      * @param headers 请求header
-     * @param params  请求参数
      *                = * @param files  请求文件
      * @return
      */
     @Multipart
     @POST
     Call<String> uploadFileWithText(@Url String url,
-                                    @HeaderMap Map<String, String> headers, @FieldMap Map<String, String> params, @PartMap() Map<String, RequestBody> files);
+                                    @HeaderMap Map<String, String> headers, @PartMap() Map<String, RequestBody> files);
     /**
      * 上传图片接口
      *
