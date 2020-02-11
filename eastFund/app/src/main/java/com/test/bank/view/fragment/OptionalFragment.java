@@ -341,7 +341,7 @@ public class OptionalFragment extends BaseUIFragment {
         Map<String, String> params = new HashMap<String, String>();
         params.put("token", SPUtil.getInstance().getToken());
 
-        HttpRequest.post( this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.GET_OPTIONAL_FUND_LIST, params, new HttpRequest.HttpResponseCallBack() {
+        HttpRequest.post( false, this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.GET_OPTIONAL_FUND_LIST, params, new HttpRequest.HttpResponseCallBack() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 mFundInfoBeanList = JSON.parseArray(response.body(), OptionalFundBean.class);
@@ -373,7 +373,7 @@ public class OptionalFragment extends BaseUIFragment {
         params.put("sid", delFundCode.substring(0, delFundCode.length() - 1));
         params.put("token", SPUtil.getInstance().getToken());
 
-        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.DELETE_OPTIONAL_FUND, params, new HttpRequest.HttpResponseCallBack() {
+        HttpRequest.post(false, this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.DELETE_OPTIONAL_FUND, params, new HttpRequest.HttpResponseCallBack() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 getOptionalFundList(true);

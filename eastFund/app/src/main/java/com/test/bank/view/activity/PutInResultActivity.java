@@ -200,7 +200,7 @@ public class PutInResultActivity extends BaseUIActivity {
         params.put("token", SPUtil.getInstance().getToken());
         params.put("tradeno", Aes.encryptAES(tradeRecordNumber));
 
-        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.BAOBAO_BUY_RECORD_DETAIL, params, new HttpRequest.HttpResponseCallBack() {
+        HttpRequest.post(false, this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.BAOBAO_BUY_RECORD_DETAIL, params, new HttpRequest.HttpResponseCallBack() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 baobaoTradeRecordDetailBean = JSON.parseObject(response.body(), BaobaoTradeRecordDetailBean.class);

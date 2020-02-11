@@ -17,7 +17,7 @@ public class SplashActivity extends BaseActivity {
                 MainActivity.open(SplashActivity.this, 1);
                 finish();
             }
-        }, 1000);
+        }, 1500);
     }
 
     @Override

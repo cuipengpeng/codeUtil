@@ -17,6 +17,8 @@ import android.widget.TextView;
 import com.test.bank.R;
 import com.test.bank.base.BaseActivity;
 import com.test.bank.base.BaseApplication;
+import com.test.bank.bean.TempleteScoreBean;
+import com.test.bank.bean.VideoTag;
 import com.test.bank.http.OkHttpClientUtils;
 import com.test.bank.receiver.LockScreenReceiver;
 import com.test.bank.utils.DensityUtil;
@@ -103,6 +105,17 @@ public class MainActivity extends BaseActivity {
         if (fragmentList == null) {
             fragmentList = new ArrayList<>();
         }
+
+        System.loadLibrary("templete");
+        VideoTag[] videoTags = new VideoTag[6];
+        for(int i=0; i<videoTags.length;i++){
+            videoTags[i] = new VideoTag("", i+"faceNum", i+"objectDectct", i+"oriFace", i+"genderClass", i+"objectClass", i+"sceneClass",  i+"emotion",0 , 0);
+        }
+        TempleteScoreBean[] templeteScoreBeans = getTemplete(videoTags, videoTags);
+        for(int i=0; i<templeteScoreBeans.length;i++){
+            LogUtils.printLog("scene_class="+templeteScoreBeans[i].getScene_class()+"--templetePosition="+templeteScoreBeans[i].getTempletePosition()+"--score="+templeteScoreBeans[i].getScore());
+        }
+
         fragmentList.add(MyaccountFragment.newInstance());
         fragmentList.add(MakeMoneyFragment.getInstance());
         fragmentList.add(OptionalFragment.newInstance(1));
@@ -242,5 +255,7 @@ public class MainActivity extends BaseActivity {
         intent.putExtra(PARAM_INDEX, index);
         context.startActivity(intent);
     }
+
+    public native TempleteScoreBean[] getTemplete(VideoTag[] videoLableArray, VideoTag[] templeteLableArray);
 
 }

@@ -182,7 +182,7 @@ public class PutInActivity extends BaseUILocalDataActivity {
         params.put("fundcode", fundCode);
         params.put("type", "1"); //type为0时必须传入fundcode，为1时无需传入默认fundcode为宝宝代码: 按接口要求"活期+"页面type写死传1
 
-        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.PUT_IN_AND_GET_OUT_BANK_CARD_INFO, params, new HttpRequest.HttpResponseCallBack() {
+        HttpRequest.post(false, this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.PUT_IN_AND_GET_OUT_BANK_CARD_INFO, params, new HttpRequest.HttpResponseCallBack() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 getOutBankCardInfoBean = JSON.parseObject(response.body(), GetOutBankCardInfoBean.class);
@@ -213,7 +213,7 @@ public class PutInActivity extends BaseUILocalDataActivity {
         params.put("pwd", Aes.encryptAES(tradePassword));
         params.put("fundType", getOutBankCardInfoBean.getFundType() + "");
 
-        HttpRequest.post( this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.CURRENT_PLUS_FUND_BUY, params, TAG, new HttpRequest.HttpResponseCallBack() {
+        HttpRequest.post(false, this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.CURRENT_PLUS_FUND_BUY, params, TAG, new HttpRequest.HttpResponseCallBack() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 PutInAndGetOutResultBean putInAndGetOutResultBean = JSON.parseObject(response.body(), PutInAndGetOutResultBean.class);

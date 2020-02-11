@@ -104,7 +104,7 @@ public class GetOutResultActivity extends BaseUILocalDataActivity {
         Map<String, String> params = new HashMap<String, String>();
         params.put("fundcode", fundCode);
 
-        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.FUND_COMPANY_INFO, params, new HttpRequest.HttpResponseCallBack() {
+        HttpRequest.post(false, this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.FUND_COMPANY_INFO, params, new HttpRequest.HttpResponseCallBack() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 FundCompanyBean fundCompanyBean = JSON.parseObject(response.body(), FundCompanyBean.class);

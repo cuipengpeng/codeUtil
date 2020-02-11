@@ -259,7 +259,7 @@ public class GetOutActivity extends BaseUIActivity {
         params. put("fundcode", baobaoAssertInfoBean.getFundCode());
         params.put("type", "1"); //type为0时必须传入fundcode，为1时无需传入默认fundcode为宝宝代码: 按接口要求"活期+"页面type写死传1
 
-        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.PUT_IN_AND_GET_OUT_BANK_CARD_INFO, params, new HttpRequest.HttpResponseCallBack() {
+        HttpRequest.post(false, this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.PUT_IN_AND_GET_OUT_BANK_CARD_INFO, params, new HttpRequest.HttpResponseCallBack() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 getOutBankCardInfoBean = JSON.parseObject(response.body(), GetOutBankCardInfoBean.class);
@@ -293,7 +293,7 @@ public class GetOutActivity extends BaseUIActivity {
         params.put("redemptionType", currentGetOutType);//赎回类型（宝宝赎回时专用字段，0-普通赎回，3-T+0快速赎回）
         params.put("fundType", getOutBankCardInfoBean.getFundType()+"");
 
-        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.CURRENT_PLUS_FUND_REDEMPTION, params, TAG, new HttpRequest.HttpResponseCallBack() {
+        HttpRequest.post(false, this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.CURRENT_PLUS_FUND_REDEMPTION, params, TAG, new HttpRequest.HttpResponseCallBack() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 PutInAndGetOutResultBean putInAndGetOutResultBean = JSON.parseObject(response.body(), PutInAndGetOutResultBean.class);

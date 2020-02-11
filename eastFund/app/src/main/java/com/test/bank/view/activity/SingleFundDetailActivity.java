@@ -621,7 +621,7 @@ public class SingleFundDetailActivity extends BaseUIActivity {
         params.put("showModule", "1");  //来源（1-搜索，2-其他）
         params.put("token", SPUtil.getInstance().getToken());
 
-        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.SINGLE_FUND_DETAIL, params, new HttpRequest.HttpResponseCallBack() {
+        HttpRequest.post(false, this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.SINGLE_FUND_DETAIL, params, new HttpRequest.HttpResponseCallBack() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
 
@@ -723,7 +723,7 @@ public class SingleFundDetailActivity extends BaseUIActivity {
         Map<String, String> params = new HashMap<String, String>();
         params.put("fundcode", fundCode);
 
-        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.FUND_ARCHIVES_WITH_ANNOUNCEMENT, params, new HttpRequest.HttpResponseCallBack() {
+        HttpRequest.post(false, this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.FUND_ARCHIVES_WITH_ANNOUNCEMENT, params, new HttpRequest.HttpResponseCallBack() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
 
@@ -780,7 +780,7 @@ public class SingleFundDetailActivity extends BaseUIActivity {
         Map<String, String> params = new HashMap<String, String>();
         params.put("fundcode", fundCode);
 
-        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.SINGLE_FUND_YIELD_TREND, params, new HttpRequest.HttpResponseCallBack() {
+        HttpRequest.post(false, this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.SINGLE_FUND_YIELD_TREND, params, new HttpRequest.HttpResponseCallBack() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 mFundTrendBean = JSON.parseObject(response.body(), FundTrendBean.class);
@@ -805,7 +805,7 @@ public class SingleFundDetailActivity extends BaseUIActivity {
         params.put("sid", fundCode);
         params.put("token", SPUtil.getInstance().getToken());
 
-        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.ADD_TO_OPTIONAL_FUND, params,  new HttpRequest.HttpResponseCallBack() {
+        HttpRequest.post(false, this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.ADD_TO_OPTIONAL_FUND, params,  new HttpRequest.HttpResponseCallBack() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 baseRightMenuImageView.setBackgroundResource(R.mipmap.optional_selected);
@@ -830,7 +830,7 @@ public class SingleFundDetailActivity extends BaseUIActivity {
         params.put("sid", fundCode);
         params.put("token", SPUtil.getInstance().getToken());
 
-        HttpRequest.post(this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.DELETE_OPTIONAL_FUND, params, new HttpRequest.HttpResponseCallBack() {
+        HttpRequest.post(false, this, HttpRequest.APP_INTERFACE_WEB_URL + HttpRequest.DELETE_OPTIONAL_FUND, params, new HttpRequest.HttpResponseCallBack() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 baseRightMenuImageView.setBackgroundResource(R.mipmap.add_optional);
