@@ -192,7 +192,7 @@ public class HttpRequest {
                 requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), uploadFilesMap.get(keyStr));
                 filesMap.put(keyStr, requestBody);
             }
-            call = apiService.uploadFileWithText(url, headers, params, filesMap);
+            call = apiService.uploadFileWithText(url, headers, filesMap);
         } else {
             if(getRequest){
                 call = apiService.getRequestAPiString(url, headers, params);
