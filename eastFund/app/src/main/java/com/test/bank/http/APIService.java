@@ -1,6 +1,7 @@
 package com.test.bank.http;
 
 
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
@@ -77,7 +78,7 @@ public interface APIService {
      */
     @Multipart
     @POST
-    Call<String> uploadOneFile(@Url String url,
+    Call<String> uploadMultiFiles(@Url String url,
                                @QueryMap() Map<String, String> params,
-                               @Part MultipartBody.Part files);
+                               @Part List<MultipartBody.Part> files);
 }

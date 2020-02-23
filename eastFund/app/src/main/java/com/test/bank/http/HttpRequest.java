@@ -1,6 +1,8 @@
 package com.test.bank.http;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -25,9 +27,11 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -97,7 +101,6 @@ public class HttpRequest {
     private static long uploadWriteTime = 20;
     private static long uploadConnectTime = 20;
 
-
     private static final boolean SHOW_LOADING = true;
 
     /**
@@ -130,15 +133,22 @@ public class HttpRequest {
      * @param url
      * @param params
      * @param filesMap
-     * @param responseHandler
+     * @param progressListener
      * @return
      */
-    public static Call<String> uploadFiles(String url, Map<String, String> params, Map<String, File> filesMap, HttpResponseCallBack responseHandler) {
-        return uploadFiles(url, new HashMap<String, String>(), params, filesMap, responseHandler, uploadReadTime, uploadWriteTime, uploadConnectTime, SHOW_LOADING);
+    public static void uploadFiles(String url, Map<String, String> params, Map<String, File> filesMap, UploadFileRequestBody.ProgressListener progressListener) {
+        uploadFiles(url, new HashMap<String, String>(), params, filesMap, progressListener, uploadReadTime, uploadWriteTime, uploadConnectTime, SHOW_LOADING);
     }
 
-    public static Call<String> uploadFiles(String url, Map<String, String> headers, Map<String, String> params, Map<String, File> filesMap, HttpResponseCallBack responseHandler, long readTime, long writeTime, long timeOut, boolean showLoading) {
-        return execute(false, null, url, headers, params, true, filesMap, responseHandler, readTime, writeTime, timeOut, "", showLoading);
+    public static void uploadFiles(final String url, final Map<String, String> headers, final Map<String, String> params, final Map<String, File> filesMap, final UploadFileRequestBody.ProgressListener progressListener, final long readTime, final long writeTime, final long timeOut, final boolean showLoading) {
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                execute(false, null, url, headers, params, true, filesMap, progressListener, readTime, writeTime, timeOut, "", showLoading);
+            }
+        }).start();
+
     }
 
     /**
@@ -186,13 +196,22 @@ public class HttpRequest {
         Call<String> call = null;
         APIService apiService = getApiService(readTime, writeTime, timeOut);
         if (uploadFile) {
-            Map<String, RequestBody> filesMap = new HashMap<String, RequestBody>();
             RequestBody requestBody = null;
-            for (String keyStr : uploadFilesMap.keySet()) {
-                requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), uploadFilesMap.get(keyStr));
-                filesMap.put(keyStr, requestBody);
+            List<MultipartBody.Part>  partList=new ArrayList<>();
+            for (Map.Entry<String, File> entry : uploadFilesMap.entrySet()) {
+//                requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), entry.getValue());
+                requestBody = new UploadFileRequestBody(entry.getValue(), partList.size(),uploadFilesMap.entrySet().size(), (UploadFileRequestBody.ProgressListener) responseHandler);
+                MultipartBody.Part  part= MultipartBody.Part.createFormData(entry.getKey(), entry.getValue().getAbsolutePath(),requestBody);
+                partList.add(part);
             }
-            call = apiService.uploadFileWithText(url, headers, filesMap);
+            call = apiService.uploadMultiFiles(url, params, partList);
+
+//            Map<String, RequestBody> filesMap = new HashMap<String, RequestBody>();
+//             for (Map.Entry<String, File> entry : uploadFilesMap.entrySet()) {
+//                requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), entry.getValue());
+//                filesMap.put(entry.getKey(), requestBody);
+//            }
+//            call = apiService.uploadFileWithText(url, headers, filesMap);
         } else {
             if(getRequest){
                 call = apiService.getRequestAPiString(url, headers, params);
@@ -241,7 +260,7 @@ public class HttpRequest {
         APIService apiService = mapAPIService.get(apiServiceKey);
         if (apiService == null) {//为空，则创建
             synchronized (mapAPIService) { //锁定对象
-                OkHttpClient httpClient = new OkHttpClient.Builder()
+                OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder()
                         // 添加通用的Header
                         .addInterceptor(new Interceptor() {
                             @Override
@@ -256,11 +275,16 @@ public class HttpRequest {
                         })
                         .connectTimeout(timeOut, TimeUnit.SECONDS)
                         .readTimeout(readTime, TimeUnit.SECONDS)
-                        .writeTimeout(writeTime, TimeUnit.SECONDS)
-                        .addInterceptor(new LogInterceptor())
-                        .build();
+                        .writeTimeout(writeTime, TimeUnit.SECONDS);
                 //设置日志拦截器
-                Retrofit retrofit = new Retrofit.Builder().client(httpClient)
+                if (BuildConfig.DEBUG) {
+                    HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+                    loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+//                    httpClientBuilder.addInterceptor(loggingInterceptor);
+                    httpClientBuilder.addInterceptor(new LogInterceptor());
+                }
+
+                Retrofit retrofit = new Retrofit.Builder().client(httpClientBuilder.build())
                         .baseUrl(HttpRequest.APP_INTERFACE_WEB_URL)
                         .addConverterFactory(ScalarsConverterFactory.create())
                         .build();
