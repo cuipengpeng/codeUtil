@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.fragment.ProductionFragment">
+
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/ll_data_null"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="3" />-->
+
+
+        <ImageView
+            android:layout_width="@dimen/_57dp"
+            android:layout_height="@dimen/_57dp"
+            android:layout_marginTop="@dimen/_20dp"
+            android:src="@drawable/im_empty" />
+
+        <TextView
+            android:id="@+id/tv_nullView_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_14dp"
+            android:text="— 暂无内容 —"
+            android:textColor="@color/describeTextColor"
+
+
+            />
+
+
+    </LinearLayout>
+</FrameLayout>

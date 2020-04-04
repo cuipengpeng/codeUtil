@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_font"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_bg_dialog"
+    android:orientation="vertical">
+
+    <include layout="@layout/base_dialog_title_layout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_font_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/ll_font_layout"
+            android:background="#dddddd"
+            android:overScrollMode="never"
+            android:paddingTop="@dimen/_15dp">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <LinearLayout
+            android:id="@+id/ll_font_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_75dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_font_fontState"
+                android:layout_width="@dimen/_90dp"
+                android:layout_height="@dimen/_35dp"
+                android:layout_marginStart="@dimen/_15dp"
+                android:background="@drawable/selector_text_btn"
+                android:gravity="center"
+                android:text="字体样式"
+                android:textSize="@dimen/_15sp" />
+
+
+            <TextView
+                android:id="@+id/tv_font_fontColor"
+                android:layout_width="@dimen/_90dp"
+                android:layout_height="@dimen/_35dp"
+                android:layout_marginStart="@dimen/_15dp"
+                android:background="@drawable/selector_text_btn"
+                android:gravity="center"
+                android:text="文字颜色"
+                android:textSize="@dimen/_15sp" />
+        </LinearLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_font_font"
+            android:layout_width="@dimen/_118dp"
+            android:layout_height="match_parent"
+            android:background="#ededed"
+            android:overScrollMode="never"
+            android:visibility="gone">
+
+        </android.support.v7.widget.RecyclerView>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_font_color"
+            android:layout_width="@dimen/_63dp"
+            android:layout_height="match_parent"
+            android:background="#ededed"
+            android:overScrollMode="never"
+            android:visibility="gone">
+
+        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+
+
+</LinearLayout>

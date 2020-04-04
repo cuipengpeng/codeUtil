@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view_volume_bg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.65"
+        android:background="@color/transparent" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.35"
+        android:background="#99000000"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="调节音量"
+                android:layout_marginStart="@dimen/_15dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sp" />
+
+            <TextView
+                android:id="@+id/tv_volume_affirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_15dp"
+                android:text="确认"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_17sp" />
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_32dp"
+            android:layout_marginStart="@dimen/_19dp"
+            android:layout_marginTop="@dimen/_26dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="语音"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sp" />
+
+            <SeekBar
+                android:id="@+id/sb_volume_person"
+                style="@style/CustomSeekBarStyle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_19dp"
+                android:layout_marginStart="@dimen/_8dp"
+                android:layout_weight="1"
+                android:max="100" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_32dp"
+            android:layout_marginBottom="@dimen/_12dp"
+            android:layout_marginStart="@dimen/_19dp"
+            android:layout_marginTop="@dimen/_12dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="配乐"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sp" />
+
+            <SeekBar
+                android:id="@+id/sb_volume_bg"
+                style="@style/CustomSeekBarStyle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_19dp"
+                android:layout_marginStart="@dimen/_8dp"
+                android:layout_weight="1"
+                android:max="100" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_32dp"
+            android:layout_marginStart="@dimen/_19dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="背景"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sp" />
+
+            <SeekBar
+                android:id="@+id/sb_volume_video"
+                style="@style/CustomSeekBarStyle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_19dp"
+                android:layout_marginStart="@dimen/_8dp"
+                android:layout_weight="1"
+                android:max="100" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

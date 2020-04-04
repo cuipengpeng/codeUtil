@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+
+    <com.caishi.chaoge.ui.widget.refreshlayout.AutoLoadMoreRecyclerView
+        android:id="@+id/rv_selectTempletFragment_templetList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"/>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl_selectTempletFragment_noData"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:visibility="gone">
+
+        <include layout="@layout/no_data_view" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+        <include
+            android:id="@+id/ll_selectTempletFragment_netwrokError"
+            layout="@layout/network_error_view"
+            android:visibility="gone" />
+</LinearLayout>
+

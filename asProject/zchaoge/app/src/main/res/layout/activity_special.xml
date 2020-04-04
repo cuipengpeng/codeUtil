@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.SpecialActivity">
+
+    <View
+        android:id="@+id/view_special"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorBlack" />
+
+    <RelativeLayout
+        android:id="@+id/rl_special_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.rd.vecore.VirtualVideoView
+            android:id="@+id/vvv_special_video"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_bg_dialog">
+
+        </com.rd.vecore.VirtualVideoView>
+        <ImageView
+            android:id="@+id/img_special_cover"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+        <com.caishi.chaoge.ui.widget.CaptionDrawRect
+            android:id="@+id/cdr_special_rect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <include layout="@layout/base_dialog_title_layout" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_special_list"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_87dp"
+            android:layout_alignParentBottom="true"
+            android:background="#99000000"
+            android:overScrollMode="never">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </RelativeLayout>
+</LinearLayout>

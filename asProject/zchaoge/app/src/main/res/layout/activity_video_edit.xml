@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.VideoEditActivity">
+
+    <View
+        android:id="@+id/view_edit"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorBlack" />
+
+    <RelativeLayout
+        android:id="@+id/rl_videoEdit_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.rd.vecore.VirtualVideoView
+            android:id="@+id/vvv_videoEdit_video"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </com.rd.vecore.VirtualVideoView>
+
+        <LinearLayout
+            android:id="@+id/ll_videoEdit_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/base_title_layout" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_videoEdit_control"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_78dp"
+            android:layout_alignParentBottom="true">
+
+            <ImageView
+                android:id="@+id/img_videoEdit_text"
+                android:layout_width="@dimen/_37dp"
+                android:layout_height="@dimen/_68dp"
+                android:layout_marginStart="@dimen/_15dp"
+                android:src="@drawable/im_text"
+
+                />
+
+            <ImageView
+                android:id="@+id/img_videoEdit_special"
+                android:layout_width="@dimen/_37dp"
+                android:layout_height="@dimen/_68dp"
+                android:layout_marginStart="@dimen/_15dp"
+                android:src="@drawable/im_texiao"
+
+                />
+
+            <ImageView
+                android:id="@+id/img_videoEdit_music"
+                android:layout_width="@dimen/_37dp"
+                android:layout_height="@dimen/_68dp"
+                android:layout_marginStart="@dimen/_15dp"
+                android:src="@drawable/im_music"
+
+                />
+
+            <ImageView
+                android:id="@+id/img_videoEdit_volume"
+                android:layout_width="@dimen/_37dp"
+                android:layout_height="@dimen/_68dp"
+                android:layout_marginStart="@dimen/_15dp"
+                android:src="@drawable/im_volume"
+
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/img_videoEdit_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="@dimen/_15dp"
+            android:src="@drawable/ic_play_template"
+
+            />
+
+        <ProgressBar
+            android:id="@+id/pb_videoEdit_progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_4dp"
+            android:layout_gravity="center"
+            android:progressDrawable="@drawable/progressbar_bg" />
+
+    </RelativeLayout>
+</LinearLayout>

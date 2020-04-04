@@ -3,8 +3,8 @@ package com.test.bank.base;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.inputmethod.InputMethodManager;
 
@@ -21,7 +21,7 @@ import com.umeng.analytics.MobclickAgent;
 
 import java.util.List;
 
-public abstract class CommonActivity extends AppCompatActivity implements IBaseView, EasyPermissions.PermissionCallbacks {
+public abstract class CommonActivity extends FragmentActivity implements IBaseView, EasyPermissions.PermissionCallbacks {
     protected static final int RC_PERM = 123;
     protected String mClassName;
 

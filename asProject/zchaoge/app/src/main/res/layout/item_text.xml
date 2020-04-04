@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/_60dp"
+    android:layout_height="@dimen/_63dp"
+    android:layout_marginEnd="@dimen/_2dp">
+
+    <com.othershe.library.NiceImageView
+        android:id="@+id/img_itemText_image"
+        android:layout_width="@dimen/_55dp"
+        android:layout_height="@dimen/_55dp"
+        android:layout_alignParentBottom="true"
+        android:scaleType="fitXY"
+        android:gravity="center"
+        app:corner_radius="@dimen/_3dp" />
+
+    <ImageView
+        android:id="@+id/img_itemText_select"
+        android:layout_width="@dimen/_20dp"
+        android:layout_height="@dimen/_20dp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/im_selected"
+        android:visibility="invisible"
+
+        />
+
+
+</RelativeLayout>

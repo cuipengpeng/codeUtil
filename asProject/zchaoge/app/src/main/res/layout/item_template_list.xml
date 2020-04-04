@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/_53dp"
+    android:layout_height="match_parent"
+    android:gravity="end"
+    android:layout_marginEnd="@dimen/_2dp">
+
+
+    <com.othershe.library.NiceImageView
+        android:id="@+id/img_itemTemplate_image"
+        android:layout_width="@dimen/_45dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:scaleType="fitXY"
+        app:corner_radius="@dimen/_5dp"
+        app:is_circle="false" />
+
+
+
+</RelativeLayout>

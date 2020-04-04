@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_voice_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:visibility="invisible">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1dp"
+        android:layout_marginTop="@dimen/_15dp"
+        android:background="@color/partingLineBgColor" />
+
+
+    <TextView
+        android:id="@+id/tv_voice_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15dp"
+        android:gravity="center_horizontal"
+        android:text="00:00:00"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_30sp" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lav_voice_record"
+            android:layout_width="@dimen/_100dp"
+            android:layout_height="@dimen/_100dp"
+            android:layout_centerInParent="true"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="btnmove.json"
+            app:lottie_loop="true" />
+
+        <ImageView
+            android:id="@+id/img_voice_record"
+            android:layout_width="@dimen/_70dp"
+            android:layout_height="@dimen/_70dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_recording" />
+
+
+        <ImageView
+            android:id="@+id/img_voice_audition"
+            android:layout_width="@dimen/_40dp"
+            android:layout_height="@dimen/_55dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_54dp"
+            android:src="@drawable/ic_audition" />
+
+        <ImageView
+            android:id="@+id/img_voice_import"
+            android:layout_width="@dimen/_44dp"
+            android:layout_height="@dimen/_51dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_54dp"
+            android:src="@drawable/im_import_video"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/img_voice_delete"
+            android:layout_width="@dimen/_40dp"
+            android:layout_height="@dimen/_55dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_54dp"
+            android:src="@drawable/ic_delete" />
+
+
+        <TextView
+            android:id="@+id/tv_voice_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_110dp"
+            android:gravity="center"
+            android:text="最长录制60s"
+            android:textColor="#80000000"
+            android:textSize="@dimen/_14sp" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

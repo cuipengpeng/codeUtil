@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="RangeSeekBar">
+        <attr name="isSide" format="boolean"></attr>
+    </declare-styleable>
+    <declare-styleable name="CircleProgressbar">
+        <attr name="in_circle_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="BadgeButton">
+        <!-- 徽标文本，为空时显示一个小红点 -->
+        <attr name="btnBadgeText" format="string" />
+        <!-- 徽标高度，宽度自适应 -->
+        <attr name="btnBadgeHeight" format="dimension" />
+        <!-- 徽标背景色，文本白色 -->
+        <attr name="btnBadgeColor" format="color" />
+        <!-- 徽标是否可见 -->
+        <attr name="btnBadgeVisible" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="RotateLoading">
+        <attr name="loading_width" format="dimension" />
+        <attr name="loading_color" format="color" />
+        <attr name="shadow_position" format="integer" />
+        <attr name="loading_speed" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomCircleProgressBar">
+        <attr name="outside_color" format="color" />
+        <attr name="outside_radius" format="dimension" />
+        <attr name="inside_color" format="color" />
+        <attr name="progress_text_color" format="color" />
+        <attr name="progress_text_size" format="dimension" />
+        <attr name="progress_width" format="dimension" />
+        <attr name="max_progress" format="integer" />
+        <attr name="progress" format="float" />
+        <attr name="direction">
+            <enum name="left" value="0" />
+            <enum name="top" value="1" />
+            <enum name="right" value="2" />
+            <enum name="bottom" value="3" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="LCardView">
+
+        <attr name="leftShadowWidth" format="dimension"/>
+        <attr name="topShadowHeight" format="dimension"/>
+        <attr name="rightShadowWidth" format="dimension"/>
+        <attr name="bottomShadowHeight" format="dimension"/>
+        <attr name="shadowSize" format="dimension"/>
+        <attr name="shadowColor" format="color"/>
+        <attr name="shadowStartAlpha" format="integer"/>
+        <attr name="shadowFluidShape" format="enum">
+            <enum name="adsorption" value="0"/>
+            <enum name="linear" value="1"/>
+        </attr>
+        <attr name="cardBackgroundColor" format="color"/>
+        <attr name="cornerRadius" format="dimension"/>
+        <attr name="leftTopCornerRadius" format="dimension"/>
+        <attr name="rightTopCornerRadius" format="dimension"/>
+        <attr name="leftBottomCornerRadius" format="dimension"/>
+        <attr name="rightBottomCornerRadius" format="dimension"/>
+        <attr name="elevation" format="dimension"/>
+        <attr name="elevationAffectShadowColor" format="boolean"/>
+        <attr name="elevationAffectShadowSize" format="boolean"/>
+        <attr name="xOffset" format="dimension"/>
+        <attr name="yOffset" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="RecyclerViewBannerBase">
+        <attr name="interval"/>
+        <attr name="showIndicator" />
+        <attr name="orientation" />
+        <attr name="autoPlaying"/>
+        <attr name="indicatorSelectedSrc" format="color|reference"/>
+        <attr name="indicatorUnselectedSrc" format="color|reference"/>
+        <attr name="indicatorSpace" format="dimension|reference"/>
+        <attr name="indicatorMarginLeft" format="dimension|reference"/>
+        <attr name="indicatorMarginRight" format="dimension|reference"/>
+        <attr name="indicatorMarginBottom" format="dimension|reference"/>
+        <attr name="indicatorGravity" format="enum">
+            <enum name="left" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="right" value="2"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="BannerLayout">
+        <attr name="interval" />
+        <attr name="showIndicator" />
+        <attr name="orientation" />
+        <attr name="autoPlaying"/>
+        <attr name="itemSpace" format="integer"/>
+        <attr name="centerScale" format="float"/>
+        <attr name="moveSpeed" format="float"/>
+    </declare-styleable>
+
+
+    <!--线（进度条）宽度-->
+    <attr name="lineHeight" format="dimension" />
+    <!--字的大小-->
+    <attr name="textSize" format="dimension" />
+    <!--字的颜色-->
+    <attr name="textColor" format="color" />
+    <!--两个游标内部 线（进度条）的颜色-->
+    <attr name="inColor" format="color" />
+    <!--两个游标外部 线（进度条）的颜色-->
+    <attr name="outColor" format="color" />
+    <!--左边图标的图片-->
+    <attr name="imageLow" format="reference"/>
+    <!--右边图标 的图片-->
+    <attr name="imageBig" format="reference"/>
+    <!--游标 图片宽度-->
+    <attr name="imagewidth" format="dimension" />
+    <!--游标 图片高度-->
+    <attr name="imageheight" format="dimension" />
+    <!--是否有刻度线-->
+    <attr name="hasRule" format="boolean" />
+    <!--刻度的颜色-->
+    <attr name="ruleColor" format="color" />
+    <!--刻度上边的字 的颜色-->
+    <attr name="ruleTextColor" format="color" />
+    <!--单位 元-->
+    <attr name="unit" format="string"/>
+    <!--单位份数-->
+    <attr name="equal" format="integer"/>
+    <!--刻度单位 $-->
+    <attr name="ruleUnit" format="string"/>
+    <!--刻度上边文字的size-->
+    <attr name="ruleTextSize" format="dimension" />
+    <!--刻度线的高度-->
+    <attr name="ruleLineHeight" format="dimension" />
+    <!--选择器的最大值-->
+    <attr name="bigValue" format="integer"/>
+    <!--选择器的最小值-->
+    <attr name="smallValue" format="integer"/>
+
+    <declare-styleable name="DoubleSlideSeekBar">
+        <attr name="lineHeight" />
+        <attr name="textSize" />
+        <attr name="textColor" />
+        <attr name="inColor" />
+        <attr name="outColor" />
+        <attr name="imageLow"/>
+        <attr name="imageBig"/>
+        <attr name="imagewidth" />
+        <attr name="imageheight" />
+        <attr name="hasRule" />
+        <attr name="ruleColor" />
+        <attr name="ruleTextColor" />
+        <attr name="unit" />
+        <attr name="equal" />
+        <attr name="ruleUnit" />
+        <attr name="ruleTextSize" />
+        <attr name="ruleLineHeight" />
+        <attr name="bigValue" />
+        <attr name="smallValue" />
+    </declare-styleable>
+    <!--
+	xml属性			值			解释
+	lineHeight		dimension	控制我们线（进度条）的宽（高）度（例20dp）
+	textSize		dimension	游标上边字的大小（例16sp）
+	textColor		color		游标上边字的颜色 （例#e40627）
+	inColor			color		两个游标之间进度条的颜色 （例#e40627）
+	outColor		color		两个游标外部（游标到进度条两端）进度条的颜色 （例#e40627）
+	imageLow		reference	左边游标的图片 （例@mipmap/imgv_slide）
+	imageBig		reference	右边游标的图片 （例@mipmap/imgv_slide）
+	imagewidth		dimension	游标图片的宽度 （例20dp）
+	imagewidth		dimension	游标图片的高度 （例20dp）
+	hasRule			boolean		是否有刻度线（例 true or false）
+	ruleColor		color		刻度线的颜色 （例#e40627）
+	ruleTextColor	color		刻度线上边的字的颜色 （例#e40627）
+	unit			string		单位 （例 元）
+	equal			integer		单位份数，把全部数据分成equal份（例smallValue是0，bigValue是100，equal是10，则每个刻度大小为（100-0）/10 =10）
+	ruleUnit		string		刻度上边文字的单位 （例 $）
+	ruleTextSize	dimension	刻度上边文字的大小 （例20sp）
+	ruleLineHeight	dimension	刻度线高度（例16dp）
+	bigValue		integer		选择器的最大值 （例 100）
+	smallValue		integer		选择器的最小值 （例 0）
+	 -->
+</resources>

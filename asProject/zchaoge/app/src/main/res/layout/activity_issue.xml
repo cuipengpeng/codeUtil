@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.IssueActivity">
+
+    <View
+        android:id="@+id/view_issue"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="0dp" />
+
+    <include layout="@layout/base_title_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F9F9F9"
+        android:orientation="vertical"
+        android:paddingEnd="@dimen/_14dp"
+        android:paddingStart="@dimen/_14dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_125dp"
+            android:layout_marginTop="@dimen/_10dp">
+
+            <RelativeLayout
+
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/shape_edit_issue"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/ed_issue_inputInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="start"
+                    android:hint="输入标题，并使用适合的话题"
+                    android:maxLength="50"
+                    android:maxLines="5"
+                    android:paddingEnd="@dimen/_14dp"
+                    android:paddingStart="@dimen/_14dp"
+                    android:paddingTop="@dimen/_13dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/describeTextColor"
+                    android:textSize="@dimen/_14sp" />
+
+                <TextView
+                    android:id="@+id/tv_issue_textNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/_10dp"
+                    android:layout_marginEnd="@dimen/_14dp"
+                    android:layout_marginStart="@dimen/_14dp"
+                    android:gravity="end"
+                    android:text="0/50字"
+                    android:textColor="@color/describeTextColor" />
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/img_issue_image"
+                android:layout_width="@dimen/_82dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_5dp"
+                android:scaleType="fitXY" />
+
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

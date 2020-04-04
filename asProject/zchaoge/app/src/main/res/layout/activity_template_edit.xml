@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.TemplateEditActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.xiao.nicevideoplayer.NiceVideoPlayer
+            android:id="@+id/video_templateEdit_play"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/img_templateEdit_cover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/img_templateEdit_thumb"
+            android:layout_width="@dimen/_37dp"
+            android:layout_height="@dimen/_47dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_play_template"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_templateEdit_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/base_title_layout" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_templateEdit_recordLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_225dp"
+        android:layout_gravity="bottom"
+        android:background="#99000000"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_105dp">
+
+            <TextView
+                android:id="@+id/tv_templateEdit_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15dp"
+                android:text="剧本"
+                android:textColor="#4Dffffff" />
+
+            <TextView
+                android:id="@+id/tv_templateEdit_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="#4Dffffff" />
+
+            <com.caishi.chaoge.ui.widget.LrcView
+                android:id="@+id/lrc_templateEdit_view"
+                android:layout_width="@dimen/_230dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/_16dp"
+                app:lrcColor="@color/white"
+                app:lrcMode="KARAOKE" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_templateEdit_layout"
+                android:layout_width="match_parent"
+                android:layout_height="75dp">
+
+
+
+
+                <ImageView
+                    android:id="@+id/img_templateEdit_record"
+                    android:layout_width="@dimen/_70dp"
+                    android:layout_height="@dimen/_70dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_record" />
+
+
+                <ImageView
+                    android:id="@+id/img_templateEdit_script"
+                    android:layout_width="@dimen/_42dp"
+                    android:layout_height="@dimen/_61dp"
+                    android:layout_marginStart="@dimen/_45dp"
+                    android:layout_marginTop="@dimen/_15dp"
+                    android:layout_toEndOf="@id/img_templateEdit_record"
+                    android:src="@drawable/im_script" />
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/tv_templateEdit_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_4dp"
+                android:gravity="center"
+                android:text="14/15S"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>

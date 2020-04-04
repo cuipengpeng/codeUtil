@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ui.activity.TemplateActivity">
+
+    <View
+        android:id="@+id/view_template"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorBlack" />
+
+    <include layout="@layout/base_title_layout" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#F5F5F5" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.caishi.chaoge.ui.widget.banner.BannerLayout
+            android:id="@+id/bl_template_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.7"
+            app:autoPlaying="false"
+            app:centerScale="1.2"
+            app:showIndicator="false" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_5dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:weightSum="2">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_template_templateList"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:overScrollMode="never">
+
+            </android.support.v7.widget.RecyclerView>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#F5F5F5" />
+
+
+                <ImageView
+                    android:id="@+id/nImg_template_album"
+                    android:layout_width="@dimen/_39dp"
+                    android:layout_height="@dimen/_39dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_15dp"
+                    android:gravity="center" />
+
+
+                <Button
+                    android:id="@+id/btn_template_start"
+                    android:layout_width="@dimen/_294dp"
+                    android:layout_height="@dimen/_46dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="@dimen/_5dp"
+                    android:layout_marginStart="@dimen/_5dp"
+                    android:layout_toEndOf="@id/nImg_template_album"
+                    android:background="@drawable/btn_voice_start" />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

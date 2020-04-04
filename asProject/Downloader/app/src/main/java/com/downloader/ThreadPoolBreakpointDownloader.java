@@ -21,8 +21,9 @@ public class ThreadPoolBreakpointDownloader {
     private static File DIR_PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);    // 下载目录
     private static final int THREAD_AMOUNT = 4;                // 大文件下载总线程数
     private static final int CORE_POOL_SIZE = 5;                // 线程池核心线程数
-    private static final int MAX_POOL_SIZE = 20;                // 线程池最大线程数
+    private static final int MAX_POOL_SIZE = 8;                // 线程池最大线程数
 
+    private boolean debug = true;
     private static int taskCount = -1;
 //    private  int[] orderArr = new int[10];
     private long[] begin = new long[10];            // 用来记录开始下载时的时间
@@ -86,18 +87,26 @@ public class ThreadPoolBreakpointDownloader {
                 DIR_PATH.mkdirs();
             }
         }
-        final File dataFile = new File(DIR_PATH, fileName);    // 截取地址中的文件名, 创建本地文件
-        final File tempFile = new File(dataFile.getAbsolutePath() + ".temp");                        // 在本地文件所在文件夹中创建临时文件
+        final File realDataFile = new File(DIR_PATH, fileName);    // 截取地址中的文件名, 创建本地文件
+        final File dataFile = new File(realDataFile.getAbsolutePath() + ".temp");                        // 在本地文件所在文件夹中创建临时文件
+        final File progressFile = new File(realDataFile.getAbsolutePath() + ".progress");                        // 在本地文件所在文件夹中记录进度的临时文件
         final Handler handler = new Handler(Looper.getMainLooper());
 
 
-        if(dataFile.exists() && !tempFile.exists()){
+        if(dataFile.exists() && !progressFile.exists()){
+            dataFile.delete();
+        }
+        if(!dataFile.exists() && progressFile.exists()){
+            progressFile.delete();
+        }
+
+        if(realDataFile.exists()){
             handler.post(new Runnable() {
                 public void run() {
-                    downloadProgressCallback.onFinish(dataFile);
+                    downloadProgressCallback.onFinish(realDataFile);
                 }
             });
-            return dataFile;
+            return realDataFile;
         }else {
             new Thread(new Runnable() {
 
@@ -122,8 +131,8 @@ public class ThreadPoolBreakpointDownloader {
                                 raf.close();
                             }
 
-                            if (!tempFile.exists()) {                                            // 如果临时文件不存在
-                                RandomAccessFile raf = new RandomAccessFile(tempFile, "rws");    // 创建临时文件, 用来记录每个线程已下载多少
+                            if (!progressFile.exists()) {                                            // 如果临时文件不存在
+                                RandomAccessFile raf = new RandomAccessFile(progressFile, "rws");    // 创建临时文件, 用来记录每个线程已下载多少
                                 for (int i = 0; i < THREAD_AMOUNT; i++) {                            // 按照线程数循环
                                     raf.writeLong(0);                                            // 写入每个线程的开始位置(都是从0开始)
                                 }
@@ -132,7 +141,7 @@ public class ThreadPoolBreakpointDownloader {
 
                             synchronized (ThreadPoolBreakpointDownloader.this){
                                 taskCount++;
-                                System.out.println("#############sendMsg--totalLen=" + totalLen + "--taskCount=" + taskCount);
+                                printLog("#############sendMsg--totalLen=" + totalLen + "--taskCount=" + taskCount);
                                 handler.post(new Runnable() {
                                     public void run() {
                                         downloadProgressCallback.onStart();
@@ -140,7 +149,7 @@ public class ThreadPoolBreakpointDownloader {
                                 });
                                 // 按照线程数循环
                                 for (int i = 0; i < THREAD_AMOUNT; i++) {
-                                    execute(new DownloadThread(taskCount, i, httpUrl, dataFile, tempFile, totalLen, THREAD_AMOUNT, handler, downloadProgressCallback));        // 开启线程, 每个线程将会下载一部分数据到本地文件中
+                                    execute(new DownloadThread(taskCount, i, httpUrl, realDataFile, dataFile, progressFile, totalLen, THREAD_AMOUNT, handler, downloadProgressCallback));        // 开启线程, 每个线程将会下载一部分数据到本地文件中
                                 }
                                 begin[taskCount] = System.currentTimeMillis();        // 记录开始时间
                             }
@@ -163,20 +172,22 @@ public class ThreadPoolBreakpointDownloader {
         private int id;    // 用来标记当前线程是下载任务中的第几个线程
         private int taskIndex;  // 目标下载地址
         private String httpUrl;
+        private File realDataFile;        // 本地文件
         private File dataFile;        // 本地文件
-        private File tempFile;        // 用来存储每个线程下载的进度的临时文件
+        private File progressFile;        // 用来存储每个线程下载的进度的临时文件
         private long totalLen;        // 服务端文件总长度
         private long threadLen;        // 每个线程要下载的长度
         private int threadAmount;                // 大文件下载总线程数
         private DownloadProgressCallback downloadProgressCallback;
         private Handler handler;
 
-        public DownloadThread(int taskIndex, int id, String httpUrl, File dataFile, File tempFile, long totalLen, int threadAmount, Handler handler, DownloadProgressCallback downloadProgressCallback) {
+        public DownloadThread(int taskIndex, int id, String httpUrl, File realDataFile, File dataFile, File progressFile, long totalLen, int threadAmount, Handler handler, DownloadProgressCallback downloadProgressCallback) {
             this.taskIndex = taskIndex;
             this.id = id;
             this.httpUrl = httpUrl;
+            this.realDataFile = realDataFile;
             this.dataFile = dataFile;
-            this.tempFile = tempFile;
+            this.progressFile = progressFile;
             this.handler = handler;
             this.totalLen = totalLen;
             this.threadAmount = threadAmount;
@@ -189,10 +200,10 @@ public class ThreadPoolBreakpointDownloader {
             RandomAccessFile tempRaf = null;
             InputStream in = null;
             threadLen = (totalLen + threadAmount - 1) / threadAmount;            // 计算每个线程要下载的长度
-            System.out.println("totalLen=" + totalLen + "--threadLen=" + threadLen);
+            printLog("totalLen=" + totalLen + "--threadLen=" + threadLen);
 
             try {
-                tempRaf = new RandomAccessFile(tempFile, "rws");        // 用来记录下载进度的临时文件
+                tempRaf = new RandomAccessFile(progressFile, "rws");        // 用来记录下载进度的临时文件
                 tempRaf.seek(id * 8);                        // 将指针移动到当前线程的位置(每个线程写1个long值, 占8字节)
                 long threadFinish = tempRaf.readLong();        // 读取当前线程已完成了多少
                 synchronized (ThreadPoolBreakpointDownloader.this) {    // 多个下载线程之间同步
@@ -204,13 +215,14 @@ public class ThreadPoolBreakpointDownloader {
                 if (id == THREAD_AMOUNT - 1) {
                     end = totalLen;        // 计算当前线程的结束位置
                 }
-                System.out.println("线程" + id + ": " + start + "-" + end);
+                printLog("线程" + id + ": " + start + "-" + end);
 
                 URL url = new URL(httpUrl);
                 conn = (HttpURLConnection) url.openConnection();
                 conn.setConnectTimeout(3000);
+                conn.setReadTimeout(10*1000);
                 conn.setRequestProperty("Range", "bytes=" + start + "-" + end);        // 设置当前线程下载的范围
-                System.out.println("线程" + id +"--taskIndex=" + taskIndex+ "--conn.getResponseCode()=" + conn.getResponseCode()+ "--httpUrl=" + httpUrl);
+                printLog("线程" + id +"--taskIndex=" + taskIndex+ "--conn.getResponseCode()=" + conn.getResponseCode()+ "--httpUrl=" + httpUrl);
 
                 //当请求部分数据成功的时候, 返回http状态码206
                 if (conn.getResponseCode() == 206) {
@@ -218,7 +230,7 @@ public class ThreadPoolBreakpointDownloader {
                     dataRaf = new RandomAccessFile(dataFile, "rws");    // 装载数据的本地文件(可以理解为输出流)
                     dataRaf.seek(start);                               // 设置当前线程保存数据的位置
 
-                    byte[] buffer = new byte[1024 * 100];            // 每次拷贝100KB
+                    byte[] buffer = new byte[1024 * 200];            // 每次拷贝200KB
                     int len;
                     while ((len = in.read(buffer)) != -1) {
                         dataRaf.write(buffer, 0, len);                // 从服务端读取数据, 写到本地文件
@@ -236,10 +248,10 @@ public class ThreadPoolBreakpointDownloader {
                         }
                     }
 
-                    System.out.println("线程" + id + "下载完毕");
-                    System.out.println("线程" + id + "--threadFinish=" + threadFinish + "--totalFinish=" + totalFinish[taskIndex] + "--httpUrl=" + httpUrl+ "\n");
+                    printLog("线程" + id + "下载完毕");
+                    printLog("线程" + id + "--threadFinish=" + threadFinish + "--totalFinish=" + totalFinish[taskIndex] + "--httpUrl=" + httpUrl+ "\n");
                 } else {
-                    System.out.println("线程=" + id + "--Response Code != 206 (actualCode=" + conn.getResponseCode() + "),服务器不支持多线程下载。");
+                    printLog("线程=" + id + "--Response Code != 206 (actualCode=" + conn.getResponseCode() + "),服务器不支持多线程下载。");
                 }
             } catch (IOException e) {
                 handler.post(new Runnable() {
@@ -263,14 +275,14 @@ public class ThreadPoolBreakpointDownloader {
                         dataRaf.close();
                     }
                     if (totalFinish[taskIndex] == totalLen) {                    // 如果已完成长度等于服务端文件长度(代表下载完成)
-                        System.out.println("下载完成, 耗时: " + (System.currentTimeMillis() - begin[taskIndex])+"--dataFile.length()="+dataFile.length()+ "--httpUrl=" + httpUrl);
-                        tempFile.delete();                            // 删除临时文件
+                        printLog("下载完成, 耗时: " + (System.currentTimeMillis() - begin[taskIndex])+"--dataFile.length()="+dataFile.length()+ "--httpUrl=" + httpUrl);
+                        progressFile.delete();                            // 删除临时文件
+                        dataFile.renameTo(realDataFile); //文件下载完成后重命名
                         handler.post(new Runnable() {
                             public void run() {
                                 downloadProgressCallback.onFinish(dataFile);
                             }
                         });
-//                      dataFile.renameTo(new File(dataFile.getAbsolutePath()+".aaaaaa")); //文件下载完成后重命名
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -343,13 +355,14 @@ public class ThreadPoolBreakpointDownloader {
                         connection = (HttpURLConnection) url.openConnection();
                         connection.setRequestMethod("GET");
                         connection.setConnectTimeout(5000);
+                        connection.setReadTimeout(5000);
                         //加上这句是为了防止connection.getContentLength()获取不到
                         connection.setRequestProperty("Accept-Encoding", "identity");
 
                         if (connection.getResponseCode() == 200) {
                             inputStream = connection.getInputStream();
                             smallFileTotalLength = connection.getContentLength();
-                            System.out.println("smallFileTotalLength="+smallFileTotalLength);
+                            printLog("smallFileTotalLength="+smallFileTotalLength);
 
                             if (inputStream != null) {
                                 handler.post(new Runnable() {
@@ -363,7 +376,7 @@ public class ThreadPoolBreakpointDownloader {
                                 int length = 0;
                                 while ((length = inputStream.read(buffer)) != -1) {
                                     smallFileTotalFinish += length;
-                                    System.out.println("smallFileTotalFinish="+smallFileTotalFinish);
+                                    printLog("smallFileTotalFinish="+smallFileTotalFinish);
                                     fileOutputStream.write(buffer, 0, length);
                                     handler.post(new Runnable() {
                                         public void run() {
@@ -395,7 +408,7 @@ public class ThreadPoolBreakpointDownloader {
                             if (smallFileTotalFinish == smallFileTotalLength && smallFileTotalFinish >0 && smallFileTotalLength >0 ) {
                                 //文件下载完成后重命名
                                 tempFile.renameTo(dataFile);
-                                System.out.println("已经下载完成");
+                                printLog("已经下载完成");
                                 handler.post(new Runnable() {
                                     public void run() {
                                         downloadProgressCallback.onFinish(dataFile);
@@ -410,6 +423,12 @@ public class ThreadPoolBreakpointDownloader {
             });
         }
         return null;
+    }
+
+    private void printLog(String log){
+        if(debug){
+            System.out.println(log);
+        }
     }
 
     public interface DownloadProgressCallback{

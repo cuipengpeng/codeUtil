@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="@dimen/_88dp"
+        android:layout_height="@dimen/_88dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_55dp"
+        android:src="@drawable/app_icon" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6dp"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_18sp" />
+
+    <TextView
+        android:id="@+id/tv_about_version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_13dp"
+        android:gravity="center"
+        android:textColor="#5D6479"
+        android:textSize="@dimen/_13sp" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_49dp"
+        android:layout_marginTop="@dimen/_36dp"
+        android:layout_marginEnd="@dimen/_15dp"
+        android:layout_marginStart="@dimen/_12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="朝歌官网"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="www.chaogevideo.com"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/partingLineBgColor" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_49dp"
+        android:layout_marginEnd="@dimen/_15dp"
+        android:layout_marginStart="@dimen/_12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="朝歌官方邮箱"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="chaogegf@chaogevideo.com"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/partingLineBgColor" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_49dp"
+        android:layout_marginEnd="@dimen/_15dp"
+        android:layout_marginStart="@dimen/_12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="违法和不良信息举报QQ"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_15sp" />
+
+
+        <TextView
+            android:id="@+id/tv_settingActivity_customerServicePhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="1787440049"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_14sp" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/partingLineBgColor" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_49dp"
+        android:layout_marginEnd="@dimen/_15dp"
+        android:layout_marginStart="@dimen/_12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="微信客服"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_15sp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="chaoge_018"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_14sp" />
+    </RelativeLayout>
+
+
+</LinearLayout>

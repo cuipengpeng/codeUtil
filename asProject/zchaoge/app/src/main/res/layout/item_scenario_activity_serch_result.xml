@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/_10dp"
+    android:paddingTop="@dimen/_10dp">
+
+    <ImageView
+        android:id="@+id/iv_scenarioActivity_searchResultItem_profile"
+        android:layout_width="@dimen/_48dp"
+        android:layout_height="@dimen/_48dp"
+        android:layout_marginStart="@dimen/_14dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_14dp"
+        android:layout_marginTop="@dimen/_5dp"
+        android:layout_toEndOf="@id/iv_scenarioActivity_searchResultItem_profile"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_scenarioActivity_searchResultItem_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="一叶子"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
+            android:textSize="@dimen/_14sp" />
+
+        <TextView
+            android:id="@+id/tv_scenarioActivity_searchResultItem_info"
+            android:layout_width="wrap_content"
+            android:layout_marginEnd="@dimen/_14dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="我不去想 是否能够成功 既然选择了远..."
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_12sp"/>
+    </LinearLayout>
+</RelativeLayout>

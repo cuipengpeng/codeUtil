@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.caishi.chaoge.ui.widget.LCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_131dp"
+    android:layout_marginEnd="@dimen/_15dp"
+    android:layout_marginStart="@dimen/_15dp"
+    android:layout_marginTop="@dimen/_8dp"
+    app:cornerRadius="@dimen/_5dp"
+    app:shadowSize="@dimen/_5dp"
+    app:shadowFluidShape="linear"
+    app:shadowStartAlpha="20"
+    app:shadowColor="#b3b3b3"
+    app:yOffset="-4dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_15dp"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/_15dp"
+        android:paddingTop="@dimen/_17dp">
+
+        <TextView
+            android:id="@+id/tv_scenario_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="一叶子"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_scenario_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_9dp"
+            android:ellipsize="end"
+            android:lineSpacingExtra="@dimen/_7dp"
+            android:maxLines="2"
+            android:text="我不去想 是否能够成功 既然选择了远..."
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_15sp" />
+
+    </LinearLayout>
+
+
+</com.caishi.chaoge.ui.widget.LCardView>
+

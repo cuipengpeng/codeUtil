@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp">
+
+                <TextView
+                    android:id="@+id/tv_selectMusicActivity_cancelSearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:paddingEnd="@dimen/_14dp"
+                    android:paddingStart="8dp"
+                    android:text="@string/cancel"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_14sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/tv_selectMusicActivity_cancelSearch"
+                    android:background="@drawable/circle_corner_white_bg_normal">
+
+                    <ImageView
+                        android:id="@+id/iv_selectMusicActivity_icon"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:background="@mipmap/ic_search_black" />
+
+                    <com.caishi.chaoge.ui.widget.ClearEditText
+                        android:id="@+id/et_selectMusicActivity_search"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:layout_toRightOf="@id/iv_selectMusicActivity_icon"
+                        android:background="@null"
+                        android:gravity="left|center_vertical"
+                        android:hint="搜索音乐"
+                        android:imeOptions="actionSearch"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:paddingStart="14dp"
+                        android:textColor="#000000"
+                        android:textColorHint="#80000000"
+                        android:textSize="13sp" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/stl_selectMusicActivity_tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:background="@color/white"
+            app:tl_indicator_color="@color/_fe5175"
+            app:tl_indicator_corner_radius="@dimen/_4dp"
+            app:tl_indicator_gravity="BOTTOM"
+            app:tl_indicator_height="@dimen/_2dp"
+            app:tl_indicator_width_equal_title="true"
+            app:tl_indicator_margin_bottom="@dimen/_5dp"
+            app:tl_textSelectColor="@color/_fe5175"
+            app:tl_textUnselectColor="@color/colorBlack" />
+
+    </LinearLayout>
+
+    <com.caishi.chaoge.ui.widget.refreshlayout.AutoLoadMoreRecyclerView
+        android:id="@+id/rv_selectMusicActivity_searchReesultList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/ll_selectMusicActivity_noData"
+        layout="@layout/no_data_view"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/ll_selectMusicActivity_netwrokError"
+        layout="@layout/network_error_view"
+        android:visibility="gone" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_selectMusicActivity_musicList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff" />
+</LinearLayout>
+

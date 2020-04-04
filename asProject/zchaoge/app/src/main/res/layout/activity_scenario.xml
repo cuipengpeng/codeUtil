@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_scenarioActivity_searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+
+            <TextView
+                android:id="@+id/tv_scenarioActivity_cancelSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:gravity="center"
+                android:paddingStart="8dp"
+                android:paddingEnd="@dimen/_14dp"
+                android:text="@string/cancel"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_14sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_toStartOf="@id/tv_scenarioActivity_cancelSearch"
+                android:background="@drawable/circle_corner_gray_bg_normal_2dp">
+
+                <ImageView
+                    android:id="@+id/iv_scenarioActivity_icon"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@mipmap/ic_search_white" />
+
+                <com.caishi.chaoge.ui.widget.ClearEditText
+                    android:id="@+id/et_scenarioActivity_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toEndOf="@id/iv_scenarioActivity_icon"
+                    android:background="@null"
+                    android:gravity="left|center_vertical"
+                    android:hint="搜索剧本"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/describeTextColor"
+                    android:textSize="13sp" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <com.caishi.chaoge.ui.widget.refreshlayout.AutoLoadMoreRecyclerView
+        android:id="@+id/rv_scenarioActivity_searchReesultList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/ll_scenarioActivity_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/stl_scenarioActivity_tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:background="@color/white"
+            app:tl_indicator_color="@color/_fe5175"
+            app:tl_indicator_corner_radius="@dimen/_4dp"
+            app:tl_indicator_gravity="BOTTOM"
+            app:tl_indicator_height="@dimen/_2dp"
+            app:tl_indicator_width_equal_title="true"
+            app:tl_indicator_margin_bottom="@dimen/_5dp"
+            app:tl_textSelectColor="@color/_fe5175"
+            app:tl_textUnselectColor="@color/colorBlack" />
+
+        <Button
+            android:id="@+id/btn_scenarioActivity_noScenario"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/circle_corner_pink_border_normal_5dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginRight="17dp"
+            android:layout_marginTop="5dp"
+            android:textSize="17sp"
+            android:textColor="#FE5175"
+            android:text="不使用剧本"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_scenario_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/partingLineBgColor" />
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/ll_scenarioActivity_noData"
+        layout="@layout/no_data_view"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/ll_scenarioActivity_netwrokError"
+        layout="@layout/network_error_view"
+        android:visibility="gone" />
+
+</LinearLayout>
+

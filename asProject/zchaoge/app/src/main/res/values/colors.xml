@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorBlack80">#80000000</color>
+    <color name="white">#ffffff</color>
+    <!-- 透明 -->
+    <color name="colorTransparent">#00000000</color>
+
+
+    <color name="_262628">#262628</color>
+    <color name="_9B9B9B">#9B9B9B</color>
+    <color name="_fe5175">#fe5175</color>
+    <color name="_f9f9f9">#f9f9f9</color>
+
+
+    <!--纯色背景颜色值-->
+
+
+    <!--标题栏背景颜色-->
+    <color name="titleBgColor">#FFD733</color>
+    <!--按钮背景颜色-->
+    <!--分割线颜色-->
+    <color name="partingLineBgColor">#f5f5f5</color>
+    <!--描述文字颜色-->
+    <color name="describeTextColor">#80000000</color>
+    <color name="main_orange">#ffd500</color>
+    <color name="progress_n">#2a2a2c</color>
+    <color name="borderline_color">#888888</color>
+    <color name="progress_between">#ffd500</color>
+    <color name="progress_progress">#fcbc7f</color>
+    <color name="main_color">#13cadb</color>
+
+</resources>

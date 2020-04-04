@@ -50,7 +50,8 @@ public class UploadMultiFiles {
 
                     URL uri = new URL(actionUrl);
                     HttpURLConnection conn = (HttpURLConnection) uri.openConnection();
-                    conn.setReadTimeout(30 * 1000); // 缓存的最长时间
+                    conn.setConnectTimeout(5 * 1000);
+                    conn.setReadTimeout(10 * 1000);
                     conn.setDoInput(true);// 允许输入
                     conn.setDoOutput(true);// 允许输出
                     conn.setUseCaches(false); // 不允许使用缓存
@@ -175,7 +176,12 @@ public class UploadMultiFiles {
                     });
                     outStream.close();
                     conn.disconnect();
-                }catch (Exception e){
+                }catch (final Exception e){
+                    mHandler.post(new Runnable() {
+                        public void run() {
+                            progressListener.onFail("Fail to uploadload file: "+e.getMessage());
+                        }
+                    });
                     e.printStackTrace();
                 }
             }
@@ -186,5 +192,6 @@ public class UploadMultiFiles {
         void onUploadStart();
         void onProgressUpdate(int progress);
         void onUploadFinish();
+        void onFail(String errorInfo);
     }
 }

@@ -1,0 +1,91 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Theme.MyAppTheme" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@drawable/ic_welcome</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="AnimUp" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+    <!--友盟网页授权的布局-->
+    <style name="umeng_socialize_popup_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+    <declare-styleable name="LrcView">
+        <attr name="lrcMode" format="enum">
+            <enum name="KARAOKE" value="1"/>
+        </attr>
+        <attr name="lineColor" format="color|reference"/>
+        <attr name="lrcColor" format="color|reference"/>
+        <attr name="testSize" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="AutoLoadMoreRecyclerView">
+        <attr name="refreshEnable" format="boolean" />
+        <attr name="offsetToLoadMore" format="integer" />
+    </declare-styleable>
+
+    <style name="protocalDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item><!--边框-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <item name="android:windowIsTranslucent">true</item><!--半透明-->
+        <item name="android:windowNoTitle">true</item><!--无标题-->
+        <item name="android:windowBackground">@color/colorTransparent</item><!--背景透明-->
+        <item name="android:backgroundDimEnabled">true</item><!--模糊-->
+    </style>
+
+    <!-- 定义弹框Activity的进入、关闭动画 -->
+
+    <!-- dialog从下面进出动画 -->
+
+
+    <!--自定义seekbarstyle-->
+
+    <!--友盟分享新浪网页授权的布局-->
+
+    <!--自定义Dialog样式-->
+    <style name="MyDialog" parent="AlertDialog.AppCompat">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+    <!--自定义seekbarstyle-->
+    <style name="CustomSeekBarStyle" >
+        <item name="android:maxHeight">@dimen/_4dp</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:indeterminateDrawable">@color/white</item>
+        <item name="android:progressDrawable">@drawable/seekbar_progress_drawable1</item>
+        <item name="android:minHeight">@dimen/_4dp</item>
+        <item name="android:thumb">@drawable/thumb_image</item>
+    </style>
+
+    <style name="circleDialog" parent="android:style/Theme.Dialog">
+        <!-- 背景透明,设置圆角对话框必须设置背景透明，否则四角会有背景色小块-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 没有标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 背景模糊 -->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+</resources>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/_87dp"
+    android:layout_height="@dimen/_87dp"
+    android:background="@drawable/ic_bg_progress"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.caishi.chaoge.ui.widget.CustomCircleProgressBar
+        android:id="@+id/cpb_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:inside_color="#73ffffff"
+        app:outside_radius="@dimen/_20dp"
+        app:outside_color="@color/white"
+        app:progress="0"
+        app:progress_text_color="@color/white"
+        app:progress_text_size="@dimen/_11sp"
+        app:progress_width="@dimen/_3dp" />
+
+    <TextView
+        android:id="@+id/tv_progress_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5dp"
+        android:text="正在保存视频"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_11sp" />
+
+
+</LinearLayout>

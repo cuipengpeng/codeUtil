@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 未按下按钮状态 -->
+    <item android:drawable="@drawable/shape_bg_unselect_next" android:state_enabled="false" />
+    <!-- 按下按钮状态 -->
+    <item android:drawable="@drawable/shape_bg_next" android:state_enabled="true" />
+
+</selector>

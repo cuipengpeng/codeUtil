@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp">
+
+        <ImageView
+            android:id="@+id/img_userDetails_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/im_mine_bg"
+            app:layout_collapseMode="parallax" />
+    </RelativeLayout>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srl_userDetails_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlDragRate="0.3"
+        app:srlEnablePureScrollMode="false"
+        app:srlEnableRefresh="true">
+
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/abl_userDetails_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_380dp"
+                android:background="@android:color/transparent"
+                app:elevation="0dp">
+
+                <android.support.design.widget.CollapsingToolbarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:contentScrim="@android:color/transparent"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_userDetails_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:paddingTop="@dimen/_10dp">
+
+                        <include layout="@layout/view_user_info" />
+
+
+                    </RelativeLayout>
+
+                </android.support.design.widget.CollapsingToolbarLayout>
+            </android.support.design.widget.AppBarLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1dp"
+                    android:background="@color/partingLineBgColor" />
+
+                <com.flyco.tablayout.SlidingTabLayout
+                    android:id="@+id/stl_userDetails_tabLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="41dp"
+                    android:background="@color/white"
+                    app:tl_divider_color="@color/partingLineBgColor"
+                    app:tl_divider_padding="@dimen/_10dp"
+                    app:tl_divider_width="@dimen/_1dp"
+                    app:tl_indicator_color="@color/_fe5175"
+                    app:tl_indicator_corner_radius="@dimen/_4dp"
+                    app:tl_indicator_gravity="BOTTOM"
+                    app:tl_indicator_height="@dimen/_2dp"
+                    app:tl_indicator_margin_bottom="@dimen/_7dp"
+                    app:tl_indicator_margin_left="@dimen/_80dp"
+                    app:tl_indicator_margin_right="@dimen/_80dp"
+                    app:tl_tab_space_equal="true"
+                    app:tl_textBold="BOTH"
+                    app:tl_textSelectColor="@color/colorBlack"
+                    app:tl_textUnselectColor="@color/colorBlack" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/partingLineBgColor" />
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/vp_userDetails_viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white" />
+            </LinearLayout>
+
+        </android.support.design.widget.CoordinatorLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_userDetails_back"
+            android:layout_width="29dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="15dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_back_white" />
+        </LinearLayout>
+</FrameLayout>

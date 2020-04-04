@@ -1,0 +1,3783 @@
+{
+
+    "ver": 1,
+    "textimg":{
+    
+        "text" : [{
+            "name" : "ReplaceableText1",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+            
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+            
+
+        },
+        {
+            "name" : "ReplaceableText2",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+            
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+            
+
+        },
+        {
+            "name" : "ReplaceableText3",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+            
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+            
+
+        },
+        {
+            "name" : "ReplaceableText4",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+            
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+            
+
+        },
+        {
+            "name" : "ReplaceableText5",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+            
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+            
+
+        },
+        {
+            "name" : "ReplaceableText6",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+            
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+            
+
+        },
+        {
+            "name" : "ReplaceableText7",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+            
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+            
+
+        },
+        {
+            "name" : "ReplaceableText8",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+            
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+            
+
+        },
+        {
+            "name" : "ReplaceableText9",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+            
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+        },
+        {
+            "name" : "ReplaceableText10",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+            
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+            
+
+        },
+        {
+            "name" : "ReplaceableText11",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+            
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+            
+
+        },
+        {
+            "name" : "ReplaceableText12",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+            
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText13",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText14",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText15",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText16",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText17",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText18",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText19",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText20",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText21",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText22",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText23",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText24",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText25",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText26",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText27",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText28",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText29",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText30",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText31",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText32",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText33",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText34",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText35",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText36",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText37",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText38",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText39",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText40",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText41",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText42",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText43",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText44",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText45",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText46",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText47",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText48",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText49",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+
+
+        },
+        {
+            "name" : "ReplaceableText50",
+            "width" : 77,
+            "height" : 842,
+            "textContent" : "轻触屏幕更换文字九",
+            "suggestion" : "",
+            "textFont" : "",
+            "fontSrc" : "",
+            "maxNum" : 12,
+            "lineNum" : 1,
+
+            "alignment" : "center",
+            "textColor" : [
+                255,
+                255,
+                255
+            ],
+            "vertical":1
+            
+
+        }
+
+        
+        
+        
+        
+        ]
+    },
+    "assets":[
+        {
+            "id":"image_0",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_0.png"
+        },
+        {
+            "id":"image_1",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_1.png"
+        },
+        {
+            "id":"image_2",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_2.png"
+        },
+        {
+            "id":"image_3",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_3.png"
+        },
+        {
+            "id":"image_4",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_4.png"
+        },
+        {
+            "id":"image_5",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_5.png"
+        },
+        {
+            "id":"image_6",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_6.png"
+        },
+        {
+            "id":"image_7",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_7.png"
+        },
+        {
+            "id":"image_8",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_8.png"
+        },
+        {
+            "id":"image_9",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_9.png"
+        },
+        {
+            "id":"image_10",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_10.png"
+        },
+        {
+            "id":"image_11",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_11.png"
+        },
+        {
+            "id":"image_12",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_12.png"
+        },
+        {
+            "id":"image_13",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_13.png"
+        },
+        {
+            "id":"image_14",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_14.png"
+        },
+        {
+            "id":"image_15",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_15.png"
+        },
+        {
+            "id":"image_16",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_16.png"
+        },
+        {
+            "id":"image_17",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_17.png"
+        },
+        {
+            "id":"image_18",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_18.png"
+        },
+        {
+            "id":"image_19",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_19.png"
+        },
+        {
+            "id":"image_20",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_20.png"
+        },
+        {
+            "id":"image_21",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_21.png"
+        },
+        {
+            "id":"image_22",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_22.png"
+        },
+        {
+            "id":"image_23",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_23.png"
+        },
+        {
+            "id":"image_24",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_24.png"
+        },
+        {
+            "id":"image_25",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_25.png"
+        },
+        {
+            "id":"image_26",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_26.png"
+        },
+        {
+            "id":"image_27",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_27.png"
+        },
+        {
+            "id":"image_28",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_28.png"
+        },
+        {
+            "id":"image_29",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_29.png"
+        },
+        {
+            "id":"image_30",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_30.png"
+        },
+        {
+            "id":"image_31",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_31.png"
+        },
+        {
+            "id":"image_32",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_32.png"
+        },
+        {
+            "id":"image_33",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_33.png"
+        },
+        {
+            "id":"image_34",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_34.png"
+        },
+        {
+            "id":"image_35",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_35.png"
+        },
+        {
+            "id":"image_36",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_36.png"
+        },
+        {
+            "id":"image_37",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_37.png"
+        },
+        {
+            "id":"image_38",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_38.png"
+        },
+        {
+            "id":"image_39",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_39.png"
+        },
+        {
+            "id":"image_40",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_40.png"
+        },
+        {
+            "id":"image_41",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_41.png"
+        },
+        {
+            "id":"image_42",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_42.png"
+        },
+        {
+            "id":"image_43",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_43.png"
+        },
+        {
+            "id":"image_44",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_44.png"
+        },
+        {
+            "id":"image_45",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_45.png"
+        },
+        {
+            "id":"image_46",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_46.png"
+        },
+        {
+            "id":"image_47",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_47.png"
+        },
+        {
+            "id":"image_48",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_48.png"
+        },
+        {
+            "id":"image_49",
+            "w":77,
+            "h":842,
+            "u":"images/",
+            "p":"img_49.png"
+        },
+        {
+            "id":"comp_0",
+            "layers":[
+                {
+                    "ddd":0,
+                    "ind":0,
+                    "ty":2,
+                    "nm":"ReplaceableText50",
+                    "parent":50,
+                    "refId":"image_0",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -6180,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":1,
+                    "ty":2,
+                    "nm":"ReplaceableText49",
+                    "parent":50,
+                    "refId":"image_1",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -6053.306,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":2,
+                    "ty":2,
+                    "nm":"ReplaceableText48",
+                    "parent":50,
+                    "refId":"image_2",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -5926.612,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":3,
+                    "ty":2,
+                    "nm":"ReplaceableText47",
+                    "parent":50,
+                    "refId":"image_3",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -5799.918,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":4,
+                    "ty":2,
+                    "nm":"ReplaceableText46",
+                    "parent":50,
+                    "refId":"image_4",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -5673.224,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":5,
+                    "ty":2,
+                    "nm":"ReplaceableText45",
+                    "parent":50,
+                    "refId":"image_5",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -5546.531,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":6,
+                    "ty":2,
+                    "nm":"ReplaceableText44",
+                    "parent":50,
+                    "refId":"image_6",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -5419.837,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":7,
+                    "ty":2,
+                    "nm":"ReplaceableText43",
+                    "parent":50,
+                    "refId":"image_7",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -5293.143,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":8,
+                    "ty":2,
+                    "nm":"ReplaceableText42",
+                    "parent":50,
+                    "refId":"image_8",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -5166.449,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":9,
+                    "ty":2,
+                    "nm":"ReplaceableText41",
+                    "parent":50,
+                    "refId":"image_9",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -5039.755,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":10,
+                    "ty":2,
+                    "nm":"ReplaceableText40",
+                    "parent":50,
+                    "refId":"image_10",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -4913.061,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":11,
+                    "ty":2,
+                    "nm":"ReplaceableText39",
+                    "parent":50,
+                    "refId":"image_11",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -4786.367,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":12,
+                    "ty":2,
+                    "nm":"ReplaceableText38",
+                    "parent":50,
+                    "refId":"image_12",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -4659.673,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":13,
+                    "ty":2,
+                    "nm":"ReplaceableText37",
+                    "parent":50,
+                    "refId":"image_13",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -4532.98,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":14,
+                    "ty":2,
+                    "nm":"ReplaceableText36",
+                    "parent":50,
+                    "refId":"image_14",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -4406.286,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":15,
+                    "ty":2,
+                    "nm":"ReplaceableText35",
+                    "parent":50,
+                    "refId":"image_15",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -4279.592,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":16,
+                    "ty":2,
+                    "nm":"ReplaceableText34",
+                    "parent":50,
+                    "refId":"image_16",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -4152.898,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":17,
+                    "ty":2,
+                    "nm":"ReplaceableText33",
+                    "parent":50,
+                    "refId":"image_17",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -4026.204,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":18,
+                    "ty":2,
+                    "nm":"ReplaceableText32",
+                    "parent":50,
+                    "refId":"image_18",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -3899.51,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":19,
+                    "ty":2,
+                    "nm":"ReplaceableText31",
+                    "parent":50,
+                    "refId":"image_19",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -3772.816,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":20,
+                    "ty":2,
+                    "nm":"ReplaceableText30",
+                    "parent":50,
+                    "refId":"image_20",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -3646.122,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":21,
+                    "ty":2,
+                    "nm":"ReplaceableText29",
+                    "parent":50,
+                    "refId":"image_21",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -3519.429,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":22,
+                    "ty":2,
+                    "nm":"ReplaceableText28",
+                    "parent":50,
+                    "refId":"image_22",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -3392.735,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":23,
+                    "ty":2,
+                    "nm":"ReplaceableText27",
+                    "parent":50,
+                    "refId":"image_23",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -3266.041,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":24,
+                    "ty":2,
+                    "nm":"ReplaceableText26",
+                    "parent":50,
+                    "refId":"image_24",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -3139.347,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":25,
+                    "ty":2,
+                    "nm":"ReplaceableText25",
+                    "parent":50,
+                    "refId":"image_25",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -3012.653,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":26,
+                    "ty":2,
+                    "nm":"ReplaceableText24",
+                    "parent":50,
+                    "refId":"image_26",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -2885.959,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":27,
+                    "ty":2,
+                    "nm":"ReplaceableText23",
+                    "parent":50,
+                    "refId":"image_27",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -2759.265,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":28,
+                    "ty":2,
+                    "nm":"ReplaceableText22",
+                    "parent":50,
+                    "refId":"image_28",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -2632.571,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":29,
+                    "ty":2,
+                    "nm":"ReplaceableText21",
+                    "parent":50,
+                    "refId":"image_29",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -2505.878,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":30,
+                    "ty":2,
+                    "nm":"ReplaceableText20",
+                    "parent":50,
+                    "refId":"image_30",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -2379.184,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":31,
+                    "ty":2,
+                    "nm":"ReplaceableText19",
+                    "parent":50,
+                    "refId":"image_31",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -2252.49,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":32,
+                    "ty":2,
+                    "nm":"ReplaceableText18",
+                    "parent":50,
+                    "refId":"image_32",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -2125.796,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":33,
+                    "ty":2,
+                    "nm":"ReplaceableText17",
+                    "parent":50,
+                    "refId":"image_33",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -1999.102,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":34,
+                    "ty":2,
+                    "nm":"ReplaceableText16",
+                    "parent":50,
+                    "refId":"image_34",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -1872.408,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":35,
+                    "ty":2,
+                    "nm":"ReplaceableText15",
+                    "parent":50,
+                    "refId":"image_35",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -1745.714,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":36,
+                    "ty":2,
+                    "nm":"ReplaceableText14",
+                    "parent":50,
+                    "refId":"image_36",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -1619.02,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":37,
+                    "ty":2,
+                    "nm":"ReplaceableText13",
+                    "parent":50,
+                    "refId":"image_37",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -1492.327,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":38,
+                    "ty":2,
+                    "nm":"ReplaceableText12",
+                    "parent":50,
+                    "refId":"image_38",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -1365.633,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":39,
+                    "ty":2,
+                    "nm":"ReplaceableText11",
+                    "parent":50,
+                    "refId":"image_39",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -1238.939,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":40,
+                    "ty":2,
+                    "nm":"ReplaceableText10",
+                    "parent":50,
+                    "refId":"image_40",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -1112.245,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":41,
+                    "ty":2,
+                    "nm":"ReplaceableText9",
+                    "parent":50,
+                    "refId":"image_41",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -985.551,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":42,
+                    "ty":2,
+                    "nm":"ReplaceableText8",
+                    "parent":50,
+                    "refId":"image_42",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -858.857,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":43,
+                    "ty":2,
+                    "nm":"ReplaceableText7",
+                    "parent":50,
+                    "refId":"image_43",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -732.163,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":44,
+                    "ty":2,
+                    "nm":"ReplaceableText6",
+                    "parent":50,
+                    "refId":"image_44",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -605.469,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":45,
+                    "ty":2,
+                    "nm":"ReplaceableText5",
+                    "parent":50,
+                    "refId":"image_45",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -478.776,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":46,
+                    "ty":2,
+                    "nm":"ReplaceableText4",
+                    "parent":50,
+                    "refId":"image_46",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -352.082,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":47,
+                    "ty":2,
+                    "nm":"ReplaceableText3",
+                    "parent":50,
+                    "refId":"image_47",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -225.388,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":48,
+                    "ty":2,
+                    "nm":"ReplaceableText2",
+                    "parent":50,
+                    "refId":"image_48",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                -98.694,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":49,
+                    "ty":2,
+                    "nm":"ReplaceableText1",
+                    "parent":50,
+                    "refId":"image_49",
+                    "ks":{
+                        "o":{
+                            "k":100
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                28,
+                                -12,
+                                0
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                38.5,
+                                421,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                },
+                {
+                    "ddd":0,
+                    "ind":50,
+                    "ty":4,
+                    "nm":"形状图层 1",
+                    "ks":{
+                        "o":{
+                            "k":0
+                        },
+                        "r":{
+                            "k":0
+                        },
+                        "p":{
+                            "k":[
+                                {
+                                    "i":{
+                                        "x":0.833,
+                                        "y":0.833
+                                    },
+                                    "o":{
+                                        "x":0.167,
+                                        "y":0.167
+                                    },
+                                    "n":"0p833_0p833_0p167_0p167",
+                                    "t":0,
+                                    "s":[
+                                        310,
+                                        500,
+                                        0
+                                    ],
+                                    "e":[
+                                        6462,
+                                        500,
+                                        0
+                                    ],
+                                    "to":[
+                                        1025.33337402344,
+                                        0,
+                                        0
+                                    ],
+                                    "ti":[
+                                        -1025.33337402344,
+                                        0,
+                                        0
+                                    ]
+                                },
+                                {
+                                    "t":2124
+                                }
+                            ]
+                        },
+                        "a":{
+                            "k":[
+                                0,
+                                0,
+                                0
+                            ]
+                        },
+                        "s":{
+                            "k":[
+                                100,
+                                100,
+                                100
+                            ]
+                        }
+                    },
+                    "ao":0,
+                    "shapes":[
+                        {
+                            "ty":"gr",
+                            "it":[
+                                {
+                                    "ty":"rc",
+                                    "d":1,
+                                    "s":{
+                                        "k":[
+                                            6653.75,
+                                            1076.25
+                                        ]
+                                    },
+                                    "p":{
+                                        "k":[
+                                            0,
+                                            0
+                                        ]
+                                    },
+                                    "r":{
+                                        "k":0
+                                    },
+                                    "nm":"矩形路径 1",
+                                    "mn":"ADBE Vector Shape - Rect"
+                                },
+                                {
+                                    "ty":"fl",
+                                    "c":{
+                                        "k":[
+                                            0,
+                                            0,
+                                            0,
+                                            1
+                                        ]
+                                    },
+                                    "o":{
+                                        "k":100
+                                    },
+                                    "nm":"填充 1",
+                                    "mn":"ADBE Vector Graphic - Fill"
+                                },
+                                {
+                                    "ty":"tr",
+                                    "p":{
+                                        "k":[
+                                            -3159.125,
+                                            -25.875
+                                        ],
+                                        "ix":2
+                                    },
+                                    "a":{
+                                        "k":[
+                                            0,
+                                            0
+                                        ],
+                                        "ix":1
+                                    },
+                                    "s":{
+                                        "k":[
+                                            100,
+                                            100
+                                        ],
+                                        "ix":3
+                                    },
+                                    "r":{
+                                        "k":0,
+                                        "ix":6
+                                    },
+                                    "o":{
+                                        "k":100,
+                                        "ix":7
+                                    },
+                                    "sk":{
+                                        "k":0,
+                                        "ix":4
+                                    },
+                                    "sa":{
+                                        "k":0,
+                                        "ix":5
+                                    },
+                                    "nm":"变换"
+                                }
+                            ],
+                            "nm":"矩形 1",
+                            "np":3,
+                            "mn":"ADBE Vector Group"
+                        }
+                    ],
+                    "ip":0,
+                    "op":2125,
+                    "st":0,
+                    "bm":0,
+                    "sr":1
+                }
+            ]
+        }
+    ],
+    "layers":[
+        {
+            "ddd":0,
+            "ind":0,
+            "ty":0,
+            "nm":"合成 1",
+            "refId":"comp_0",
+            "ks":{
+                "o":{
+                    "k":100
+                },
+                "r":{
+                    "k":0
+                },
+                "p":{
+                    "k":[
+                        540,
+                        848,
+                        0
+                    ]
+                },
+                "a":{
+                    "k":[
+                        310,
+                        500,
+                        0
+                    ]
+                },
+                "s":{
+                    "k":[
+                        100,
+                        100,
+                        100
+                    ]
+                }
+            },
+            "ao":0,
+            "w":620,
+            "h":1000,
+            "ip":0,
+            "op":2125,
+            "st":0,
+            "bm":0,
+            "sr":1
+        }
+    ],
+    "v":"4.5.4",
+    "ddd":0,
+    "ip":0,
+    "op":2125,
+    "fr":25,
+    "w":1080,
+    "h":1920
+}

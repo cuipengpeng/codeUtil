@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f5f5"
+    android:orientation="vertical"
+    tools:context=".ui.activity.MessageActivity">
+
+    <View
+        android:id="@+id/view_msg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white" />
+
+    <include layout="@layout/base_title_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_93dp"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/rl_msg_fans"
+            android:layout_width="@dimen/_50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/img_msg_fans"
+                android:layout_width="@dimen/_50dp"
+                android:layout_height="@dimen/_50dp"
+                android:layout_marginTop="@dimen/_5dp"
+                android:src="@drawable/ic_fans" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img_msg_fans"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_11dp"
+                android:text="粉丝"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_14sp" />
+
+            <TextView
+                android:id="@+id/tv_msg_fansNum"
+                android:layout_width="@dimen/_22dp"
+                android:layout_height="@dimen/_22dp"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/shape_bg_hint"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sp"
+                android:visibility="gone" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_msg_praise"
+            android:layout_width="@dimen/_50dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/_59dp"
+            android:layout_marginStart="@dimen/_59dp"
+            >
+
+            <ImageView
+                android:id="@+id/img_msg_praise"
+                android:layout_width="@dimen/_50dp"
+                android:layout_height="@dimen/_50dp"
+                android:layout_marginTop="@dimen/_5dp"
+                android:src="@drawable/im_praise" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_11dp"
+                android:layout_below="@id/img_msg_praise"
+                android:layout_centerHorizontal="true"
+                android:text="赞"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_14sp" />
+
+            <TextView
+                android:id="@+id/tv_msg_praiseNum"
+                android:layout_width="@dimen/_22dp"
+                android:layout_height="@dimen/_22dp"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/shape_bg_hint"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sp"
+                android:visibility="gone" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_msg_comments"
+            android:layout_width="@dimen/_50dp"
+            android:layout_height="match_parent"
+           >
+
+            <ImageView
+                android:id="@+id/img_msg_comments"
+                android:layout_width="@dimen/_50dp"
+                android:layout_height="@dimen/_50dp"
+                android:layout_marginTop="@dimen/_5dp"
+                android:src="@drawable/ic_comments" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img_msg_comments"
+                android:layout_marginTop="@dimen/_11dp"
+                android:text="评论"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_14sp" />
+
+
+            <TextView
+                android:id="@+id/tv_msg_commentsNum"
+                android:layout_width="@dimen/_22dp"
+                android:layout_height="@dimen/_22dp"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/shape_bg_hint"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_msg_systemMsg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_81dp"
+        android:layout_margin="@dimen/_10dp"
+        android:background="@drawable/shape_bg_white"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/img_msg_icon"
+            android:layout_width="@dimen/_52dp"
+            android:layout_height="@dimen/_52dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_11dp"
+            android:src="@drawable/ic_notice" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/img_msg_icon"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tv_msg_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10dp"
+                android:text="系统通知"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_16sp" />
+
+            <TextView
+                android:id="@+id/tv_msg_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_4dp"
+                android:text="朝歌新版本内容~"
+                android:textColor="@color/describeTextColor"
+                android:textSize="@dimen/_14sp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_msg_msgNum"
+            android:layout_width="@dimen/_22dp"
+            android:layout_height="@dimen/_22dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_20dp"
+            android:layout_marginStart="@dimen/_10dp"
+            android:layout_marginTop="@dimen/_4dp"
+            android:background="@drawable/shape_bg_hint"
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

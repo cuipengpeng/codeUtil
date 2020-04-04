@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_191dp"
+        android:layout_marginTop="10dp"
+        android:visibility="visible">
+
+        <EditText
+            android:id="@+id/et_suggestionFeedbackActivity_suggestion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/partingLineBgColor"
+            android:gravity="left"
+            android:hint="请输入您的意见或在使用中遇到的问题，朝歌会在第一时间为您解决。"
+            android:lineSpacingExtra="10dp"
+            android:layout_marginStart="@dimen/_15dp"
+            android:layout_marginEnd="@dimen/_15dp"
+            android:maxLength="400"
+            android:paddingEnd="@dimen/_15dp"
+            android:paddingStart="@dimen/_14dp"
+            android:paddingTop="@dimen/_13dp"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/describeTextColor"
+            android:textSize="@dimen/_14sp" />
+
+        <TextView
+            android:id="@+id/tv_suggestionFeedbackActivity_textCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="@dimen/_15dp"
+            android:layout_marginEnd="@dimen/_19dp"
+            android:text="0/400"
+            android:textColor="@color/describeTextColor" />
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/et_suggestionFeedbackActivity_contactWay"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="@dimen/_15dp"
+        android:layout_marginEnd="@dimen/_10dp"
+        android:background="@color/partingLineBgColor"
+        android:gravity="left|center_vertical"
+        android:hint="留下联系方式：QQ、邮箱或电话"
+        android:maxLines="1"
+        android:paddingEnd="@dimen/_14dp"
+        android:paddingStart="@dimen/_14dp"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/describeTextColor"
+        android:textSize="@dimen/_14sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="35dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="你也可以直接联系我们，客服QQ："
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_14sp" />
+
+
+        <TextView
+            android:id="@+id/tv_suggestionFeedbackActivity_customerServicePhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="1787440049"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_14sp" />
+    </LinearLayout>
+
+</LinearLayout>

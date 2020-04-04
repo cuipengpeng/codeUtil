@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ui.activity.DeclaimActivity">
+
+    <com.rd.vecore.VirtualVideoView
+        android:id="@+id/vvv_main_video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.rd.vecore.VirtualVideoView>
+
+
+    <com.caishi.chaoge.ui.widget.CaptionDrawRect
+        android:id="@+id/cdr_main_rect"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/ll_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingEnd="@dimen/_10dp"
+        android:paddingStart="@dimen/_14dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16dp">
+
+            <ImageView
+                android:id="@+id/img_main_mine"
+                android:layout_width="@dimen/_32dp"
+                android:layout_height="@dimen/_32dp"
+                android:src="@drawable/ic_back_white" />
+
+
+            <TextView
+                android:id="@+id/tv_main_title"
+                android:layout_width="@dimen/_60dp"
+                android:layout_height="@dimen/_30dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/shape_bg_declaim_title"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sp" />
+
+            <Button
+                android:id="@+id/btn_main_save"
+                android:layout_width="@dimen/_72dp"
+                android:layout_height="@dimen/_28dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/selector_btn_next"
+                android:enabled="false"
+                android:gravity="center"
+                android:text="一键发布"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <com.caishi.chaoge.ui.widget.MoveRelativeLayout
+        android:id="@+id/iv_declaimActivity_mouthPosition"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/circle_corner_white_border_normal_5dp"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/iv_pull"
+            android:layout_width="45dp"
+            android:layout_height="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/tuzi_btn_pull"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/tuzi_bg"/>
+    </com.caishi.chaoge.ui.widget.MoveRelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/_7dp"
+        android:background="@color/colorTransparent">
+
+
+        <com.caishi.chaoge.ui.widget.AutoLocateHorizontalView
+            android:id="@+id/alrv_main_tab"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_48dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorTransparent" />
+
+
+        <FrameLayout
+            android:id="@+id/fl_main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/alrv_main_tab"
+            android:layout_marginBottom="@dimen/_14dp">
+
+
+        </FrameLayout>
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/img_main_preview"
+        android:layout_width="@dimen/_53dp"
+        android:layout_height="@dimen/_53dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/_7dp"
+        android:layout_marginStart="@dimen/_12dp"
+        android:src="@drawable/im_preview" />
+
+    <ImageView
+        android:id="@+id/img_main_indicate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:src="@drawable/im_instructions" />
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lav_main_hintPlay"
+        android:layout_width="@dimen/_96dp"
+        android:layout_height="@dimen/_90dp"
+        android:layout_above="@id/img_main_preview"
+        android:layout_marginStart="@dimen/_12dp"
+        app:lottie_autoPlay="true"
+        app:lottie_imageAssetsFolder="images/"
+        app:lottie_fileName="hint.json"
+        android:visibility="gone"
+        app:lottie_loop="true" />
+
+
+    <ProgressBar
+        android:id="@+id/pb_main_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_4dp"
+        android:layout_gravity="center"
+        android:progressDrawable="@drawable/progressbar_bg"
+        android:visibility="gone" />
+
+</RelativeLayout>

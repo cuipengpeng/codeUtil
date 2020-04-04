@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_itemFont_layout"
+    android:layout_width="@dimen/_78dp"
+    android:layout_height="@dimen/_30dp"
+    android:layout_marginEnd="@dimen/_7dp">
+
+    <TextView
+        android:id="@+id/tv_itemFont_lib"
+        android:layout_width="@dimen/_55dp"
+        android:layout_height="@dimen/_30dp"
+        android:background="@drawable/shape_bg_fontlib"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="字体库"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_13sp" />
+
+    <ImageView
+        android:id="@+id/img_itemFont_image"
+        android:layout_width="@dimen/_78dp"
+        android:layout_height="@dimen/_30dp"
+        android:gravity="center" />
+
+    <ImageView
+        android:id="@+id/img_itemFont_isDownload"
+        android:layout_width="@dimen/_12dp"
+        android:layout_height="@dimen/_12dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/_2dp"
+        android:layout_marginBottom="@dimen/_2dp"
+        android:visibility="gone"
+        android:src="@drawable/ic_download"/>
+
+    <ProgressBar
+        android:id="@+id/pb_itemFont_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="@dimen/_78dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="@dimen/_2dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        android:progressDrawable="@drawable/progressbar1" />
+
+
+</RelativeLayout>

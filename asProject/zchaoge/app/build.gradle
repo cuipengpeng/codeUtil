@@ -1,0 +1,154 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'walle'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
+    defaultConfig {
+        applicationId "com.caishi.chaoge"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 214
+        versionName "2.1.4"
+        ndk {
+            abiFilters "armeabi-v7a"  // 指定要ndk需要兼容的架构(这样其他依赖包里mips,x86,armeabi,arm-v8之类的so会被过滤掉)
+        }
+        multiDexEnabled true
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+        //使用renderscript 兼容包
+        renderscriptTargetApi 27
+        renderscriptSupportModeEnabled true
+    }
+
+    signingConfigs {
+        key {
+            keyAlias 'caishi'
+            keyPassword 'android'
+            storeFile file('./keys/android.jks')
+            storePassword 'chaogeWhatistheMatter2015'
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.key
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.key
+        }
+    }
+    packagingOptions {
+        exclude "META-INF/rxjava.properties"
+
+    }
+}
+
+
+task libCopy(type: Copy) {
+    copy {
+        from '../../../../lib/android_armv7'
+        into 'src/main/jniLibs/armeabi-v7a'
+        include '*.so'
+    }
+}
+
+repositories {
+    flatDir {
+        dirs './libs'
+    }
+}
+
+//walle {
+//    // 指定渠道包的输出路径
+//    apkOutputFolder = new File("${project.buildDir}/outputs/channels");
+//    // 定制渠道包的APK的文件名称
+//    apkFileNameFormat = '${appName}-${packageName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}.apk';
+//    // 渠道配置文件
+//    channelFile = new File("${project.getProjectDir()}/channel")
+//}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //    implementation project(':takephoto_library')
+    implementation project(':takephoto_library')
+    implementation project(':permissionlibrary')
+    implementation project(':nicevideoplayer')
+    implementation project(':diooto')
+    //锐动
+    //    implementation project(':diooto')
+    implementation(name: 'aweme-open-sdk', ext: 'aar')
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    //    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42'
+    //BaseAdapter
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    implementation 'me.jessyan:autosize:0.9.5'
+    //屏幕适配
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    //TabLayout
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
+    //RecycleView刷新
+    implementation 'com.github.adrielcafe:AndroidAudioConverter:0.0.8'
+    //wav转mp3
+    implementation 'com.github.Othershe:NiceImageView:1.0.1'
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation 'com.gyf.immersionbar:immersionbar:2.3.3-beta09'
+    //状态栏
+    implementation 'com.aliyun.dpa:oss-android-sdk:2.3.0'
+    //阿里OSS服务
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.github.codbking:PickTime:v1.0.1'
+    implementation 'com.airbnb.android:lottie:2.6.1'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'
+    implementation 'com.zhouyou:rxeasyhttp:2.1.2'
+    implementation 'com.umeng.umsdk:analytics:7.5.4'
+    //友盟统计
+    implementation 'com.qianwen:update-app:3.5.2'
+    implementation 'com.meituan.android.walle:library:1.1.6'
+    implementation 'me.panpf:sketch:2.6.2-b1'
+    //高斯模糊
+    //    implementation 'jp.wasabeef:glide-transformations:3.0.1'
+    implementation 'com.dyhdyh.support:count-down-timer:1.0.2'
+    //倒计时器，支持开始倒计时、暂停倒计时、继续倒计时、停止倒计时、重新倒计时
+    implementation project(':rdVECore')
+    implementation project(':recorderlib')
+    //PushSDK必须依赖基础组件库，所以需要加入对应依赖
+    implementation 'com.umeng.umsdk:common:1.5.4'
+    //PushSDK必须依赖utdid库，所以需要加入对应依赖
+    implementation 'com.umeng.umsdk:utdid:1.1.5.3'
+    //PushSDK
+    implementation 'com.umeng.umsdk:push:6.0.1'
+    //小米Push通道
+    implementation 'com.umeng.umsdk:xiaomi-push:3.6.17'
+    implementation 'com.umeng.umsdk:xiaomi-umengaccs:1.1.0'
+    //华为Push通道
+    implementation 'com.umeng.umsdk:huawei-basetb:2.6.3.305'
+    implementation 'com.umeng.umsdk:huawei-pushtb:2.6.3.305'
+    implementation 'com.umeng.umsdk:huawei-umengaccs:1.2.1'
+    //Oppo Push通道
+    implementation 'com.umeng.umsdk:oppo-push:1.0.1'
+    implementation 'com.umeng.umsdk:oppo-umengaccs:1.0.3'
+    //https://github.com/LuckSiege/PictureSelector
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
+
+}

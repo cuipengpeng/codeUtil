@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_select_first"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/_8dp"
+        android:paddingTop="@dimen/_8dp"
+        android:textColor="#282828"
+        android:textSize="@dimen/_16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1dp"
+        android:background="#ffd0d0d0" />
+
+    <Button
+        android:id="@+id/btn_select_second"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/_8dp"
+        android:paddingTop="@dimen/_8dp"
+        android:textColor="#282828"
+        android:textSize="@dimen/_16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_10dp"
+        android:background="#ffd0d0d0" />
+
+    <Button
+        android:id="@+id/btn_select_cancel"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/_8dp"
+        android:paddingTop="@dimen/_8dp"
+        android:text="取消"
+        android:textColor="#282828"
+        android:textSize="@dimen/_16sp" />
+
+</LinearLayout>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="76dp"
+    android:paddingStart="14dp"
+    android:background="@color/colorWhite">
+
+
+
+    <Button
+        android:id="@+id/btn_music_confirm"
+        android:layout_width="56dp"
+        android:layout_height="28dp"
+        android:background="@drawable/shape_main_view"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="14dp"
+        android:gravity="center"
+        android:text="使用"
+        android:textColor="@color/white"
+        android:textSize="13sp"/>
+    <ImageView
+        android:id="@+id/iv_selectMusic_item_cutMusic"
+        android:layout_width="19dp"
+        android:layout_height="19dp"
+        android:layout_toLeftOf="@id/btn_music_confirm"
+        android:layout_marginRight="17dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/cut_music"/>
+
+    <RelativeLayout
+            android:id="@+id/rl_selectMusic_item_img"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:background="#ffffffFf">
+            <com.othershe.library.NiceImageView
+                android:id="@+id/iv_selectMusic_item_img"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerInParent="true"
+                android:background="#ffffff"
+                app:corner_radius="4dp"
+                app:is_circle="false" />
+            <ImageView
+                android:id="@+id/iv_selectMusic_item_musicState"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_start"/>
+            <ImageView
+                android:id="@+id/iv_selectMusic_item_loading"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_loading"/>
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_selectMusic_item_name"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_14dp"
+            android:layout_marginTop="20dp"
+            android:layout_toLeftOf="@id/iv_selectMusic_item_cutMusic"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_toEndOf="@id/rl_selectMusic_item_img"
+            android:textColor="#000000"
+            android:textSize="@dimen/_14sp"/>
+        <TextView
+            android:id="@+id/tv_selectMusic_item_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_selectMusic_item_name"
+            android:layout_marginTop="6dp"
+            android:layout_toEndOf="@id/rl_selectMusic_item_img"
+            android:layout_marginStart="@dimen/_14dp"
+            android:textColor="#000000"
+            android:textSize="@dimen/_12sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_toRightOf="@id/rl_selectMusic_item_img"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/_14dp"
+            android:layout_marginEnd="14dp"
+            android:background="@color/partingLineBgColor"/>
+</RelativeLayout>

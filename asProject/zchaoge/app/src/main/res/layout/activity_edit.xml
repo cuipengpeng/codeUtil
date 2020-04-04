@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/partingLineBgColor"
+    android:orientation="vertical"
+    tools:context=".ui.activity.EditActivity">
+
+    <com.caishi.chaoge.ui.widget.ClearEditText
+        android:id="@+id/cet_edit_userName"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_48dp"
+        android:layout_marginTop="@dimen/_10dp"
+        android:background="@color/white"
+        android:drawableEnd="@drawable/ic_delete_white"
+        android:hint="请输入昵称"
+        android:lines="1"
+        android:maxLength="20"
+        android:maxLines="1"
+        android:paddingEnd="@dimen/_15dp"
+        android:paddingStart="@dimen/_14dp"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/describeTextColor"
+        android:textSize="@dimen/_14sp"
+        android:visibility="gone" />
+
+
+    <LinearLayout
+        android:id="@+id/rl_edit_userSign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/et_edit_userSign"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_105dp"
+            android:layout_margin="@dimen/_10dp"
+            android:background="@color/white"
+            android:gravity="start"
+            android:maxLength="40"
+            android:paddingEnd="@dimen/_15dp"
+            android:paddingStart="@dimen/_14dp"
+            android:paddingTop="@dimen/_13dp"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/describeTextColor"
+            android:textSize="@dimen/_14sp" />
+
+        <TextView
+            android:id="@+id/tv_edit_inputNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_19dp"
+            android:gravity="end"
+            android:text="0/40"
+            android:textColor="#5D6479" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

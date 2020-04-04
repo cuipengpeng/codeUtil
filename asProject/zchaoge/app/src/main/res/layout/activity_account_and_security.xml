@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/titleBgColor"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_49dp"
+        android:layout_marginEnd="@dimen/_15dp"
+        android:layout_marginStart="@dimen/_12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="手机绑定"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_15sp" />
+
+
+        <TextView
+            android:id="@+id/tv_accountAndSecurity_phoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:drawablePadding="14dp"
+            android:gravity="center"
+            android:text="未绑定"
+            android:textColor="@color/describeTextColor"
+            android:textSize="@dimen/_14sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/partingLineBgColor" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_accountAndSecurity_bindWeiXin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_49dp"
+        android:layout_marginEnd="@dimen/_15dp"
+        android:layout_marginStart="@dimen/_12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="微信绑定"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_15sp" />
+
+
+        <TextView
+            android:id="@+id/tv_accountAndSecurity_WeiXin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:drawableRight="@drawable/ic_next"
+            android:drawablePadding="14dp"
+            android:gravity="center"
+            android:text="未绑定"
+            android:textColor="@color/describeTextColor"
+            android:textSize="@dimen/_14sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/partingLineBgColor" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_accountAndSecurity_bindQQ"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_49dp"
+        android:layout_marginEnd="@dimen/_15dp"
+        android:layout_marginStart="@dimen/_12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="QQ绑定"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_15sp" />
+
+        <TextView
+            android:id="@+id/tv_accountAndSecurity_QQ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:drawableEnd="@drawable/ic_next"
+            android:drawablePadding="14dp"
+            android:gravity="center"
+            android:text="未绑定"
+            android:textColor="@color/describeTextColor"
+            android:textSize="@dimen/_14sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/partingLineBgColor" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_accountAndSecurity_bindWeibo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_49dp"
+        android:layout_marginEnd="@dimen/_15dp"
+        android:layout_marginStart="@dimen/_12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="微博绑定"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_14sp" />
+
+        <TextView
+            android:id="@+id/tv_accountAndSecurity_Weibo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:drawableRight="@drawable/ic_next"
+            android:drawablePadding="14dp"
+            android:gravity="center"
+            android:text="未绑定"
+            android:textColor="@color/describeTextColor"
+            android:textSize="@dimen/_14sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/partingLineBgColor" />
+
+    </RelativeLayout>
+
+</LinearLayout>
