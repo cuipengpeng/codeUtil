@@ -8,6 +8,7 @@ import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.test.bank.base.BaseApplication;
 import com.test.bank.bean.UserInfo;
+import com.test.bank.bean.VideoTag;
 
 /**
  * SharedPreferences管理类
@@ -16,6 +17,10 @@ public class SPUtil {
     private static SPUtil SPUtil = new SPUtil();
     private static SharedPreferences sp;
     private static Gson gson = new Gson();
+
+    private static final String FILE_NAME = "com.data";
+    public static final String KEY_OF_USER_INFO = "userInfoKey";
+
 
     private SPUtil() {
     }
@@ -139,5 +144,35 @@ public class SPUtil {
         sharedPreferences.edit().putString(userInfo.getMobile(), JSON.toJSONString(userInfo)).apply();
 
         SPUtil.getInstance().putUserInfo(userInfo);
+    }
+
+
+    private static void clearUserInfo(Context context) {
+        writeObject(context, KEY_OF_USER_INFO, new UserInfo());
+    }
+
+    public static Object readObject(Context context, String key, Object returnInstance) {
+        Object object = new Object();
+        SharedPreferences sharedPreferences = context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
+        if(sharedPreferences.contains(key)){
+            LogUtils.printLog("sharedPreferences.getString()=  "+sharedPreferences.getString(key, "{}"));
+            if(returnInstance instanceof VideoTag){
+                object = new Gson().fromJson(sharedPreferences.getString(key, "{}"), VideoTag.class);
+            }else if(returnInstance instanceof UserInfo){
+                object = new Gson().fromJson(sharedPreferences.getString(key, "{}"), UserInfo.class);
+            }
+        }
+        return object;
+    }
+
+
+    public static void writeObject(Context context, String key, Object cacheData) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        if(cacheData instanceof UserInfo){
+            BaseApplication.userInfo  = (UserInfo) cacheData;
+        }
+        LogUtils.printLog(" JSON.toJSONString(userInfo)="+ gson.toJson(cacheData));
+        sharedPreferences.edit().putString(key, gson.toJson(cacheData)).commit();
     }
 }

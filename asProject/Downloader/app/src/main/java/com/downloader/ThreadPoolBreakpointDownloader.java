@@ -12,65 +12,51 @@ import java.io.InputStream;
 import java.io.RandomAccessFile;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class ThreadPoolBreakpointDownloader {
+public class ThreadPoolBreakpointDownloader extends ThreadPoolExecutor{
     private static File DIR_PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);    // 下载目录
     private static final int THREAD_AMOUNT = 4;                // 大文件下载总线程数
     private static final int CORE_POOL_SIZE = 5;                // 线程池核心线程数
     private static final int MAX_POOL_SIZE = 8;                // 线程池最大线程数
+    private static final int TASK_SIZE = 150;
 
-    private boolean debug = true;
-    private static int taskCount = -1;
+    private boolean debug = BuildConfig.DEBUG;
+    private int mCounter = 0;
+    private static int mTaskPosition = -1;
 //    private  int[] orderArr = new int[10];
-    private long[] begin = new long[10];            // 用来记录开始下载时的时间
-    private long[] totalFinish = new long[10];    // 总共完成了多少
+    private long[] begin = new long[TASK_SIZE];            // 用来记录开始下载时的时间
+    private long[] totalFinish = new long[TASK_SIZE];    // 总共完成了多少
 
-    private static volatile ThreadPoolBreakpointDownloader mBreakpointDownloader;
-    public ThreadPoolExecutor threadPoolExecutor;
     private long smallFileTotalLength;
     private long smallFileTotalFinish;
 
-    private ThreadPoolBreakpointDownloader() {
-//        for (int i=0; i<orderArr.length;i++){
-//            orderArr[i]=i;
-//        }
-        for (int i=0; i<begin.length;i++){
-            begin[i]=0;
-        }
-        for (int i=0; i<totalFinish.length;i++){
-            totalFinish[i]=0;
-        }
-        //页面销毁，不抛异常异常关闭线程池   DownloadUtil.getInstance().threadPoolExecutor.shutdownNow();
-        threadPoolExecutor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, 0L, TimeUnit.MICROSECONDS,
-                new LinkedBlockingQueue<Runnable>(), Executors.defaultThreadFactory(),
-                new ThreadPoolExecutor.DiscardPolicy());
+    private static volatile ThreadPoolBreakpointDownloader mBreakpointDownloader;
+    //页面销毁，不抛异常异常关闭线程池   ThreadPoolBreakpointDownloader.getInstance().shutdownThreadPoolNow();
+    private ThreadPoolBreakpointDownloader(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue, ThreadFactory threadFactory, RejectedExecutionHandler handler) {
+        super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue, threadFactory, handler);
+        resetTaskPosition();
     }
 
     public static ThreadPoolBreakpointDownloader getInstance() {
         if (mBreakpointDownloader == null) {
             synchronized (ThreadPoolBreakpointDownloader.class) {
                 if (mBreakpointDownloader == null) {
-                    mBreakpointDownloader = new ThreadPoolBreakpointDownloader();
+                    mBreakpointDownloader = new ThreadPoolBreakpointDownloader(CORE_POOL_SIZE, MAX_POOL_SIZE, 0L, TimeUnit.MICROSECONDS,
+                                                                                new LinkedBlockingQueue<Runnable>(), Executors.defaultThreadFactory(),
+                                                                                new ThreadPoolExecutor.DiscardPolicy());
                 }
             }
         }
         return mBreakpointDownloader;
     }
 
-    public  void execute(Runnable r){
-        if(threadPoolExecutor == null || threadPoolExecutor.isTerminated()){
-            threadPoolExecutor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, 0L, TimeUnit.MICROSECONDS,
-                            new LinkedBlockingQueue<Runnable>(), Executors.defaultThreadFactory(),
-                            new ThreadPoolExecutor.DiscardPolicy());
-        }
-        if(threadPoolExecutor != null){
-            threadPoolExecutor.execute(r);
-        }
-    }
 
     /**
      * 多线程下载，支持断点续传
@@ -108,7 +94,7 @@ public class ThreadPoolBreakpointDownloader {
             });
             return realDataFile;
         }else {
-            new Thread(new Runnable() {
+           execute(new Runnable() {
 
                 public void run() {
                     HttpURLConnection conn = null;
@@ -140,8 +126,11 @@ public class ThreadPoolBreakpointDownloader {
                             }
 
                             synchronized (ThreadPoolBreakpointDownloader.this){
-                                taskCount++;
-                                printLog("#############sendMsg--totalLen=" + totalLen + "--taskCount=" + taskCount);
+                                mTaskPosition++;
+                                printLog("#############sendMsg--totalLen=" + totalLen + "--mTaskPosition=" + mTaskPosition);
+                                if(mTaskPosition >=TASK_SIZE){
+                                    return;
+                                }
                                 handler.post(new Runnable() {
                                     public void run() {
                                         downloadProgressCallback.onStart();
@@ -149,9 +138,9 @@ public class ThreadPoolBreakpointDownloader {
                                 });
                                 // 按照线程数循环
                                 for (int i = 0; i < THREAD_AMOUNT; i++) {
-                                    execute(new DownloadThread(taskCount, i, httpUrl, realDataFile, dataFile, progressFile, totalLen, THREAD_AMOUNT, handler, downloadProgressCallback));        // 开启线程, 每个线程将会下载一部分数据到本地文件中
+                                    execute(new DownloadThread(mTaskPosition, i, httpUrl, realDataFile, dataFile, progressFile, totalLen, THREAD_AMOUNT, handler, downloadProgressCallback));        // 开启线程, 每个线程将会下载一部分数据到本地文件中
                                 }
-                                begin[taskCount] = System.currentTimeMillis();        // 记录开始时间
+                                begin[mTaskPosition] = System.currentTimeMillis();        // 记录开始时间
                             }
                         }
                     } catch (IOException e) {
@@ -162,7 +151,7 @@ public class ThreadPoolBreakpointDownloader {
                         }
                     }
                 }
-            }).start();
+            });
         }
 
         return null;
@@ -424,6 +413,52 @@ public class ThreadPoolBreakpointDownloader {
         }
         return null;
     }
+
+    @Override
+    protected void beforeExecute(Thread t, Runnable r) {
+        synchronized (this){
+            mCounter++;
+            printLog("mCounter="+ mCounter);
+        }
+        super.beforeExecute(t, r);
+    }
+
+    @Override
+    protected void afterExecute(Runnable r, Throwable t) {
+        super.afterExecute(r, t);
+        synchronized (this){
+            mCounter--;
+            printLog("after   mCounter="+ mCounter);
+            if(mCounter ==0){
+                resetTaskPosition();
+//              shutdownThreadPoolNow();
+            }
+        }
+    }
+
+    @Override
+    protected void terminated() {
+        synchronized (this){
+            printLog("terminate    mCounter="+ mCounter);
+        }
+        super.terminated();
+    }
+
+    public void shutdownThreadPoolNow(){
+        resetTaskPosition();
+        shutdownNow();
+    }
+
+    private void resetTaskPosition(){
+        mTaskPosition =-1;
+        for (int i=0; i<begin.length;i++){
+            begin[i]=0;
+        }
+        for (int i=0; i<totalFinish.length;i++){
+            totalFinish[i]=0;
+        }
+    }
+
 
     private void printLog(String log){
         if(debug){
