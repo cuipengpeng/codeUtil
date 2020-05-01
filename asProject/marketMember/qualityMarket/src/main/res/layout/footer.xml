@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#ffffffff">
+
+
+        <RelativeLayout
+            android:id="@+id/head_fl_frame"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:background="#ffffffff">
+          <RelativeLayout
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:layout_centerInParent="true">
+              <ImageView
+                  android:id="@+id/footer_iv_image"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:src="@drawable/ic_refresh_roate"
+                  android:layout_gravity="center_vertical"
+                  android:layout_centerVertical="true"/>
+
+              <TextView
+                  android:layout_toRightOf="@id/footer_iv_image"
+                  android:id="@+id/head_tv_text1"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="万卡商城"
+                  android:visibility="gone"
+                  android:layout_marginLeft="10dp"
+                  android:layout_marginTop="30dp"
+                  android:textColor="#666666"
+                  android:textSize="12sp"/>
+              <TextView
+                  android:layout_toRightOf="@id/footer_iv_image"
+                  android:id="@+id/head_tv_text"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="下拉刷新..."
+                  android:layout_centerVertical="true"
+                  android:layout_marginLeft="10dp"
+                  android:textColor="#666666"
+                  android:textSize="12sp" />
+          </RelativeLayout>
+
+        </RelativeLayout>
+
+
+</LinearLayout>

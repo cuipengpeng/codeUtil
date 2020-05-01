@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#ffffffff">
+    
+	<!-- 物流详情对应的item -->
+	
+	<RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="80dp"
+	    android:background="#ffffffff"
+	    android:paddingLeft="40dp"
+	  >
+	    <RelativeLayout 
+	        android:id="@+id/item_logistics_relative"
+	        android:layout_width="15dp"
+	        android:layout_height="match_parent"
+	        >
+	          <ImageView 
+	    android:id="@+id/item_logistics_iv_icon"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:background="@drawable/tuoyuan"
+	     android:layout_centerVertical="true"
+	     android:layout_centerHorizontal="true"/>
+	      
+	      <View 
+	          android:id="@+id/item_logistics_above_line"
+	          android:layout_width="1dp"
+			  android:layout_height="match_parent"
+			  android:layout_above="@id/item_logistics_iv_icon"
+			  android:background="#ffdddddd"
+			  android:layout_centerHorizontal="true"/>
+	      <View
+			  android:id="@+id/item_logistics_below_line"
+	          android:layout_width="1dp"
+	          android:layout_height="match_parent"
+	          android:layout_below="@id/item_logistics_iv_icon"
+	          android:background="#ffdddddd"
+	          android:layout_centerHorizontal="true"/>
+	    </RelativeLayout>
+	   <RelativeLayout 
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	        android:layout_toRightOf="@id/item_logistics_relative"
+	         android:layout_marginLeft="10dp"
+	          android:layout_centerVertical="true">
+	        <TextView 
+	        android:id="@+id/item_logistics_tv_address"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="[北京市]北京市已发货"
+	      
+	     	android:layout_marginRight="10dp"
+	        android:textColor="#ff999999"/>
+	    <TextView 
+	        android:id="@+id/item_logistics_tv_time"
+	        android:layout_below="@id/item_logistics_tv_address"
+	        android:layout_alignLeft="@id/item_logistics_tv_address"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="[北京市]北京市已发货"
+	        android:layout_marginTop="5dp"
+	        android:textColor="#ff999999"/>
+	   </RelativeLayout>
+	  
+	</RelativeLayout>
+	
+	
+</LinearLayout>

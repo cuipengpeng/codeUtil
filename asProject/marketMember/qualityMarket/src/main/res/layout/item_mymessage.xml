@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:swipe="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipe"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    swipe:leftEdgeSwipeOffset="0dp"
+    swipe:rightEdgeSwipeOffset="0dp">
+
+    <com.jfbank.qualitymarket.widget.ForegroundLinearLayout
+        android:id="@+id/fl_delete_msg"
+        style="@style/style_foregroud_one"
+        android:layout_width="110dp"
+        android:layout_height="match_parent"
+        android:background="@color/themeRed"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/trash"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_msg_delete"
+            swipe:foregroundColor="@color/img_faoregroundColor" />
+    </com.jfbank.qualitymarket.widget.ForegroundLinearLayout>
+
+    <com.jfbank.qualitymarket.widget.ForegroundLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/fl_item_msg"
+        style="@style/style_foregroud_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="18dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="18dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_msg_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical|left"
+                    android:lines="1"
+                    android:textColor="#333333"
+                    android:textSize="15sp"
+                    tools:text="促销消息促销消息促销消息促销消息促销消息促销消息" />
+
+                <TextView
+                    android:id="@+id/tv_msg_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|right"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical|right"
+                    android:maxLines="1"
+                    android:minWidth="100dp"
+                    android:textColor="#999999"
+                    android:textSize="12sp"
+                    tools:text="2016-12-25 15:30" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_msg_content"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical|left"
+                    android:lineSpacingExtra="6dp"
+                    android:maxLines="3"
+                    android:textColor="#999999"
+                    android:textSize="12sp"
+                 />
+
+                <ImageView
+                    android:id="@+id/iv_noread_flag"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="top"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="3dp"
+                    android:src="@drawable/ic_msg_noread_flag"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_weight="0"
+            android:background="@color/c_e9e9e9" />
+    </com.jfbank.qualitymarket.widget.ForegroundLinearLayout>
+</com.daimajia.swipe.SwipeLayout>

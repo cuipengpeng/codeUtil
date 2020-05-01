@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_back"></include>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/c_eeeeee" />
+
+    <TextView
+        android:layout_width="@dimen/setBillingDayActivity_item_width"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/setBillingDayActivity_item_marginLeft"
+        android:layout_marginRight="@dimen/setBillingDayActivity_item_marginRight"
+        android:layout_marginTop="20dp"
+        android:gravity="left|center_vertical"
+        android:lineSpacingExtra="5dp"
+        android:text="初始账单日为每月5日，您可以根据自己的发薪日从以下日期中选择适合您的账单日。"
+        android:textColor="@color/app_textView_textColor"
+        android:textSize="@dimen/confirmOrderActivity_item_textSize" />
+
+    <View
+        android:layout_width="@dimen/setBillingDayActivity_item_width"
+        android:layout_height="@dimen/myaccountFragment_item_borderWidth"
+        android:layout_marginLeft="@dimen/setBillingDayActivity_item_marginLeft"
+        android:layout_marginRight="@dimen/setBillingDayActivity_item_marginRight"
+        android:layout_marginTop="20dp"
+        android:background="@color/myaccountFragment_item_borderColor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#ffffff" >
+
+        <TextView
+            android:id="@+id/tv_setBillingDayActivity_billingDay1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="2"
+            android:textColor="@color/myaccountFragment_icon_textColor"
+            android:textSize="@dimen/setBillingDayActivity_billDayTextSize" />
+
+        <TextView
+            android:id="@+id/tv_setBillingDayActivity_billingDay2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="5"
+            android:textColor="@color/myaccountFragment_icon_textColor"
+            android:textSize="@dimen/setBillingDayActivity_billDayTextSize" />
+
+        <TextView
+            android:id="@+id/tv_setBillingDayActivity_billingDay3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="10"
+            android:textColor="@color/myaccountFragment_icon_textColor"
+            android:textSize="@dimen/setBillingDayActivity_billDayTextSize" />
+
+        <TextView
+            android:id="@+id/tv_setBillingDayActivity_billingDay4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="15"
+            android:textColor="@color/myaccountFragment_icon_textColor"
+            android:textSize="@dimen/setBillingDayActivity_billDayTextSize" />
+
+        <TextView
+            android:id="@+id/tv_setBillingDayActivity_billingDay5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="20"
+            android:textColor="@color/myaccountFragment_icon_textColor"
+            android:textSize="@dimen/setBillingDayActivity_billDayTextSize" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="@dimen/setBillingDayActivity_item_width"
+        android:layout_height="@dimen/myaccountFragment_item_borderWidth"
+        android:layout_marginLeft="@dimen/setBillingDayActivity_item_marginLeft"
+        android:layout_marginRight="@dimen/setBillingDayActivity_item_marginRight"
+        android:background="@color/myaccountFragment_item_borderColor" />
+
+    <RelativeLayout
+        android:layout_width="@dimen/setBillingDayActivity_item_width"
+        android:layout_height="45dp"
+        android:layout_marginLeft="@dimen/setBillingDayActivity_item_marginLeft"
+        android:layout_marginRight="@dimen/setBillingDayActivity_item_marginRight"
+        android:layout_marginTop="5dp"
+        android:background="#ffffff" >
+
+        <TextView
+            android:id="@+id/tv_setBillingDayActivity_item_billingDay01"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/confirmOrderActivity_item_height"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:text="您的账单日"
+            android:textColor="@color/app_textView_textColor"
+            android:textSize="@dimen/confirmOrderActivity_item_textSize" />
+
+        <TextView
+            android:id="@+id/tv_setBillingDayActivity_item_billingDay"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/confirmOrderActivity_item_height"
+            android:layout_toRightOf="@id/tv_setBillingDayActivity_item_billingDay01"
+            android:gravity="center"
+            android:text="10"
+            android:textColor="@color/themeRed"
+            android:textSize="@dimen/confirmOrderActivity_item_textSize" />
+
+        <TextView
+            android:id="@+id/tv_setBillingDayActivity_item_billingDay02"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/confirmOrderActivity_item_height"
+            android:layout_toRightOf="@id/tv_setBillingDayActivity_item_billingDay"
+            android:gravity="center"
+            android:text="日"
+            android:textColor="@color/app_textView_textColor"
+            android:textSize="@dimen/confirmOrderActivity_item_textSize" />
+
+        <TextView
+            android:id="@+id/tv_setBillingDayActivity_item_repaymentDate02"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/confirmOrderActivity_item_height"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="日"
+            android:textColor="@color/app_textView_textColor"
+            android:textSize="@dimen/confirmOrderActivity_item_textSize" />
+
+        <TextView
+            android:id="@+id/tv_setBillingDayActivity_item_repaymentDate"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/confirmOrderActivity_item_height"
+            android:layout_toLeftOf="@id/tv_setBillingDayActivity_item_repaymentDate02"
+            android:gravity="center"
+            android:text="15"
+            android:textColor="@color/themeRed"
+            android:textSize="@dimen/confirmOrderActivity_item_textSize" />
+
+        <TextView
+            android:id="@+id/tv_setBillingDayActivity_item_repaymentDate01"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/confirmOrderActivity_item_height"
+            android:layout_toLeftOf="@id/tv_setBillingDayActivity_item_repaymentDate"
+            android:gravity="center"
+            android:text="您的还款日"
+            android:textColor="@color/app_textView_textColor"
+            android:textSize="@dimen/confirmOrderActivity_item_textSize" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/setBillingDayActivity_bottomPrompt_marginLeft"
+        android:layout_marginRight="@dimen/setBillingDayActivity_bottomPrompt_marginRight"
+        android:layout_marginTop="30dp"
+        android:background="#ffffff"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:text="每月"
+            android:textColor="@color/app_editText_hint"
+            android:textSize="@dimen/setBillingDayActivity_bottomHint_TextSize" />
+
+        <TextView
+            android:id="@+id/tv_setBillingDayActivity_bottomHintBillingDay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:text="5"
+            android:textColor="@color/app_editText_hint"
+            android:textSize="@dimen/setBillingDayActivity_bottomHint_TextSize" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:text="日，我们会把上个月"
+            android:textColor="@color/app_editText_hint"
+            android:textSize="@dimen/setBillingDayActivity_bottomHint_TextSize" />
+
+        <TextView
+            android:id="@+id/tv_setBillingDayActivity_bottomHintLastMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:text="11"
+            android:textColor="@color/app_editText_hint"
+            android:textSize="@dimen/setBillingDayActivity_bottomHint_TextSize" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:text="日至本月"
+            android:textColor="@color/app_editText_hint"
+            android:textSize="@dimen/setBillingDayActivity_bottomHint_TextSize" />
+
+        <TextView
+            android:id="@+id/tv_setBillingDayActivity_bottomHintBillingDay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:text="11"
+            android:textColor="@color/app_editText_hint"
+            android:textSize="@dimen/setBillingDayActivity_bottomHint_TextSize" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:text="日的所有分期汇总成"
+            android:textColor="@color/app_editText_hint"
+            android:textSize="@dimen/setBillingDayActivity_bottomHint_TextSize" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/setBillingDayActivity_bottomPrompt_marginLeft"
+        android:layout_marginRight="@dimen/setBillingDayActivity_bottomPrompt_marginRight"
+        android:background="#ffffff"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:text="一份账单，您最迟要在本月"
+            android:textColor="@color/app_editText_hint"
+            android:textSize="@dimen/setBillingDayActivity_bottomHint_TextSize" />
+
+        <TextView
+            android:id="@+id/tv_setBillingDayActivity_bottomHintRepaymentDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:text="15"
+            android:textColor="@color/app_editText_hint"
+            android:textSize="@dimen/setBillingDayActivity_bottomHint_TextSize" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:text="日还清本月账单。"
+            android:textColor="@color/app_editText_hint"
+            android:textSize="@dimen/setBillingDayActivity_bottomHint_TextSize" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_setBillingDayActivity_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="@dimen/setBillingDayActivity_btn_marginLeft"
+        android:layout_marginRight="@dimen/setBillingDayActivity_btn_marginRight"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/button_selector"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/confirmOrderActivity_item_textSize" />
+
+</LinearLayout>

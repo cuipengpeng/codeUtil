@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <!-- titleBar -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#EB5A00" >
+
+        <RelativeLayout
+            android:id="@+id/toolbar_test_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dip"
+            android:clickable="true" >
+
+            <ImageView
+                android:id="@+id/toolbar_left_image"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:background="#00ff00" />
+
+            <TextView
+                android:id="@+id/toolbar_left_text"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="返回" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="每日提醒"
+                android:textSize="24sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/toolbar_test_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dip"
+            android:clickable="true" >
+
+            <ImageView
+                android:id="@+id/toolbar_right_image"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:background="#00ff00" />
+
+            <TextView
+                android:id="@+id/toolbar_right_text"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="首页" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <!-- titleBar_end -->
+
+
+
+
+
+</LinearLayout>

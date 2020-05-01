@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 我的红包 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c_F5F5F5"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_back"></include>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/c_eeeeee" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.jfbank.qualitymarket.widget.TwinklingRefreshLayoutView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/refreshLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:tr_head_height="80dp"
+                app:tr_wave_height="100dp">
+
+                <ListView
+                    android:id="@+id/plv_myredpacket"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:descendantFocusability="afterDescendants"
+                    android:divider="#ffffff"
+                    android:dividerHeight="0dp"
+                    android:listSelector="@android:color/transparent"
+                    android:overScrollMode="ifContentScrolls"
+                    android:paddingTop="10dp">
+
+                </ListView>
+            </com.jfbank.qualitymarket.widget.TwinklingRefreshLayoutView>
+
+            <Button
+                android:id="@+id/btn_redpacket_nouse"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_selector"
+                android:gravity="center"
+                android:text="不使用红包"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/loginActivity_button_textSize"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_no_data"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</LinearLayout>

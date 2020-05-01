@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff5f5f5"
+    android:orientation="vertical" >
+
+    <!-- 芝麻信用授权对应的页面 -->
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:background="#ffffffff"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="手机号"
+            android:textColor="#ff333333"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/sesame_credit_et_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical"
+            android:hint="请输入手机号"
+            android:maxLength="11"
+            android:phoneNumber="true"
+            android:textColor="#ff333333"
+            android:textSize="14sp" />
+    </RelativeLayout>
+    <View 
+        style="@style/LineView"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:background="#ffffffff"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="5dp" >
+
+        <EditText
+            android:id="@+id/sesame_credit_et_code"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:hint="请输入验证码"
+            android:inputType="number"
+            android:maxLength="6"
+            android:gravity="left|center_vertical"
+            android:textColor="#ff333333"
+            android:textSize="14sp" 
+            android:layout_alignParentLeft="true"
+            android:singleLine="true"/>
+               <Button
+            android:id="@+id/sesame_credit_btn_code"
+            android:layout_width="105dp"
+            android:layout_height="39dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="60S"
+            android:textColor="#ffffffff" 
+            android:background="@drawable/login_page_button_disabled"/>
+    </RelativeLayout>
+    
+  
+    <Button
+        android:id="@+id/sesame_credit_btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/button_selector"
+        android:gravity="center"
+        android:text="提交"
+        android:textColor="#ffffff"
+        android:layout_marginTop="20dp"
+        android:textSize="@dimen/loginActivity_button_textSize" />
+
+</LinearLayout>

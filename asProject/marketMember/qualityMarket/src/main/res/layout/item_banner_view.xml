@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jfbank.qualitymarket.widget.ForegroundLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+style="@style/style_foregroud_one"
+android:orientation="vertical">
+
+<ImageView
+    android:id="@+id/iv_banner"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+</com.jfbank.qualitymarket.widget.ForegroundLinearLayout>

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_back"></include>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/c_eeeeee" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/themeGrayBackGround">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffe8e8e8"
+            android:orientation="vertical">
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/myaccountFragment_item_borderColor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/v_payActivity_orderItem_border1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/myaccountFragment_item_borderColor" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv_payActivity_productImage"
+                        android:layout_width="@dimen/product_image_width"
+                        android:layout_height="@dimen/product_image_width"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#ffffff"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="15dp">
+
+                        <TextView
+                            android:id="@+id/tv_payActivity_productName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/payActivity_marginLeft"
+                            android:layout_marginRight="@dimen/payActivity_marginRight"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical|left"
+                            android:maxLines="2"
+                            android:text=""
+                            android:textColor="@color/orderDetailActivity_textViewDark"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_payActivity_productPrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/payActivity_marginLeft"
+                            android:layout_marginRight="@dimen/payActivity_marginRight"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center_vertical|left"
+                            android:text="一次性付："
+                            android:textColor="@color/payActivity_textViewDark"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_goods_spu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/payActivity_marginLeft"
+                            android:layout_marginRight="@dimen/payActivity_marginRight"
+                            android:layout_marginTop="10dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical|left"
+                            android:maxLines="2"
+                            android:text=" "
+                            android:lineSpacingExtra="4dp"
+                            android:textColor="@color/c_999999"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/myaccountFragment_item_borderColor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ffffffff"
+                android:orientation="vertical">
+
+                <include layout="@layout/order_price" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/myaccountFragment_item_borderColor" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/payActivity_marginLeft"
+                android:paddingRight="@dimen/payActivity_marginRight">
+
+                <TextView
+                    android:id="@+id/tv_payActivity_downPayment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/payActivity_item_height"
+                    android:layout_alignParentLeft="true"
+                    android:gravity="center"
+                    android:text="首付金额: "
+                    android:textColor="@color/payActivity_textViewDark"
+                    android:textSize="@dimen/payActivity_item_textSize" />
+
+                <TextView
+                    android:id="@+id/tv_payActivity_downPaymentPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/payActivity_item_height"
+                    android:layout_alignBaseline="@id/tv_payActivity_downPayment"
+                    android:layout_toRightOf="@id/tv_payActivity_downPayment"
+                    android:gravity="center"
+                    android:text="2102139837"
+                    android:textColor="@color/payActivity_textViewDark"
+                    android:textSize="@dimen/payActivity_item_textSize" />
+
+                <TextView
+                    android:id="@+id/tv_payActivity_monthlyPayment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/payActivity_item_height"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/tv_payActivity_downPayment"
+                    android:gravity="center"
+                    android:text="月付金额: "
+                    android:textColor="@color/payActivity_textViewDark"
+                    android:textSize="@dimen/payActivity_item_textSize" />
+
+                <TextView
+                    android:id="@+id/tv_payActivity_monthlyPaymentPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/payActivity_item_height"
+                    android:layout_alignBaseline="@id/tv_payActivity_monthlyPayment"
+                    android:layout_toRightOf="@id/tv_payActivity_monthlyPayment"
+                    android:gravity="center"
+                    android:text="2102139837"
+                    android:textColor="@color/themeRed"
+                    android:textSize="@dimen/payActivity_item_textSize" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/myaccountFragment_item_borderColor" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/payActivity_item_height"
+                android:background="#ffffff"
+                android:gravity="center_vertical|left"
+                android:paddingLeft="@dimen/payActivity_marginLeft"
+                android:text="上述费用以实际签署的协议约定为准"
+                android:textColor="@color/payActivity_textViewDark"
+                android:textSize="@dimen/payActivity_item_textSize" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/myaccountFragment_item_borderColor" />
+
+            <RelativeLayout
+                android:id="@+id/rl_myAccountFragment_myOrder"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="#ffffffff"
+                android:paddingTop="5dp">
+                <!-- @drawable/myaccount_fragment_item_selector -->
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/myaccountFragment_item_paddingLeft"
+                    android:drawableLeft="@drawable/myaccount_page_my_order"
+                    android:drawablePadding="@dimen/myaccountFragment_item_textViewPadding"
+                    android:gravity="center"
+                    android:text="支付途径"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/myaccountFragment_item_textSize" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/myaccountFragment_item_borderWidth"
+                android:background="@color/myaccountFragment_item_borderColor" />
+
+            <RelativeLayout
+                android:id="@+id/rl_payActivity_bankCard"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="#ffffff"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/bankCardListActivity_marginLeft"
+                android:paddingRight="@dimen/bankCardListActivity_marginRight">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/right_arrow"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_payActivity_bankName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:text="银行名称"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/bankCardListActivity_item_textSize" />
+
+                <TextView
+                    android:id="@+id/tv_payActivity_bankCardNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center"
+                    android:text="银行卡号"
+                    android:textColor="#9a9a9a"
+                    android:textSize="@dimen/bankCardListActivity_item_textSize"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_payActivity_addBankCard"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#ffffff"
+                android:paddingLeft="@dimen/bankCardListActivity_marginLeft"
+                android:paddingRight="@dimen/bankCardListActivity_marginRight">
+
+                <TextView
+                    android:id="@+id/tv_payActivity_addBankCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/plus_symbol"
+                    android:drawablePadding="4dp"
+                    android:gravity="center"
+                    android:text="添加银行卡"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/loginActivity_button_textSize" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btn_payActivity_confirmPay"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="@dimen/loginActivity_marginLeftAndRight"
+                android:layout_marginRight="@dimen/loginActivity_marginLeftAndRight"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/button_selector"
+                android:gravity="center"
+                android:text="确认支付"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

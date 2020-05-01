@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/circle_corner_white_bg"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_invoiceInfoActivity_invoiceProtocalTitle"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="6dp"
+        android:gravity="center"
+        android:maxLines="100000"
+        android:text="发票须知"
+        android:textColor="#333333"
+        android:textSize="20sp" />
+
+    <View
+        android:id="@+id/v_invoiceInfoActivity_border_invoiceInfo"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tv_invoiceInfoActivity_invoiceProtocalTitle"
+        android:background="@color/myaccountFragment_item_borderColor" />
+
+    <TextView
+        android:id="@+id/tv_invoiceInfoActivity_invoiceProtocalContent"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/v_invoiceInfoActivity_border_invoiceInfo"
+        android:layout_marginLeft="12dp"
+        android:paddingRight="12dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:gravity="left|center_vertical"
+        android:maxLines="12"
+        android:scrollbars="vertical"
+        android:singleLine="false"
+        android:text="1.万卡商城提供的发票种类为商业零售发票。\n2.开具发票的金额以实际支付的金额为准。\n3.开具商业零售发票时，抬头默认为收货人“个人姓名”，请需要更改抬头的客户在修改信息中进行修改。\n4.商业零售发票信息与您输入的信息一致的情况下，发票一经开出，恕不退换。\n5.优惠券抵扣的金额不能包含在开票金额中。\n6.为了您能更快收到商品，商品会由合作商直接发货，而发票由万卡商城出具，所以会分开给您寄送。"
+        android:textColor="#999999"
+        android:textSize="14sp" />
+
+    <View
+        android:id="@+id/v_invoiceInfoActivity_border_know"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tv_invoiceInfoActivity_invoiceProtocalContent"
+        android:background="@color/myaccountFragment_item_borderColor" />
+
+    <Button
+        android:id="@+id/tv_invoiceInfoActivity_know"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/v_invoiceInfoActivity_border_know"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/button_selector"
+        android:text="我知道了"
+        android:textColor="#ffffffff"
+        android:textSize="18sp" />
+
+</RelativeLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/rl_progressCheckForGoodsRejectedActivity_threeImagesAndApplyTime"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="#ffffff">
+
+        <TextView
+            android:id="@+id/tv_progressCheckForGoodsRejectedActivity_imageOfGoodsRejectedKey"
+            style="@style/goods_rejected_no_margin_text_style_key_14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ProgressCheckForGoodsRejectedActivity_textView_marginTop_18dp"
+            android:gravity="center_vertical|right"
+            android:text="凭证照片:" />
+
+        <LinearLayout
+            android:id="@+id/ll_progressCheckForGoodsRejectedActivity_threeImagesOfGoodsRejected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/tv_progressCheckForGoodsRejectedActivity_imageOfGoodsRejectedKey"
+            android:layout_marginLeft="@dimen/ProgressCheckForGoodsRejectedActivity_twoTextView_margin_4dp"
+            android:layout_toRightOf="@id/tv_progressCheckForGoodsRejectedActivity_imageOfGoodsRejectedKey"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_progressCheckForGoodsRejectedActivity_imageOfGoodsRejected01"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+
+            <ImageView
+                android:id="@+id/iv_progressCheckForGoodsRejectedActivity_imageOfGoodsRejected02"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp" />
+
+            <ImageView
+                android:id="@+id/iv_progressCheckForGoodsRejectedActivity_imageOfGoodsRejected03"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_progressCheckForGoodsRejectedActivity_applyTimeKey"
+            style="@style/goods_rejected_no_margin_text_style_key_14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/tv_progressCheckForGoodsRejectedActivity_orderNumKey"
+            android:layout_below="@id/ll_progressCheckForGoodsRejectedActivity_threeImagesOfGoodsRejected"
+            android:layout_marginBottom="@dimen/ProgressCheckForGoodsRejectedActivity_textView_marginTop_18dp"
+            android:layout_marginTop="@dimen/ProgressCheckForGoodsRejectedActivity_textView_marginTop_18dp"
+            android:gravity="center_vertical|right"
+            android:text="申请时间:" />
+
+        <TextView
+            android:id="@+id/tv_progressCheckForGoodsRejectedActivity_applyTimeValue"
+            style="@style/goods_rejected_text_style_value_14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/tv_progressCheckForGoodsRejectedActivity_applyTimeKey"
+            android:layout_marginLeft="@dimen/ProgressCheckForGoodsRejectedActivity_twoTextView_margin_4dp"
+            android:layout_toRightOf="@id/tv_progressCheckForGoodsRejectedActivity_applyTimeKey"
+            android:text="" />
+</RelativeLayout>

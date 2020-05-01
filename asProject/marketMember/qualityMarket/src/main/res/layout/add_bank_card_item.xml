@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rl_bankCardListActivity_setConsigneeAddress"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="@dimen/bankCardListActivity_marginLeft"
+        android:layout_marginRight="@dimen/bankCardListActivity_marginRight"
+        android:background="#ffffff"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/iv_bankCardListActivity_selectedBank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/invoice_info_activity_checkbox_selected" />
+
+        <TextView
+            android:id="@+id/tv_bankCardListActivity_bankName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="银行名称"
+            android:textColor="#000000"
+            android:textSize="@dimen/bankCardListActivity_item_textSize" />
+
+        <TextView
+            android:id="@+id/tv_bankCardListActivity_bankCardNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="15dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="银行卡号"
+            android:textColor="#9a9a9a"
+            android:textSize="@dimen/bankCardListActivity_item_textSize" />
+    </RelativeLayout>
+
+</RelativeLayout>

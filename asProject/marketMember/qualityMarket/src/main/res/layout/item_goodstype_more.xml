@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jfbank.qualitymarket.widget.ForceClickImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:banner="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fiv_goods_type"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="vertical"
+    android:scaleType="fitXY"
+    android:background="@color/white"
+    banner:foregroundColor="@color/img_faoregroundColor" />

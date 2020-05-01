@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jfbank.qualitymarket.widget.ForegroundLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/style_foregroud_one"
+    android:layout_width="wrap_content"
+    android:layout_height="200dp"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingBottom="20dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        android:src="@mipmap/iv_home_goods_more" />
+</com.jfbank.qualitymarket.widget.ForegroundLinearLayout>

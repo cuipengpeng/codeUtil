@@ -1,0 +1,69 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_billdetailitem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/draw_billitem_bg"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingRight="15dp"
+  >
+
+    <ImageView
+        android:id="@+id/iv_billpending_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="5dp"
+        android:padding="10dp"
+        android:src="@drawable/ic_check_one" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/iv_billpending_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center_vertical|left"
+            android:lines="1"
+            android:textColor="@color/c_333333"
+            android:textSize="15sp"
+            android:text="235.00元" />
+
+        <TextView
+            android:id="@+id/iv_billpending_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:layout_marginLeft="8dp"
+            android:gravity="center_vertical|left"
+            android:lines="1"
+            android:textColor="@color/c_999999"
+            android:textSize="13sp"
+            android:text="第二期" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/iv_billpending_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|right"
+        android:ellipsize="end"
+        android:gravity="center_vertical|left"
+        android:lines="1"
+        android:textColor="@color/c_999999"
+        android:textSize="12sp"
+        android:text="剩余31天" />
+    </LinearLayout>
+    </LinearLayout>

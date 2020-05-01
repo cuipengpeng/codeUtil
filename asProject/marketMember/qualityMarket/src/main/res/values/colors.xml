@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="table_line_color">#e6e6e9</color>
+    <color name="load_more_text">#a8a7a7</color>
+    <color name="c_333">#333</color>
+    <color name="c_F5F5F5">#F5F5F5</color>
+    <color name="red">#FF0000</color>
+    <color name="c_F7F7F7">#f7f7f7</color>
+    <color name="colorPrimaryDark">#00000000</color>
+    <color name="c_fe4c40">#fe4c40</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="background_color">#f8f8f8</color>
+    <color name="text_background">#66000000</color>
+    <color name="err_color">#104076</color>
+    <color name="ml_gray">#cccccc</color>
+    <color name="colorPrimary">#fe4c40</color>
+    <color name="divider">#C4C3C8</color>
+    <color name="c_FF3431">#FF3431</color>
+    <color name="c_333333">#333333</color>
+    <color name="c_999999">#999999</color>
+    <color name="c_e9e9e9">#e9e9e9</color>
+    <color name="c_eeeeee">#eeeeee</color>
+    <color name="mrl_rippleColor">#3f000000</color>
+    <color name="img_faoregroundColor">#3f000000</color>
+    <color name="popup_bg">#8f000000</color>
+    <color name="c_c33a36">#c33a36</color>
+</resources>

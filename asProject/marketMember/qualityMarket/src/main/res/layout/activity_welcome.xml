@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent">
+
+    <RelativeLayout
+        android:id="@+id/rl_welcomeActivity_welcomePage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/ic_welcome" >
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_welcomeActivity_ad"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:scaleType="fitXY">
+
+    </ImageView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/transparent" >
+
+        <TextView
+            android:id="@+id/tv_welcomeActivity_jumpToMainPage"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/bg_welcome_activity_jump_to_mainpage"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="跳过"
+            android:textSize="12sp"
+            android:textColor="#f0eae9"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

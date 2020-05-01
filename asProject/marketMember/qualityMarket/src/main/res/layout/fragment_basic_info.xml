@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- 申请额度中基本信息页面 -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout style="@style/BasicInfoRelative" >
+
+                <TextView
+                    android:id="@+id/base_text2"
+                    style="@style/BasicInfoTextView"
+                    android:text="QQ号码" />
+
+                <EditText
+                    android:id="@+id/basic_info_et_qq_code"
+                    style="@style/BasicInfoEditText"
+                    android:layout_width="match_parent"
+                    android:layout_toRightOf="@id/base_text2"
+                    android:background="@android:color/transparent"
+                    android:gravity="right|center_vertical"
+                    android:inputType="number"
+                    android:maxLength="12" 
+                      android:textSize="14sp"
+                    android:hint="请输入本人qq号"/>
+            </RelativeLayout>
+
+            <View style="@style/LineView" />
+
+            <RelativeLayout
+                android:id="@+id/basic_info_rl_job_address"
+                style="@style/BasicInfoRelative" >
+
+                <TextView
+                    style="@style/BasicInfoTextView"
+                    android:text="所在城市" />
+
+                <!--
+                     <ImageView
+                    android:id="@+id/basic_info_image1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/right_arrow" 
+                    android:visibility="gone"/>
+                -->
+
+                <TextView
+                    android:id="@+id/basic_info_tv_job_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:text="请选择"
+                    android:textColor="#ff999999"
+                    android:textSize="14sp"
+                    android:focusable="true"
+					android:focusableInTouchMode="true" />
+
+                <!--
+                     <TextView
+                    android:id="@+id/basic_info_tv_job_address"
+                    style="@style/BasicInfoEditText"
+                    android:layout_marginRight="15dp"
+                    android:layout_toLeftOf="@id/basic_info_text1"
+                    android:background="@android:color/transparent"
+                    android:hint="" 
+                    android:layout_alignParentRight="false"/>
+                -->
+            </RelativeLayout>
+            <View style="@style/LineView" />
+
+            <RelativeLayout
+                android:id="@+id/basic_info_rl_job_unit"
+                style="@style/BasicInfoRelative" >
+
+                <TextView
+                    android:id="@+id/basic_info_text1"
+                    style="@style/BasicInfoTextView"
+                    android:text="工作单位" />
+
+                <EditText
+                    android:id="@+id/basic_info_tv_job_unit"
+                    style="@style/BasicInfoEditText"
+                    android:layout_width="match_parent"
+                    android:background="@android:color/transparent"
+                    android:hint="请输入单位全称"
+                    android:gravity="right|center_vertical"
+                    android:textSize="14sp"
+                    android:maxLength="30"
+                    android:layout_toRightOf="@id/basic_info_text1"
+                    android:focusable="true"
+					android:focusableInTouchMode="true"/>
+
+            </RelativeLayout>
+
+            <View style="@style/LineView" />
+
+            <RelativeLayout
+                android:id="@+id/basic_info_rl_job_phone"
+                style="@style/BasicInfoRelative" >
+
+                <TextView
+                    style="@style/BasicInfoTextView"
+                    android:text="单位电话" />
+
+                <EditText
+                    android:id="@+id/basic_info_tv_job_area_phone"
+                    style="@style/BasicInfoEditText"
+                    android:hint="座机号码"
+                    android:background="@android:color/transparent"
+                    android:gravity="right|center_vertical"
+                    android:textSize="14sp"
+                    android:focusable="true"
+                    android:maxLength="8"
+                    android:inputType="number"
+					android:focusableInTouchMode="true" />
+
+                <View
+                    android:id="@+id/basic_info_line"
+                    android:layout_width="12dp"
+                    style="@style/LineView"
+                    android:background="#ff999999"
+                    android:layout_toLeftOf="@id/basic_info_tv_job_area_phone"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_height="1dp"/>
+                <EditText
+                    android:id="@+id/basic_info_tv_job_area_code"
+                    style="@style/BasicInfoEditText"
+                    android:layout_alignParentRight="false"
+                    android:hint="区号"
+                    android:background="@android:color/transparent"
+                    android:gravity="right|center_vertical"
+                    android:layout_toLeftOf="@id/basic_info_line"
+                    android:textSize="14sp"
+                    android:focusable="true"
+                    android:maxLength="4"
+                    android:inputType="number"
+                    android:focusableInTouchMode="true" />
+
+            </RelativeLayout>
+
+			<View 
+			    android:layout_width="match_parent"
+			    android:layout_height="10dp"
+			    style="@style/LineView"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="29dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp" 
+                android:background="#ffffffff">
+
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="20dp"
+                    android:background="#ffff0000" 
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="联系人"
+                    android:textColor="#ff333333"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <View style="@style/LineView" />
+
+            <RelativeLayout
+                android:id="@+id/basic_info_rl_relation"
+                style="@style/BasicInfoRelative" >
+
+                <TextView
+                    style="@style/BasicInfoTextView"
+                    android:text="与本人关系" />
+                <!--
+                    <ImageView
+                    android:id="@+id/basic_info_image3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/right_arrow" />
+                -->
+
+                <TextView
+                    android:id="@+id/basic_info_tv_relation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:text="联系人关系"
+                      android:textSize="14sp"
+                    android:textColor="#ff999999" />
+                <!--
+                     <TextView
+                    android:id="@+id/basic_info_tv_relation"
+                    style="@style/BasicInfoEditText"
+                    android:background="@android:color/transparent"
+                    android:hint=""
+                    android:layout_marginRight="15dp"
+                    android:layout_toLeftOf="@id/basic_info_text3"
+                    android:maxLength="12" 
+                    android:layout_alignParentRight="false"/>
+                -->
+            </RelativeLayout>
+
+            <View style="@style/LineView" />
+
+            <RelativeLayout style="@style/BasicInfoRelative" >
+
+                <TextView
+                    style="@style/BasicInfoTextView"
+                    android:text="手机号" />
+
+                <TextView
+                    android:id="@+id/basic_info_tv_contacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="从通讯录获取"
+                    android:textColor="#ff999999" />
+
+                <EditText
+                    android:id="@+id/basic_info_et_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/basic_info_tv_contacts"
+                    android:background="@android:color/transparent"
+                    android:hint="联系人手机号码"
+                    android:maxLength="11"
+                    android:enabled="false"
+                    android:textColor="#ff333333"
+                    android:phoneNumber="true"
+                     android:textSize="14sp" />
+            </RelativeLayout>
+
+            <View style="@style/LineView" />
+
+            <RelativeLayout style="@style/BasicInfoRelative" >
+
+                <TextView
+                    style="@style/BasicInfoTextView"
+                    android:text="联系人姓名" 
+                    android:id="@+id/base_text4"/>
+
+                <EditText
+                    android:id="@+id/basic_info_et_contacts_name"
+                    style="@style/BasicInfoEditText"
+                    android:background="@android:color/transparent"
+                    android:maxLength="10"
+                    android:layout_toRightOf="@id/base_text4"
+                    android:layout_width="match_parent"
+                    android:gravity="right|center_vertical"
+                    android:singleLine="true" 
+                      android:textSize="14sp"
+                    android:hint="联系人姓名"/>
+            </RelativeLayout>
+
+            <View style="@style/LineView" />
+
+            <Button
+                android:id="@+id/basic_info_btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="50dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_selector"
+                android:gravity="center"
+                android:text="下一步"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/loginActivity_button_textSize" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

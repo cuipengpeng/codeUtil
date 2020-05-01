@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_back"></include>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_myaccountFragment_activiteBorrow"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:background="@color/myaccountFragment_userInfo_bgColor"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/btn_myAccountFragment_activeBorrow"
+                    android:layout_width="255dp"
+                    android:layout_height="48dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="35dp"
+                    android:background="@drawable/button_white_selector"
+                    android:gravity="center"
+                    android:text="开通万卡"
+                    android:textColor="#e66354"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btn_myAccountFragment_activeBorrow"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="最高额度15万"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_myaccountFragment_borrowLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/myaccountFragment_userInfo_bgColor">
+
+                <TextView
+                    android:id="@+id/tv_myaccountFragment_borrowLineText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="26dp"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:text="总额度"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_myaccountFragment_borrowLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_myaccountFragment_borrowLineText"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:text="¥ ..."
+                    android:textColor="#FFffff"
+                    android:textSize="@dimen/loginActivity_button_textSize" />
+
+                <TextView
+                    android:id="@+id/tv_myaccountFragment_viewDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_myaccountFragment_borrowLine"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:singleLine="true"
+                    android:text="查看详情"
+                    android:textColor="#e4e4e4"
+                    android:textSize="13sp" />
+            </RelativeLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="88dp"
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_myaccountFragment_redPacket"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_white_gray_selector"
+                        android:paddingBottom="22dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="bottom">
+
+                            <TextView
+                                android:id="@+id/tv_myaccountFragment_redPacketText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="1"
+                                android:text="红包"
+                                android:textColor="@color/c_666666"
+                                android:textSize="@dimen/myaccountFragment_money_textSize_14sp" />
+
+                            <TextView
+                                android:id="@+id/tv_myaccountFragment_redPacket"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginLeft="6dp"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="1"
+                                android:text="0个"
+                                android:textColor="@color/myaccountFragment_money_textColor"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingBottom="22dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="bottom">
+
+                            <TextView
+                                android:id="@+id/tv_myaccountFragment_avaliableCreditText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="1"
+                                android:text="可用额度"
+                                android:textColor="@color/c_666666"
+                                android:textSize="@dimen/myaccountFragment_money_textSize_14sp" />
+
+                            <TextView
+                                android:id="@+id/tv_myaccountFragment_avaliableCredit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginLeft="6dp"
+                                android:ellipsize="end"
+                                android:gravity="center_vertical|left"
+                                android:lines="1"
+                                android:text="0.00元"
+                                android:textColor="@color/myaccountFragment_money_textColor"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/bg_myaccount" />
+            </FrameLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/myaccountFragment_item_borderColor" />
+
+            <LinearLayout
+                android:id="@+id/ll_myaccountFragment_instalment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/myaccount_fragment_item_selector"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/rl_myaccountFragment_instalment"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/myaccountFragment_bottomItem_height"
+                    android:background="@drawable/myaccount_fragment_item_selector">
+
+                    <TextView
+                        android:id="@+id/tv_myaccountFragment_instalment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/myaccountFragment_item_paddingLeft"
+                        android:drawableLeft="@drawable/myaccount_page_instalment"
+                        android:drawablePadding="@dimen/myaccountFragment_item_textViewPadding"
+                        android:gravity="center"
+                        android:text="分期账单"
+                        android:textColor="@color/myaccountFragment_item_textColor"
+                        android:textSize="@dimen/myaccountFragment_item_textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_myaccountFragment_repaymentNow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/myaccountFragment_item_marginRight"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="#ff4a38"
+                        android:textSize="@dimen/myaccountFragment_item_textSize" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/myaccountFragment_item_borderWidth"
+                    android:background="@color/myaccountFragment_item_borderColor" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="62dp"
+                    android:background="#ffffff">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_myaccountFragment_waitForRepaymentInDate"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/myaccount_fragment_item_selector"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tv_myaccountFragment_waitForRepayment"
+                            android:layout_width="@dimen/myaccountFragment_redPacketCount_textViewWidth"
+                            android:layout_height="24dp"
+                            android:layout_centerHorizontal="true"
+                            android:ellipsize="end"
+                            android:gravity="bottom|center_horizontal"
+                            android:singleLine="true"
+                            android:text="0.00元"
+                            android:textColor="@color/myaccountFragment_money_textColor"
+                            android:textSize="@dimen/myaccountFragment_money_textSize_18sp" />
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_myaccountFragment_waitForRepayment"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center"
+                            android:text="本期待还"
+                            android:textColor="@color/myaccountFragment_icon_textColor"
+                            android:textSize="@dimen/myaccountFragment_item_textSize" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="@dimen/myaccountFragment_item_borderWidth"
+                        android:layout_height="match_parent"
+                        android:background="@color/myaccountFragment_item_borderColor" />
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#ffffff"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tv_myaccountFragment_repaymentDay"
+                            android:layout_width="@dimen/myaccountFragment_redPacketCount_textViewWidth"
+                            android:layout_height="24dp"
+                            android:layout_centerHorizontal="true"
+                            android:ellipsize="end"
+                            android:gravity="bottom|center_horizontal"
+                            android:singleLine="true"
+                            android:text="剩余   天"
+                            android:textColor="@color/myaccountFragment_money_textColor"
+                            android:textSize="@dimen/myaccountFragment_item_textSize" />
+
+                        <TextView
+                            android:id="@+id/tv_myaccountFragment_repaymentDayText"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_myaccountFragment_repaymentDay"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center"
+                            android:text="还款日"
+                            android:textColor="@color/myaccountFragment_icon_textColor"
+                            android:textSize="@dimen/myaccountFragment_item_textSize" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/myaccountFragment_item_divider_bgColor" />
+
+            <RelativeLayout
+                android:id="@+id/rl_myAccountFragment_myOrder"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/myaccountFragment_bottomItem_height"
+                android:background="@drawable/myaccount_fragment_item_selector">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/myaccountFragment_item_paddingLeft"
+                    android:drawableLeft="@drawable/myaccount_page_my_order"
+                    android:drawablePadding="@dimen/myaccountFragment_item_textViewPadding"
+                    android:gravity="center"
+                    android:text="我的订单"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/myaccountFragment_item_textSize" />
+
+                <TextView
+                    android:id="@+id/tv_myAccountFragment_viewAllOrders"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/myaccountFragment_item_marginRight"
+                    android:gravity="center"
+                    android:text="查看全部订单"
+                    android:textColor="#a3a3a3"
+                    android:textSize="@dimen/myaccountFragment_item_textSize" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/myaccountFragment_item_borderWidth"
+                android:background="@color/myaccountFragment_item_borderColor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="83dp"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:id="@+id/rl_myaccountFragment_waitForPay"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:background="@drawable/myaccount_fragment_item_selector">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/myaccountFragment_icon_textViewPadding"
+                        android:layout_marginTop="@dimen/myaccountFragment_orderSquareItem_marginTop">
+                        <ImageView
+                            android:id="@+id/tv_myaccountFragment_waitForPay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@mipmap/myaccount_page_order_wait_for_pay"/>
+                        <TextView
+                            android:id="@+id/tv_myaccountFragment_waitForPayBadgeCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|top"
+                            android:layout_marginRight="@dimen/myaccountFragment_badgeView_marginRight"
+                            android:gravity="center"
+                            android:padding="@dimen/myaccountFragment_badgeViewPadding"
+                            android:background="@drawable/circle_red_bg"
+                            android:text="9"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/myaccountFragment_badgeViewTextSize" />
+                    </FrameLayout>
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="待支付  "
+                        android:textColor="@color/myaccountFragment_icon_textColor"
+                        android:textSize="@dimen/myaccountFragment_item_textSize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/myaccountFragment_item_borderWidth"
+                    android:layout_height="match_parent"
+                    android:background="@color/myaccountFragment_item_borderColor" />
+
+                <LinearLayout
+                    android:id="@+id/rl_myaccountFragment_waitForSend"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@drawable/myaccount_fragment_item_selector">
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/myaccountFragment_icon_textViewPadding"
+                        android:layout_marginTop="@dimen/myaccountFragment_orderSquareItem_marginTop">
+                        <ImageView
+                            android:id="@+id/tv_myaccountFragment_waitForSend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@mipmap/myaccount_page_order_wait_for_send"/>
+                        <TextView
+                            android:id="@+id/tv_myaccountFragment_waitForSendBadgeCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|top"
+                            android:layout_marginRight="@dimen/myaccountFragment_badgeView_marginRight"
+                            android:gravity="center"
+                            android:padding="@dimen/myaccountFragment_badgeViewPadding"
+                            android:background="@drawable/circle_red_bg"
+                            android:text="9"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/myaccountFragment_badgeViewTextSize" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="待发货"
+                        android:textColor="@color/myaccountFragment_icon_textColor"
+                        android:textSize="@dimen/myaccountFragment_item_textSize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/myaccountFragment_item_borderWidth"
+                    android:layout_height="match_parent"
+                    android:background="@color/myaccountFragment_item_borderColor" />
+
+                <LinearLayout
+                    android:id="@+id/rl_myaccountFragment_receiveGoods"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@drawable/myaccount_fragment_item_selector">
+
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/myaccountFragment_icon_textViewPadding"
+                        android:layout_marginTop="@dimen/myaccountFragment_orderSquareItem_marginTop">
+                        <ImageView
+                            android:id="@+id/tv_myaccountFragment_receiveGoods"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@mipmap/myaccount_page_order_wait_for_receive_goods"/>
+                        <TextView
+                            android:id="@+id/tv_myaccountFragment_receiveGoodsBadgeCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|top"
+                            android:layout_marginRight="@dimen/myaccountFragment_badgeView_marginRight"
+                            android:gravity="center"
+                            android:padding="@dimen/myaccountFragment_badgeViewPadding"
+                            android:background="@drawable/circle_red_bg"
+                            android:text="9"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/myaccountFragment_badgeViewTextSize" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="待收货"
+                        android:textColor="@color/myaccountFragment_icon_textColor"
+                        android:textSize="@dimen/myaccountFragment_item_textSize"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/myaccountFragment_item_borderWidth"
+                    android:layout_height="match_parent"
+                    android:background="@color/myaccountFragment_item_borderColor" />
+
+                <LinearLayout
+                    android:id="@+id/rl_myaccountFragment_afterSale"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@drawable/myaccount_fragment_item_selector">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/myaccountFragment_icon_textViewPadding"
+                        android:layout_marginTop="@dimen/myaccountFragment_orderSquareItem_marginTop">
+                        <ImageView
+                            android:id="@+id/tv_myaccountFragment_afterSale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@mipmap/myaccount_page_order_after_sale"/>
+                        <TextView
+                            android:id="@+id/tv_myaccountFragment_afterSaleBadgeCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|top"
+                            android:layout_marginRight="@dimen/myaccountFragment_badgeView_marginRight"
+                            android:gravity="center"
+                            android:padding="@dimen/myaccountFragment_badgeViewPadding"
+                            android:background="@drawable/circle_red_bg"
+                            android:text="9"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/myaccountFragment_badgeViewTextSize" />
+                    </FrameLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="售后/退换"
+                        android:textColor="@color/myaccountFragment_icon_textColor"
+                        android:textSize="@dimen/myaccountFragment_item_textSize" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/myaccountFragment_item_divider_bgColor"/>
+
+            <com.jfbank.qualitymarket.widget.NoScrollGridView
+                android:id="@+id/gv_myaccountFragment_bottomFunctionMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:background="@color/transparent"
+                android:horizontalSpacing="0.5dp"
+                android:verticalSpacing="0.5dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:numColumns="4"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

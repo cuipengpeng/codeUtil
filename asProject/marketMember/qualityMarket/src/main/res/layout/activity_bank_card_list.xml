@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e8e8e8"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/ll_bankCardListActivity_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="vertical">
+        <include layout="@layout/title_back"></include>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/c_eeeeee" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_bankCardListActivity_addBankCard"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="@dimen/loginActivity_marginLeftAndRight"
+        android:layout_marginRight="@dimen/loginActivity_marginLeftAndRight"
+        android:background="@drawable/button_selector"
+        android:gravity="center"
+        android:text="管理"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/bankCardListActivity_item_textSize" />
+
+    <ListView
+        android:id="@+id/lv_bankCardListActivity_productList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btn_bankCardListActivity_addBankCard"
+        android:layout_below="@id/ll_bankCardListActivity_title"
+        android:background="#E8E8E8"
+        android:divider="@color/c_e9e9e9"
+        android:visibility="gone"
+        android:dividerHeight="0dp"></ListView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btn_bankCardListActivity_addBankCard"
+        android:layout_below="@id/ll_bankCardListActivity_title">
+
+        <ImageView
+            android:id="@+id/iv_bankCardListActivity_noData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/ic_no_data" />
+    </RelativeLayout>
+
+</RelativeLayout>
