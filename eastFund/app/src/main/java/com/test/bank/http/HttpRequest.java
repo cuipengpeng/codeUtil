@@ -103,6 +103,10 @@ public class HttpRequest {
 
     private static final boolean SHOW_LOADING = true;
 
+    public enum RequestType {
+        POST, GET, PUT, DELETE
+    }
+
     /**
      * 发送普通文本请求接口
      * @param url
@@ -112,19 +116,35 @@ public class HttpRequest {
      * @return
      */
     public static Call<String> post(boolean getRequest, IBaseView iBaseView, String url, Map<String, String> params, HttpResponseCallBack responseHandler) {
-        return post(false, iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, "", SHOW_LOADING, responseHandler);
+        if(getRequest){
+            return post(RequestType.GET, iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, "", SHOW_LOADING, responseHandler);
+        }else {
+            return post(RequestType.POST, iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, "", SHOW_LOADING, responseHandler);
+        }
+    }
+
+    public static Call<String> post(RequestType requestType, IBaseView iBaseView, String url, Map<String, String> params, HttpResponseCallBack responseHandler) {
+        return post(requestType, iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, "", SHOW_LOADING, responseHandler);
     }
 
     public static Call<String> post(boolean getRequest, IBaseView iBaseView, String url, Map<String, String> params, boolean showLoading, HttpResponseCallBack responseHandler) {
-        return post(false, iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, "", showLoading, responseHandler);
+        if(getRequest){
+            return post(RequestType.GET, iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, "", showLoading, responseHandler);
+        }else {
+            return post(RequestType.POST, iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, "", showLoading, responseHandler);
+        }
     }
 
-    public static Call<String> post(boolean getRequest, IBaseView iBaseView, String url, Map<String, String> params, String requestChannel, HttpResponseCallBack responseHandler) {
-        return post(false, iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, requestChannel, SHOW_LOADING, responseHandler);
+    public static Call<String> post(boolean getRequest, IBaseView iBaseView, String url, Map<String, String> params, String requestTag, HttpResponseCallBack responseHandler) {
+        if(getRequest){
+            return post(RequestType.GET, iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, requestTag, SHOW_LOADING, responseHandler);
+        }else {
+            return post(RequestType.POST, iBaseView, url, params, requestReadTime, requestWriteTime, requestConnectTime, requestTag, SHOW_LOADING, responseHandler);
+        }
     }
 
-    public static Call<String> post(boolean getRequest, IBaseView iBaseView, String url, Map<String, String> params, long readTime, long writeTime, long timeOut, String requestChannel, boolean showLoading, HttpResponseCallBack responseHandler) {
-        return execute(false, iBaseView, url, new HashMap<String, String>(), params, false, null, responseHandler, readTime, writeTime, timeOut, requestChannel, showLoading);
+    public static Call<String> post(RequestType requestType, IBaseView iBaseView, String url, Map<String, String> params, long readTime, long writeTime, long timeOut, String requestTag, boolean showLoading, HttpResponseCallBack responseHandler) {
+        return execute(requestType, iBaseView, url, new HashMap<String, String>(), params, false, null, responseHandler, readTime, writeTime, timeOut, requestTag, showLoading);
     }
 
     /**
@@ -145,7 +165,7 @@ public class HttpRequest {
 
             @Override
             public void run() {
-                execute(false, null, url, headers, params, true, filesMap, progressListener, readTime, writeTime, timeOut, "", showLoading);
+                execute(RequestType.POST, null, url, headers, params, true, filesMap, progressListener, readTime, writeTime, timeOut, "", showLoading);
             }
         }).start();
 
@@ -177,7 +197,7 @@ public class HttpRequest {
      * @param showLoading
      * @return
      */
-    private static Call<String> execute(boolean getRequest, IBaseView iBaseView, String url, Map<String, String> headers, Map<String, String> params, boolean uploadFile, Map<String, File> uploadFilesMap, HttpResponseCallBack responseHandler, long readTime, long writeTime, long timeOut, String requestChannel, boolean showLoading) {
+    private static Call<String> execute(RequestType requestType, IBaseView iBaseView, String url, Map<String, String> headers, Map<String, String> params, boolean uploadFile, Map<String, File> uploadFilesMap, HttpResponseCallBack responseHandler, long readTime, long writeTime, long timeOut, String requestChannel, boolean showLoading) {
         params.put("version", DeviceUtil.getAppVersionName(BaseApplication.applicationContext));
         params.put("equipment", DeviceUtil.getDevicecId());
         params.put("mobileSystem", "android");
@@ -213,9 +233,9 @@ public class HttpRequest {
 //            }
 //            call = apiService.uploadFileWithText(url, headers, filesMap);
         } else {
-            if(getRequest){
+            if(requestType==RequestType.GET){
                 call = apiService.getRequestAPiString(url, headers, params);
-            }else {
+            }else if(requestType==RequestType.POST){
                 //格式: application/x-www-form-urlencoded
 //                    if(headers==null){
 //                        headers = new HashMap<>();
@@ -226,6 +246,16 @@ public class HttpRequest {
                 //格式: application/json
                 RequestBody body = RequestBody.create(MediaType.parse("application/json"), new Gson().toJson(params));
                 call = apiService.postJsonAPiString(url, headers, body);
+            }else if(requestType==RequestType.PUT){
+                for(String value : params.values()){
+                    url=url+"/"+value;
+                }
+                call = apiService.putRequestAPiString(url, headers, new HashMap<String, String>());
+            }else if(requestType==RequestType.DELETE){
+                for(String value : params.values()){
+                    url=url+"/"+value;
+                }
+                call = apiService.deleteRequestAPiString(url, headers, new HashMap<String, String>());
             }
         }
 
