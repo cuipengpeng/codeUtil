@@ -12,6 +12,8 @@ import java.io.InputStream;
 import java.io.RandomAccessFile;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -104,6 +106,7 @@ public class ThreadPoolBreakpointDownloader extends ThreadPoolExecutor{
                         conn.setConnectTimeout(3000);
                         conn.setReadTimeout(3000);
                         conn.setRequestMethod("GET");
+                        //conn.setInstanceFollowRedirects(true);//OSS 302 Redirects
                         //加上这句是为了防止connection.getContentLength()获取不到
                         conn.setRequestProperty("Accept-Encoding", "identity");
 
@@ -202,7 +205,7 @@ public class ThreadPoolBreakpointDownloader extends ThreadPoolExecutor{
                 long start = id * threadLen + threadFinish;        // 计算当前线程的起始位置
                 long end = id * threadLen + threadLen - 1;        // 计算当前线程的结束位置
                 if (id == THREAD_AMOUNT - 1) {
-                    end = totalLen;        // 计算当前线程的结束位置
+                    end = totalLen-1;        // 计算当前线程的结束位置
                 }
                 printLog("线程" + id + ": " + start + "-" + end);
 
@@ -210,8 +213,13 @@ public class ThreadPoolBreakpointDownloader extends ThreadPoolExecutor{
                 conn = (HttpURLConnection) url.openConnection();
                 conn.setConnectTimeout(3000);
                 conn.setReadTimeout(10*1000);
-                conn.setRequestProperty("Range", "bytes=" + start + "-" + end);        // 设置当前线程下载的范围
+                if (id == THREAD_AMOUNT - 1) {
+                    conn.setRequestProperty("Range", "bytes=" + start + "-");        // 设置当前线程下载的范围
+                }else {
+                    conn.setRequestProperty("Range", "bytes=" + start + "-" + end);        // 设置当前线程下载的范围
+                }
                 printLog("线程" + id +"--taskIndex=" + taskIndex+ "--conn.getResponseCode()=" + conn.getResponseCode()+ "--httpUrl=" + httpUrl);
+                printHeaders(conn);
 
                 //当请求部分数据成功的时候, 返回http状态码206
                 if (conn.getResponseCode() == 206) {
@@ -241,6 +249,7 @@ public class ThreadPoolBreakpointDownloader extends ThreadPoolExecutor{
                     printLog("线程" + id + "--threadFinish=" + threadFinish + "--totalFinish=" + totalFinish[taskIndex] + "--httpUrl=" + httpUrl+ "\n");
                 } else {
                     printLog("线程=" + id + "--Response Code != 206 (actualCode=" + conn.getResponseCode() + "),服务器不支持多线程下载。");
+                    printHeaders(conn);
                 }
             } catch (IOException e) {
                 handler.post(new Runnable() {
@@ -277,6 +286,21 @@ public class ThreadPoolBreakpointDownloader extends ThreadPoolExecutor{
                     e.printStackTrace();
                 }
             }
+        }
+    }
+
+    private void printHeaders(HttpURLConnection conn) {
+        if(debug) {
+            Map<String, List<String>> headersMap = conn.getHeaderFields();
+            for (Map.Entry<String, List<String>> entry : headersMap.entrySet()) {
+                System.out.print(entry.getKey() + "=");
+                for (int i = 0; i < entry.getValue().size(); i++) {
+                    System.out.print("--" + entry.getValue().get(i));
+
+                }
+                System.out.println("");
+            }
+            System.out.println("--------------");
         }
     }
 
