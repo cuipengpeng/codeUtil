@@ -91,17 +91,21 @@ public class LogUtil {
 	}
  
 	//线程保持常在,不工作时休眠,需要工作时再唤醒就可。线程池，handler消息队列的实现原理就是这样
-	public class WriteThread extends Thread {
+	private class WriteThread extends Thread {
 		private boolean isRunning = false;
 		private String logFileAbsolutePath = null;
+		private final File logFile;
 		private Object lock = new Object();
 		private ConcurrentLinkedQueue<String> mQueue = new ConcurrentLinkedQueue<String>();
 		private SimpleDateFormat mfileDateFormat = null;
+		private FileWriter filerWriter;
+		private BufferedWriter bufWriter;
 
 
 		public WriteThread() {
 			mfileDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			logFileAbsolutePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/"+mfileDateFormat.format(new Date())+".log";
+			logFileAbsolutePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/logDir/"+mfileDateFormat.format(new Date())+".log";
+			logFile = new File(logFileAbsolutePath);
 			isRunning = true;
 		}
  
@@ -117,49 +121,57 @@ public class LogUtil {
 
 		@Override
 		public void run() {
-			while (true) {
-				synchronized (lock) {
-					isRunning = true;
-					while (!mQueue.isEmpty()) {
+			try {
+				while (true) {
+					synchronized (lock) {
+						isRunning = true;
+						while (!mQueue.isEmpty()) {
+							if (!logFile.exists()) {
+								logFile.getParentFile().mkdirs();
+								try {
+									logFile.createNewFile();
+									filerWriter = new FileWriter(logFile, true);
+									bufWriter = new BufferedWriter(filerWriter);
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							}
+
+							try {
+							//append data to logFile
+							bufWriter.write(mQueue.poll());
+							bufWriter.newLine();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						}
+						isRunning = false;
 						try {
-							//pop出队列的头字符串写入到文件中
-							appendLogToFile(mQueue.poll());
-						} catch (Exception e) {
+							lock.wait();
+						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
 					}
-					isRunning = false;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				if(bufWriter!=null){
 					try {
-						lock.wait();
-					} catch (InterruptedException e) {
+						bufWriter.close();
+						bufWriter=null;
+					} catch (IOException e) {
 						e.printStackTrace();
 					}
 				}
- 
-			}
-		}
- 
-		public void appendLogToFile(String text) {
-			File file = new File(logFileAbsolutePath);
-			if (!file.exists()) {
-				file.getParentFile().mkdirs();
-				try {
-					file.createNewFile();
-				} catch (IOException e) {
-					e.printStackTrace();
+				if(filerWriter!=null){
+					try {
+						filerWriter.close();
+						filerWriter=null;
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
-			}
-
-			try {
-				//append data to file
-				FileWriter filerWriter = new FileWriter(file, true);
-				BufferedWriter bufWriter = new BufferedWriter(filerWriter);
-				bufWriter.write(text);
-				bufWriter.newLine();
-				bufWriter.close();
-				filerWriter.close();
-			} catch (IOException e) {
-				e.printStackTrace();
 			}
 		}
  
