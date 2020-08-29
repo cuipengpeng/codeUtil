@@ -3,6 +3,9 @@ package util;
 public class MultiThreadShareData {
 	
 	public static void main(String[] args) {
+		//data share
+		//data deliver
+		
 	        final ShareData1 shareData1 = new ShareData1(0, "qqqqqq");
 	        new Thread(new MyRunnable1(shareData1)).start();
 	        new Thread(new MyRunnable2(shareData1)).start();
@@ -59,10 +62,10 @@ public class MultiThreadShareData {
 		}
 	}
 	
-//	从线程中获取返回数据的三种方法
-//	1、通过回调函数获取返回数据
-//	2、thread.join()
-//	3、实现 Callable<V>接口，通过Future.get()获取返回数据。其中 V 代表 返回值类型
+//	锟斤拷锟竭筹拷锟叫伙拷取锟斤拷锟斤拷锟斤拷锟捷碉拷锟斤拷锟街凤拷锟斤拷
+//	1锟斤拷通锟斤拷锟截碉拷锟斤拷锟斤拷锟斤拷取锟斤拷锟斤拷锟斤拷锟斤拷
+//	2锟斤拷thread.join()
+//	3锟斤拷实锟斤拷 Callable<V>锟接口ｏ拷通锟斤拷Future.get()锟斤拷取锟斤拷锟斤拷锟斤拷锟捷★拷锟斤拷锟斤拷 V 锟斤拷锟斤拷 锟斤拷锟斤拷值锟斤拷锟斤拷
 //	https://blog.csdn.net/qq_18505715/article/details/78726164
 
 }

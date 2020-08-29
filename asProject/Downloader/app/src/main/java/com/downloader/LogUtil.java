@@ -1,9 +1,7 @@
-package com.test.bank.utils;
+package com.downloader;
 
 import android.os.Environment;
 import android.util.Log;
-
-import com.test.bank.BuildConfig;
 
 import java.io.BufferedWriter;
 import java.io.File;
