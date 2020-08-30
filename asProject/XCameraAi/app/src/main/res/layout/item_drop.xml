@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_albumActivity_dragItem_itemView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:paddingTop="@dimen/dp1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bj_net" />
+
+        <ImageView
+            android:id="@+id/iv_image_bg"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:background="@drawable/circle_corner_red_border_bg"
+            android:visibility="gone" />
+
+
+        <ImageView
+            android:id="@+id/iv_editItem"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:background="@mipmap/edit_item"
+            android:scaleType="centerCrop"
+            android:visibility="gone" />
+
+
+        <TextView
+            android:id="@+id/tv_right_time1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="02:30"
+            android:textColor="#ffffff"
+            android:textSize="5dp" />
+    </RelativeLayout>
+</RelativeLayout>

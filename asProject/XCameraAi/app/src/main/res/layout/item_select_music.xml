@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="14dp"
+    android:paddingTop="14dp"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_music_confirm"
+            android:layout_width="64dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="14dp"
+            android:background="@drawable/circle_corner_green_bg_normal_2dp"
+            android:gravity="center"
+            android:text="使用"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/btn_music_download"
+            android:layout_width="56dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:src="@mipmap/icon_music_downlaod"
+            android:visibility="gone" />
+
+        <FrameLayout
+            android:id="@+id/rl_selectMusic_item_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <com.test.xcamera.widget.NiceImageView
+                android:id="@+id/iv_selectMusic_item_img"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:scaleType="centerCrop"
+                app:is_circle="false" />
+
+            <ImageView
+                android:id="@+id/iv_selectMusic_item_musicState"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/pause" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_selectMusic_item_name"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@id/rl_selectMusic_item_img"
+            android:ellipsize="end"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:singleLine="true"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_selectMusic_item_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_selectMusic_item_name"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/rl_selectMusic_item_img"
+            android:textColor="#555658"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_selectMusic_item_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_selectMusic_item_author"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/rl_selectMusic_item_img"
+            android:textColor="#555658"
+            android:textSize="9sp" />
+    </RelativeLayout>
+
+
+
+</FrameLayout>

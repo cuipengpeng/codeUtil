@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/fpv_second_setting_item_text"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:text="8000K"
+        android:textColor="@color/color_fpv_mode_item_profession"
+        android:textSize="12dp" />
+
+    <View
+        android:id="@+id/fpv_second_setting_item_line"
+        android:layout_width="10dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center_vertical"
+        android:background="@color/color_666666"
+        android:visibility="gone" />
+</LinearLayout>

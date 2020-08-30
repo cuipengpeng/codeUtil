@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:background="@drawable/bg_background_menu_radius_gray"
+
+    >
+
+    <ImageView
+        android:id="@+id/bt_clear"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="right|center_vertical"
+        android:clickable="true"
+        android:padding="0dp" />
+
+    <!-- 输入的搜索信息 -->
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_toLeftOf="@id/bt_clear"
+        android:background="@android:color/transparent"
+        android:gravity="center_vertical"
+        android:hint="@string/video_edit_music_search"
+        android:imeOptions="actionSearch"
+        android:maxLength="15"
+        android:paddingLeft="12dp"
+        android:drawableLeft="@mipmap/icon_video_music_search"
+        android:singleLine="true"
+        android:textColor="#f0f0f0"
+        android:textColorHint="#555555"
+        android:textSize="13sp" />
+
+
+</RelativeLayout>

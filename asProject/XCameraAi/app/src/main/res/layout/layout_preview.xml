@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/background_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/background_dark"/>
+
+    <com.test.xcamera.zoom.HackyViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ImageView
+        android:id="@+id/scalable_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+       />
+
+    <ImageView
+        android:id="@+id/is_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+         android:src="@mipmap/ic_video_player_btn_play"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent">
+        <ImageView
+            android:id="@+id/iv_left_title"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/arrow_left"
+            android:padding="15dp"
+            />
+          <TextView
+              android:id="@+id/tv_middle_title"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:layout_centerInParent="true"
+              android:textColor="#fff"
+              android:padding="5dp"
+              android:textSize="12dp"
+              />
+
+        <ImageView
+            android:id="@+id/iv_right_title"
+            android:layout_alignParentRight="true"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="15dp"
+            android:src="@mipmap/icon_one_edit"/>
+    </RelativeLayout>
+</RelativeLayout>

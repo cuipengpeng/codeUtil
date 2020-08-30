@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="right"
+    android:orientation="horizontal">
+
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="#202222"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.test.xcamera.view.VerticalTextView
+                android:id="@+id/titleBeauty"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="美颜"
+                android:textColor="#7F7F7F"
+                app:direction="downtoup" />
+
+            <com.test.xcamera.view.VerticalTextView
+                android:id="@+id/titleFilter"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="滤镜"
+                android:textColor="#7F7F7F"
+                app:direction="downtoup" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#272C37" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/myRV"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <com.test.xcamera.view.VerticalSeekBarFilter
+        android:id="@+id/beautySeekBar"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_toLeftOf="@+id/ll"
+        android:max="100"
+        android:maxHeight="4.4dp"
+        android:minHeight="4.4dp"
+        android:progressDrawable="@drawable/bg_adjust_seek_bar"
+        android:thumb="@mipmap/seekpoint" />
+
+    <com.test.xcamera.view.VerticalTextView
+        android:id="@+id/number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:layout_toLeftOf="@+id/beautySeekBar"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        app:direction="downtoup" />
+
+    <View
+        android:id="@+id/closeDialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/dp15"
+        android:layout_toLeftOf="@+id/beautySeekBar" />
+
+</RelativeLayout>

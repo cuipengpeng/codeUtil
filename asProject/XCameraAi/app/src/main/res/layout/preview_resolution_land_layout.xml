@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="120dp"
+    android:layout_height="match_parent"
+    android:background="@color/color_181818"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="@dimen/fpv_second_view_width_60dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/fpv_resolution_fen_bian_lv"
+            android:textColor="@color/color_ff7700"/>
+
+        <RelativeLayout
+            android:id="@+id/resolution_layout_1080p_wrap"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/resolution_layout_1080p"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:tag="4"
+                android:text="@string/fpv_resolution_1080p"
+                style="@style/params_content" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/resolution_layout_2k_wrap"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/resolution_layout_2k"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:tag="3"
+                android:text="@string/fpv_resolution_2k"
+                style="@style/params_content" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/resolution_layout_4k_wrap"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/resolution_layout_4k"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:tag="2"
+                android:text="@string/fpv_resolution_4k"
+                style="@style/params_content" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        android:background="#494C50" />
+
+    <LinearLayout
+        android:layout_width="@dimen/fpv_second_view_width_60dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/fpv_resolution_fps"
+            android:textColor="@color/color_ff7700"/>
+
+        <RelativeLayout
+            android:id="@+id/resolution_layout_24_wrap"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/resolution_layout_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:tag="1"
+                android:text="@string/fpv_resolution_24"
+                style="@style/params_content" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/resolution_layout_30_wrap"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/resolution_layout_30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:tag="2"
+                android:text="@string/fpv_resolution_30"
+                style="@style/params_content" />
+        </RelativeLayout>
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/resolution_layout_48"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:tag="3"-->
+                <!--android:text="@string/fpv_resolution_48"-->
+                <!--style="@style/params_content" />-->
+        <!--</RelativeLayout>-->
+
+        <RelativeLayout
+            android:id="@+id/resolution_layout_60_wrap"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/resolution_layout_60"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:tag="4"
+                android:text="@string/fpv_resolution_60"
+                style="@style/params_content" />
+        </RelativeLayout>
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/resolution_layout_120"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:tag="5"-->
+                <!--android:text="@string/fpv_resolution_120"-->
+                <!--style="@style/params_content" />-->
+        <!--</RelativeLayout>-->
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/resolution_layout_240"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:tag="6"-->
+                <!--android:text="@string/fpv_resolution_240"-->
+                <!--style="@style/params_content" />-->
+        <!--</RelativeLayout>-->
+    </LinearLayout>
+</LinearLayout>

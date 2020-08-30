@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingTop="23dp"
+    android:paddingBottom="23dp">
+
+    <LinearLayout
+        android:id="@+id/fragment_preview_control_top_back"
+        android:layout_width="58dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:gravity="center_horizontal|top">
+
+        <ImageView
+            android:id="@+id/control_back"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@mipmap/icon_mo_back" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_preview_control_top_fps_layout"
+        android:layout_width="58dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/fragment_preview_control_top_fps_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/fragment_preview_control_top_resolution_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_preview_control_top_count_down_layout"
+        android:layout_width="58dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/fragment_preview_control_countdown_image"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@mipmap/icon_count_down" />
+
+            <TextView
+                android:id="@+id/fragment_preview_control_countdown_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_preview_control_lapse_layout"
+        android:layout_width="58dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/fragment_preview_control_lapse_image"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@mipmap/icon_lapse_1" />
+
+            <TextView
+                android:id="@+id/fragment_preview_control_lapse_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_preview_control_slowmotion_layout"
+        android:layout_width="58dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/fragment_preview_control_slowmotion_image"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@mipmap/icon_slowmotion_head" />
+
+            <TextView
+                android:id="@+id/fragment_preview_control_slowmotion_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_preview_control_longexplore_layout"
+        android:layout_width="58dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/fragment_preview_control_longexplore_image"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@mipmap/icon_fpv_long_explore" />
+
+            <TextView
+                android:id="@+id/fragment_preview_control_longexplore_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_preview_beauty_view"
+        android:layout_width="58dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/fragment_preview_beauty_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerInParent="true"
+            android:background="@mipmap/icon_beauty_off" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_preview_control_scale_layout"
+        android:layout_width="58dp"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/fragment_preview_control_scale_image"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/icon_fpv_mode_ratio_normal" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_preview_control_top_setting_layout"
+        android:layout_width="58dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:gravity="center_horizontal|bottom">
+
+        <ImageView
+            android:id="@+id/fragment_preview_control_top_setting_image"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@mipmap/icon_fpv_setting" />
+    </LinearLayout>
+</LinearLayout>

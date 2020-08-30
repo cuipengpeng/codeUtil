@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_marginTop="23dp"
+    android:layout_marginBottom="23dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/fragment_preview_control_top_setting_layout"
+        android:layout_width="58dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:gravity="center_horizontal|top">
+
+        <ImageView
+            android:id="@+id/fragment_preview_control_top_setting_image"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@mipmap/icon_fpv_setting" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_preview_control_scale_layout"
+        android:layout_width="58dp"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/fragment_preview_control_scale_image"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/icon_fpv_mode_ratio_normal" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_preview_beauty_view"
+        android:layout_width="58dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/fragment_preview_beauty_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerInParent="true"
+            android:background="@mipmap/icon_beauty_off" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_preview_control_top_fps_layout"
+        android:layout_width="58dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/fragment_preview_control_top_fps_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/fragment_preview_control_top_resolution_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_preview_control_top_count_down_layout"
+        android:layout_width="58dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/fragment_preview_control_countdown_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:rotation="-90"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/fragment_preview_control_countdown_image"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@mipmap/icon_count_down" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_preview_control_lapse_layout"
+        android:layout_width="58dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <com.test.xcamera.view.VerticalTextView
+                android:id="@+id/fragment_preview_control_lapse_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:visibility="gone"
+                app:direction="downtoup" />
+
+            <ImageView
+                android:id="@+id/fragment_preview_control_lapse_image"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@mipmap/icon_lapse_1" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_preview_control_slowmotion_layout"
+        android:layout_width="58dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/fragment_preview_control_slowmotion_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:rotation="-90"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/fragment_preview_control_slowmotion_image"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@mipmap/icon_slowmotion_head" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_preview_control_longexplore_layout"
+        android:layout_width="58dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <com.test.xcamera.view.VerticalTextView
+                android:id="@+id/fragment_preview_control_longexplore_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:visibility="gone"
+                app:direction="downtoup" />
+
+            <ImageView
+                android:id="@+id/fragment_preview_control_longexplore_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/icon_fpv_long_explore" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_preview_control_top_back"
+        android:layout_width="58dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:gravity="center_horizontal|bottom">
+
+        <ImageView
+            android:id="@+id/control_back"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@mipmap/icon_mo_back" />
+    </LinearLayout>
+</LinearLayout>

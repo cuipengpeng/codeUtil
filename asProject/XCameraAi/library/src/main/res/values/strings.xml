@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">dk_player</string>
+    <string name="lock_tip">请先解锁屏幕！</string>
+    <string name="unlocked">已解锁</string>
+    <string name="locked">已锁定</string>
+    <string name="replay">重新播放</string>
+    <string name="net_error">网络不给力，请检查网络连接</string>
+    <string name="local_video_error">视频资源出现问题</string>
+</resources>

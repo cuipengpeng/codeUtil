@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <RelativeLayout
+        android:id="@+id/activity_mo_album_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/activity_mo_album_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:padding="@dimen/dp10"
+            android:src="@mipmap/icon_mo_album_back" />
+
+        <TextView
+            android:id="@+id/myAlbumSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            android:ellipsize="end"
+            android:maxEms="10"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="@string/select_camera_list_item"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp15"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/albumTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/cameraAlbum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/camera_album"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/dp15" />
+
+            <TextView
+                android:id="@+id/appAlbum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="@string/app_gallery"
+                android:textColor="#666666"
+                android:textSize="@dimen/dp15" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/activity_mo_album_edit_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp">
+
+            <ImageView
+                android:id="@+id/activity_mo_album_edit_image"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/icon_mo_album_edit" />
+
+            <TextView
+                android:id="@+id/activity_mo_album_edit_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/cancel"
+                android:textColor="@color/white"
+                android:visibility="invisible" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/photo_list_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#181818"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:id="@+id/downRl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/activity_camera_photo_list_download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="15dp"
+                android:src="@drawable/album_list_down_btn" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/likeRl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/activity_camera_photo_list_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="15dp"
+                android:src="@drawable/album_list_like_btn" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/deleteRl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/activity_camera_photo_list_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="15dp"
+                android:src="@drawable/album_list_delete_btn" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/activity_mo_album_media_view_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/photo_list_bottom_layout"
+        android:layout_below="@id/activity_mo_album_title_layout"
+        android:background="#000000">
+
+        <com.test.xcamera.album.SwipeRefreshView
+            android:id="@+id/activity_mo_album_media_refresh_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#000000">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/activity_mo_album_media_rc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.test.xcamera.album.SwipeRefreshView>
+
+        <RelativeLayout
+            android:id="@+id/albumNullLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@mipmap/album_null" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/album_list_null"
+                android:textColor="#666666"
+                android:textSize="@dimen/dp14" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

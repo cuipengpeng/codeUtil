@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_albumActivity_dragItem_itemView"
+    android:layout_width="wrap_content"
+    android:layout_height="60dp">
+    <com.editvideo.timelineEditor.NvsTimelineEditor
+        android:id="@+id/tle_myVideoEditDetailActivity_item_thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="49dp"/>
+
+</RelativeLayout>

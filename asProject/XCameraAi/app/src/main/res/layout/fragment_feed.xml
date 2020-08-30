@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#050505"
+    android:paddingBottom="60dp">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl_feedFragment_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_feedFragment_feed"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/transparent">
+
+        <ImageView
+            android:id="@+id/iv_feedFragment_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:src="@mipmap/btn_camera"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/tv_feedFragment_1ine"
+                android:layout_width="1dp"
+                android:layout_height="10dp"
+                android:layout_centerInParent="true"
+                android:background="#000"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_feedFragment_recommend"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_toLeftOf="@+id/tv_feedFragment_1ine"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="推荐 "
+                android:textColor="#ffffff"
+                android:textSize="18dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_feedFragment_activity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/tv_feedFragment_1ine"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="活动"
+                android:textColor="#a0a0a0"
+                android:textSize="18dp"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:src="@mipmap/btn_tip"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/ll_feedFragment_netwrokErrorView"
+        layout="@layout/network_error_view"
+        android:visibility="gone" />
+
+</RelativeLayout>

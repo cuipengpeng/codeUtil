@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#000"
+  >
+
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="match_parent"
+        android:background="#000"
+        android:layout_height="50dp">
+        <ImageView
+            android:id="@+id/left_iv_title"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/arrow_left"
+            android:padding="15dp"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_middle_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#b1b1b1"
+            android:textSize="15dp"
+            android:drawableRight="@mipmap/arrow_down"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            android:text="APP相册"
+            />
+
+        <TextView
+            android:id="@+id/right_tv_titlee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="右侧"
+            android:textColor="#b1b1b1"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:layout_centerVertical="true"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_marginRight="15dp"
+            android:visibility="gone"
+           />
+
+        <ImageView
+            android:id="@+id/right_iv_title"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/icon_morecheck"
+            android:padding="15dp"
+
+            />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recy"
+        android:layout_below="@+id/rl1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000"
+        />
+
+    <LinearLayout
+        android:id="@+id/lin1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#000"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+        <ImageView
+            android:id="@+id/iv_download"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:padding="15dp"
+            android:src="@mipmap/icon_down_n"
+            />
+        <ImageView
+            android:id="@+id/iv_like"
+            android:layout_width="0dp"
+            android:layout_gravity="center"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="15dp"
+            android:src="@mipmap/icon_like_n"
+            />
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="0dp"
+            android:layout_gravity="center"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="15dp"
+            android:src="@mipmap/icon_refuse_n"
+            />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ccc"
+        android:visibility="gone"></FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="@android:color/transparent">
+
+        <RelativeLayout
+            android:layout_width="280dp"
+            android:layout_height="280dp"
+            android:layout_centerInParent="true"
+            android:background="#fff">
+
+        <com.test.xcamera.widget.RingProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="250dp"
+            android:layout_centerInParent="true"
+            android:layout_height="250dp"
+            android:background="#fff"
+          />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

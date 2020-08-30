@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c050505"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/rl_selectMusicActivity_title"
+        layout="@layout/title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"></include>
+
+    <RelativeLayout
+        android:id="@+id/tool_bar_frame"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_below="@id/rl_selectMusicActivity_title"
+        android:paddingRight="@dimen/dp12">
+
+        <TextView
+            android:id="@+id/action_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:paddingLeft="16dp"
+            android:paddingRight="12dp"
+            android:text="@string/cancel"
+            android:textColor="#8C8C8C"
+            android:textSize="@dimen/sp12"
+
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/action_cancel">
+
+            <com.test.xcamera.phonealbum.widget.MusicSearchView
+                android:id="@+id/musicSearchView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="16dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_selectMusicActivity_musicList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/tool_bar_frame"
+        android:background="@color/c050505" />
+
+    <TextView
+        android:id="@+id/tv_selectMusicActivity_noMusic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:drawableTop="@mipmap/icon_music_no_data"
+        android:gravity="center"
+        android:text="没有找到音乐哦～"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:visibility="gone" />
+    <FrameLayout
+        android:id="@+id/mFrameMedia"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone" />
+</RelativeLayout>
+

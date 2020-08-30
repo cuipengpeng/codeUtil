@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_1"
+        android:layout_marginTop="85dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="正在激活中"
+        android:textSize="28dp"
+        android:textColor="@color/color_3f434a"
+        android:layout_centerHorizontal="true"
+        />
+    <TextView
+    android:id="@+id/tv_2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/tv_1"
+    android:layout_marginTop="27dp"
+    android:textSize="@dimen/dp15"
+    android:textColor="@color/color_3f434a"
+    android:text="向服务器注册设备信息"
+    android:layout_marginLeft="38dp"/>
+    <ImageView
+        android:id="@+id/iv_web"
+        android:layout_width="@dimen/dp15"
+        android:layout_height="@dimen/dp15"
+        android:layout_below="@+id/tv_1"
+        android:layout_marginTop="27dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="38dp"
+        android:src="@mipmap/icon_check_press"/>
+    <TextView
+        android:id="@+id/tv_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_2"
+        android:layout_marginTop="@dimen/dp15"
+        android:textSize="@dimen/dp15"
+        android:textColor="@color/color_3f434a"
+        android:text="向设备发送激活信息"
+        android:layout_marginLeft="38dp"/>
+    <ImageView
+        android:id="@+id/iv_hard"
+        android:layout_width="@dimen/dp15"
+        android:layout_height="@dimen/dp15"
+        android:layout_below="@+id/tv_2"
+        android:layout_marginTop="@dimen/dp15"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="38dp"
+        android:src="@mipmap/icon_check_press"/>
+    <com.test.xcamera.widget.RingProgressBar
+        android:id="@+id/progress"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"
+        />
+
+    <TextView
+        android:layout_below="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/dp15"
+        android:layout_centerHorizontal="true"
+        android:text="该过程正在激活，请保持设备连接"
+        android:textSize="@dimen/dp15"
+        android:textColor="@color/color_3f434a"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="110dp"
+    android:layout_height="40dp">
+
+    <RelativeLayout
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true">
+        <TextView
+            android:id="@+id/captionFontAssetCover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ellipsize="end"
+            android:lines="1"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp12"
+            android:text="@string/app_name"
+            android:background="@drawable/shape_border_caption_bg"/>
+        <View
+            android:id="@+id/selectedItem"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_border_animatesticker_selected"/>
+        <View
+            android:id="@+id/downloadShadow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></View>
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/downloadAssetButton"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"/>
+    <com.test.xcamera.view.CircleProgressBar
+        android:id="@+id/circleProgressBar"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"/>
+</RelativeLayout>

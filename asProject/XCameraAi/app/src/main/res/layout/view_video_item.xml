@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.test.xcamera.zoom.library.uk.co.senab.photoview.PhotoView
+            android:id="@+id/cover_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="50dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp46"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="3dp">
+
+            <ImageView
+                android:id="@+id/iv_play_music"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp9"
+                android:src="@mipmap/icon_music" />
+
+            <TextView
+                android:id="@+id/tv_music_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="13dp"
+                android:layout_toLeftOf="@+id/iv_template_bgm"
+                android:layout_toRightOf="@+id/iv_play_music"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dp13"
+                tools:text="一个青年的独白让我们加油吧" />
+
+            <!--app:marqueeAnimDuration="2000"-->
+            <!--app:smvTextColor="@color/white"-->
+            <!--app:smvTextEllipsize="end"-->
+            <!--app:smvTextGravity="left"-->
+            <!--android:inAnimation="@anim/in_right"-->
+            <!--android:outAnimation="@anim/out_left"-->
+            <!--app:smvTextSingleLine="true"-->
+            <!--app:smvTextSize="13sp"-->
+            <ImageView
+                android:id="@+id/iv_template_bgm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/icon_tem_music" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dp">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="74dp"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dp17"
+                tools:text="刘德华  " />
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_name"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="74dp"
+                android:gravity="left"
+                android:maxLines="3"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dp15"
+                tools:text="Have a  nice  weeken Have a  nice  weekenHave a  nice  weeken Have a  nice  weekenHave a  nice  weeken Have a  nice  weeken" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="130dp"
+            android:layout_marginRight="11dp"
+            android:drawableTop="@mipmap/icon_share_num"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/tv_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="193dp"
+            android:layout_marginRight="11dp"
+            android:drawableTop="@mipmap/icon_fees_like"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="13dp" />
+    </RelativeLayout>
+</FrameLayout>

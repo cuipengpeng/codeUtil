@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:gravity="center_horizontal">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.test.xcamera.view.VerticalTextView
+            android:id="@+id/dy_filter_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="6dp"
+            android:textColor="#E7E7E7"
+            android:text="自然"
+            android:textSize="10dp"
+            app:direction="uptodown"/>
+
+        <RelativeLayout
+            android:id="@+id/dy_filter_item_select_bg"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:rotation="90"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/dy_filter_selector">
+
+            <ImageView
+                android:id="@+id/dy_filter_item_bg"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true" />
+
+            <ImageView
+                android:id="@+id/dy_filter_item_state_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="@mipmap/icon_dy_props_download" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

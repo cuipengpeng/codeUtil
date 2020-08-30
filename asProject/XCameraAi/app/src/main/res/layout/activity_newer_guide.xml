@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#050505">
+
+  <pl.droidsonroids.gif.GifImageView
+      android:id="@+id/iv_newerGuideActivity_img"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent" />
+
+  <TextView
+      android:id="@+id/tv_newerGuideActivity_skip"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      android:layout_alignParentRight="true"
+      android:layout_marginTop="10dp"
+      android:layout_marginRight="10dp"
+      android:padding="15dp"
+      android:textColor="#ffffff"
+      android:textSize="16sp"
+      android:text="跳过"/>
+
+  <TextView
+      android:id="@+id/tv_newerGuideActivity_skipBottom"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentLeft="true"
+      android:layout_marginBottom="10dp"
+      android:layout_marginLeft="10dp"
+      android:padding="15dp"
+      android:textColor="#ffffff"
+      android:textSize="16sp"
+      android:text="跳过"/>
+
+</RelativeLayout>

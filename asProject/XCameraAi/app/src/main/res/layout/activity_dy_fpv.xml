@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:kongqw="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#010101"
+    android:keepScreenOn="true">
+
+    <com.test.xcamera.dymode.view.AutoFitTextureView
+        android:id="@+id/dy_fpv_frame_surface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <com.test.xcamera.view.AutoTrackingRectViewFix
+        android:id="@+id/dy_fpv_track_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"/>
+
+    <!--拍摄控制区域-->
+    <com.test.xcamera.dymode.view.DyFPVShotView
+        android:id="@+id/dy_fpv_shot_control_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+
+    <com.test.xcamera.view.MoFPVRockerView
+        android:id="@+id/dy_fpv_rocker_view"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="50dp"
+        kongqw:control_rocker="@mipmap/rocker_view_point_default" />
+
+    <!--弹框功能  背景  防止下层被点击-->
+    <View
+        android:id="@+id/dlg_layer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/fpv_dlg"
+        layout="@layout/dlg_normal"
+        android:visibility="gone" />
+    <!--弹框功能结束-->
+</RelativeLayout>

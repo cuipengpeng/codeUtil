@@ -1,0 +1,87 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 28
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        compileOptions {
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+//        debug {}
+//        staging {
+//            //指定匹配失败匹配其他变体
+//            matchingFallbacks = ['debug',  'release']
+//        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+        maven { url 'https://dl.bintray.com/aweme-open-sdk-team/public' }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "com.android.support:appcompat-v7:26.1.0"
+    implementation "tv.danmaku.ijk.media:ijkplayer-java:0.8.8"
+    implementation 'com.danikula:videocache:2.7.0'
+    implementation 'com.jakewharton:butterknife:9.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.0.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.2.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.0.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.0.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+    implementation 'io.reactivex:rxjava:1.1.0'
+    implementation 'io.reactivex:rxandroid:1.1.0'
+//    implementation project(path: ':UMLibrary')
+    implementation 'com.bytedance.ies.ugc.aweme:open-sdk:0.0.1.5'
+    compileOnly 'androidx.annotation:annotation:1.1.0'
+
+
+    //友盟相关
+    api 'com.umeng.umsdk:common:9.1.0'
+    api 'com.umeng.umsdk:utdid:1.5.2'
+    api 'com.umeng.umsdk:asms:1.1.3'
+    api 'com.umeng.umsdk:crash:0.0.4'
+    //友盟统计 oaid采集库
+    api  'com.umeng.umsdk:oaid_lenovo:1.0.0' // (可选)
+    api  'com.umeng.umsdk:oaid_mi:1.0.0' // (可选)
+    api  'com.umeng.umsdk:oaid_oppo:1.0.4' // (可选)
+    api  'com.umeng.umsdk:oaid_vivo:1.0.0.1' // (可选)
+    //友盟push相关依赖(必须)
+    api 'com.umeng.umsdk:push:6.1.0'
+    api 'com.umeng.umsdk:alicloud-httpdns:1.2.5'
+    api 'com.umeng.umsdk:alicloud-utils:1.1.5'
+    api 'com.umeng.umsdk:alicloud_beacon:1.0.1'
+    api 'com.umeng.umsdk:agoo-accs:3.3.8.8-open-fix2'
+    api 'com.umeng.umsdk:agoo_networksdk:3.5.5'
+    api 'com.umeng.umsdk:agoo_tlog:3.0.0.17'
+    api 'com.umeng.umsdk:agoo_tnet4android:3.1.14.9'
+    //友盟分享
+    api  'com.umeng.umsdk:share-core:7.0.2'
+    api  'com.umeng.umsdk:share-board:7.0.2'
+//    api  'com.umeng.umsdk:share-qq:7.0.2'
+//    api  'com.umeng.umsdk:share-wx:7.0.2'
+//    api  'com.umeng.umsdk:share-sina:7.0.2'
+//    api  'com.umeng.umsdk:share-alipay:7.0.2'
+//    api  'com.umeng.umsdk:share-dingding:7.0.2'
+}

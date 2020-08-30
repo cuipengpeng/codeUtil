@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.test.xcamera.view.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemRootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    tools:background="@mipmap/zhanweitu">
+
+    <ImageView
+        android:id="@+id/itemBg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:scaleType="centerCrop" />
+
+    <View
+        android:id="@+id/choose_cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/photo_list_bg" />
+
+    <ImageView
+        android:id="@+id/alreadySelecte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="3dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/picture_selected" />
+
+    <TextView
+        android:id="@+id/videoTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="4dp"
+        android:textColor="#fff"
+        android:textSize="12dp" />
+
+    <ImageView
+        android:id="@+id/defaultSelecte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="3dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/picture_no_selected"
+        android:visibility="gone" />
+
+
+</com.test.xcamera.view.SquareLayout>

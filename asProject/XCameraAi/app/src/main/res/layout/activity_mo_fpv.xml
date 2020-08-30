@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:kongqw="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fpv_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#101010">
+
+    <!--预览播放器-->
+    <com.test.xcamera.glview.PreviewGLSurfaceView
+        android:id="@+id/activity_mo_fpv_texture_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--自动跟踪框-->
+    <com.test.xcamera.view.AutoTrackingRectViewFix
+        android:id="@+id/activity_mo_fpv_track_rect_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:background="#00FFFFFF" />
+
+    <!--拍摄基础设置-->
+    <com.test.xcamera.view.MoFPVShotSettingView
+        android:id="@+id/activity_mo_fpv_shot_setting_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--拍摄控制区域-->
+    <com.test.xcamera.view.MoFPVShotControlView
+        android:id="@+id/activity_mo_fpv_shot_control_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true" />
+
+    <com.test.xcamera.view.MoFPVRockerView
+        android:id="@+id/rockerView_center"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="85dp"
+        android:layout_marginBottom="20dp"
+        kongqw:control_rocker="@mipmap/rocker_view_point_default" />
+
+    <com.test.xcamera.profession.ProfessionView
+        android:id="@+id/activity_mo_fpv_setting_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:visibility="gone" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/fragment_preview_count_down_animation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+    <!--弹框背景  防止下层被点击-->
+    <View
+        android:id="@+id/dlg_layer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/fpv_dlg"
+        layout="@layout/dlg_normal"
+        android:visibility="gone" />
+</RelativeLayout>

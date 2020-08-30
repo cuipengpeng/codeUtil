@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_181818">
+    <LinearLayout
+        android:id="@+id/rl_dragItem_itemView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        >
+
+        <RelativeLayout
+            android:id="@+id/filterRl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/iv_myVideoEditDetailActivity_item_img"
+                android:layout_width="@dimen/videoEditDetail_feature_imgHeight_24dp"
+                android:layout_height="@dimen/videoEditDetail_feature_imgHeight_24dp"
+                android:layout_centerInParent="true"
+                android:scaleType="fitXY"/>
+
+            <View
+                android:id="@+id/viewBg"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/beauty_item_bg"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_myVideoEditDetailActivity_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/filterRl"
+            android:gravity="center"
+            android:layout_marginTop="4dp"
+            android:text=""
+            android:textColor="#ffffff"
+            android:textSize="12dp" />
+
+
+        <ImageView
+            android:id="@+id/iv_myVideoEditDetailActivity_item_changedPoint"
+            android:layout_width="4dp"
+            android:layout_height="4dp"
+            android:layout_below="@id/tv_myVideoEditDetailActivity_item_name"
+            android:layout_marginTop="4dp"
+            android:layout_centerHorizontal="true"
+            android:background="#ff7700"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+</RelativeLayout>

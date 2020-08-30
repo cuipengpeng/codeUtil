@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layerType="software">
+        <TextView
+            android:id="@+id/tv_subtitle_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:padding="8dp"
+            android:textColor="#666666"
+            android:background="#262626"
+            android:textSize="9sp"
+            android:text="建议完成分段剪辑后添加字幕， 修剪分段时长、更改转场效果等 均可能导致已有字幕位置错误。"
+            />
+        <com.test.xcamera.phonealbum.widget.subtitle.TimelineLayout
+            android:id="@+id/timeline_layout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            >
+
+            <com.test.xcamera.phonealbum.widget.subtitle.HighlightMarkView
+                android:id="@+id/mHighlightMarkView"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_launcher_background" />
+
+            <com.test.xcamera.phonealbum.widget.subtitle.DragView
+                android:id="@+id/drag_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible" />
+
+            <View
+                android:id="@+id/anchor_view"
+                android:layout_width="1dp"
+                android:layout_height="32dp"
+                android:visibility="invisible" />
+        </com.test.xcamera.phonealbum.widget.subtitle.TimelineLayout>
+
+    </FrameLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        >
+        <com.test.xcamera.phonealbum.widget.ButtonUpDown
+            android:id="@+id/tv_subtitle_add"
+            android:layout_width="96dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="长按加字幕"
+            android:textColor="#ffffff"
+            android:background="@drawable/circle_corner_green_bg_normal_2dp"
+            android:textSize="13sp" />
+        <ImageView
+            android:id="@+id/iv_subtitle_del"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/tv_subtitle_add"
+            android:layout_marginLeft="20dp"
+            android:padding="5dp"
+            android:src="@mipmap/icon_video_edit_sutitle_del"/>
+    </RelativeLayout>
+
+</LinearLayout>

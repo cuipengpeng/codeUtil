@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/advertisingTitleRl"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#EDEDED">
+
+        <ImageView
+            android:id="@+id/closeAdvertisingImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp15"
+            android:src="@mipmap/close_advertising" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp12" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/advertisingTitleRl">
+
+        <WebView
+            android:id="@+id/communityWebView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.test.xcamera.widget.ChrysanthemumView
+            android:id="@+id/mChrysanthemumView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+    </RelativeLayout>
+</RelativeLayout>

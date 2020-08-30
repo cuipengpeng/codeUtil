@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:background="#77000000"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/dy_fpv_speed_super_slow_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/dy_fpv_record_speed_selector">
+
+            <TextView
+                android:id="@+id/dy_fpv_speed_super_slow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:rotation="90"
+                android:text="@string/dy_speed_super_slow"
+                android:textColor="@color/white"
+                android:textSize="12dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/dy_fpv_speed_slow_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/dy_fpv_record_speed_selector">
+
+            <TextView
+                android:id="@+id/dy_fpv_speed_slow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:rotation="90"
+                android:text="@string/dy_speed_slow"
+                android:textColor="@color/white"
+                android:textSize="12dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/dy_fpv_speed_normal_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/dy_fpv_record_speed_selector">
+
+            <TextView
+                android:id="@+id/dy_fpv_speed_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:rotation="90"
+                android:text="@string/dy_speed_normal"
+                android:textColor="@color/white"
+                android:textSize="12dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/dy_fpv_speed_fast_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/dy_fpv_record_speed_selector">
+
+            <TextView
+                android:id="@+id/dy_fpv_speed_fast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:rotation="90"
+                android:text="@string/dy_speed_fast"
+                android:textColor="@color/white"
+                android:textSize="12dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/dy_fpv_speed_super_fast_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/dy_fpv_record_speed_selector">
+
+            <TextView
+                android:id="@+id/dy_fpv_speed_super_fast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:rotation="90"
+                android:text="@string/dy_speed_super_fast"
+                android:textColor="@color/white"
+                android:textSize="12dp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/dy_fpv_speed_empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"/>
+</LinearLayout>

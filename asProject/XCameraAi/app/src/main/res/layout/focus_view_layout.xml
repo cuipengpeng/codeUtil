@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/focus_parent_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/focus_view_rect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@mipmap/icon_mo_focus" />
+
+        <com.test.xcamera.view.VerticalSeekBar2
+            android:id="@+id/focus_view_seekbar"
+            android:layout_width="30dp"
+            android:layout_height="130dp"
+            android:layout_marginLeft="6dp" />
+
+        <!--<com.meetvr.aicamera.view.VerticalSeekBar-->
+            <!--android:layout_marginLeft="6dp"-->
+            <!--android:id="@+id/focus_view_seekbar"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="130dp"-->
+            <!--android:backgroundTint="@color/focus_bg"-->
+            <!--android:focusableInTouchMode="false"-->
+            <!--android:max="6"-->
+            <!--android:maxHeight="1.5dp"-->
+            <!--android:progressBackgroundTint="@color/focus_bg"-->
+            <!--android:progressDrawable="@color/focus_bg"-->
+            <!--android:progressTint="@color/focus_bg"-->
+            <!--android:secondaryProgressTint="@color/focus_bg"-->
+            <!--android:theme="@style/AppTheme"-->
+            <!--android:thumb="@mipmap/icon_sun"-->
+            <!--android:thumbTint="@color/focus_bg"-->
+            <!--android:visibility="gone"/>-->
+    </LinearLayout>
+</RelativeLayout>

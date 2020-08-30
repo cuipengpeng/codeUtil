@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_privacy_bg">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/welcome_app"
+        android:textColor="@color/appThemeColor"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/titlePrivacy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="@string/privacy_title"
+        android:textColor="#2D2D2D"
+        android:textSize="@dimen/dp12" />
+
+    <ScrollView
+        android:id="@+id/privacyContent"
+        android:layout_width="wrap_content"
+        android:layout_height="270dp"
+        android:layout_below="@+id/titlePrivacy"
+        android:layout_marginTop="@dimen/dp20"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp20"
+                android:layout_marginRight="@dimen/dp20"
+                android:lineSpacingExtra="3dp"
+                android:text="@string/dislog_content" />
+
+            <TextView
+                android:id="@+id/privacyTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/privacyContent"
+                android:layout_marginLeft="@dimen/dp20"
+                android:layout_marginRight="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp10"
+                android:autoLink="all" />
+        </LinearLayout>
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/tongYi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/privacyContent"
+        android:layout_marginLeft="@dimen/dp_40"
+        android:layout_marginRight="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_40"
+        android:background="@color/appThemeColor"
+        android:text="@string/tongyi"
+        android:textColor="@color/white"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/buTongYi"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/tongYi"
+        android:layout_marginTop="@dimen/dp10"
+        android:gravity="center"
+        android:text="@string/butongyi"
+        android:textSize="14dp" />
+
+</RelativeLayout>

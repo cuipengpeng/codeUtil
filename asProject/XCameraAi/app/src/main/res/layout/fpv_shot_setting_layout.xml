@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fpv_shot_setting_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true">
+
+    <include
+        android:id="@+id/fpv_shot_setting_top_land_view"
+        layout="@layout/fpv_shot_setting_top_land_layout"
+        android:animateLayoutChanges="true" />
+
+    <include
+        android:id="@+id/fpv_shot_setting_top_portrait_view"
+        layout="@layout/fpv_shot_setting_top_portrait_layout"
+        android:animateLayoutChanges="true"
+        android:visibility="invisible" />
+
+    <LinearLayout
+        android:id="@+id/fragment_preview_control_battery_sd_layout"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="18dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/fragment_preview_control_battery_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="6dp"
+            android:orientation="vertical">
+
+            <!--<ImageView-->
+            <!--android:id="@+id/fragment_preview_control_battery"-->
+            <!--android:layout_width="24dp"-->
+            <!--android:layout_height="24dp"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:background="@mipmap/icon_battery" />-->
+            <com.test.xcamera.view.BatteryView
+                android:id="@+id/fragment_preview_control_battery"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:id="@+id/fragment_preview_control_battery_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="0%"
+                android:textColor="@color/white"
+                android:textSize="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fragment_preview_control_sd_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/fragment_preview_control_sd_card"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/icon_fpv_mode_sdcard" />
+
+            <TextView
+                android:id="@+id/fragment_preview_control_sd_card_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="0M"
+                android:textColor="@color/white"
+                android:textSize="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fragment_preview_control_explore_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/fragment_preview_control_explore_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@mipmap/icon_fpv_long_explore" />
+
+            <TextView
+                android:id="@+id/fragment_preview_control_explore_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="10dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/todo_rect_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="20dp"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <com.test.xcamera.view.PreviewCountDownView
+        android:id="@+id/fragment_preview_control_countdown_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <com.test.xcamera.view.PreviewResolutionView
+        android:id="@+id/fragment_preview_control_resolution_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <com.test.xcamera.view.PreviewBeautyView
+        android:id="@+id/fragment_preview_control_beauty_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <com.test.xcamera.view.PreviewScaleView
+        android:id="@+id/fragment_preview_scale_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <com.test.xcamera.view.PreviewLapseView
+        android:id="@+id/fragment_preview_lapse_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <com.test.xcamera.view.PreviewSlowmotionView
+        android:id="@+id/fragment_preview_slowmotion_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <com.test.xcamera.view.PreviewLongExploreView
+        android:id="@+id/fragment_preview_longexplore_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+</RelativeLayout>

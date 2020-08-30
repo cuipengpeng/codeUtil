@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<list_20200111>
+	<file name="/app/sd/DCIM/100MOCAM/NORM0003.MP4" create_time="1578723969460" close_time="1578723989588">
+		<trace create_time="1578723969460" start_time="1578723969460" end_time="1578723973122" rec_mode="6"/>
+		<trace create_time="1578723969460" start_time="0" end_time="1578723989572" rec_mode="6"/>
+		<label create_time="1578723969460" start_time="1578723969460" end_time="1578723972457" rec_mode="6">
+			<tag emotion="17895697" gender_class="257" ori_face="257" object_detect="65793" face_num="8" scene_class="95" object_class="708">
+			<face_forward_time>1254121221</face_forward_time>
+			<face_forward_time>1254121221</face_forward_time>
+			<face_forward_time>1254121221</face_forward_time>
+			<face_happy_time>34343434</face_happy_time>
+			<face_happy_time>34343434</face_happy_time>
+			<face_happy_time>34343434</face_happy_time>
+			</tag>
+		</label>
+		<label create_time="1578723969460" start_time="1578723972490" end_time="1578723975523" rec_mode="6">
+			<tag emotion="17895697" gender_class="257" ori_face="257" object_detect="65793" face_num="8" scene_class="95" object_class="708"/>
+		</label>
+		<label create_time="1578723969460" start_time="1578723975557" end_time="1578723978590" rec_mode="6">
+			<tag emotion="17895697" gender_class="257" ori_face="257" object_detect="65793" face_num="8" scene_class="95" object_class="708"/>
+		</label>
+		<label create_time="1578723969460" start_time="1578723978623" end_time="1578723981657" rec_mode="6">
+			<tag emotion="17895697" gender_class="257" ori_face="257" object_detect="65793" face_num="8" scene_class="95" object_class="708"/>
+		</label>
+		<label create_time="1578723969460" start_time="1578723981690" end_time="1578723984723" rec_mode="6">
+			<tag emotion="17895697" gender_class="257" ori_face="257" object_detect="65793" face_num="8" scene_class="95" object_class="708"/>
+		</label>
+		<label create_time="1578723969460" start_time="1578723984757" end_time="1578723987790" rec_mode="6">
+			<tag emotion="17895697" gender_class="257" ori_face="257" object_detect="65793" face_num="8" scene_class="95" object_class="708"/>
+		</label>
+		<label create_time="1578723969460" start_time="1578723987823" end_time="1578723989588" rec_mode="6">
+			<tag emotion="17895697" gender_class="257" ori_face="257" object_detect="65793" face_num="8" scene_class="116" object_class="708"/>
+		</label>
+		<label create_time="1578723969460" start_time="1578723990890" end_time="1578723989588" rec_mode="6">
+			<tag emotion="17895697" gender_class="257" ori_face="257" object_detect="65793" face_num="8" scene_class="116" object_class="708"/>
+		</label>
+		<label create_time="1578723969460" start_time="1578723993957" end_time="1578723989588" rec_mode="6">
+			<tag emotion="17895697" gender_class="257" ori_face="257" object_detect="65793" face_num="8" scene_class="116" object_class="708"/>
+		</label>
+	</file>
+	
+	<file name="/app/sd/DCIM/100MOCAM/NORM0005.MP4" create_time="1578724963911" close_time="1578724980111">
+		<label create_time="1578724963911" start_time="1578724963911" end_time="1578724966933" rec_mode="0">
+			<tag emotion="17895697" gender_class="257" ori_face="257" object_detect="65793" face_num="8" scene_class="95" object_class="753"/>
+		</label>
+		<label create_time="1578724963911" start_time="1578724966966" end_time="1578724969999" rec_mode="0">
+			<tag emotion="17895697" gender_class="257" ori_face="257" object_detect="65793" face_num="8" scene_class="95" object_class="753"/>
+		</label>
+		<label create_time="1578724963911" start_time="1578724970033" end_time="1578724973066" rec_mode="0">
+			<tag emotion="17895697" gender_class="257" ori_face="257" object_detect="65793" face_num="8" scene_class="95" object_class="753"/>
+		</label>
+		<label create_time="1578724963911" start_time="1578724973099" end_time="1578724976133" rec_mode="0">
+			<tag emotion="17895697" gender_class="257" ori_face="257" object_detect="65793" face_num="8" scene_class="129" object_class="753"/>
+		</label>
+		<label create_time="1578724963911" start_time="1578724976166" end_time="1578724979199" rec_mode="0">
+			<tag emotion="17895697" gender_class="257" ori_face="257" object_detect="65793" face_num="8" scene_class="95" object_class="753"/>
+		</label>
+	</file>
+	
+	<file name="/app/sd/DCIM/100MOCAM/NORM0021.MP4" create_time="1578738268868" close_time="1578738278965">
+		<label create_time="1578738268868" start_time="1578738268868" end_time="1578738271812" rec_mode="0">
+			<tag emotion="18354465" gender_class="265" ori_face="769" object_detect="65793" face_num="12" scene_class="95" object_class="708"/>
+		</label>
+		<label create_time="1578738268868" start_time="1578738271846" end_time="1578738274879" rec_mode="0">
+			<tag emotion="18354465" gender_class="264" ori_face="769" object_detect="65793" face_num="8" scene_class="95" object_class="708"/>
+		</label>
+		<label create_time="1578738268868" start_time="1578738274912" end_time="1578738277946" rec_mode="0">
+			<tag emotion="18354465" gender_class="264" ori_face="257" object_detect="65793" face_num="8" scene_class="95" object_class="708"/>
+		</label>
+		<label create_time="1578738268868" start_time="1578738277979" end_time="1578738278965" rec_mode="0">
+			<tag emotion="18354465" gender_class="264" ori_face="257" object_detect="65793" face_num="8" scene_class="95" object_class="708"/>
+		</label>
+	</file>
+
+</list_20200111>

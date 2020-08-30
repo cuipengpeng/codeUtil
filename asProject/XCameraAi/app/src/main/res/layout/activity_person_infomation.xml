@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_171C28"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <include layout="@layout/title"></include>
+
+        <ImageView
+            android:id="@+id/iv_head"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@mipmap/icon_header" />
+
+        <TextView
+            android:id="@+id/tv_edit_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dp20"
+            android:text="@string/person_edit_header_image"
+            android:textColor="@color/color_9596A3"
+            android:textSize="@dimen/sp12" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp20"
+            android:layout_marginRight="@dimen/dp15"
+            android:background="@color/color_232731"></View>
+
+        <RelativeLayout
+            android:id="@+id/rl_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="14dp"
+                android:text="@string/person_edit_name"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/tv_name_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/tv_name"
+                android:paddingRight="16dp"
+                android:paddingLeft="15dp"
+                android:drawablePadding="@dimen/dp14"
+                android:text="@string/person_edit_name"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:drawableRight="@mipmap/icon_next_s"
+                android:gravity="right"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rl_introduce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp">
+
+            <TextView
+                android:id="@+id/tv_introduce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="14dp"
+                android:text="@string/person_edit_introduce"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/tv_introduce_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/tv_introduce"
+                android:paddingRight="16dp"
+                android:paddingLeft="15dp"
+                android:drawablePadding="@dimen/dp14"
+                android:text="你还没有添加个人描述，点击添加"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:drawableRight="@mipmap/icon_next_s"
+                android:gravity="right"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/liner_unlogin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp46"
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_marginLeft="67dp"
+        android:layout_marginRight="67dp"
+        android:layout_marginBottom="70dp"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bt_login_bg_normal"
+        android:clickable="false"
+        >
+        <ImageView
+            android:id="@+id/image_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_login_loading"
+            android:layout_marginRight="8dp"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/tv_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/person_get_out_login"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp16"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

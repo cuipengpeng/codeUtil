@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="120dp"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/preview_scale_layout_picture"
+        android:layout_width="@dimen/fpv_second_view_width_60dp"
+        android:layout_height="match_parent"
+        android:background="@color/color_181818"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:id="@+id/preview_scale_layout_normal_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/preview_scale_layout_normal_text"
+                    style="@style/params_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:rotation="-90"
+                    android:text="@string/fpv_scale_normal"
+                    android:textSize="10dp" />
+
+                <ImageView
+                    android:id="@+id/preview_scale_layout_normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/preview_scale_normal_selector"
+                    android:rotation="-90" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:id="@+id/preview_scale_layout_width_layout"
+                android:layout_width="@dimen/fpv_second_view_width_60dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/preview_scale_layout_width_text"
+                    style="@style/params_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:rotation="-90"
+                    android:text="@string/fpv_scale_width"
+                    android:textSize="10dp" />
+
+                <ImageView
+                    android:id="@+id/preview_scale_layout_width"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/preview_scale_width_selector"
+                    android:rotation="-90" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:rotation="-90"
+            android:text="@string/fpv_scale_hua_fu"
+            android:textColor="@color/color_ff7700" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/preview_scale_layout_scale"
+        android:layout_width="@dimen/fpv_second_view_width_60dp"
+        android:layout_height="match_parent"
+        android:background="@color/color_181818"
+        android:orientation="horizontal">
+
+        <!--<View-->
+            <!--android:layout_width="0.5dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginBottom="100dp"-->
+            <!--android:background="#494C50" />-->
+
+        <LinearLayout
+            android:layout_width="@dimen/fpv_second_view_width_60dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/preview_scale_layout_4_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/preview_scale_4_3_selector"
+                    android:rotation="-90"
+                    android:tag="2" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/preview_scale_layout_1_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/preview_scale_1_1_selector"
+                    android:rotation="-90"
+                    android:tag="3" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/preview_scale_layout_19_9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/preview_scale_19_9_selector"
+                    android:rotation="-90"
+                    android:tag="4" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/preview_scale_layout_16_9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/preview_scale_16_9_selector"
+                    android:rotation="-90"
+                    android:tag="1" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/params_title_12"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:rotation="-90"
+                android:text="@string/fpv_scale_bili" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    android:orientation="vertical"
+    android:background="@color/color_181818">
+    <ScrollView
+        android:id="@+id/usb_frame"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        >
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:id="@+id/usb_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:src="@mipmap/icon_delete_white" />
+            <ImageView
+                android:id="@+id/usb_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:padding="15dp"
+                android:src="@mipmap/icon_delete_white" />
+            <TextView
+                android:id="@+id/usb_text_tip"
+                android:paddingTop="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/color_e0e0e0"
+                android:textSize="12sp"
+                />
+        </FrameLayout>
+    </ScrollView>
+
+
+</LinearLayout>

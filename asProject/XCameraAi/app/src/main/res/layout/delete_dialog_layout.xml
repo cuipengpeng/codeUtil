@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/w_bg"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/buttonTextColor"
+        tools:text="请登录后激活"
+        android:visibility="gone"
+        android:layout_marginTop="32dp"
+        android:textSize="18dp" />
+    <TextView
+        android:id="@+id/dialog_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:textColor="@color/title_right_bg"
+        android:text="相机将与您的账号信息绑定"
+        android:textSize="14dp" />
+
+    <LinearLayout
+        android:layout_below="@+id/dialog_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dialogText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:lineSpacingExtra="3dp"
+            android:textColor="#303030"
+            android:textSize="14dp" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp20">
+
+            <Button
+                android:id="@+id/cancle_dialog"
+                android:layout_width="128dp"
+                android:layout_height="44dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:background="@drawable/bt_merge_cancel_bg"
+                android:text="@string/cancel"
+                android:textColor="#ff7700"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/sure_dialog"
+                android:layout_width="128dp"
+                android:layout_height="44dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="24dp"
+                android:background="@drawable/bt_merge_sure_bg"
+                android:text="@string/sure"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

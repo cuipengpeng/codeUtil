@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="controller_height">45.3dp</dimen>
+    <dimen name="controller_icon_padding">12dp</dimen>
+    <dimen name="controller_text_size">16sp</dimen>
+    <dimen name="default_spacing">10dp</dimen>
+    <dimen name="player_play_btn_size">50dp</dimen>
+    <dimen name="controller_time_text_size">11sp</dimen>
+</resources>

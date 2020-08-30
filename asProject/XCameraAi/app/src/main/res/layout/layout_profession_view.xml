@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <com.test.xcamera.profession.ProfessionSettingView
+        android:id="@+id/setting_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true" />
+
+    <com.test.xcamera.profession.ParamCustomView
+        android:id="@+id/custom_view"
+        android:layout_width="256dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:visibility="gone" />
+
+    <com.test.xcamera.profession.ParamAWBView
+        android:id="@+id/awb_view"
+        android:layout_width="175dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:visibility="gone" />
+</merge>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.test.xcamera.view.ConstraintLayoutEx xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mode_head_portrait"
+    android:layout_width="match_parent"
+    android:layout_height="54dp"
+    android:background="@color/black"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:padding="10dp"
+        android:src="@mipmap/icon_back_cross"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/custom_view"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/custom_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/back"
+        app:layout_constraintRight_toLeftOf="@+id/aspect_ratio"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/custom_view_32"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:visibility="gone"
+                tools:src="@mipmap/icon_fpv_long_explore" />
+
+            <ImageView
+                android:id="@+id/custom_view_24"
+                style="@style/icon_size_24"
+                tools:src="@mipmap/icon_fpv_long_explore" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/custom_view_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            tools:text="13秒" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/aspect_ratio"
+        style="@style/icon_size_32_padding"
+        android:src="@mipmap/icon_fpv_mode_ratio_normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/custom_view"
+        app:layout_constraintRight_toLeftOf="@+id/profession"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/profession"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:padding="10dp"
+        android:src="@mipmap/icon_fpv_mode_profession"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/aspect_ratio"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</com.test.xcamera.view.ConstraintLayoutEx>

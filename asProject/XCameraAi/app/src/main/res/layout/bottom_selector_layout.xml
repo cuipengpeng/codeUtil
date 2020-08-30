@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.test.xcamera.view.CameraScroller
+        android:id="@+id/camera_scroller"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp">
+
+        <TextView
+            android:id="@+id/bottom_selector_lapse"
+            style="@style/cameraScrollerBar1"
+            android:tag="0"
+            android:text="@string/shot_mode_slow_lapse" />
+
+        <TextView
+            android:id="@+id/bottom_selector_slow_motion"
+            style="@style/cameraScrollerBar1"
+            android:tag="1"
+            android:text="@string/shot_mode_slow_motion" />
+
+        <TextView
+            android:id="@+id/bottom_selector_video"
+            style="@style/cameraScrollerBar1"
+            android:tag="2"
+            android:text="@string/shot_mode_video" />
+
+        <TextView
+            android:id="@+id/bottom_selector_story"
+            style="@style/cameraScrollerBar1"
+            android:tag="3"
+            android:text="@string/shot_mode_story" />
+
+        <TextView
+            android:id="@+id/bottom_selector_photo"
+            style="@style/cameraScrollerBar1"
+            android:tag="4"
+            android:text="@string/shot_mode_photo" />
+
+        <TextView
+            android:id="@+id/bottom_selector_long_explore"
+            style="@style/cameraScrollerBar1"
+            android:tag="5"
+            android:text="@string/shot_mode_long_explore" />
+    </com.test.xcamera.view.CameraScroller>
+</LinearLayout>

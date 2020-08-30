@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/itemRootLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:id="@+id/filterRl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+
+        <ImageView
+            android:id="@+id/filterIm"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <View
+            android:id="@+id/viewBg"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/beauty_item_bg"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <com.test.xcamera.view.VerticalTextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="7dp"
+        android:layout_toRightOf="@+id/filterRl"
+        android:gravity="center"
+        android:padding="3dp"
+        android:textColor="#808080"
+        android:textSize="12sp"
+        app:direction="downtoup" />
+
+    <ImageView
+        android:id="@+id/circle"
+        android:visibility="invisible"
+        android:layout_marginLeft="5dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/name"
+        android:layout_width="3dp"
+        android:layout_height="3dp"
+        android:background="@drawable/circle_bg" />
+</RelativeLayout>

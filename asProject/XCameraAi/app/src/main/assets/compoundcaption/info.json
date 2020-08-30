@@ -1,0 +1,176 @@
+{
+  "fxInfoList": [
+    {
+      "name_Zh": "地点标题",
+      "name": "Site title",
+      "fxFileName": "1FEE0AEF-3151-4ABF-BA68-3D35CA038F74.1.compoundcaption",
+      "fxPackageId": "1FEE0AEF-3151-4ABF-BA68-3D35CA038F74",
+      "fxLicFileName": "1FEE0AEF-3151-4ABF-BA68-3D35CA038F74.lic",
+      "imageName": "1FEE0AEF-3151-4ABF-BA68-3D35CA038F74.png",
+      "fitRatio": "31"
+    },
+    {
+      "name_Zh": "美好的一天",
+      "name": "Wonderful Day",
+      "fxFileName": "2C02D16E-CECC-4A36-BFDE-F107F2C527AC.1.compoundcaption",
+      "fxPackageId": "2C02D16E-CECC-4A36-BFDE-F107F2C527AC",
+      "fxLicFileName": "2C02D16E-CECC-4A36-BFDE-F107F2C527AC.lic",
+      "imageName": "2C02D16E-CECC-4A36-BFDE-F107F2C527AC.png",
+      "fitRatio": "31"
+    },
+    {
+      "name_Zh": "双竖线",
+      "name": "Four character title",
+      "fxFileName": "3B012344-C2FE-4F75-A6EC-D525097CC543.1.compoundcaption",
+      "fxPackageId": "3B012344-C2FE-4F75-A6EC-D525097CC543",
+      "fxLicFileName": "3B012344-C2FE-4F75-A6EC-D525097CC543.lic",
+      "imageName": "3B012344-C2FE-4F75-A6EC-D525097CC543.png",
+      "fitRatio": "31"
+    },
+    {
+      "name_Zh": "成分列表",
+      "name": "BeiJing.HaiDan",
+      "fxFileName": "4A96729C-37CC-4751-8166-A01613DF4DCB.1.compoundcaption",
+      "fxPackageId": "4A96729C-37CC-4751-8166-A01613DF4DCB",
+      "fxLicFileName": "4A96729C-37CC-4751-8166-A01613DF4DCB.lic",
+      "imageName": "4A96729C-37CC-4751-8166-A01613DF4DCB.png",
+      "fitRatio": "31"
+    },
+    {
+      "name_Zh": "比赛",
+      "name": "Film subtitles",
+      "fxFileName": "5F812781-29BF-4559-A6AE-C78110629DFC.2.compoundcaption",
+      "fxPackageId": "5F812781-29BF-4559-A6AE-C78110629DFC",
+      "fxLicFileName": "5F812781-29BF-4559-A6AE-C78110629DFC.lic",
+      "imageName": "5F812781-29BF-4559-A6AE-C78110629DFC.png",
+      "fitRatio": "31"
+    },
+    {
+      "name_Zh": "三行情书",
+      "name": "Three line love letter",
+      "fxFileName": "7B9B22BD-8C21-4AE4-8DDC-C52D4FD8D38F.3.compoundcaption",
+      "fxPackageId": "7B9B22BD-8C21-4AE4-8DDC-C52D4FD8D38F",
+      "fxLicFileName": "7B9B22BD-8C21-4AE4-8DDC-C52D4FD8D38F.lic",
+      "imageName": "7B9B22BD-8C21-4AE4-8DDC-C52D4FD8D38F.png",
+      "fitRatio": "31"
+    },
+    {
+      "name_Zh": "旅行目的地",
+      "name": "HOKKAIDO IN SUMMER",
+      "fxFileName": "17AA4885-409C-4184-9209-28A91224BEF6.3.compoundcaption",
+      "fxPackageId": "17AA4885-409C-4184-9209-28A91224BEF6",
+      "fxLicFileName": "17AA4885-409C-4184-9209-28A91224BEF6.lic",
+      "imageName": "17AA4885-409C-4184-9209-28A91224BEF6.png",
+      "fitRatio": "31"
+    },
+    {
+      "name_Zh": "记录美好生活",
+      "name": "Record A Good Life",
+      "fxFileName": "65B2A82A-F990-458D-94CB-53AA351D015B.3.compoundcaption",
+      "fxPackageId": "65B2A82A-F990-458D-94CB-53AA351D015B",
+      "fxLicFileName": "65B2A82A-F990-458D-94CB-53AA351D015B.lic",
+      "imageName": "65B2A82A-F990-458D-94CB-53AA351D015B.png",
+      "fitRatio": "31"
+    },
+    {
+      "name_Zh": "小满",
+      "name": "GRAINBUDS",
+      "fxFileName": "89CEC2E1-8ED4-4451-A96B-0A4440DBC7EB.3.compoundcaption",
+      "fxPackageId": "89CEC2E1-8ED4-4451-A96B-0A4440DBC7EB",
+      "fxLicFileName": "89CEC2E1-8ED4-4451-A96B-0A4440DBC7EB.lic",
+      "imageName": "89CEC2E1-8ED4-4451-A96B-0A4440DBC7EB.png",
+      "fitRatio": "31"
+    },
+    {
+      "name_Zh": "欢迎来访",
+      "name": "Visit Us",
+      "fxFileName": "543DD8FF-C00A-4627-B7C7-50E98D219235.18.compoundcaption",
+      "fxPackageId": "543DD8FF-C00A-4627-B7C7-50E98D219235",
+      "fxLicFileName": "543DD8FF-C00A-4627-B7C7-50E98D219235.lic",
+      "imageName": "543DD8FF-C00A-4627-B7C7-50E98D219235.png",
+      "fitRatio": "31"
+    },
+    {
+      "name_Zh": "乡间野趣",
+      "name": "CHARM OF NATURE",
+      "fxFileName": "922AF7C4-744D-4150-BD18-E02F42480041.1.compoundcaption",
+      "fxPackageId": "922AF7C4-744D-4150-BD18-E02F42480041",
+      "fxLicFileName": "922AF7C4-744D-4150-BD18-E02F42480041.lic",
+      "imageName": "922AF7C4-744D-4150-BD18-E02F42480041.png",
+      "fitRatio": "31"
+    },
+    {
+      "name_Zh": "周末露营",
+      "name": "CHARM OF NATURE",
+      "fxFileName": "C9E5B1AD-8D6B-4329-87E5-810A4175952C.1.compoundcaption",
+      "fxPackageId": "C9E5B1AD-8D6B-4329-87E5-810A4175952C",
+      "fxLicFileName": "C9E5B1AD-8D6B-4329-87E5-810A4175952C.lic",
+      "imageName": "C9E5B1AD-8D6B-4329-87E5-810A4175952C.png",
+      "fitRatio": "31"
+    },
+    {
+      "name_Zh": "旅行定位",
+      "name": "On the journey",
+      "fxFileName": "E42A4179-B6D0-439F-A314-12D0EA0F57E2.1.compoundcaption",
+      "fxPackageId": "E42A4179-B6D0-439F-A314-12D0EA0F57E2",
+      "fxLicFileName": "E42A4179-B6D0-439F-A314-12D0EA0F57E2.lic",
+      "imageName": "E42A4179-B6D0-439F-A314-12D0EA0F57E2.png",
+      "fitRatio": "31"
+    },
+    {
+      "name_Zh": "四月小记",
+      "name": "April Vlog",
+      "fxFileName": "F91900FB-DABF-44A3-BEEB-5D73A3C84DD9.1.compoundcaption",
+      "fxPackageId": "F91900FB-DABF-44A3-BEEB-5D73A3C84DD9",
+      "fxLicFileName": "F91900FB-DABF-44A3-BEEB-5D73A3C84DD9.lic",
+      "imageName": "F91900FB-DABF-44A3-BEEB-5D73A3C84DD9.png",
+      "fitRatio": "31"
+    },
+    {
+      "name_Zh": "四字标题",
+      "name": "On the journey",
+      "fxFileName": "8F39E5E4-D377-4E9D-9464-346A060576DF.2.compoundcaption",
+      "fxPackageId": "8F39E5E4-D377-4E9D-9464-346A060576DF",
+      "fxLicFileName": "8F39E5E4-D377-4E9D-9464-346A060576DF.lic",
+      "imageName": "8F39E5E4-D377-4E9D-9464-346A060576DF.png",
+      "fitRatio": "31"
+    },
+    {
+      "name_Zh": "欢乐时光",
+      "name": "欢乐时光",
+      "fxFileName": "BCEB9145-6CAA-4F04-AB77-BFFDB70429B0.1.compoundcaption",
+      "fxPackageId": "BCEB9145-6CAA-4F04-AB77-BFFDB70429B0",
+      "fxLicFileName": "BCEB9145-6CAA-4F04-AB77-BFFDB70429B0.lic",
+      "imageName": "BCEB9145-6CAA-4F04-AB77-BFFDB70429B0.png",
+      "fitRatio": "31"
+    },
+    {
+      "name_Zh": "萌宠日记",
+      "name": "萌宠日记",
+      "fxFileName": "39EC4D98-20DD-4B1B-AC0C-C741EC73D81E.1.compoundcaption",
+      "fxPackageId": "39EC4D98-20DD-4B1B-AC0C-C741EC73D81E",
+      "fxLicFileName": "39EC4D98-20DD-4B1B-AC0C-C741EC73D81E.lic",
+      "imageName": "39EC4D98-20DD-4B1B-AC0C-C741EC73D81E.png",
+      "fitRatio": "31"
+    },
+    {
+      "name_Zh": "欢迎来访",
+      "name": "欢迎来访",
+      "fxFileName": "86699EC5-F484-433A-BDC3-4DE2C5C58868.1.compoundcaption",
+      "fxPackageId": "86699EC5-F484-433A-BDC3-4DE2C5C58868",
+      "fxLicFileName": "86699EC5-F484-433A-BDC3-4DE2C5C58868.lic",
+      "imageName": "86699EC5-F484-433A-BDC3-4DE2C5C58868.png",
+      "fitRatio": "31"
+    },
+    {
+      "name_Zh": "北海道の夏",
+      "name": "北海道の夏",
+      "fxFileName": "96AE5505-9316-41DD-BADD-11991116D2C5.8.compoundcaption",
+      "fxPackageId": "96AE5505-9316-41DD-BADD-11991116D2C5",
+      "fxLicFileName": "96AE5505-9316-41DD-BADD-11991116D2C5.lic",
+      "imageName": "96AE5505-9316-41DD-BADD-11991116D2C5.png",
+      "fitRatio": "31"
+    }
+  ]
+}
+

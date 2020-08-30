@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_albumActivity_dragItem_itemView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingRight="2dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:paddingLeft="10dp"
+    android:gravity="center"
+    >
+    <com.test.xcamera.widget.NiceImageView
+        android:id="@+id/iv_myVideoEditActivity_item_img"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:padding="1dp"
+        android:scaleType="centerCrop"
+        app:is_circle="false"/>
+
+    <TextView
+        android:id="@+id/tv_myVideoEditActivity_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginTop="6dp"
+        android:text=""
+        android:textColor="@color/color_666666"
+        android:textSize="12dp" />
+</LinearLayout>

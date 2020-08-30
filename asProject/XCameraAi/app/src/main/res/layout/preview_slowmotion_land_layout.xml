@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/fpv_second_view_width_60dp"
+    android:layout_height="match_parent"
+    android:background="@color/color_181818"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:text="@string/fpv_slowmotion_bei_lv"
+            style="@style/params_title_12" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/preview_slowmotion_wrap_1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/preview_slowmotion_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/fpv_slowmotion_bei_lv_2x"
+            android:tag="2"
+            style="@style/params_content" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/preview_slowmotion_wrap_2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/preview_slowmotion_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/fpv_slowmotion_bei_lv_4x"
+            android:tag="4"
+            style="@style/params_content" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/preview_slowmotion_wrap_3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/preview_slowmotion_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/fpv_slowmotion_bei_lv_8x"
+            android:tag="8"
+            style="@style/params_content" />
+    </RelativeLayout>
+</LinearLayout>

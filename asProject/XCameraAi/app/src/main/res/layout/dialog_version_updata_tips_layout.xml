@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/update_dialog_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitEnd"
+                android:src="@mipmap/lib_update_app_top_bg" />
+
+            <TextView
+                android:id="@+id/update_dialog_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/tv_version_bg"
+                android:textColor="#FF8844"
+                android:textSize="@dimen/dp13" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/updata_app_bg"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/camera_updata"
+                android:textColor="#606060"
+                android:textSize="15dp" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/update_dialog_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="1，xxxxxxxx\n2，ooooooooo"
+                        android:textColor="#181818"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </ScrollView>
+
+
+            <Button
+                android:id="@+id/update_dialog_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/bt_merge_sure_bg"
+                android:gravity="center"
+                android:minHeight="40dp"
+                android:text="@string/check_detail"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/temporaryNoUpdata"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="@color/white"
+                android:gravity="center"
+                android:minHeight="40dp"
+                android:text="@string/noUpdata"
+                android:textColor="#848484"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/update_dialog_ignore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/pass_version"
+                android:textColor="#666"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <com.test.xcamera.upgrade.NumberProgressBar
+                android:id="@+id/update_dialog_progressbar"
+                style="@style/UpdateAppNumberProgressBar_Red"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

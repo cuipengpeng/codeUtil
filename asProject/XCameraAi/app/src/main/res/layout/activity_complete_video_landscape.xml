@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_171C28"
+    android:orientation="vertical">
+    <ImageView
+        android:id="@+id/iv_completeVideoLandscapeActivity_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="10dp"
+        android:src="@mipmap/icon_back"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/iv_completeVideoLandscapeActivity_back">
+
+        <com.dueeeke.videoplayer.player.IjkVideoView
+
+            android:id="@+id/ijk_completeVideoLandscapeActivity_ijkPlayer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.test.xcamera.widget.DouYinController
+            android:id="@+id/vc_completeVideoLandscapeActivity_videoControler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00ff0000" />
+
+        <ImageView
+            android:id="@+id/iv_completeVideoLandscapeActivity_coverImg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

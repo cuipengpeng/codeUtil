@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#050505">
+
+    <include layout="@layout/title"
+        android:id="@+id/rl_cameraClipEditActivity_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"></include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_cameraClipEditActivity_title">
+
+    <RelativeLayout
+        android:id="@+id/rl_paly"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:background="@android:color/transparent">
+
+        <com.editvideo.LiveWindow
+            android:id="@+id/lv_window"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/iv_paly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/pause_white"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_horizontalThumbnail"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/rl_paly">
+        <ImageView
+            android:id="@+id/iv_cameraClipEditActivity_editVideo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:padding="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:visibility="visible"
+            android:src="@mipmap/edit" />
+
+        <View
+            android:id="@+id/v_cameraClipEditActivity_sepetateLine"
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_toLeftOf="@id/iv_cameraClipEditActivity_editVideo"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:visibility="gone"
+            android:background="#262626"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/v_cameraClipEditActivity_sepetateLine"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_horizontalThumbnail"
+        android:orientation="vertical">
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tl_cameraClipEditActivity_templeteTitle"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            app:tabMode="fixed"
+            app:tabIndicatorHeight="1dp"
+            app:tabIndicatorColor="#ff7500"
+            app:tabTextColor="#4a4a4a"
+            app:tabSelectedTextColor="#ffffff"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_cameraClipEditActivity_templeteList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:background="#00000000">
+
+        <RelativeLayout
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/circle_corner_half_transparent_bg">
+
+            <com.test.xcamera.view.CircleProgressBar
+                android:id="@+id/progress"
+                android:layout_centerHorizontal="true"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="20dp"
+                app:progress_stroke_width="3dp"
+                app:progress_background_color="#DDE1EA"
+                app:progress_start_color="@color/appThemeColor"
+                app:progress_end_color="@color/appThemeColor"
+                app:progress_bar_text_color="@color/appThemeColor"
+                app:progress_bar_text_size="16sp"
+                app:style_type="solid_line"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="20dp"
+                android:layout_centerHorizontal="true"
+                android:text="@string/videoIsGenerating"
+                android:textColor="@color/color_101010"
+                android:textSize="12dp" />
+
+        </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

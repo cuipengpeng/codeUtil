@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_020202"
+        android:orientation="vertical">
+
+        <include layout="@layout/title"></include>
+
+        <FrameLayout
+            android:id="@+id/frame_play_view"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:background="#020202">
+
+            <com.dueeeke.videoplayer.player.IjkVideoView
+                android:id="@+id/ijk_albumctivity_ijkPlayer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.test.xcamera.view.VideoPreviewTextureView
+                    android:id="@+id/ptv_albumctivity_videoPlay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
+
+            <com.test.xcamera.widget.AlbumPlayController
+                android:id="@+id/vc_albumctivity_videoControler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00ff0000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/cover_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter" />
+
+                <ImageView
+                    android:id="@+id/iv_albumctivity_videoIcon"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_centerInParent="true"
+                    android:background="@mipmap/video_icon" />
+            </RelativeLayout>
+
+        </FrameLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_181818"
+            android:clipChildren="false">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/ryl_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="80dp" />
+
+            <FrameLayout
+                android:id="@+id/mFrameMedia"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/color_181818"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/ll_albumctivity_delItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/color_F55555"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <ImageView
+                    android:id="@+id/iv_albumctivity_deleteIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="4dp" />
+
+                <TextView
+                    android:id="@+id/touchRemoveTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:gravity="center"
+                    android:text="@string/touch_text"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/drop_rey"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/color_181818"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/tv_drag_tip"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:text="@string/video_import_chang_order"
+                android:textColor="#757575"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/usbFrame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_gravity="top"
+         />
+
+</FrameLayout>

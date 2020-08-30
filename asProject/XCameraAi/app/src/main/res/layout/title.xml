@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <TextView
+        android:id="@+id/left_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/dp15"
+        android:textColor="#ffffff"
+        android:textSize="20dp"
+        android:visibility="gone"
+        tools:text="返回" />
+
+    <ImageView
+        android:id="@+id/left_iv_title"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="15dp"
+        android:src="@mipmap/backicon" />
+
+    <TextView
+        android:id="@+id/tv_middle_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="86dp"
+        android:layout_marginLeft="86dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:drawablePadding="3dp"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        tools:text="@string/app_name" />
+
+    <TextView
+        android:id="@+id/right_tv_titlee"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:textColor="#b1b1b1"
+        android:textSize="13dp"
+        android:visibility="gone"
+        tools:text="右侧" />
+
+    <ImageView
+        android:id="@+id/right_iv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:padding="@dimen/dp15"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="videoEditDetail_feature_imgHeight_24dp">24dp</dimen>
+    <dimen name="fpv_second_view_width_60dp">60dp</dimen>
+
+    <dimen name="dp1">1dp</dimen>
+    <dimen name="dp9">9dp</dimen>
+    <dimen name="dp10">10dp</dimen>
+    <dimen name="dp12">12dp</dimen>
+    <dimen name="dp13">13dp</dimen>
+    <dimen name="dp14">14dp</dimen>
+    <dimen name="dp15">15dp</dimen>
+    <dimen name="dp16">16dp</dimen>
+    <dimen name="dp17">17dp</dimen>
+    <dimen name="dp20">20dp</dimen>
+    <dimen name="dp46">46dp</dimen>
+    <dimen name="dp50">50dp</dimen>
+
+    <dimen name="sp12">12sp</dimen>
+    <dimen name="home_activity_bottom_height_60dp">60dp</dimen>
+
+    <!-- 编辑页面 -->
+
+    <!-- 水印 -->
+
+    <!-- 标题栏字体 -->
+
+    <!-- 统一规范 -->
+    <dimen name="select_recycle_marginLeftAndRight">10dp</dimen>
+    <dimen name="select_item_between">5dp</dimen>
+    <dimen name="select_item_start_end">3dp</dimen>
+</resources>

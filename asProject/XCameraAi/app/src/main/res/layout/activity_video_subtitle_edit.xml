@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#050505 "
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/iv_tran_back"
+            android:layout_width="41dp"
+            android:layout_height="41dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="center"
+            android:src="@mipmap/icon_video_edit_tran_back" />
+
+        <ImageView
+            android:id="@+id/iv_tran_confirm"
+            android:layout_width="41dp"
+            android:layout_height="41dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="center"
+            android:src="@mipmap/icon_video_edit_confirm" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/tv_name_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="80dp"
+        android:background="@android:color/transparent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/tv_name"
+        android:paddingTop="20dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:drawablePadding="@dimen/dp14"
+        android:hint="输入文本"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:gravity="left"
+
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/dp15"
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_marginRight="@dimen/dp15"
+        android:visibility="gone"
+        android:background="@color/color_232731"></View>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="12dp"
+        android:paddingLeft="15dp"
+        android:text="0/90"
+        android:maxLength="90"
+        android:textColor="@color/color_77788B"
+        android:textSize="12sp"
+        android:visibility="gone"
+        />
+    <TextView
+        android:id="@+id/tv_input_number"
+
+        android:layout_width="240dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="字幕文本最多支持50字符"
+        android:maxLength="90"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:background="#000000"
+        />
+</LinearLayout>

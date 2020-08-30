@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <include layout="@layout/layout_fpv_mode_head_portrait" />
+
+    <include
+        layout="@layout/layout_fpv_mode_head_land"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/battery_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dp20"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/battery_icon"
+            style="@style/icon_size_24"
+            android:src="@mipmap/icon_battery" />
+
+        <TextView
+            android:id="@+id/battery_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0%"
+            android:textColor="@color/white"
+            android:textSize="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sdcard_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/battery_content"
+        android:layout_marginRight="@dimen/dp20"
+        android:layout_marginTop="18dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/sdcard_icon"
+            style="@style/icon_size_24"
+            android:src="@mipmap/icon_fpv_mode_sdcard" />
+
+        <TextView
+            android:id="@+id/sdcard_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="10dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/camera_zoom"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_above="@+id/control_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp20"
+        android:background="@mipmap/icon_fpv_camera_zoom"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="17dp"
+        tools:text="1X" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/control_content"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_above="@id/mode_select"
+        android:layout_marginBottom="15dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:id="@+id/control_left"
+            style="@style/icon_size_48"
+            android:layout_marginLeft="10dp"
+            android:padding="12dp"
+            android:src="@mipmap/icon_fpv_cloud_path"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tail_after"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/tail_after"
+            style="@style/icon_size_24_padding"
+            android:src="@drawable/icon_fpv_tail_after"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/control_left"
+            app:layout_constraintRight_toLeftOf="@id/record_content"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/record_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tail_after"
+            app:layout_constraintRight_toLeftOf="@id/cloud_reversal"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/record_view"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@mipmap/icon_shot" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/shot_lottie"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/cloud_reversal"
+            style="@style/icon_size_24_padding"
+            android:src="@mipmap/icon_fpv_cloud_reversal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/record_content"
+            app:layout_constraintRight_toLeftOf="@id/control_right"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/control_right"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/cloud_reversal"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/control_right_img"
+                style="@style/icon_size_48"
+                android:src="@mipmap/icon_fpv_playback" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/control_right_lottie"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                app:lottie_fileName="animation/fpv_mark.json"
+                app:lottie_loop="false" />
+        </FrameLayout>
+    </android.support.constraint.ConstraintLayout>
+
+    <com.test.xcamera.view.RecyclerViewEx
+        android:id="@+id/mode_select"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true" />
+
+    <!--参数-->
+    <FrameLayout
+        android:id="@+id/param_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <!--长宽比-->
+    <include
+        android:id="@+id/fpv_aspect_ratio_view_portrait"
+        layout="@layout/layout_fpv_aspect_ratio_portrait"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/fpv_aspect_ratio_view_land"
+        layout="@layout/layout_fpv_aspect_ratio_land"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:visibility="gone" />
+
+    <!--倒计时动画-->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/delaytime_lottie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:lottie_loop="false" />
+
+    <!--专业模式-->
+    <com.test.xcamera.profession.ProfessionView
+        android:id="@+id/profession_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone" />
+</RelativeLayout>

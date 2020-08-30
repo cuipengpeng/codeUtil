@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/fpv_second_view_width_60dp"
+    android:layout_height="match_parent"
+    android:background="@color/color_181818"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/preivew_longexplore_view_land_text"
+        style="@style/params_title_12"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/fpv_explore_name" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/preivew_longexplore_view_recyclerview"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:layout_above="@id/preivew_longexplore_view_portrait_text"
+        android:layout_below="@id/preivew_longexplore_view_land_text" />
+
+    <TextView
+        android:id="@+id/preivew_longexplore_view_portrait_text"
+        style="@style/params_title_12"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:rotation="-90"
+        android:text="@string/fpv_explore_name" />
+</RelativeLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_171C28">
+    <include layout="@layout/title"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_sampleVideoActivity_recycleView"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"/>
+            <TextView
+                android:id="@+id/tv_sampleVideoActivity_use"
+                android:layout_width="240dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/rv_sampleVideoActivity_recycleView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:background="@drawable/circle_corner_green_bg_normal_2dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dp15"
+                android:text="@string/use"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_sampleVideoActivity_progress"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00000000">
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/bt_dialogbg_normal">
+                <ProgressBar
+                    android:id="@+id/progress1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                     />
+                <TextView
+                    android:id="@+id/tv_sampleVideoActivity_loadingContent"
+                    android:layout_below="@+id/progress1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp"
+                    android:textSize="@dimen/dp14"
+                    android:text="@string/loadingData"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

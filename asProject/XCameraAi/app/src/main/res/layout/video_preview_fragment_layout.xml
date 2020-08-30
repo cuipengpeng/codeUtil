@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.test.xcamera.view.VideoPreviewTextureView
+            android:id="@+id/media_codec_texture_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+        <ImageView
+            android:id="@+id/videoPreViewBg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/videoPlayB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/icon_play" />
+
+        <RelativeLayout
+            android:id="@+id/chrysanthemumViewLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone">
+
+            <com.test.xcamera.widget.ChrysanthemumView
+                android:id="@+id/mChrysanthemumView"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mChrysanthemumView"
+                android:layout_marginTop="5dp"
+                android:text="@string/video_loading"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/videoContorlMarkLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/icon_preview_mark_label"
+            android:layout_above="@+id/videoContorlLLayout"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="6dp"
+            android:visibility="gone"/>
+
+        <RelativeLayout
+            android:id="@+id/videoContorlLLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/videoControlTime"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/video_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/videoPlay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/videoControlTime"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="10dp"
+                    android:src="@mipmap/pause_playicon" />
+
+                <com.test.xcamera.view.MarkSeekBar
+                    android:id="@+id/videoPlaySeekBar"
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxHeight="4.4dp"
+                    android:minHeight="4.4dp"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="0dp"
+                    android:progressDrawable="@drawable/bg_adjust_seek_bar"
+                    android:splitTrack="false"
+                    android:thumb="@mipmap/playpointicon"
+                    android:thumbOffset="0dp" />
+
+                <TextView
+                    android:id="@+id/videoTotalTimeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="00:00"
+                    android:textColor="@color/white" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/markImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/videoControlTime"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="@dimen/dp10"
+                    android:src="@mipmap/icon_preview_mark"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

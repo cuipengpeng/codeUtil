@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/trimRootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/daojishiLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/selectTextView_3"
+                android:layout_width="40dp"
+                android:layout_height="26dp"
+                android:background="@drawable/dy_fpv_count_down_10s_selector"
+                android:gravity="center"
+                android:text="@string/dy_countdown_3s"
+                android:textColor="#717171"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/selectTextView_10"
+                android:layout_width="40dp"
+                android:layout_height="26dp"
+                android:background="@drawable/dy_fpv_count_down_3s_selector"
+                android:gravity="center"
+                android:text="@string/dy_countdown_10s"
+                android:textColor="#717171"
+                android:textSize="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/touch_top"
+                android:textColor="#ffffff" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginRight="@dimen/dp10"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0s"
+                    android:textColor="#717171"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/totalDaojishiTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textColor="#717171"
+                    android:textSize="10dp" />
+
+                <ImageView
+                    android:id="@+id/bgImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="@mipmap/daojishi_bg" />
+
+                <SeekBar
+                    android:id="@+id/seekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:max="100"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="0dp"
+                    android:progressDrawable="@drawable/douyin_trim_seekbar_bg"
+                    android:thumb="@mipmap/daojishi_huakuai" />
+
+                <View
+                    android:id="@+id/coverView"
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="#774F4F4F" />
+
+                <TextView
+                    android:id="@+id/timeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ffffff"
+                    android:textSize="10dp" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/startTake"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="@dimen/dp10"
+                android:background="@color/appThemeTransparntColor"
+                android:text="@string/trim_time_take" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

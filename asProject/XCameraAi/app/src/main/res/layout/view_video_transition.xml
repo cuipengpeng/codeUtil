@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_181818">
+
+    <TextView
+        android:id="@+id/tv_apply_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="44dp"
+        android:drawableLeft="@mipmap/icon_video_apply_all_tran"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:paddingRight="10dp"
+        android:text="@string/video_edit_detail_use_all"
+        android:textColor="@color/ffffffff"
+        android:textSize="12sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/transitionRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_centerVertical="true" />
+
+    <ImageView
+        android:id="@+id/iv_tran_back"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="6dp"
+        android:scaleType="center"
+        android:src="@mipmap/icon_video_edit_tran_back" />
+
+    <ImageView
+        android:id="@+id/iv_tran_confirm"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="6dp"
+        android:scaleType="center"
+        android:src="@mipmap/icon_video_edit_confirm" />
+</RelativeLayout>

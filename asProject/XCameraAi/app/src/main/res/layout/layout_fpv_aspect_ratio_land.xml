@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="73dp"
+        android:background="@color/color_202222">
+
+        <TextView
+            android:id="@+id/visual"
+            style="@style/params_title"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:rotation="90"
+            android:text="视角" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="40dp"
+            android:layout_toLeftOf="@+id/visual"
+            android:orientation="horizontal">
+
+            <!--占位用-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingRight="10dp"
+                android:visibility="invisible">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/fpv_scale_normal"
+                    android:textColor="@drawable/fpv_shot_setting_text_color_selector"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/visual_width"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:rotation="90"
+                android:tag="1">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/preview_scale_width_selector" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/fpv_scale_width"
+                    android:textColor="@drawable/color_fpv_mode_aspect"
+                    android:textSize="14dp" />
+            </LinearLayout>
+            <!--占位用-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingRight="10dp"
+                android:visibility="invisible">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/fpv_scale_normal"
+                    android:textColor="@drawable/fpv_shot_setting_text_color_selector"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/visual_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingRight="10dp"
+                android:rotation="90">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/preview_scale_normal_selector" />
+
+                <TextView
+                    android:id="@+id/lv_window"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/fpv_scale_normal"
+                    android:textColor="@drawable/color_fpv_mode_aspect"
+                    android:textSize="14dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="40dp"
+            android:layout_toLeftOf="@+id/visual"
+            android:background="@color/color_303030" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="73dp"
+        android:background="@color/color_202222">
+
+        <TextView
+            android:id="@+id/scale_title"
+            style="@style/params_title"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:rotation="90"
+            android:text="比例" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/aspect_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="40dp"
+            android:layout_toLeftOf="@+id/scale_title"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
+
+            <ImageView
+                android:id="@+id/scale_4_3"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/preview_scale_4_3_selector"
+                android:rotation="90"
+                android:tag="2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/scale_1_1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/scale_1_1"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/preview_scale_1_1_selector"
+                android:rotation="90"
+                android:tag="3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/scale_4_3"
+                app:layout_constraintRight_toLeftOf="@+id/scale_19_9"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/scale_19_9"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/preview_scale_19_9_selector"
+                android:rotation="90"
+                android:tag="4"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/scale_1_1"
+                app:layout_constraintRight_toLeftOf="@+id/scale_16_9"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/scale_16_9"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/preview_scale_16_9_selector"
+                android:rotation="90"
+                android:tag="1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/scale_19_9"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+    </RelativeLayout>
+</LinearLayout>

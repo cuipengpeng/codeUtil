@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/fpv_second_view_width_60dp"
+    android:layout_height="match_parent"
+    android:background="@color/color_181818">
+
+    <include
+        android:id="@+id/preview_count_down_land_layout"
+        layout="@layout/preview_count_down_land_layout"/>
+
+    <include
+        android:id="@+id/preview_count_down_portrait_layout"
+        layout="@layout/preview_count_down_portrait_layout"
+        android:visibility="invisible"/>
+
+</RelativeLayout>

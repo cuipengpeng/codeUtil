@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">dk_player</string>
+    <string name="lock_tip">请先解锁屏幕！</string>
+    <string name="unlocked">已解锁</string>
+    <string name="locked">已锁定</string>
+    <string name="replay">重新播放</string>
+
+    <string name="share_platform_wechat">微信</string>
+    <string name="share_platform_sina_weibo">微博</string>
+    <string name="share_platform_qq">QQ</string>
+    <string name="share_platform_douyin">抖音</string>
+    <string name="app_need_install">请安装app</string>
+    <string name="share_dialog_title">分享视频至</string>
+    <string name="share_dialog_cancel">取消</string>
+    <string name="complete">完成</string>
+</resources>

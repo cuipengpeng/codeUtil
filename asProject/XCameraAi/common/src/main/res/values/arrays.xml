@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string-array name="share_platform">
+        <item>@string/share_platform_douyin</item>
+        <item>@string/share_platform_wechat</item>
+        <item>@string/share_platform_sina_weibo</item>
+        <item>@string/share_platform_qq</item>
+
+    </string-array>
+
+</resources>

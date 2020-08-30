@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_171C28">
+    <include layout="@layout/title"/>
+    <View
+        android:id="@+id/v_guideConnectActivity_seperate"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="50dp"
+        android:background="#363636"/>
+
+    <ImageView
+        android:id="@+id/iv_guideConnectActivity_image"
+        android:layout_width="312dp"
+        android:layout_height="224dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:scaleType="centerCrop"
+        android:background="@mipmap/guide_connect"/>
+    <TextView
+        android:id="@+id/tv_guideConnectActivity_desc1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_guideConnectActivity_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:text="@string/noConnectWithCamera"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_guideConnectActivity_desc1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textColor="#666666"
+        android:textSize="12sp"
+        android:text="@string/makeSureCameraStart"/>
+
+    <TextView
+        android:id="@+id/tv_guideConnectActivity_use"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:gravity="center"
+        android:background="@drawable/circle_corner_green_bg_normal_2dp"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        android:textSize="@dimen/dp15"
+        android:text="帮助"/>
+
+</RelativeLayout>

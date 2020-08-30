@@ -1,0 +1,38 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 28
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        compileOptions {
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+//        debug {}
+//        staging {
+//            //指定匹配失败匹配其他变体
+//            matchingFallbacks = ['debug',  'release']
+//        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "com.android.support:appcompat-v7:26.1.0"
+    implementation "tv.danmaku.ijk.media:ijkplayer-java:0.8.8"
+    implementation 'com.danikula:videocache:2.7.0'
+}

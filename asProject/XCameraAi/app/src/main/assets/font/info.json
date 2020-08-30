@@ -1,0 +1,32 @@
+[
+  {
+    "fontFileName": "Blackie.ttf",
+    "imageName": "Blackie"
+  }
+, {
+    "fontFileName": "Elgatino.ttf",
+    "imageName": "Elgatino"
+  }
+, {
+    "fontFileName": "Ink Chancery.ttf",
+    "imageName": "Ink Chancery"
+  }, {
+    "fontFileName": "Radam.ttf",
+    "imageName": "Radam"
+  }
+, {
+  "fontFileName": "汉仪尚巍魔法体原版.ttf",
+  "imageName": "汉仪尚巍魔法体原版"
+}, {
+  "fontFileName": "汉仪游园体.ttf",
+  "imageName": "汉仪游园体"
+}
+, {
+  "fontFileName": "汉仪秋实.ttf",
+  "imageName": "汉仪秋实"
+}, {
+  "fontFileName": "汉仪铸字小精灵.ttf",
+  "imageName": "汉仪铸字小精灵"
+}
+]
+

@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/shot_setting_first_setting_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:weightSum="5">
+
+            <RelativeLayout
+                android:id="@+id/shot_setting_all_lock_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <com.test.xcamera.view.VerticalTextView
+                    android:id="@+id/shot_setting_all_lock_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:padding="5dp"
+                    android:text="@string/fpv_setting_yuntai_all_lock"
+                    android:textColor="@color/color_666666"
+                    android:textSize="14dp"
+                    app:direction="downtoup" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@color/color_666666" />
+
+            <RelativeLayout
+                android:id="@+id/shot_setting_fpv_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <com.test.xcamera.view.VerticalTextView
+                    android:id="@+id/shot_setting_fpv_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:padding="5dp"
+                    android:text="@string/fpv_setting_yuntai_fpv"
+                    android:textColor="@color/color_666666"
+                    android:textSize="14dp"
+                    app:direction="downtoup" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@color/color_666666" />
+
+            <RelativeLayout
+                android:id="@+id/shot_setting_lock_pitch_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.7">
+
+                <com.test.xcamera.view.VerticalTextView
+                    android:id="@+id/shot_setting_lock_pitch_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:padding="5dp"
+                    android:text="@string/fpv_setting_yuntai_lock_pitch_Roll"
+                    android:textColor="@color/color_666666"
+                    android:textSize="14dp"
+                    app:direction="downtoup" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@color/color_666666" />
+
+            <RelativeLayout
+                android:id="@+id/shot_setting_lock_roll_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.3">
+
+                <com.test.xcamera.view.VerticalTextView
+                    android:id="@+id/shot_setting_lock_roll_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:padding="5dp"
+                    android:text="@string/fpv_setting_yuntai_lock_Roll"
+                    android:textColor="@color/color_666666"
+                    android:textSize="14dp"
+                    app:direction="downtoup" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <com.test.xcamera.view.VerticalTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:rotation="180"
+                    android:text="@string/fpv_setting_profrssional_name"
+                    android:textColor="@color/color_666666"
+                    android:textSize="14dp" />
+
+                <ImageView
+                    android:id="@+id/shot_setting_check"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/shot_setting_more_check_selector" />
+            </LinearLayout>
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/shot_setting_recycler_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/shot_setting_second_setting_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/shot_setting_second_setting_layout_hide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@mipmap/icon_hide_second_setting" />
+
+        <LinearLayout
+            android:id="@+id/shot_setting_second_layout_one_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
+
+                <com.test.xcamera.view.VerticalTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="@string/fpv_setting_auto"
+                    android:textColor="#BCBCBC"
+                    android:textSize="12dp"
+                    app:direction="downtoup" />
+
+                <ImageView
+                    android:id="@+id/shot_setting_second_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/shot_setting_more_check_selector" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/shot_setting_second_mode_select_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/shot_setting_shutter_layout_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <RelativeLayout
+                        android:id="@+id/shot_setting_shutter_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/shot_setting_item_selector">
+
+                        <com.test.xcamera.view.VerticalTextView
+                            android:id="@+id/shot_setting_shutter_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="10dp"
+                            android:padding="5dp"
+                            android:text="@string/fpv_setting_shutter"
+                            android:textColor="#BCBCBC"
+                            android:textSize="10dp"
+                            app:direction="downtoup" />
+
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/shot_setting_ev_layout_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <RelativeLayout
+                        android:id="@+id/shot_setting_ev_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/shot_setting_item_selector">
+
+                        <com.test.xcamera.view.VerticalTextView
+                            android:id="@+id/shot_setting_ev_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="10dp"
+                            android:padding="5dp"
+                            android:text="@string/fpv_setting_ev"
+                            android:textColor="#BCBCBC"
+                            android:textSize="10dp"
+                            app:direction="downtoup" />
+
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <RelativeLayout
+                        android:id="@+id/shot_setting_iso_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/shot_setting_item_selector">
+
+                        <com.test.xcamera.view.VerticalTextView
+                            android:id="@+id/shot_setting_iso_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="10dp"
+                            android:padding="5dp"
+                            android:text="@string/fpv_setting_iso"
+                            android:textColor="#BCBCBC"
+                            android:textSize="10dp"
+                            app:direction="downtoup" />
+
+                    </RelativeLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/shot_setting_second_mode_default_layout"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/shot_setting_shutter_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="20dp"
+                        android:text="1/4000"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/shot_setting_ev_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="20dp"
+                        android:text="+2"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/shot_setting_iso_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="20dp"
+                        android:text="12000"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/shot_setting_second_setting_layout_recyclerview"
+                android:layout_width="80dp"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/shot_setting_second_awb_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#202226"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
+
+                <com.test.xcamera.view.VerticalTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="@string/fpv_setting_auto"
+                    android:textColor="#BCBCBC"
+                    android:textSize="12dp"
+                    app:direction="downtoup" />
+
+                <ImageView
+                    android:id="@+id/shot_setting_second_awb_auto_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/shot_setting_more_check_selector" />
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/shot_setting_second_awb_type_recycler_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/shot_setting_second_awb_value_recycler_view"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

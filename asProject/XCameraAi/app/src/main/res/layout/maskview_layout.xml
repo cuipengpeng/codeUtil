@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mask_view_parent_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <RelativeLayout
+        android:id="@+id/clipLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true">
+
+        <RelativeLayout
+            android:id="@+id/imgLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="20dp">
+
+            <ImageView
+                android:id="@+id/sureImg"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/sure_clip" />
+
+            <TextView
+                android:id="@+id/bgmTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="7dp"
+                android:layout_toLeftOf="@+id/sureImg"
+                android:gravity="center"
+                android:text="@string/addmusic_bgm"
+                android:textColor="#ffffff" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/bgIam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgLayout"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/startTime"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="00:00"
+                android:textColor="#ffffff"
+                android:textSize="11dp" />
+
+            <RelativeLayout
+                android:id="@+id/myLayout"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="8">
+
+                <ImageView
+                    android:id="@+id/a1Img"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:src="@drawable/maskview_bg" />
+
+                <ImageView
+                    android:id="@+id/a2Img"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/totalTime"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="00:00"
+                android:textColor="#ffffff"
+                android:textSize="11dp"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/clipSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bgIam"
+            android:max="100"
+            android:progressDrawable="@drawable/douyin_trim_seekbar_bg"
+            android:thumb="@mipmap/douyin_seekbar" />
+
+    </RelativeLayout>
+
+    <!--<com.kkcast.audiocutview.VerticalSeekBar-->
+    <!--android:id="@+id/clipSeekBar"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_marginLeft="@dimen/my50dp"-->
+    <!--android:layout_marginRight="@dimen/my20dp"-->
+    <!--android:max="100"-->
+    <!--android:progressDrawable="@drawable/douyin_clip_seekbar_bg"-->
+    <!--android:thumb="@mipmap/douyinhuakuai"-->
+    <!--android:visibility="gone" />-->
+
+</RelativeLayout>

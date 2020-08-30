@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="120dp"
+    android:layout_height="match_parent"
+    android:background="@color/color_181818"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="@dimen/fpv_second_view_width_60dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/beauty_smooth_2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/beauty_smooth_2_tv"
+                style="@style/params_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:rotation="-90"
+                android:tag="2"
+                android:text="2" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/beauty_smooth_1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/beauty_smooth_1_tv"
+                style="@style/params_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:rotation="-90"
+                android:tag="1"
+                android:text="1" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/beauty_smooth_off"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/beauty_smooth_off_tv"
+                style="@style/params_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:rotation="-90"
+                android:tag="0"
+                android:text="OFF" />
+        </RelativeLayout>
+
+        <TextView
+            style="@style/params_title_12"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:rotation="-90"
+            android:text="@string/fpv_beauty_smooty" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="100dp"
+        android:background="#494C50" />
+
+    <LinearLayout
+        android:layout_width="@dimen/fpv_second_view_width_60dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/beauty_light_2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:visibility="invisible">
+
+
+            <TextView
+                android:id="@+id/beauty_light_2_tv"
+                style="@style/params_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:rotation="-90"
+                android:tag="12"
+                android:text="2" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/beauty_light_1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/beauty_light_1_tv"
+                style="@style/params_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:rotation="-90"
+                android:tag="11"
+                android:text="1" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/beauty_light_off"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/beauty_light_off_tv"
+                style="@style/params_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:rotation="-90"
+                android:tag="10"
+                android:text="OFF" />
+        </RelativeLayout>
+
+        <TextView
+            style="@style/params_title_12"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:rotation="-90"
+            android:text="@string/fpv_beauty_light" />
+    </LinearLayout>
+</LinearLayout>
