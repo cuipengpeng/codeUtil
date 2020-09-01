@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#11c9c9c9">
+    <TextView
+        android:id="@+id/tv_testerDetailActivity_male"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="男"
+        android:textColor="#ffffff"
+        android:background="@drawable/circle_corner_orange_bg_normal_2dp"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/tv_testerDetailActivity_female"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="女"
+        android:textColor="#ffffff"
+        android:background="@drawable/circle_corner_orange_bg_normal_2dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_testerDetailActivity_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="#000000"
+        android:background="@drawable/circle_corner_white_bg_normal_2dp"
+        android:textSize="18sp" />
+</LinearLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="appBackgroundColor">#f5f5f5</color>
+    <color name="appGrayTitleBackgroundColor">#f9f9f9</color>
+    <color name="appTitleColor">#393b51</color>
+    <color name="appContentColor">#7e819b</color>
+    <color name="appCommentColor">#b9bbca</color>
+    <color name="appRedColor">#f35857</color>
+    <color name="appGreenColor">#18b293</color>
+    <color name="appBlueColor">#0084ff</color>
+    <color name="appDividerLineColor_1dp">#ebebeb</color>
+    <color name="appViewFullTextColor">#0084ff</color>
+    <color name="appNegativeRateColor">#18b293</color>
+
+
+    <color name="chartLineGreen">#00dd00</color>
+    <color name="chartLineYellow">#dddd00</color>
+    <color name="chartLineBlue">#0066ff</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="color_999999">#999999</color>
+    <color name="color_333333">#333333</color>
+    <color name="color_f6f6f6">#f6f6f6</color>
+    <color name="color_ffffff">#ffffff</color>
+    <color name="color_ffc0c0">#ffc0c0</color>
+    <color name="color_cccccc">#cccccc</color>
+
+    <color name="color_f5f5f5">#f5f5f5</color>
+    <color name="color_393b51">#393b51</color>
+    <color name="color_7e819b">#7e819b</color>
+    <color name="color_b9bbca">#b9bbca</color>
+    <color name="color_f35857">#f35857</color>
+    <color name="color_ffecec">#ffecec</color>
+    <color name="color_fff4f4">#fff4f4</color>
+    <color name="color_18b293">#18b293</color>
+    <color name="color_0084ff">#0084ff</color>
+    <color name="color_ebebeb">#ebebeb</color>
+    <color name="color_f9f9f9">#f9f9f9</color>
+    <color name="color_ffa200">#ffa200</color>
+    <color name="color_cda76e">#cda76e</color>
+    <color name="color_4093ff">#4093ff</color>
+    <color name="color_ff9796">#ff9796</color>
+    <color name="color_d2d4e0">#d2d4e0</color>
+    <color name="color_dddddd">#dddddd</color>
+    <color name="color_e6f1ff">#e6f1ff</color>
+    <color name="color_ff6600">#ff6600</color>
+
+
+
+
+
+
+    <color name="themeRed">#fe4c40</color>
+    <color name="transparent">#00ffffff</color>
+
+    <color name="table_line_color">#e6e6e9</color>
+    <color name="white">#ffffff</color>
+    <color name="gray_color4">#dddddd</color>
+    <color name="gray_color2">#ccccce</color>
+    <color name="item_normal">#00000000</color>
+</resources>
