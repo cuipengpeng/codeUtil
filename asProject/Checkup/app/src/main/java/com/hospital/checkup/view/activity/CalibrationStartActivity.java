@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
-import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -42,31 +41,33 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
     @BindView(R.id.chart1)
     LineChart chart;
 
-    private Thread realTimePointThread;
+    private Runnable realTimePointThread;
     private RealTimePointRunnable realTimePointRunnable;
-    private boolean stopCalibration = false;
+    private boolean stopCalibration = true;
 
     @OnClick({R.id.btn_calibrationStartActivity_start, R.id.btn_calibrationStartActivity_stop, R.id.btn_calibrationStartActivity_save})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_calibrationStartActivity_start:
-                stopCalibration = false;
-                chart.clear();
-                realTimePointThread.start();
-                if (!BleController.getInstance().isEnable()) {
-                    Toast.makeText(BaseApplication.applicationContext, "请打开蓝牙", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(Settings.ACTION_BLUETOOTH_SETTINGS));
-                } else {
-                    if (BleController.getInstance().isConnectok) {
-                        BleController.getInstance().enableNotification(true, BleController.getInstance().mBleGattCharacteristic);
-                    } else {
-                        scanBleDeviceAndConnect();
-                    }
+                if(stopCalibration){
+                    stopCalibration = false;
+                    chart.clear();
+                    new Thread(realTimePointThread).start();
                 }
+//                if (!BleController.getInstance().isEnable()) {
+//                    Toast.makeText(BaseApplication.applicationContext, "请打开蓝牙", Toast.LENGTH_SHORT).show();
+//                    startActivity(new Intent(Settings.ACTION_BLUETOOTH_SETTINGS));
+//                } else {
+//                    if (BleController.getInstance().isConnectok) {
+//                        BleController.getInstance().enableNotification(true, BleController.getInstance().mBleGattCharacteristic);
+//                    } else {
+//                        scanBleDeviceAndConnect();
+//                    }
+//                }
                 break;
             case R.id.btn_calibrationStartActivity_stop:
                 stopCalibration = true;
-                BleController.getInstance().enableNotification(false, BleController.getInstance().mBleGattCharacteristic);
+//                BleController.getInstance().enableNotification(false, BleController.getInstance().mBleGattCharacteristic);
                 break;
             case R.id.btn_calibrationStartActivity_save:
                 break;
@@ -94,7 +95,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
     private void initChart() {
         // no description text
         chart.getDescription().setEnabled(false);
-
+        chart.setNoDataText("暂无数据");
         // enable touch gestures
         chart.setTouchEnabled(true);
 
@@ -152,7 +153,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
 //        rightAxis.setGranularityEnabled(false);
 
         realTimePointRunnable = new RealTimePointRunnable();
-        realTimePointThread = new Thread(new Runnable() {
+        realTimePointThread = new Runnable() {
             @Override
             public void run() {
                 for(int i=0; i<500;i++){
@@ -168,8 +169,8 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
                     }
                 }
             }
-        });
-        realTimePointThread.start();
+        };
+//        realTimePointThread.start();
     }
 
     class RealTimePointRunnable implements Runnable{
@@ -188,13 +189,17 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         set1 = new LineDataSet(null, "DataSet 1");
         set1.setAxisDependency(YAxis.AxisDependency.LEFT);
         set1.setColor(getResources().getColor(R.color.chartLineBlue));
-        set1.setCircleColor(Color.GRAY);
+        set1.setCircleColor(getResources().getColor(R.color.chartLineBlue));
+        set1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
         set1.setLineWidth(1f);
         set1.setCircleRadius(1.5f);
+        set1.setCircleHoleRadius(2f);
         set1.setFillAlpha(65);
         set1.setFillColor(ColorTemplate.getHoloBlue());
         set1.setHighLightColor(Color.rgb(244, 117, 117));
-        set1.setDrawCircleHole(false);
+        set1.setDrawCircles(true);
+        set1.setDrawCircleHole(true);
+        set1.setDrawValues(false);
         //set1.setFillFormatter(new MyFillFormatter(0f));
         //set1.setDrawHorizontalHighlightIndicator(false);
         //set1.setVisible(false);
@@ -205,12 +210,16 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         set2 = new LineDataSet(null, "DataSet 2");
         set2.setAxisDependency(YAxis.AxisDependency.RIGHT);
         set2.setColor(getResources().getColor(R.color.chartLineYellow));
-        set2.setCircleColor(Color.GRAY);
+        set2.setCircleColor(getResources().getColor(R.color.chartLineYellow));
+        set2.setMode(LineDataSet.Mode.CUBIC_BEZIER);
         set2.setLineWidth(1f);
         set2.setCircleRadius(1.5f);
+        set2.setCircleHoleRadius(2f);
         set2.setFillAlpha(65);
         set2.setFillColor(Color.RED);
-        set2.setDrawCircleHole(false);
+        set2.setDrawCircles(true);
+        set2.setDrawCircleHole(true);
+        set2.setDrawValues(false);
         set2.setHighLightColor(Color.rgb(244, 117, 117));
         //set2.setFillFormatter(new MyFillFormatter(900f));
 
@@ -218,12 +227,16 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         set3 = new LineDataSet(null, "DataSet 3");
         set3.setAxisDependency(YAxis.AxisDependency.RIGHT);
         set3.setColor(getResources().getColor(R.color.chartLineGreen));
-        set3.setCircleColor(Color.GRAY);
+        set3.setCircleColor(getResources().getColor(R.color.chartLineGreen));
+        set3.setMode(LineDataSet.Mode.CUBIC_BEZIER);
         set3.setLineWidth(1f);
         set3.setCircleRadius(1.5f);
+        set3.setCircleHoleRadius(2f);
         set3.setFillAlpha(0);
         set3.setFillColor(ColorTemplate.colorWithAlpha(Color.YELLOW, 200));
-        set3.setDrawCircleHole(false);
+        set3.setDrawCircles(true);
+        set3.setDrawCircleHole(true);
+        set3.setDrawValues(false);
         set3.setHighLightColor(Color.rgb(244, 117, 117));
 
         // create a data object with the data sets

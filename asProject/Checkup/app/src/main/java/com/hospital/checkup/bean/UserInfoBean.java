@@ -1,121 +1,50 @@
-
 package com.hospital.checkup.bean;
 
 import java.io.Serializable;
 
-
-
 public class UserInfoBean implements Serializable {
-    private String token;
-    private String mobile;      //Aes加密手机号码
-    private String riskLevel;   //风险等级
-    private Boolean isWhite;
-    private Boolean bindBankCard;
-    private String bankCard;    //银行卡后4位
-    private String bankName;    //银行名称
 
-    //local user config, must have default value
-    private String gesturePassword = "";    //手势密码
-    private boolean hiddenAccountMoney=false ;    //隐藏账户金额
-    private boolean hasFinderprintPassword=false ;    //是否有指纹密码
+    /**
+     * sessionId : 1
+     * userAvatar : https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1599306030848&di=c36e1691645c888d3817027fa88523dc&imgtype=0&src=http%3A%2F%2Fimg.qqzhi.com%2Fuploads%2F2018-11-29%2F053827577.jpg
+     * userId : 1
+     * username : 张医生
+     */
 
+    private String sessionId;
+    private String userAvatar;
+    private String userId;
+    private String username;
 
-
-    public UserInfoBean() {
-
+    public String getSessionId() {
+        return sessionId;
     }
 
-    public boolean isHasFinderprintPassword() {
-        return hasFinderprintPassword;
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
     }
 
-    public void setHasFinderprintPassword(boolean hasFinderprintPassword) {
-        this.hasFinderprintPassword = hasFinderprintPassword;
+    public String getUserAvatar() {
+        return userAvatar;
     }
 
-    public boolean isHiddenAccountMoney() {
-
-        return hiddenAccountMoney;
+    public void setUserAvatar(String userAvatar) {
+        this.userAvatar = userAvatar;
     }
 
-    public void setHiddenAccountMoney(boolean hiddenAccountMoney) {
-        this.hiddenAccountMoney = hiddenAccountMoney;
+    public String getUserId() {
+        return userId;
     }
 
-    public String getToken() {
-        return token;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public String getUsername() {
+        return username;
     }
 
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public String getRiskLevel() {
-        return riskLevel;
-    }
-
-    public String getGesturePassword() {
-        return gesturePassword;
-    }
-
-    public void setGesturePassword(String gesturePassword) {
-        this.gesturePassword = gesturePassword;
-    }
-
-    public void setRiskLevel(String riskLevel) {
-        this.riskLevel = riskLevel;
-    }
-
-    public Boolean getWhite() {
-        return isWhite;
-    }
-
-    public void setWhite(Boolean white) {
-        isWhite = white;
-    }
-
-    public Boolean getBindBankCard() {
-        return bindBankCard;
-    }
-
-    public void setBindBankCard(Boolean bindBankCard) {
-        this.bindBankCard = bindBankCard;
-    }
-
-    public String getBankCard() {
-        return bankCard;
-    }
-
-    public void setBankCard(String bankCard) {
-        this.bankCard = bankCard;
-    }
-
-    public String getBankName() {
-        return bankName;
-    }
-
-    public void setBankName(String bankName) {
-        this.bankName = bankName;
-    }
-
-    @Override
-    public String toString() {
-        return "UserInfo{" +
-                "token='" + token + '\'' +
-                ", mobile='" + mobile + '\'' +
-                ", riskLevel='" + riskLevel + '\'' +
-                ", isWhite=" + isWhite +
-                ", bindBankCard=" + bindBankCard +
-                ", bankCard='" + bankCard + '\'' +
-                ", bankName='" + bankName + '\'' +
-                '}';
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

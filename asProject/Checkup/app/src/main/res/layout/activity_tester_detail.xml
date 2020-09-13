@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:textSize="16sp"
+            android:textSize="@dimen/appContentTextSize_15sp"
             android:text="试者姓名:"
             android:textColor="#000000"/>
         <EditText
@@ -28,7 +28,7 @@
             android:layout_toRightOf="@id/tv_testerDetailActivity_testerName"
             android:layout_marginLeft="10dp"
             android:paddingLeft="10dp"
-            android:textSize="16sp"
+            android:textSize="@dimen/appContentTextSize_15sp"
             android:gravity="center_vertical"
             android:maxLines="1"
             android:hint="请输入姓名"
@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:textSize="16sp"
+            android:textSize="@dimen/appContentTextSize_15sp"
             android:text="试者性别:"
             android:textColor="#000000"/>
         <TextView
@@ -57,7 +57,7 @@
             android:layout_toRightOf="@id/tv_testerDetailActivity_genderKey"
             android:layout_marginLeft="10dp"
             android:paddingLeft="10dp"
-            android:textSize="16sp"
+            android:textSize="@dimen/appContentTextSize_15sp"
             android:gravity="center_vertical"
             android:text=""
             android:hint="请选择性别"
@@ -75,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:textSize="16sp"
+            android:textSize="@dimen/appContentTextSize_15sp"
             android:text="出生日期:"
             android:textColor="#000000"/>
         <TextView
@@ -86,7 +86,7 @@
             android:layout_toRightOf="@id/tv_testerDetailActivity_birthdayKey"
             android:layout_marginLeft="10dp"
             android:paddingLeft="10dp"
-            android:textSize="16sp"
+            android:textSize="@dimen/appContentTextSize_15sp"
             android:gravity="center_vertical"
             android:text=""
             android:hint="请选择生日"
@@ -104,7 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:textSize="16sp"
+            android:textSize="@dimen/appContentTextSize_15sp"
             android:text="手 机 号:"
             android:textColor="#000000"/>
         <EditText
@@ -115,7 +115,7 @@
             android:layout_toRightOf="@id/tv_testerDetailActivity_phoneNum"
             android:layout_marginLeft="10dp"
             android:paddingLeft="10dp"
-            android:textSize="16sp"
+            android:textSize="@dimen/appContentTextSize_15sp"
             android:gravity="center_vertical"
             android:text=""
             android:inputType="numberDecimal"
@@ -143,7 +143,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="top"
-            android:textSize="16sp"
+            android:textSize="@dimen/appContentTextSize_15sp"
             android:text="备 注  :"
             android:textColor="#000000"/>
         <EditText
@@ -155,7 +155,7 @@
             android:layout_marginLeft="10dp"
             android:lines="3"
             android:paddingLeft="10dp"
-            android:textSize="16sp"
+            android:textSize="@dimen/appContentTextSize_15sp"
             android:gravity="top"
             android:text=""
             android:textColor="#000000"
@@ -176,7 +176,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:gravity="center_vertical"
-            android:textSize="16sp"
+            android:textSize="@dimen/appContentTextSize_15sp"
             android:text="至"
             android:textColor="#000000"/>
         <TextView
@@ -187,7 +187,7 @@
             android:layout_toLeftOf="@id/tv_testerDetailActivity_zhi"
             android:layout_marginLeft="10dp"
             android:paddingLeft="10dp"
-            android:textSize="16sp"
+            android:textSize="@dimen/appContentTextSize_15sp"
             android:gravity="center_vertical"
             android:text=""
             android:hint="请选择开始日期"
@@ -201,7 +201,7 @@
             android:layout_toRightOf="@id/tv_testerDetailActivity_zhi"
             android:layout_marginLeft="10dp"
             android:paddingLeft="10dp"
-            android:textSize="16sp"
+            android:textSize="@dimen/appContentTextSize_15sp"
             android:gravity="center_vertical"
             android:text=""
             android:hint="请选择结束日期"

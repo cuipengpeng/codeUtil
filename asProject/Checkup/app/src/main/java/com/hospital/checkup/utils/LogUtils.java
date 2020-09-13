@@ -12,7 +12,7 @@ public class LogUtils {
             String funcName2 = new Throwable().getStackTrace()[1].getMethodName();
             int lineNumber = new Throwable().getStackTrace()[1].getLineNumber();
 
-            int maxLogLength = 3000;
+            int maxLogLength = 2500;
             if (log.length() > 0 && log.length() <= maxLogLength) {
                 Log.d(clazzName2 + "--" + funcName2+"("+lineNumber+")--##########", "jsonStr = " + log);
             } else {

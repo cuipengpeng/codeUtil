@@ -5,8 +5,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.ImageView;
+
+import com.hospital.checkup.view.fragment.MeasureHomeFragment;
 
 @SuppressLint("AppCompatCustomView")
 public class RegionImageView extends ImageView {
@@ -37,19 +38,20 @@ public class RegionImageView extends ImageView {
             float y = event.getY();
             int area = 0;
             if (x>=0 && x<getWidth()/mColumn && y>0 && y<getHeight()/mRaw) {
-                area = 1;
+                area = MeasureHomeFragment.BODY_CODE_1;
             } else if (x>=getWidth()/mColumn && x<=getWidth() && y>0 && y<getHeight()/mRaw) {
-                area = 2;
+                area = MeasureHomeFragment.BODY_CODE_2;
             } else if (x>0 && x<getWidth()/mColumn  && y>=getHeight()/mRaw && y<=getHeight()/mRaw*2) {
-                area = 3;
+                area = MeasureHomeFragment.BODY_CODE_3;
             } else if (x>=getWidth()/mColumn && x<=getWidth() &&  y>=getHeight()/mRaw && y<=getHeight()/mRaw*2) {
-                area = 4;
+                area = MeasureHomeFragment.BODY_CODE_4;
             } else if (x>0 && x<getWidth()/mColumn  && y>=getHeight()/mRaw*2 && y<=getHeight()) {
-                area = 5;
+                area = MeasureHomeFragment.BODY_CODE_5;
             } else if (x>=getWidth()/mColumn && x<=getWidth() &&  y>=getHeight()/mRaw*2 && y<=getHeight()) {
-                area = 6;
+                area = MeasureHomeFragment.BODY_CODE_6;
             }
             mAreaClickListener.onAreaClick(area);
+            return true;
         }
         return super.onTouchEvent(event);
     }

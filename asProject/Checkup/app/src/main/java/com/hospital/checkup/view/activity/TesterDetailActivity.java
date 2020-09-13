@@ -4,42 +4,48 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.bigkoo.pickerview.builder.TimePickerBuilder;
 import com.bigkoo.pickerview.listener.CustomListener;
 import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.hospital.checkup.R;
+import com.hospital.checkup.base.BaseApplication;
 import com.hospital.checkup.base.BaseUILocalDataActivity;
+import com.hospital.checkup.bean.MeasurerDetailBean;
+import com.hospital.checkup.bean.UserInfoBean;
+import com.hospital.checkup.http.HttpRequest;
+import com.hospital.checkup.utils.LogUtils;
 import com.hospital.checkup.utils.ScreenUtils;
+import com.hospital.checkup.utils.StringUtil;
 import com.hospital.checkup.view.adapter.TestRecordListAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Response;
 
 public class TesterDetailActivity extends BaseUILocalDataActivity {
+
     @BindView(R.id.et_testerDetailActivity_testerName)
     EditText testerNameEditText;
     @BindView(R.id.tv_testerDetailActivity_genderValue)
@@ -63,25 +69,27 @@ public class TesterDetailActivity extends BaseUILocalDataActivity {
     private final int SELECT_DATE_TYPE_END_DATE=103;
     private int currentDateType = -1;
     private TestRecordListAdapter mTestRecordListAdapter;
+    public static final String KEY_OF_JSON_DATA = "jsonDataKey";
+    private MeasurerDetailBean measurerDetailBean;
 
     @OnClick({R.id.tv_testerDetailActivity_genderValue, R.id.tv_testerDetailActivity_startDate, R.id.tv_testerDetailActivity_endDate,
-            R.id.tv_testerDetailActivity_birthdayValue})
+            R.id.tv_testerDetailActivity_birthdayValue, R.id.tv_base_rightMenu})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_testerDetailActivity_genderValue:
                 showGenderDialog(this);
                 break;
             case R.id.tv_testerDetailActivity_startDate:
-                currentDateType = SELECT_DATE_TYPE_START_DATE;
-                pvCustomLunar.show();
+                showTimePickerView(view, SELECT_DATE_TYPE_START_DATE);
                 break;
             case R.id.tv_testerDetailActivity_endDate:
-                currentDateType = SELECT_DATE_TYPE_END_DATE;
-                pvCustomLunar.show();
+                showTimePickerView(view, SELECT_DATE_TYPE_END_DATE);
                 break;
             case R.id.tv_testerDetailActivity_birthdayValue:
-                currentDateType = SELECT_DATE_TYPE_BIRTHDAY;
-                pvCustomLunar.show();
+                showTimePickerView(view, SELECT_DATE_TYPE_BIRTHDAY);
+                break;
+            case R.id.tv_base_rightMenu:
+                saveMeasurerDetailInfo("");
                 break;
         }
     }
@@ -98,7 +106,25 @@ public class TesterDetailActivity extends BaseUILocalDataActivity {
 
     @Override
     protected void initPageData() {
-        initLunarPicker();
+        baseRightMenuTextView.setVisibility(View.VISIBLE);
+        baseRightMenuTextView.setText("保存");
+        baseRightMenuTextView.setTextColor(getResources().getColor(R.color.chartLineBlue));
+
+        initTimePickerView();
+        String jsonData = getIntent().getStringExtra(KEY_OF_JSON_DATA);
+        if(StringUtil.notEmpty(jsonData)){
+             measurerDetailBean = JSON.parseObject(jsonData, MeasurerDetailBean.class);
+             testerNameEditText.setText(measurerDetailBean.getTestName());
+             if("0".equals(measurerDetailBean.getTestGender())){
+                 genderValueTextView.setText("男");
+             }else {
+                 genderValueTextView.setText("女");
+             }
+             birthdayValueTextView.setText(measurerDetailBean.getTestBirth());
+             phoneNumEditText.setText(measurerDetailBean.getTestMobile());
+             commentEditText.setText(measurerDetailBean.getTestRemark());
+        }
+
         mTestRecordListAdapter = new TestRecordListAdapter(this);
         testDateList.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         testDateList.setAdapter(mTestRecordListAdapter);
@@ -107,7 +133,7 @@ public class TesterDetailActivity extends BaseUILocalDataActivity {
     /**
      * 时间已扩展至 ： 1900 - 至今
      */
-    private void initLunarPicker() {
+    private void initTimePickerView() {
         Calendar selectedDate = Calendar.getInstance();//系统当前时间
         Calendar startDate = Calendar.getInstance();
         startDate.set(1900, 1, 1);
@@ -186,8 +212,34 @@ public class TesterDetailActivity extends BaseUILocalDataActivity {
         dialog.show();
     }
 
-    public static void open(Context context){
+    public void saveMeasurerDetailInfo(String username){
+        Map<String, String> params = new HashMap();
+//        params.put("username", username);
+        HttpRequest.post(HttpRequest.RequestType.GET,this, HttpRequest.SAVE_MEASURER_DETAIL_INFO, params, new HttpRequest.HttpResponseCallBack(){
+
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                MainAcyivity.open(TesterDetailActivity.this, MainAcyivity.BOTTOM_FRAGMENT01);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void showTimePickerView(View view, int dateType) {
+        currentDateType = dateType;
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        pvCustomLunar.show();
+    }
+
+    public static void open(Context context, String jsonData){
         Intent intent = new Intent(context, TesterDetailActivity.class);
+        LogUtils.printLog("json ="+jsonData);
+        intent.putExtra(KEY_OF_JSON_DATA, jsonData);
         context.startActivity(intent);
     }
 }

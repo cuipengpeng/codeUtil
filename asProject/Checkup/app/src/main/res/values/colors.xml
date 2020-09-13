@@ -13,9 +13,9 @@
     <color name="appNegativeRateColor">#18b293</color>
 
 
-    <color name="chartLineGreen">#00dd00</color>
-    <color name="chartLineYellow">#dddd00</color>
-    <color name="chartLineBlue">#0066ff</color>
+    <color name="chartLineGreen">#24BF51</color>
+    <color name="chartLineYellow">#F9C500</color>
+    <color name="chartLineBlue">#0E8CFF</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>

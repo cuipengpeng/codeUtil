@@ -2,7 +2,6 @@ package com.hospital.checkup.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -12,7 +11,6 @@ import com.hospital.checkup.R;
 import com.hospital.checkup.base.BaseUILocalDataActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class CalibrationActivity extends BaseUILocalDataActivity {
@@ -30,21 +28,42 @@ public class CalibrationActivity extends BaseUILocalDataActivity {
     @BindView(R.id.btn_calibrationActivity_measure)
     Button measureButton;
 
+    private final int CALIBRATION_START = 101;
+    private final int CALIBRATION_FINISH = 102;
+    private int currentCalibration = CALIBRATION_START;
+    private boolean stopCalibration = true;
+
     @OnClick({R.id.btn_calibrationActivity_calibration, R.id.btn_calibrationActivity_measure})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_calibrationActivity_calibration:
-                CalibrationStartActivity.open(this);
+                switch (currentCalibration){
+                    case CALIBRATION_START:
+                        if(stopCalibration){
+                            stopCalibration = false;
+                            new Thread(randomAngleThread).start();
+                            calibrationButton.setText("完成");
+                            currentCalibration = CALIBRATION_FINISH;
+                        }
+                        break;
+                    case CALIBRATION_FINISH:
+                        stopCalibration = true;
+                        currentCalibration = CALIBRATION_START;
+                        calibrationButton.setText("标定");
+                        break;
+                }
                 break;
             case R.id.btn_calibrationActivity_measure:
-                MeasureHomeActivity.open(this);
+                stopCalibration = true;
+                CalibrationStartActivity.open(this);
+//                MeasureHomeActivity.open(this);
                 break;
         }
     }
 
     @Override
     protected String getPageTitle() {
-        return "标定";
+        return "测量标定";
     }
 
     @Override
@@ -54,7 +73,41 @@ public class CalibrationActivity extends BaseUILocalDataActivity {
 
     @Override
     protected void initPageData() {
+        randomAngleRunnable = new RandomAngleRunnable();
+            randomAngleThread = new Runnable() {
+            @Override
+            public void run() {
+                while (true){
+                    if(stopCalibration){
+                        break;
+                    }
+                    randomAngleRunnable.angle01 = ((int) (Math.random() * 100));
+                    randomAngleRunnable.angle02 = ((int) (Math.random() * 100));
+                    randomAngleRunnable.angle03 = ((int) (Math.random() * 100));
+                    runOnUiThread(randomAngleRunnable);
+                    try {
+                        Thread.sleep(80);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+    }
 
+    private Runnable randomAngleThread;
+    private RandomAngleRunnable randomAngleRunnable;
+    public class RandomAngleRunnable implements Runnable{
+        public int angle01;
+        public int angle02;
+        public int angle03;
+
+        @Override
+        public void run() {
+            jointAngleTextView.setText(angle01+"");
+            localAngleTextView.setText(angle02+"");
+            remoteAngleTextView.setText(angle03+"");
+        }
     }
 
     public static void open(Context context) {

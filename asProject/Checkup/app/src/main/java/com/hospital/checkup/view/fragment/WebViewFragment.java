@@ -30,6 +30,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hospital.checkup.R;
 import com.hospital.checkup.base.BaseApplication;
@@ -78,6 +79,8 @@ public class WebViewFragment extends Fragment  implements IWebJsLisenter, Downlo
     @BindView(R.id.rl_webViewActivity_error)
     RelativeLayout errorRelativeLayout;
 
+
+    private static final int QUIT_INTERVAL = 2000;
     private String mUrl = "";
     Map<String, String> cacheHeaderMap = new HashMap<String, String>();
     private int currentProgress;
@@ -94,6 +97,7 @@ public class WebViewFragment extends Fragment  implements IWebJsLisenter, Downlo
     private ValueCallback<Uri[]> mFilePathCallback;
     boolean isShowTItle = true;
     private boolean isOnRefresh;
+    private long lastBackPressed;
 
 
     public static WebViewFragment newInstance(String url) {
@@ -319,6 +323,21 @@ public class WebViewFragment extends Fragment  implements IWebJsLisenter, Downlo
             }
         });
         anim.start();
+    }
+
+    public void onBack() {
+        if (webView.canGoBack()) {
+            webView.goBack();
+        } else {
+            long backPressed = System.currentTimeMillis();
+            if (backPressed - lastBackPressed > QUIT_INTERVAL) {
+                lastBackPressed = backPressed;
+                Toast.makeText(BaseApplication.applicationContext, "再按一次退出", Toast.LENGTH_SHORT).show();
+            } else {
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(0);
+            }
+        }
     }
 
     /**

@@ -17,16 +17,19 @@
             android:text="1"
             android:textSize="18sp"
             android:textColor="#000000"/>
+
         <TextView
             android:id="@+id/tv_item_testerDetailActivity_testName"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_toRightOf="@id/tv_item_testerDetailActivity_index"
+            android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/tv_item_testerDetailActivity_index"
+            android:layout_toRightOf="@id/tv_item_testerDetailActivity_index"
             android:gravity="center_vertical"
             android:text="测量001"
-            android:textSize="18sp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:textSize="18sp" />
         <TextView
             android:id="@+id/tv_item_testerDetailActivity_doctorName"
             android:layout_width="wrap_content"
@@ -55,4 +58,10 @@
             android:textSize="14sp"
             android:textColor="#000000"/>
     </RelativeLayout>
+    <TextView
+        android:id="@+id/tv_item_testerDetailActivity_content"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/rl_item_testerDetailActivity_title"
+        android:background="@drawable/circle_corner_gray_border_normal_2dp"/>
 </RelativeLayout>

@@ -69,6 +69,7 @@ public class HttpRequest {
     public static String UPLOAD_IMAGE_WEB_URL = UPLOAD_IMAGE_TEST_ENV_WEB_URL;
     public static String FACE_DETECT_WEB_URL = FACE_DETECT_TEST_ENV_URL;
 
+    private static final String MOCK_DATA = "mock/14/";
     private static final String H5_SUB_PATH = "dist/#/";
     private static final String H5_URL = APP_INTERFACE_WEB_URL+H5_SUB_PATH;
 
@@ -203,10 +204,10 @@ public class HttpRequest {
         params.put("version", DeviceUtil.getAppVersionName(BaseApplication.applicationContext));
         params.put("equipment", DeviceUtil.getDevicecId());
         params.put("mobileSystem", "android");
-        if(BaseApplication.userInfo!=null && BaseApplication.userInfo.getToken()!=null){
-            params.put("token", BaseApplication.userInfo.getToken());
-            params.put("userId", BaseApplication.userInfo.getMobile()+"");
-        }
+//        if(BaseApplication.userInfo!=null && BaseApplication.userInfo.getToken()!=null){
+//            params.put("token", BaseApplication.userInfo.getToken());
+//            params.put("userId", BaseApplication.userInfo.getMobile()+"");
+//        }
         TreeMap<String, String> treeMap = new TreeMap<String, String>();
         treeMap.putAll(params);
         String signedContent = MD5.sign(treeMap); // Des3.signContent(params.toString());
@@ -298,10 +299,10 @@ public class HttpRequest {
                             @Override
                             public okhttp3.Response intercept(Chain chain) throws IOException {
                                 Request.Builder builder = chain.request().newBuilder();
-                                if(BaseApplication.userInfo!=null && BaseApplication.userInfo.getToken()!=null){
-                                    builder.addHeader("token", BaseApplication.userInfo.getToken())
-                                            .addHeader("userId", BaseApplication.userInfo.getMobile()+"");
-                                }
+//                                if(BaseApplication.userInfo!=null && BaseApplication.userInfo.getToken()!=null){
+//                                    builder.addHeader("token", BaseApplication.userInfo.getToken())
+//                                            .addHeader("userId", BaseApplication.userInfo.getMobile()+"");
+//                                }
                                 return chain.proceed(builder.build());
                             }
                         })
@@ -393,7 +394,15 @@ public class HttpRequest {
     /**
      * 登录
      */
-    public static final String CHECKUP_LOGIN = "m/api/login";
+    public static final String CHECKUP_LOGIN = MOCK_DATA+"m/api/login";
+    /**
+     * 保存试者详情数据
+     */
+    public static final String SAVE_MEASURER_DETAIL_INFO = MOCK_DATA+"m/api/test-management/objs";
+    /**
+     * 获取测试模型列表
+     */
+    public static final String TEST_MODEL_LIST = MOCK_DATA+"m/api/test-management/models";
     /**
      * 设置中心
      */
@@ -417,15 +426,25 @@ public class HttpRequest {
     /**
      * 新增测试者
      */
-    public static final String H5_ADD_TESTER = H5_URL+"addMeasuredBeing";
+//    public static final String H5_ADD_TESTER = H5_URL+"searchMeasurer";
+    public static final String H5_ADD_TESTER = H5_URL+"searchMeasurer?from=home";
     /**
      * 新增医生
      */
-    public static final String H5_ADD_DOCTOR = H5_URL+"addDoctor";
+//    public static final String H5_ADD_DOCTOR = H5_URL+"searchDoctor";
+    public static final String H5_ADD_DOCTOR = H5_URL+"searchDoctor?from=home";
     /**
      * 记录
      */
     public static final String H5_RECORD = H5_URL+"record";
+    /**
+     * 注册
+     */
+    public static final String H5_REGISTER = H5_URL+"registerAccount";
+    /**
+     * 重置密码
+     */
+    public static final String H5_RESET_PASSWORD = H5_URL+"resetPassword";
 
 
 

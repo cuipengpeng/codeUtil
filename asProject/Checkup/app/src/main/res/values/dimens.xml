@@ -47,7 +47,10 @@
     <dimen name="dp175">175dp</dimen>
     <dimen name="dp190">190dp</dimen>
 
-    <dimen name="appTitleTextSize_17sp">17sp</dimen>
+    <dimen name="appTitleTextSize_18sp">18sp</dimen>
+    <dimen name="appContentTextSize_15sp">15sp</dimen>
+    <dimen name="appTipTextSize_13sp">13sp</dimen>
+    <dimen name="appDescTextSize_15sp">15sp</dimen>
     <dimen name="app_marginLeftAndRight_15dp">15dp</dimen>
     <dimen name="app_rightArrow_paddingRight_4dp">4dp</dimen>
     <dimen name="dividerView_height_10dp">10dp</dimen>

@@ -9,13 +9,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hospital.checkup.R;
+import com.hospital.checkup.bean.TestModelBean;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TestRecordListAdapter extends BaseRecyclerAdapter {
+public class TestRecordListAdapter extends BaseRecyclerAdapter<TestModelBean, TestRecordListAdapter.ViewHolder> {
 
     public TestRecordListAdapter(Context context) {
         super(context);
@@ -23,18 +24,20 @@ public class TestRecordListAdapter extends BaseRecyclerAdapter {
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tester_detail_test_record, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.contentTextView.setVisibility(View.GONE);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.tv_item_testerDetailActivity_index)
         TextView indexTextView;
+        @BindView(R.id.tv_item_testerDetailActivity_content)
+        TextView contentTextView;
         @BindView(R.id.tv_item_testerDetailActivity_testName)
         TextView testNameTextView;
         @BindView(R.id.tv_item_testerDetailActivity_doctorName)

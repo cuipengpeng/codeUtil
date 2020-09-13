@@ -90,7 +90,7 @@ public class WebViewActivity extends BaseUILocalDataActivity implements IWebJsLi
     ProgressBar progressBar;
     private boolean isAnimStart = false;
     private int currentProgress;
-    private boolean webViewGoBack = false;//是否直接返回上一页 true:可以回退网页html false ：直接返回上一页
+    private boolean webViewGoBack = true;//是否直接返回上一页 true:可以回退网页html false ：直接返回上一页
     public static SimpleDateFormat sdf = new SimpleDateFormat("EEE d MMM yyyy HH:mm:ss 'GMT'", Locale.US);
     public static String WEBVIEW_CACHE_STRING = "max-age=" + ConstantsUtil.WEBVIEW_CACHE_TIME;
     /**
@@ -123,6 +123,8 @@ public class WebViewActivity extends BaseUILocalDataActivity implements IWebJsLi
         return R.layout.activity_webview;
     }
 
+
+
     @Override
     protected void initPageData() {
         showBaseUITitle = false;
@@ -153,7 +155,7 @@ public class WebViewActivity extends BaseUILocalDataActivity implements IWebJsLi
         setWebViewVisible();//设置webview可见
         Intent intent = getIntent();
         String htmlUrl = intent.getStringExtra(KEY_OF_HTML_URL);
-        webViewGoBack = intent.getBooleanExtra(KEY_OF_WEB_VIEW_GO_BACK, false);
+        webViewGoBack = intent.getBooleanExtra(KEY_OF_WEB_VIEW_GO_BACK, true);
         isShowTItle = intent.getBooleanExtra(KEY_OF_WEB_VIEW_SHOW_TITLE, true);
         WindowInputUtils.assistActivity(this, false);
         if (!isShowTItle) {//不显示标题
@@ -166,7 +168,7 @@ public class WebViewActivity extends BaseUILocalDataActivity implements IWebJsLi
         }
         if (getIntent().getBooleanExtra(KEY_OF_WEB_VIEW_SHOWDELETE_ICON, false)) {//只显示删除按钮
             Drawable drawable = getResources().getDrawable(R.mipmap.ic_delete_gray);
-            webViewGoBack = false;
+//            webViewGoBack = false;
         }
     }
 
@@ -534,9 +536,9 @@ public class WebViewActivity extends BaseUILocalDataActivity implements IWebJsLi
     @Override
     public void setCallBack(int statusClose) {
         if (statusClose == 1) {
-            webViewGoBack = false;
+//            webViewGoBack = false;
         } else {
-            webViewGoBack = true;
+//            webViewGoBack = true;
         }
     }
 
@@ -569,8 +571,15 @@ public class WebViewActivity extends BaseUILocalDataActivity implements IWebJsLi
     }
 
     public static void open(Context context, String url){
+        open(context, url, false);
+    }
+    public static void open(Context context, String url, boolean startActivityForResult){
         Intent intent = new Intent(context, WebViewActivity.class);
         intent.putExtra(KEY_OF_HTML_URL, url);
-        context.startActivity(intent);
+        if(startActivityForResult){
+            ((Activity)context).startActivityForResult(intent, 101);
+        }else {
+            context.startActivity(intent);
+        }
     }
 }

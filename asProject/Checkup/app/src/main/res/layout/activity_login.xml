@@ -17,8 +17,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/loginActivity_marginLeftAndRight_15dp"
-        android:textSize="20sp"
+        android:textSize="@dimen/appTitleTextSize_18sp"
         android:text="登录用户"
+        android:textStyle="bold"
         android:textColor="#000000"/>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -29,8 +30,8 @@
         android:background="@drawable/circle_corner_gray_border_normal_2dp">
         <ImageView
             android:id="@+id/iv_loginActivity_userIcon"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginLeft="10dp"
             android:layout_centerVertical="true"
             android:background="@mipmap/user_icon"/>
@@ -41,7 +42,7 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/iv_loginActivity_userIcon"
             android:layout_marginLeft="10dp"
-            android:textSize="20sp"
+            android:textSize="@dimen/appContentTextSize_15sp"
             android:gravity="center_vertical"
             android:hint="SN码/用户名"
             android:textColor="#000000"
@@ -52,8 +53,10 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/loginActivity_marginLeftAndRight_15dp"
         android:layout_marginTop="20dp"
-        android:textSize="20sp"
+        android:textSize="@dimen/appTitleTextSize_18sp"
         android:text="登录密码"
+
+        android:textStyle="bold"
         android:textColor="#000000"/>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -65,8 +68,8 @@
 
         <ImageView
             android:id="@+id/iv_loginActivity_passwdIcon"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:src="@mipmap/password" />
@@ -75,7 +78,7 @@
             android:id="@+id/iv_loginActivity_hidePasswdIcon"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:padding="10dp"
+            android:padding="15dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:src="@mipmap/hidden_password"/>
@@ -88,7 +91,7 @@
             android:layout_toLeftOf="@id/iv_loginActivity_hidePasswdIcon"
             android:layout_toRightOf="@id/iv_loginActivity_passwdIcon"
             android:layout_marginLeft="10dp"
-            android:textSize="20sp"
+            android:textSize="@dimen/appContentTextSize_15sp"
             android:gravity="center_vertical"
             android:text=""
             android:inputType="textPassword"
@@ -106,15 +109,25 @@
         android:layout_marginRight="50dp"
         android:text="登录"
         android:textColor="#ffffff"
-        android:textSize="20sp"
+        android:textSize="@dimen/appTitleTextSize_18sp"
         android:background="@drawable/circle_corner_blue_bg_normal_2dp"/>
     <TextView
         android:id="@+id/tv_loginActivity_forgetPasswd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:textSize="@dimen/appContentTextSize_15sp"
         android:text="忘记密码"
+        android:textColor="#ff0000"/>
+
+    <TextView
+        android:id="@+id/tv_loginActivity_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:textSize="@dimen/appContentTextSize_15sp"
+        android:text="注册"
         android:textColor="#ff0000"/>
 </LinearLayout>

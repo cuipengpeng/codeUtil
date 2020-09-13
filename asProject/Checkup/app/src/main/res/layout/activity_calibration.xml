@@ -9,8 +9,13 @@
     <ImageView
         android:id="@+id/iv_calibrationActivity_body"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="220dp"
         android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:background="@drawable/circle_corner_gray_border_normal_2dp"
         android:src="@mipmap/leg"/>
 
     <LinearLayout
@@ -29,7 +34,7 @@
                 android:gravity="center_vertical"
                 android:text="关节角度"
                 android:textColor="#000000"
-                android:textSize="18sp"/>
+                android:textSize="@dimen/appContentTextSize_15sp"/>
             <TextView
                 android:id="@+id/tv_calibrationActivity_jointAngle"
                 android:layout_width="wrap_content"
@@ -38,7 +43,7 @@
                 android:gravity="center_vertical"
                 android:text="20"
                 android:textColor="#000000"
-                android:textSize="18sp"/>
+                android:textSize="@dimen/appContentTextSize_15sp"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -55,7 +60,7 @@
                 android:gravity="center_vertical"
                 android:text="近端倾角"
                 android:textColor="#000000"
-                android:textSize="18sp"/>
+                android:textSize="@dimen/appContentTextSize_15sp"/>
             <TextView
                 android:id="@+id/tv_calibrationActivity_localAngle"
                 android:layout_width="wrap_content"
@@ -64,7 +69,7 @@
                 android:gravity="center_vertical"
                 android:text="50"
                 android:textColor="#000000"
-                android:textSize="18sp"/>
+                android:textSize="@dimen/appContentTextSize_15sp"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -81,7 +86,7 @@
                 android:gravity="center_vertical"
                 android:text="远端倾角"
                 android:textColor="#000000"
-                android:textSize="18sp"/>
+                android:textSize="@dimen/appContentTextSize_15sp"/>
             <TextView
                 android:id="@+id/tv_calibrationActivity_remoteAngle"
                 android:layout_width="wrap_content"
@@ -90,7 +95,7 @@
                 android:gravity="center_vertical"
                 android:text="60"
                 android:textColor="#000000"
-                android:textSize="18sp"/>
+                android:textSize="@dimen/appContentTextSize_15sp"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -112,7 +117,7 @@
         android:layout_marginRight="10dp"
         android:text="标定"
         android:textColor="#ffffff"
-        android:textSize="20sp"
+        android:textSize="@dimen/appTitleTextSize_18sp"
         android:background="@drawable/circle_corner_red_bg_normal_2dp"/>
     <Button
         android:id="@+id/btn_calibrationActivity_measure"
@@ -122,7 +127,7 @@
         android:layout_marginRight="10dp"
         android:text="测量"
         android:textColor="#ffffff"
-        android:textSize="20sp"
+        android:textSize="@dimen/appTitleTextSize_18sp"
         android:background="@drawable/circle_corner_blue_bg_normal_2dp"/>
 </LinearLayout>
 </LinearLayout>

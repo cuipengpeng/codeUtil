@@ -39,7 +39,7 @@
 
 
     <style name="style_titleBlack_17sp">
-        <item name="android:textSize">@dimen/appTitleTextSize_17sp</item>
+        <item name="android:textSize">@dimen/appTitleTextSize_18sp</item>
         <item name="android:textColor">@color/appTitleColor</item>
     </style>
 

@@ -31,7 +31,7 @@
             android:maxLines="2"
             android:text=""
             android:textColor="#393b51"
-            android:textSize="@dimen/appTitleTextSize_17sp" />
+            android:textSize="@dimen/appTitleTextSize_18sp" />
 
         <RelativeLayout
             android:id="@+id/rl_base_back"

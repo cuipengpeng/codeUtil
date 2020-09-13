@@ -5,7 +5,8 @@
     android:background="#ffffff"
     android:orientation="vertical">
 
-    <include layout="@layout/title_base"></include>
+    <include layout="@layout/title_base"
+        android:visibility="invisible"></include>
 
     <ImageView
         android:layout_width="match_parent"

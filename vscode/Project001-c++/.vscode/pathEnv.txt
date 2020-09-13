@@ -1,0 +1,3 @@
+Path:
+CMAKE_MAKE_PROGRAM
+E:\software_install\TDM-GCC-64\bin\mingw32-make.exe

@@ -20,7 +20,7 @@
             android:layout_marginRight="10dp"
             android:text="开始"
             android:textColor="#ffffff"
-            android:textSize="20sp"
+            android:textSize="@dimen/appTitleTextSize_18sp"
             android:background="@drawable/circle_corner_green_bg_normal_2dp"/>
         <Button
             android:id="@+id/btn_calibrationStartActivity_stop"
@@ -30,7 +30,7 @@
             android:layout_marginRight="10dp"
             android:text="停止"
             android:textColor="#ffffff"
-            android:textSize="20sp"
+            android:textSize="@dimen/appTitleTextSize_18sp"
             android:background="@drawable/circle_corner_red_bg_normal_2dp"/>
     </LinearLayout>
 
@@ -50,7 +50,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:textColor="#000000"
-                android:textSize="16sp"
+                android:textSize="@dimen/appContentTextSize_15sp"
                 android:text="角度范围"
                 android:gravity="center_vertical"/>
             <TextView
@@ -58,7 +58,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
                 android:textColor="#0066dd"
-                android:textSize="16sp"
+                android:textSize="@dimen/appContentTextSize_15sp"
                 android:text="10-20"
                 android:gravity="center_vertical"/>
         </RelativeLayout>
@@ -72,7 +72,7 @@
             android:layout_alignParentLeft="true"
             android:layout_marginTop="10dp"
             android:textColor="#000000"
-            android:textSize="16sp"
+            android:textSize="@dimen/appContentTextSize_15sp"
             android:text="测量说明"
             android:gravity="center_vertical"/>
         <TextView
@@ -81,7 +81,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginBottom="10dp"
             android:textColor="#0066dd"
-            android:textSize="14sp"
+            android:textSize="@dimen/appTipTextSize_13sp"
             android:text="开始测量时，请按照相关说明标准执行"
             android:gravity="center_vertical"/>
 
@@ -100,7 +100,7 @@
             android:layout_marginRight="40dp"
             android:text="保存"
             android:textColor="#ffffff"
-            android:textSize="20sp"
+            android:textSize="@dimen/appTitleTextSize_18sp"
             android:background="@drawable/circle_corner_blue_bg_normal_2dp"/>
 </LinearLayout>
 
@@ -135,6 +135,7 @@
                     android:layout_toRightOf="@id/iv_calibrationStartActivity_circleIcon01"
                     android:layout_marginLeft="5dp"
                     android:text="角度"
+                    android:textSize="@dimen/appTipTextSize_13sp"
                     android:gravity="center_vertical"/>
             </RelativeLayout>
             <RelativeLayout
@@ -154,6 +155,7 @@
                     android:layout_toRightOf="@id/iv_calibrationStartActivity_circleIcon02"
                     android:layout_marginLeft="5dp"
                     android:text="速度"
+                    android:textSize="@dimen/appTipTextSize_13sp"
                     android:gravity="center_vertical"/>
             </RelativeLayout>
             <RelativeLayout
@@ -173,6 +175,7 @@
                     android:layout_toRightOf="@id/iv_calibrationStartActivity_circleIcon03"
                     android:layout_marginLeft="5dp"
                     android:text="交互力"
+                    android:textSize="@dimen/appTipTextSize_13sp"
                     android:gravity="center_vertical"/>
             </RelativeLayout>
         </LinearLayout>

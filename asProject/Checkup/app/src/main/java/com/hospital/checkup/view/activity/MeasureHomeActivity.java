@@ -21,8 +21,6 @@ public class MeasureHomeActivity extends BaseUILocalDataActivity {
     RegionImageView bodyImageView;
     @BindView(R.id.iv_measureHomeActivity_adddUser)
     ImageView addUserImageView;
-    @BindView(R.id.iv_measureHomeActivity_measureContentList)
-    ImageView measureContentListImageView;
     @BindView(R.id.iv_measureHomeActivity_addDoctor)
     ImageView addDoctorImageView;
     @BindView(R.id.btn_measureHomeActivity_measure)
@@ -32,7 +30,7 @@ public class MeasureHomeActivity extends BaseUILocalDataActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_measureHomeActivity_measure:
-                TesterDetailActivity.open(this);
+                TesterDetailActivity.open(this, "");
                 break;
             case R.id.iv_measureHomeActivity_addDoctor:
                 WebViewActivity.open(this, HttpRequest.H5_ADD_DOCTOR);

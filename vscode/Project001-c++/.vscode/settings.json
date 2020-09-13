@@ -1,4 +1,4 @@
 {
     "cmake.cmakePath": "D:\\software_install\\cmake3.11.1\\bin\\cmake.exe",
-    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
+	"cmake.generator": "MinGW Makefiles"
 }
