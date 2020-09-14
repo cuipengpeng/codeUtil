@@ -39,7 +39,7 @@ public class JsRequstInterface {
 
     @android.webkit.JavascriptInterface
     public String openBluetooth(int type, String json) {
-//        Toast.makeText(BaseApplication.applicationContext, type+"-----"+json, Toast.LENGTH_SHORT).show();
+        Toast.makeText(BaseApplication.applicationContext, type+"-----"+json, Toast.LENGTH_SHORT).show();
         LogUtils.printLog("json data = "+json);
         String str = "";
         switch (type){
