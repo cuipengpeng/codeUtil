@@ -19,14 +19,14 @@ import butterknife.OnClick;
 public class MeasureHomeActivity extends BaseUILocalDataActivity {
     @BindView(R.id.iv_measureHomeActivity_body)
     RegionImageView bodyImageView;
-    @BindView(R.id.iv_measureHomeActivity_adddUser)
+    @BindView(R.id.iv_measureHomeActivity_addMeasurer)
     ImageView addUserImageView;
     @BindView(R.id.iv_measureHomeActivity_addDoctor)
     ImageView addDoctorImageView;
     @BindView(R.id.btn_measureHomeActivity_measure)
     Button measureButton;
 
-    @OnClick({R.id.btn_measureHomeActivity_measure, R.id.iv_measureHomeActivity_addDoctor, R.id.iv_measureHomeActivity_adddUser})
+    @OnClick({R.id.btn_measureHomeActivity_measure, R.id.iv_measureHomeActivity_addDoctor, R.id.iv_measureHomeActivity_addMeasurer})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_measureHomeActivity_measure:
@@ -35,7 +35,7 @@ public class MeasureHomeActivity extends BaseUILocalDataActivity {
             case R.id.iv_measureHomeActivity_addDoctor:
                 WebViewActivity.open(this, HttpRequest.H5_ADD_DOCTOR);
                 break;
-            case R.id.iv_measureHomeActivity_adddUser:
+            case R.id.iv_measureHomeActivity_addMeasurer:
                 WebViewActivity.open(this, HttpRequest.H5_ADD_TESTER);
                 break;
         }

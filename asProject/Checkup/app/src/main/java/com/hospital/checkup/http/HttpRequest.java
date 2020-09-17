@@ -426,12 +426,10 @@ public class HttpRequest {
     /**
      * 新增测试者
      */
-//    public static final String H5_ADD_TESTER = H5_URL+"searchMeasurer";
     public static final String H5_ADD_TESTER = H5_URL+"searchMeasurer?from=home";
     /**
      * 新增医生
      */
-//    public static final String H5_ADD_DOCTOR = H5_URL+"searchDoctor";
     public static final String H5_ADD_DOCTOR = H5_URL+"searchDoctor?from=home";
     /**
      * 记录
