@@ -16,6 +16,13 @@ project(demo)
 message(${demo_SOURCE_DIR})
 message(${demo_BINARY_DIR})
 
+#${CMAKE_CURRENT_SOURCE_DIR}表示CMakeLists.txt文件的绝对路径
+#${CMAKE_CURRENT_BINARY_DIR}
+#${CMAKE_CURRENT_LIST_DIR}表示CMakeLists.txt文件的绝对路径
+#${CMAKE_CURRENT_LIST_FILE}
+#${CMAKE_INCLUDE_CURRENT_DIR}
+#${PROJECT_SOURCE_DIR}
+
 set(CMAKE_GENERATOR "MinGW Makefiles")
 set(CMAKE_C_COMPILER "D:\\software_install\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe")
 set(CMAKE_CXX_COMPILER "D:\\software_install\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe")

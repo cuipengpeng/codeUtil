@@ -85,17 +85,17 @@ public class LoginActivity extends BaseUILocalDataActivity {
             case R.id.btn_loginActivity_login:
                 String userName = userNameEditText.getText().toString().trim();
                 String password = passwdEditText.getText().toString().trim();
-//                login("15201291660", "123456");
+                login("132012341660", "123456");
 
-                if(userMap.keySet().contains(userName)){
-                    if(userMap.get(userName).equalsIgnoreCase(password)){
-                        login("15201291660", "123456");
-                    }else {
-                        Toast.makeText(LoginActivity.this, "密码错误", Toast.LENGTH_SHORT).show();
-                    }
-                }else {
-                    Toast.makeText(LoginActivity.this, "用户名不存在", Toast.LENGTH_SHORT).show();
-                }
+//                if(userMap.keySet().contains(userName)){
+//                    if(userMap.get(userName).equalsIgnoreCase(password)){
+//                        login("132012341660", "123456");
+//                    }else {
+//                        Toast.makeText(LoginActivity.this, "密码错误", Toast.LENGTH_SHORT).show();
+//                    }
+//                }else {
+//                    Toast.makeText(LoginActivity.this, "用户名不存在", Toast.LENGTH_SHORT).show();
+//                }
                 break;
         }
     }

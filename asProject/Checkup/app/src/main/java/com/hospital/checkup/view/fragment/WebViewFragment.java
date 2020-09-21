@@ -340,6 +340,14 @@ public class WebViewFragment extends Fragment  implements IWebJsLisenter, Downlo
         }
     }
 
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        if(!hidden){
+            webView.loadUrl(mUrl, cacheHeaderMap);
+        }
+        super.onHiddenChanged(hidden);
+    }
+
     /**
      * url拦截处理
      *

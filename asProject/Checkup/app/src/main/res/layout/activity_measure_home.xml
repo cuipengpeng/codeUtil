@@ -8,19 +8,23 @@
 <com.hospital.checkup.widget.RegionImageView
     android:id="@+id/iv_measureHomeActivity_body"
     android:layout_width="match_parent"
-    android:layout_height="220dp"
+    android:layout_height="0dp"
+    android:layout_weight="4"
     android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:paddingLeft="5dp"
+    android:scaleType="fitXY"
     android:src="@mipmap/measure_body"
     android:background="@drawable/circle_corner_gray_border_normal_2dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="6"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:orientation="vertical">
@@ -89,9 +93,14 @@
                     android:layout_height="match_parent"
                     android:layout_alignParentRight="true"
                     android:gravity="center_vertical"
-                    android:text="腿部"
+                    android:text="..."
                     android:textColor="#707070"
                     android:textSize="@dimen/appContentTextSize_15sp"/>
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/arrow_down"/>
             </LinearLayout>
         </RelativeLayout>
 
@@ -122,9 +131,14 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
                 android:gravity="center_vertical"
-                android:text=""
+                android:text="..."
                 android:textColor="#707070"
                 android:textSize="@dimen/appContentTextSize_15sp"/>
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/arrow_down"/>
             </LinearLayout>
         </RelativeLayout>
 
@@ -171,18 +185,17 @@
         <View android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:background="#c4c4c4"/>
-
+        <Button
+            android:id="@+id/btn_measureHomeActivity_measure"
+            android:layout_width="180dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="50dp"
+            android:layout_gravity="center_horizontal"
+            android:text="测量"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/appTitleTextSize_18sp"
+            android:background="@drawable/circle_corner_blue_bg_normal_2dp"/>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_measureHomeActivity_measure"
-        android:layout_width="180dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="50dp"
-        android:layout_gravity="center_horizontal"
-        android:text="测量"
-        android:textColor="#ffffff"
-        android:textSize="@dimen/appTitleTextSize_18sp"
-        android:background="@drawable/circle_corner_blue_bg_normal_2dp"/>
 </LinearLayout>

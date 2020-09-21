@@ -9,10 +9,12 @@ import android.content.IntentFilter;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
@@ -26,6 +28,9 @@ import com.hospital.checkup.bluetooth.BleController;
 import com.hospital.checkup.bluetooth.ConnectCallback;
 import com.hospital.checkup.bluetooth.ScanCallback;
 import com.hospital.checkup.utils.LogUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -45,7 +50,16 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
     private RealTimePointRunnable realTimePointRunnable;
     private boolean stopCalibration = true;
 
-    @OnClick({R.id.btn_calibrationStartActivity_start, R.id.btn_calibrationStartActivity_stop, R.id.btn_calibrationStartActivity_save})
+    private LineDataSet set1, set2, set3;
+    private List<Entry> entryList01 = new ArrayList<>();
+    private List<Entry> entryList02 = new ArrayList<>();
+    private List<Entry> entryList03 = new ArrayList<>();
+    private boolean showLegend01 = true;
+    private boolean showLegend02 = true;
+    private boolean showLegend03 = true;
+
+    @OnClick({R.id.btn_calibrationStartActivity_start, R.id.btn_calibrationStartActivity_stop, R.id.btn_calibrationStartActivity_save,
+            R.id.rl_calibrationStartActivity_legend01, R.id.rl_calibrationStartActivity_legend02, R.id.rl_calibrationStartActivity_legend03})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_calibrationStartActivity_start:
@@ -71,6 +85,45 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
                 break;
             case R.id.btn_calibrationStartActivity_save:
                 break;
+            case R.id.rl_calibrationStartActivity_legend01:
+                showLegend01 = !showLegend01;
+                if(showLegend01){
+                    logEntryList(entryList01);
+                    for(int i=0; i<entryList01.size();i++){
+                        set1.addEntryOrdered(entryList01.get(i).copy());
+                    }
+                }else {
+                    set1.clear();
+                }
+                notifyDataSetChangeForChart();
+                chart.invalidate();
+                break;
+            case R.id.rl_calibrationStartActivity_legend02:
+                showLegend02 = !showLegend02;
+                if(showLegend02){
+                    logEntryList(entryList02);
+                    for(int i=0; i<entryList02.size();i++){
+                        set2.addEntryOrdered(entryList02.get(i).copy());
+                    }
+                }else {
+                    set2.clear();
+                }
+                notifyDataSetChangeForChart();
+                chart.invalidate();
+                break;
+            case R.id.rl_calibrationStartActivity_legend03:
+                showLegend03 = !showLegend03;
+                if(showLegend03){
+                    logEntryList(entryList03);
+                    for(int i=0; i<entryList03.size();i++){
+                        set3.addEntryOrdered(entryList03.get(i).copy());
+                    }
+                }else {
+                    set3.clear();
+                }
+                notifyDataSetChangeForChart();
+                chart.invalidate();
+                break;
         }
     }
 
@@ -90,6 +143,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
             scanBleDeviceAndConnect();
         }
         initChart();
+        initLineDataSet();
     }
 
     private void initChart() {
@@ -107,6 +161,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         chart.setDrawGridBackground(false);
         chart.setHighlightPerDragEnabled(true);
 
+        chart.setMarkerView(new MarkerView(this, R.layout.marker_view));
         // if disabled, scaling can be done on x- and y-axis separately
         chart.setPinchZoom(true);
 
@@ -156,6 +211,10 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         realTimePointThread = new Runnable() {
             @Override
             public void run() {
+                entryList01.clear();
+                entryList02.clear();
+                entryList03.clear();
+
                 for(int i=0; i<500;i++){
                     if(stopCalibration){
                         break;
@@ -168,9 +227,15 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
                         e.printStackTrace();
                     }
                 }
+
+                LogUtils.printLog("init--0");
+                logEntryList(((LineDataSet)chart.getData().getDataSetByIndex(0)).getEntries());
+                LogUtils.printLog("init--1");
+                logEntryList(((LineDataSet)chart.getData().getDataSetByIndex(1)).getEntries());
+                LogUtils.printLog("init--2");
+                logEntryList(((LineDataSet)chart.getData().getDataSetByIndex(2)).getEntries());
             }
         };
-//        realTimePointThread.start();
     }
 
     class RealTimePointRunnable implements Runnable{
@@ -183,7 +248,6 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
     }
 
     private void initLineDataSet() {
-        LineDataSet set1, set2, set3;
         // create a dataset and give it a type
 //            set1 = new LineDataSet(values1, "DataSet 1");
         set1 = new LineDataSet(null, "DataSet 1");
@@ -196,19 +260,17 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         set1.setCircleHoleRadius(2f);
         set1.setFillAlpha(65);
         set1.setFillColor(ColorTemplate.getHoloBlue());
-        set1.setHighLightColor(Color.rgb(244, 117, 117));
         set1.setDrawCircles(true);
-        set1.setDrawCircleHole(true);
+        set1.setDrawCircleHole(false);
         set1.setDrawValues(false);
+        set1.setHighLightColor(Color.rgb(244, 117, 117));
         //set1.setFillFormatter(new MyFillFormatter(0f));
         //set1.setDrawHorizontalHighlightIndicator(false);
         //set1.setVisible(false);
         //set1.setCircleHoleColor(Color.WHITE);
 
-        // create a dataset and give it a type
-//            set2 = new LineDataSet(values2, "DataSet 2");
         set2 = new LineDataSet(null, "DataSet 2");
-        set2.setAxisDependency(YAxis.AxisDependency.RIGHT);
+        set2.setAxisDependency(YAxis.AxisDependency.LEFT);
         set2.setColor(getResources().getColor(R.color.chartLineYellow));
         set2.setCircleColor(getResources().getColor(R.color.chartLineYellow));
         set2.setMode(LineDataSet.Mode.CUBIC_BEZIER);
@@ -218,14 +280,13 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         set2.setFillAlpha(65);
         set2.setFillColor(Color.RED);
         set2.setDrawCircles(true);
-        set2.setDrawCircleHole(true);
+        set2.setDrawCircleHole(false);
         set2.setDrawValues(false);
         set2.setHighLightColor(Color.rgb(244, 117, 117));
         //set2.setFillFormatter(new MyFillFormatter(900f));
 
-//            set3 = new LineDataSet(values3, "DataSet 3");
         set3 = new LineDataSet(null, "DataSet 3");
-        set3.setAxisDependency(YAxis.AxisDependency.RIGHT);
+        set3.setAxisDependency(YAxis.AxisDependency.LEFT);
         set3.setColor(getResources().getColor(R.color.chartLineGreen));
         set3.setCircleColor(getResources().getColor(R.color.chartLineGreen));
         set3.setMode(LineDataSet.Mode.CUBIC_BEZIER);
@@ -235,7 +296,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         set3.setFillAlpha(0);
         set3.setFillColor(ColorTemplate.colorWithAlpha(Color.YELLOW, 200));
         set3.setDrawCircles(true);
-        set3.setDrawCircleHole(true);
+        set3.setDrawCircleHole(false);
         set3.setDrawValues(false);
         set3.setHighLightColor(Color.rgb(244, 117, 117));
 
@@ -255,12 +316,21 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         LineDataSet set1 = (LineDataSet) chart.getData().getDataSetByIndex(0);
         LineDataSet set2 = (LineDataSet) chart.getData().getDataSetByIndex(1);
         LineDataSet set3 = (LineDataSet) chart.getData().getDataSetByIndex(2);
+
         float val1 = (float) (Math.random() * range) + 300;
-        set1.addEntryOrdered(new Entry(index, val1));
+        Entry entry01 = new Entry(index, val1);
+        entryList01.add(entry01);
+        set1.addEntryOrdered(entry01);
+
         float val2 = (float) (Math.random() * range) + 200;
-        set2.addEntryOrdered(new Entry(index, val2));
+        Entry entry02 = new Entry(index, val2);
+        entryList02.add(entry02);
+        set2.addEntryOrdered(entry02);
+
         float val3 = (float) (Math.random() * range) + 350;
-        set3.addEntryOrdered(new Entry(index, val3));
+        Entry entry03 = new Entry(index, val3);
+        entryList03.add(entry03);
+        set3.addEntryOrdered(entry03);
 
 //            ILineDataSet set = data.getDataSetByIndex(0);
         // set.addEntry(...); // can be called as well
@@ -269,11 +339,8 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
 //                set = createSet();
 //                data.addDataSet(set);
 //            }
+        notifyDataSetChangeForChart();
 
-//            data.addEntry(new Entry(set.getEntryCount(), (float) (Math.random() * 40) + 30f), 0);
-        chart.getData().notifyDataChanged();
-        // let the chart know it's data has changed
-        chart.notifyDataSetChanged();
 
         // limit the number of visible entries
         chart.setVisibleXRangeMaximum(50);
@@ -285,6 +352,21 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         // this automatically refreshes the chart (calls invalidate())
         // chart.moveViewTo(data.getXValCount()-7, 55f,
         // AxisDependency.LEFT);
+    }
+
+    private void logEntryList(List<Entry> entryList) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i=0; i<entryList.size(); i++){
+            stringBuilder.append(entryList.get(i).getY()+"--");
+        }
+        LogUtils.printLog(stringBuilder.toString());
+    }
+
+    private void notifyDataSetChangeForChart() {
+        //data.addEntry(new Entry(set.getEntryCount(), (float) (Math.random() * 40) + 30f), 0);
+        chart.getData().notifyDataChanged();
+        // let the chart know it's data has changed
+        chart.notifyDataSetChanged();
     }
 
     @Override

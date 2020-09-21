@@ -18,7 +18,7 @@ public class TestModelBean {
     private int modelId;
     private String modelName;
     private int modelType;
-    private String modelCode;
+    private int modelCode;
     private List<ChildrenBeanX> children;
 
     public String getModelExample() {
@@ -53,11 +53,11 @@ public class TestModelBean {
         this.modelType = modelType;
     }
 
-    public String getModelCode() {
+    public int getModelCode() {
         return modelCode;
     }
 
-    public void setModelCode(String modelCode) {
+    public void setModelCode(int modelCode) {
         this.modelCode = modelCode;
     }
 
