@@ -28,6 +28,7 @@ import com.hospital.checkup.bluetooth.BleController;
 import com.hospital.checkup.bluetooth.ConnectCallback;
 import com.hospital.checkup.bluetooth.ScanCallback;
 import com.hospital.checkup.utils.LogUtils;
+import com.hospital.checkup.widget.CustomMarkerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +59,8 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
     private boolean showLegend02 = true;
     private boolean showLegend03 = true;
 
+    private static int lineSetcount = 0;
+
     @OnClick({R.id.btn_calibrationStartActivity_start, R.id.btn_calibrationStartActivity_stop, R.id.btn_calibrationStartActivity_save,
             R.id.rl_calibrationStartActivity_legend01, R.id.rl_calibrationStartActivity_legend02, R.id.rl_calibrationStartActivity_legend03})
     public void onViewClicked(View view) {
@@ -68,6 +71,9 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
                     chart.clear();
                     new Thread(realTimePointThread).start();
                 }
+                disableButton();
+                stopButton.setEnabled(true);
+                stopButton.setBackgroundResource(R.drawable.circle_corner_red_bg_normal_2dp);
 //                if (!BleController.getInstance().isEnable()) {
 //                    Toast.makeText(BaseApplication.applicationContext, "请打开蓝牙", Toast.LENGTH_SHORT).show();
 //                    startActivity(new Intent(Settings.ACTION_BLUETOOTH_SETTINGS));
@@ -81,44 +87,63 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
                 break;
             case R.id.btn_calibrationStartActivity_stop:
                 stopCalibration = true;
+                disableButton();
+                saveButton.setEnabled(true);
+                saveButton.setBackgroundResource(R.drawable.circle_corner_blue_bg_normal_2dp);
 //                BleController.getInstance().enableNotification(false, BleController.getInstance().mBleGattCharacteristic);
                 break;
             case R.id.btn_calibrationStartActivity_save:
+                enableStartButton();
                 break;
             case R.id.rl_calibrationStartActivity_legend01:
+                if(lineSetcount<=1 && showLegend01){
+                    return;
+                }
                 showLegend01 = !showLegend01;
                 if(showLegend01){
                     logEntryList(entryList01);
                     for(int i=0; i<entryList01.size();i++){
                         set1.addEntryOrdered(entryList01.get(i).copy());
                     }
+                    lineSetcount++;
                 }else {
+                    lineSetcount--;
                     set1.clear();
                 }
                 notifyDataSetChangeForChart();
                 chart.invalidate();
                 break;
             case R.id.rl_calibrationStartActivity_legend02:
+                if(lineSetcount<=1 && showLegend02){
+                    return;
+                }
                 showLegend02 = !showLegend02;
                 if(showLegend02){
                     logEntryList(entryList02);
                     for(int i=0; i<entryList02.size();i++){
                         set2.addEntryOrdered(entryList02.get(i).copy());
                     }
+                    lineSetcount++;
                 }else {
+                    lineSetcount--;
                     set2.clear();
                 }
                 notifyDataSetChangeForChart();
                 chart.invalidate();
                 break;
             case R.id.rl_calibrationStartActivity_legend03:
+                if(lineSetcount<=1 && showLegend03){
+                    return;
+                }
                 showLegend03 = !showLegend03;
                 if(showLegend03){
                     logEntryList(entryList03);
                     for(int i=0; i<entryList03.size();i++){
                         set3.addEntryOrdered(entryList03.get(i).copy());
                     }
+                    lineSetcount++;
                 }else {
+                    lineSetcount--;
                     set3.clear();
                 }
                 notifyDataSetChangeForChart();
@@ -144,6 +169,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         }
         initChart();
         initLineDataSet();
+        enableStartButton();
     }
 
     private void initChart() {
@@ -161,7 +187,16 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         chart.setDrawGridBackground(false);
         chart.setHighlightPerDragEnabled(true);
 
-        chart.setMarkerView(new MarkerView(this, R.layout.marker_view));
+//        chart.setMarker(new CustomMarkerView(this, R.layout.marker_view));
+//        chart.setMarkerView(new MarkerView(this, R.layout.marker_view));
+        CustomMarkerView markerView = new CustomMarkerView(this, R.layout.marker_view);
+        markerView.setChartView(chart);
+        chart.setMarker(markerView);
+
+//        MyMarkerView mv = new MyMarkerView(getContext(), R.layout.custom_marker_view);
+//        mv.setChartView(lineChart);
+//        lineChart.setMarker(mv);
+
         // if disabled, scaling can be done on x- and y-axis separately
         chart.setPinchZoom(true);
 
@@ -217,6 +252,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
 
                 for(int i=0; i<500;i++){
                     if(stopCalibration){
+                        lineSetcount = 3;
                         break;
                     }
                     realTimePointRunnable.index = i;
@@ -430,6 +466,22 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
             }
         }
     };
+
+    private void disableButton(){
+        startButton.setEnabled(false);
+        startButton.setBackgroundResource(R.drawable.circle_corner_disable_gray_bg_2dp);
+        stopButton.setEnabled(false);
+        stopButton.setBackgroundResource(R.drawable.circle_corner_disable_gray_bg_2dp);
+        saveButton.setEnabled(false);
+        saveButton.setBackgroundResource(R.drawable.circle_corner_disable_gray_bg_2dp);
+    }
+
+
+    private void enableStartButton() {
+        disableButton();
+        startButton.setEnabled(true);
+        startButton.setBackgroundResource(R.drawable.circle_corner_green_bg_normal_2dp);
+    }
 
     public static void open(Context context) {
         Intent intent = new Intent(context, CalibrationStartActivity.class);

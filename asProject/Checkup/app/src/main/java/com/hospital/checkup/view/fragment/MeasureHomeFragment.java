@@ -165,6 +165,7 @@ public class MeasureHomeFragment extends BaseUILocalDataFragment {
                 measureContentTextView.setText(opt2tx+"、"+opt3tx);
             }
         })
+        .setOutSideCancelable(false)
         .setTitleText("测量选择")
         .setDividerColor(Color.BLACK)
         .setTextColorCenter(Color.BLACK) //设置选中项文字颜色
