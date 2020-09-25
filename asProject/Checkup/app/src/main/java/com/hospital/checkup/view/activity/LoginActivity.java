@@ -66,7 +66,7 @@ public class LoginActivity extends BaseUILocalDataActivity {
                     hidePasswdIconImageView.setImageResource(R.mipmap.hidden_password);
                     passwdEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 } else {
-                    hidePasswdIconImageView.setImageResource(R.drawable.circle_corner_blue_bg_normal_2dp);
+                    hidePasswdIconImageView.setImageResource(R.mipmap.show_password);
                     passwdEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 }
                 Spannable spanText = passwdEditText.getText();

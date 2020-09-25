@@ -64,6 +64,8 @@ public class MeasureHomeFragment extends BaseUILocalDataFragment {
     public static final int BODY_CODE_4 = 4;
     public static final int BODY_CODE_5 = 5;
     public static final int BODY_CODE_6 = 6;
+    public static final int BODY_CODE_7 = 7;
+    public static final int BODY_CODE_8 = 8;
 
     private List<TestModelBean> mTestModelBeanList = new ArrayList<>();
     private List<String> options1Items = new ArrayList<>();
@@ -109,6 +111,7 @@ public class MeasureHomeFragment extends BaseUILocalDataFragment {
         bodyImageView.setOnImageViewAreaClickListener(new RegionImageView.OnImageViewAreaClickListener() {
             @Override
             public void onAreaClick(int areaIndex) {
+//                Toast.makeText(BaseApplication.applicationContext, areaIndex+"", Toast.LENGTH_SHORT).show();
                 showPickerView(areaIndex);
             }
         });
@@ -186,19 +189,18 @@ public class MeasureHomeFragment extends BaseUILocalDataFragment {
     }
 
     private void initJsonData() {//解析数据
-        for (int i = 0; i < mTestModelBeanList.size(); i++) {//遍历省份
+        for (int i = 0; i < mTestModelBeanList.size(); i++) {//
             options1Items.add(mTestModelBeanList.get(i).getModelName());
-            ArrayList<String> cityList = new ArrayList<>();//该省的城市列表（第二级）
-            ArrayList<ArrayList<String>> province_AreaList = new ArrayList<>();//该省的所有地区列表（第三极）
-
-            for (int c = 0; c < mTestModelBeanList.get(i).getChildren().size(); c++) {//遍历该省份的所有城市
+            ArrayList<String> cityList = new ArrayList<>();//（第二级）
+            ArrayList<ArrayList<String>> province_AreaList = new ArrayList<>();//（第三极）
+            for (int c = 0; c < mTestModelBeanList.get(i).getChildren().size(); c++) {
                 String cityName = mTestModelBeanList.get(i).getChildren().get(c).getModelName();
                 cityList.add(cityName);//添加城市
-                ArrayList<String> city_AreaList = new ArrayList<>();//该城市的所有地区列表
+                ArrayList<String> city_AreaList = new ArrayList<>();
                 for(int j=0; j<mTestModelBeanList.get(i).getChildren().get(c).getChildren().size();j++){
                     city_AreaList.add(mTestModelBeanList.get(i).getChildren().get(c).getChildren().get(j).getModelName());
                 }
-                province_AreaList.add(city_AreaList);//添加该省所有地区数据
+                province_AreaList.add(city_AreaList);
             }
             options2Items.add(cityList);
             options3Items.add(province_AreaList);

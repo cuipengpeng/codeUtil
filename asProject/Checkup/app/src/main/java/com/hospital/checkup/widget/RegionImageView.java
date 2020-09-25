@@ -15,7 +15,7 @@ public class RegionImageView extends ImageView {
     private Context mContext;
     private OnImageViewAreaClickListener mAreaClickListener;
     private final int mColumn = 2;
-    private final int mRaw = 3;
+    private final int mRaw = 4;
 
     public RegionImageView(Context context) {
         this(context, null);
@@ -45,10 +45,14 @@ public class RegionImageView extends ImageView {
                 area = MeasureHomeFragment.BODY_CODE_3;
             } else if (x>=getWidth()/mColumn && x<=getWidth() &&  y>=getHeight()/mRaw && y<=getHeight()/mRaw*2) {
                 area = MeasureHomeFragment.BODY_CODE_4;
-            } else if (x>0 && x<getWidth()/mColumn  && y>=getHeight()/mRaw*2 && y<=getHeight()) {
+            } else if (x>0 && x<getWidth()/mColumn  && y>=getHeight()/mRaw*2 && y<=getHeight()/mRaw*3) {
                 area = MeasureHomeFragment.BODY_CODE_5;
-            } else if (x>=getWidth()/mColumn && x<=getWidth() &&  y>=getHeight()/mRaw*2 && y<=getHeight()) {
+            } else if (x>=getWidth()/mColumn && x<=getWidth() &&  y>=getHeight()/mRaw*2 && y<=getHeight()/mRaw*3) {
                 area = MeasureHomeFragment.BODY_CODE_6;
+            }else if (x>0 && x<getWidth()/mColumn  && y>=getHeight()/mRaw*3 && y<=getHeight()) {
+                area = MeasureHomeFragment.BODY_CODE_7;
+            } else if (x>=getWidth()/mColumn && x<=getWidth() &&  y>=getHeight()/mRaw*3 && y<=getHeight()) {
+                area = MeasureHomeFragment.BODY_CODE_8;
             }
             mAreaClickListener.onAreaClick(area);
             return true;
