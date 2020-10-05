@@ -1,25 +1,31 @@
 package com.hospital.checkup.view.fragment;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.hospital.checkup.R;
-import com.hospital.checkup.base.BaseApplication;
 import com.hospital.checkup.base.BaseUILocalDataFragment;
 import com.hospital.checkup.bean.TestModelBean;
 import com.hospital.checkup.http.HttpRequest;
 import com.hospital.checkup.utils.LogUtils;
+import com.hospital.checkup.utils.ScreenUtils;
+import com.hospital.checkup.utils.StringUtil;
 import com.hospital.checkup.view.activity.CalibrationActivity;
 import com.hospital.checkup.view.activity.WebViewActivity;
 import com.hospital.checkup.widget.RegionImageView;
@@ -43,8 +49,12 @@ public class MeasureHomeFragment extends BaseUILocalDataFragment {
     TextView measureBodyTextView;
     @BindView(R.id.ll_measureHomeActivity_measureBodyArea)
     LinearLayout measureBodyAreaLinearLayout;
+    @BindView(R.id.rl_measureHomeActivity_measureLeftOrRight)
+    RelativeLayout measureLeftOrRightRelativeLayout;
     @BindView(R.id.tv_measureHomeActivity_measureContent)
     public TextView measureContentTextView;
+    @BindView(R.id.tv_measureHomeActivity_measureLeftOrRight)
+    public TextView measureLeftOrRightTextView;
     @BindView(R.id.tv_measureHomeActivity_doctorName)
     public TextView doctorNameTextView;
     @BindView(R.id.tv_measureHomeActivity_measurerName)
@@ -75,7 +85,7 @@ public class MeasureHomeFragment extends BaseUILocalDataFragment {
     private Map<Integer, TestModelBean> modelCodeMap = new HashMap();
 
     @OnClick({R.id.btn_measureHomeActivity_measure, R.id.ll_measureHomeActivity_addDoctor, R.id.ll_measureHomeActivity_addMeasurer,
-            R.id.ll_measureHomeActivity_measureBodyArea, R.id.ll_measureHomeActivity_measureContent})
+            R.id.ll_measureHomeActivity_measureBodyArea, R.id.ll_measureHomeActivity_measureContent, R.id.ll_measureHomeActivity_measureLeftOrRight})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_measureHomeActivity_measure:
@@ -90,6 +100,9 @@ public class MeasureHomeFragment extends BaseUILocalDataFragment {
             case R.id.ll_measureHomeActivity_measureBodyArea:
             case R.id.ll_measureHomeActivity_measureContent:
                 showPickerView(BODY_CODE_1);
+                break;
+            case R.id.ll_measureHomeActivity_measureLeftOrRight:
+                showMeasureLeftOrRightDialog(getActivity());
                 break;
         }
     }
@@ -164,6 +177,11 @@ public class MeasureHomeFragment extends BaseUILocalDataFragment {
 //                String tx = opt1tx + opt2tx + opt3tx;
 //                Toast.makeText(BaseApplication.applicationContext, tx, Toast.LENGTH_SHORT).show();
 
+                if(StringUtil.notEmpty(opt1tx) && (opt1tx.contains("躯干")|| opt1tx.contains("颈"))){
+                    measureLeftOrRightRelativeLayout.setVisibility(View.GONE);
+                }else {
+                    measureLeftOrRightRelativeLayout.setVisibility(View.VISIBLE);
+                }
                 measureBodyTextView.setText(opt1tx);
                 measureContentTextView.setText(opt2tx+"、"+opt3tx);
             }
@@ -205,6 +223,34 @@ public class MeasureHomeFragment extends BaseUILocalDataFragment {
             options2Items.add(cityList);
             options3Items.add(province_AreaList);
         }
+    }
+
+    public void showMeasureLeftOrRightDialog(Context context){
+        Dialog dialog = new Dialog(getActivity(), R.style.ActionSheetDialogStyle);
+        View contentView = LayoutInflater.from(context).inflate(R.layout.dialog_setting_actvity_switch_env, null);
+        TextView cancelTextView = contentView.findViewById(R.id.tv_testerDetailActivity_cancel);
+        TextView leftTextView = contentView.findViewById(R.id.tv_testerDetailActivity_male);
+        TextView rightTextView = contentView.findViewById(R.id.tv_testerDetailActivity_female);
+        leftTextView.setText("左");
+        rightTextView.setText("右");
+
+        cancelTextView.setOnClickListener(v -> dialog.dismiss());
+        leftTextView.setOnClickListener(v -> {
+            measureLeftOrRightTextView.setText("左");
+            dialog.dismiss();
+        });
+        rightTextView.setOnClickListener(v -> {
+            measureLeftOrRightTextView.setText("右");
+            dialog.dismiss();
+        });
+        dialog.setContentView(contentView);
+        Window dialogWindow = dialog.getWindow();
+        dialogWindow.setGravity(Gravity.BOTTOM);
+        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+        lp.y = 0;
+        lp.width = ScreenUtils.getScreenWidth(context);
+        dialogWindow.setAttributes(lp);
+        dialog.show();
     }
 
     public static void open(Context context) {

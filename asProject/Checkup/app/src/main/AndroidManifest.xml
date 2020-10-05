@@ -55,6 +55,8 @@
                   android:screenOrientation="portrait"/>
         <activity android:name=".view.activity.CalibrationStartActivity"
                   android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.CalibrationStartHorizontalActivity"
+                  android:screenOrientation="landscape"/>
         <activity android:name=".view.activity.TesterDetailActivity"
                   android:screenOrientation="portrait"/>
         <activity android:name=".view.activity.WebViewActivity"

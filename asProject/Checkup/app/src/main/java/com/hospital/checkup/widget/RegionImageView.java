@@ -17,6 +17,8 @@ public class RegionImageView extends ImageView {
     private final int mColumn = 2;
     private final int mRaw = 4;
 
+    float downX= 0f;
+    float downY= 0f;
     public RegionImageView(Context context) {
         this(context, null);
     }
@@ -34,6 +36,16 @@ public class RegionImageView extends ImageView {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            downX= event.getRawX();
+            downY= event.getRawY();
+            return true;
+        }
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            float upX= event.getRawX();
+            float upY= event.getRawY();
+            if(Math.abs(upX- downX)>50 || Math.abs(upY-downY)>50){
+                return super.onTouchEvent(event);
+            }
             float x = event.getX();
             float y = event.getY();
             int area = 0;
@@ -55,11 +67,11 @@ public class RegionImageView extends ImageView {
                 area = MeasureHomeFragment.BODY_CODE_8;
             }
             mAreaClickListener.onAreaClick(area);
-            return true;
+//            return true;
+            return super.onTouchEvent(event);
         }
         return super.onTouchEvent(event);
     }
-
 
     public void setOnImageViewAreaClickListener(OnImageViewAreaClickListener clickListener) {
         this.mAreaClickListener = clickListener;

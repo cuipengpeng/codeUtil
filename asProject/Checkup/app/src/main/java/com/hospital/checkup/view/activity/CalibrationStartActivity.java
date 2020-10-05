@@ -9,18 +9,18 @@ import android.content.IntentFilter;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.hospital.checkup.BuildConfig;
 import com.hospital.checkup.R;
 import com.hospital.checkup.base.BaseApplication;
 import com.hospital.checkup.base.BaseUILocalDataActivity;
@@ -44,6 +44,14 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
     Button stopButton;
     @BindView(R.id.btn_calibrationStartActivity_save)
     Button saveButton;
+    @BindView(R.id.btn_calibrationStartActivity_reset)
+    Button resetButton;
+    @BindView(R.id.iv_calibrationStartActivity_circleIcon01)
+    ImageView icon01ImageView;
+    @BindView(R.id.iv_calibrationStartActivity_circleIcon02)
+    ImageView icon02ImageView;
+    @BindView(R.id.iv_calibrationStartActivity_circleIcon03)
+    ImageView icon03ImageView;
     @BindView(R.id.chart1)
     LineChart chart;
 
@@ -52,26 +60,30 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
     private boolean stopCalibration = true;
 
     private LineDataSet set1, set2, set3;
-    private List<Entry> entryList01 = new ArrayList<>();
-    private List<Entry> entryList02 = new ArrayList<>();
-    private List<Entry> entryList03 = new ArrayList<>();
+    private ArrayList<Entry> entryList01 = new ArrayList<>();
+    private ArrayList<Entry> entryList02 = new ArrayList<>();
+    private ArrayList<Entry> entryList03 = new ArrayList<>();
     private boolean showLegend01 = true;
     private boolean showLegend02 = true;
     private boolean showLegend03 = true;
 
-    private static int lineSetcount = 0;
+    private  int lineSetcount = 0;
 
     @OnClick({R.id.btn_calibrationStartActivity_start, R.id.btn_calibrationStartActivity_stop, R.id.btn_calibrationStartActivity_save,
-            R.id.rl_calibrationStartActivity_legend01, R.id.rl_calibrationStartActivity_legend02, R.id.rl_calibrationStartActivity_legend03})
+            R.id.rl_calibrationStartActivity_legend01, R.id.rl_calibrationStartActivity_legend02, R.id.rl_calibrationStartActivity_legend03,
+            R.id.btn_calibrationStartActivity_reset})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_calibrationStartActivity_start:
+                icon01ImageView.setBackgroundResource(R.drawable.circle_corner_blue_bg_normal_2dp);
+                icon02ImageView.setBackgroundResource(R.drawable.circle_corner_yellow_bg_normal_2dp);
+                icon03ImageView.setBackgroundResource(R.drawable.circle_corner_green_bg_normal_2dp);
                 if(stopCalibration){
                     stopCalibration = false;
                     chart.clear();
                     new Thread(realTimePointThread).start();
                 }
-                disableButton();
+                disableAllButton();
                 stopButton.setEnabled(true);
                 stopButton.setBackgroundResource(R.drawable.circle_corner_red_bg_normal_2dp);
 //                if (!BleController.getInstance().isEnable()) {
@@ -87,13 +99,19 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
                 break;
             case R.id.btn_calibrationStartActivity_stop:
                 stopCalibration = true;
-                disableButton();
+                disableAllButton();
                 saveButton.setEnabled(true);
                 saveButton.setBackgroundResource(R.drawable.circle_corner_blue_bg_normal_2dp);
+                resetButton.setEnabled(true);
+                resetButton.setBackgroundResource(R.drawable.circle_corner_red_bg_normal_2dp);
 //                BleController.getInstance().enableNotification(false, BleController.getInstance().mBleGattCharacteristic);
                 break;
             case R.id.btn_calibrationStartActivity_save:
                 enableStartButton();
+                break;
+            case R.id.btn_calibrationStartActivity_reset:
+                enableStartButton();
+//                CalibrationStartHorizontalActivity.open(this, entryList01, entryList02, entryList03);
                 break;
             case R.id.rl_calibrationStartActivity_legend01:
                 if(lineSetcount<=1 && showLegend01){
@@ -101,12 +119,14 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
                 }
                 showLegend01 = !showLegend01;
                 if(showLegend01){
+                    icon01ImageView.setBackgroundResource(R.drawable.circle_corner_blue_bg_normal_2dp);
                     logEntryList(entryList01);
                     for(int i=0; i<entryList01.size();i++){
                         set1.addEntryOrdered(entryList01.get(i).copy());
                     }
                     lineSetcount++;
                 }else {
+                    icon01ImageView.setBackgroundResource(R.drawable.circle_corner_disable_gray_bg_2dp);
                     lineSetcount--;
                     set1.clear();
                 }
@@ -119,12 +139,14 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
                 }
                 showLegend02 = !showLegend02;
                 if(showLegend02){
+                    icon02ImageView.setBackgroundResource(R.drawable.circle_corner_yellow_bg_normal_2dp);
                     logEntryList(entryList02);
                     for(int i=0; i<entryList02.size();i++){
                         set2.addEntryOrdered(entryList02.get(i).copy());
                     }
                     lineSetcount++;
                 }else {
+                    icon02ImageView.setBackgroundResource(R.drawable.circle_corner_disable_gray_bg_2dp);
                     lineSetcount--;
                     set2.clear();
                 }
@@ -137,12 +159,14 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
                 }
                 showLegend03 = !showLegend03;
                 if(showLegend03){
+                    icon03ImageView.setBackgroundResource(R.drawable.circle_corner_green_bg_normal_2dp);
                     logEntryList(entryList03);
                     for(int i=0; i<entryList03.size();i++){
                         set3.addEntryOrdered(entryList03.get(i).copy());
                     }
                     lineSetcount++;
                 }else {
+                    icon03ImageView.setBackgroundResource(R.drawable.circle_corner_disable_gray_bg_2dp);
                     lineSetcount--;
                     set3.clear();
                 }
@@ -390,12 +414,14 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         // AxisDependency.LEFT);
     }
 
-    private void logEntryList(List<Entry> entryList) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for(int i=0; i<entryList.size(); i++){
-            stringBuilder.append(entryList.get(i).getY()+"--");
+    public static void logEntryList(List<Entry> entryList) {
+        if(BuildConfig.DEBUG){
+            StringBuilder stringBuilder = new StringBuilder();
+            for(int i=0; i<entryList.size(); i++){
+                stringBuilder.append(entryList.get(i).getY()+"--");
+            }
+            LogUtils.printLog(stringBuilder.toString());
         }
-        LogUtils.printLog(stringBuilder.toString());
     }
 
     private void notifyDataSetChangeForChart() {
@@ -467,18 +493,19 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         }
     };
 
-    private void disableButton(){
+    private void disableAllButton(){
         startButton.setEnabled(false);
         startButton.setBackgroundResource(R.drawable.circle_corner_disable_gray_bg_2dp);
         stopButton.setEnabled(false);
         stopButton.setBackgroundResource(R.drawable.circle_corner_disable_gray_bg_2dp);
         saveButton.setEnabled(false);
         saveButton.setBackgroundResource(R.drawable.circle_corner_disable_gray_bg_2dp);
+        resetButton.setEnabled(false);
+        resetButton.setBackgroundResource(R.drawable.circle_corner_disable_gray_bg_2dp);
     }
 
-
     private void enableStartButton() {
-        disableButton();
+        disableAllButton();
         startButton.setEnabled(true);
         startButton.setBackgroundResource(R.drawable.circle_corner_green_bg_normal_2dp);
     }

@@ -90,18 +90,35 @@
             android:layout_height="1dp"
             android:background="#c4c4c4"/>
 
-        <Button
-            android:id="@+id/btn_calibrationStartActivity_save"
+        <LinearLayout
+            android:id="@+id/ll_calibrationStartActivity_bottom"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:text="保存"
-            android:textColor="#ffffff"
-            android:textSize="@dimen/appTitleTextSize_18sp"
-            android:background="@drawable/circle_corner_blue_bg_normal_2dp"/>
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_calibrationStartActivity_save"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="保存"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/appTitleTextSize_18sp"
+                android:background="@drawable/circle_corner_blue_bg_normal_2dp"/>
+            <Button
+                android:id="@+id/btn_calibrationStartActivity_reset"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:text="重置"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/appTitleTextSize_18sp"
+                android:background="@drawable/circle_corner_red_bg_normal_2dp"/>
+        </LinearLayout>
 </LinearLayout>
 
     <RelativeLayout
