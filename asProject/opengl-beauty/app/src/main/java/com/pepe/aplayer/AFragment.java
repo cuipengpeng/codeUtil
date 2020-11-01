@@ -53,7 +53,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class AFragment extends Fragment {
-    private static final String TAG = "Camera2Fragment";
+    private static final String TAG = "TestCamera2Fragment";
     private static final int SETIMAGE = 1;
     private static final int MOVE_FOCK = 2;
     /**

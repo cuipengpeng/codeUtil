@@ -8,8 +8,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-            AFragment fragment = new AFragment();
-        Camera2VideoFragment fragmentVideo = new Camera2VideoFragment();
-            getSupportFragmentManager().beginTransaction().add(android.R.id.content, fragmentVideo, AFragment.class.getName()).commit();
+//            AFragment fragmentVideo = new AFragment();
+//        Camera2VideoFragment fragmentVideo = new Camera2VideoFragment();
+        TestCamera2Fragment fragmentVideo = new TestCamera2Fragment();
+            getSupportFragmentManager().beginTransaction().add(android.R.id.content, fragmentVideo, TestCamera2Fragment.class.getName()).commit();
     }
 }

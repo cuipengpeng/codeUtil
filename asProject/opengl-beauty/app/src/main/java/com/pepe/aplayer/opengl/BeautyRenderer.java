@@ -212,11 +212,8 @@ public class BeautyRenderer implements GLSurfaceView.Renderer{
     public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
         GLES20.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
-        vertexCoordFloatBuffer = ByteBuffer.allocateDirect(vertexPositionArray.length*4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-        vertexCoordFloatBuffer.put(vertexPositionArray).position(0);
-
-        fragCoordFloatBuffer = ByteBuffer.allocateDirect(fragmentPositionArray.length*4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-        fragCoordFloatBuffer.put(fragmentPositionArray).position(0);
+        vertexCoordFloatBuffer = (FloatBuffer) ByteBuffer.allocateDirect(vertexPositionArray.length*4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(vertexPositionArray).position(0);
+        fragCoordFloatBuffer = (FloatBuffer) ByteBuffer.allocateDirect(fragmentPositionArray.length*4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(fragmentPositionArray).position(0);
 
         picture = new Picture();
         textureProgram = ShaderUtils.createProgram(VERTEX_SHADER,BILATERAL_FRAGMENT_SHADER);
@@ -248,7 +245,7 @@ public class BeautyRenderer implements GLSurfaceView.Renderer{
 //        Matrix.translateM(modelMatrix,0,0f,0f,-2.5f);
         Matrix.translateM(modelMatrix,0,0f,0f,-1.5f);
 //        Matrix.rotateM(modelMatrix,0,60f,1f,0f,0f);
-//        Matrix.rotateM(modelMatrix,0,-60f,1f,0f,0f);
+        Matrix.rotateM(modelMatrix,0,-60f,1f,0f,0f);
         final float[] temp = new float[16];
         Matrix.multiplyMM(temp,0,projectionMatrix,0,modelMatrix,0);
         System.arraycopy(temp,0,projectionMatrix,0,temp.length);

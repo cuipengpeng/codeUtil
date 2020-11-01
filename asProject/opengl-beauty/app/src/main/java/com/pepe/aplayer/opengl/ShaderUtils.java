@@ -6,11 +6,15 @@
  */
 package com.pepe.aplayer.opengl;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.opengl.GLES20;
 import android.util.Log;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 
 /**
  * Description:
@@ -41,10 +45,6 @@ public class ShaderUtils {
             }
         }
         return shader;
-    }
-
-    public static int loadShader(Resources res, int shaderType, String resName){
-        return loadShader(shaderType,loadFromAssetsFile(resName,res));
     }
 
     public static int createProgram(String vertexSource, String fragmentSource){
@@ -87,6 +87,23 @@ public class ShaderUtils {
             return null;
         }
         return result.toString().replaceAll("\\r\\n","\n");
+    }
+
+    public static String loadFromRaw(Context context, int resId) {
+        InputStream inputStream = context.getResources().openRawResource(resId);
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line).append("\n");
+            }
+            reader.close();
+            return sb.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

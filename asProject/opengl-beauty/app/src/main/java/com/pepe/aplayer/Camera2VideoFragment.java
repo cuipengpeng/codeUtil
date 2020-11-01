@@ -17,6 +17,7 @@
 package com.pepe.aplayer;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -53,6 +54,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.pepe.aplayer.test.MyGlSurfaceView;
 
 import java.io.File;
 import java.io.IOException;
@@ -94,38 +97,35 @@ public class Camera2VideoFragment extends Fragment
         INVERSE_ORIENTATIONS.append(Surface.ROTATION_270, 0);
     }
 
-    /**
-     * An {@link AutoFitTextureView} for camera preview.
-     */
-    private AutoFitTextureView mTextureView;
-
-    /**
-     * Button to record video
-     */
+//    private AutoFitTextureView mTextureView;
     private Button mButtonVideo;
-
-    /**
-     * A reference to the opened {@link CameraDevice}.
-     */
     private CameraDevice mCameraDevice;
-
-    /**
-     * A reference to the current {@link CameraCaptureSession} for
-     * preview.
-     */
     private CameraCaptureSession mPreviewSession;
+    private Size mPreviewSize;
+    private Size mVideoSize;
+    private MediaRecorder mMediaRecorder;
+    private boolean mIsRecordingVideo;
+    private HandlerThread mBackgroundThread;
+    private Handler mBackgroundHandler;
+    private Integer mSensorOrientation;
+    private String mNextVideoAbsolutePath;
+    private CaptureRequest.Builder mPreviewBuilder;
+    private MyGlSurfaceView mGlsurfaceView;
+
 
     /**
-     * {@link TextureView.SurfaceTextureListener} handles several lifecycle events on a
-     * {@link TextureView}.
+     * A {@link Semaphore} to prevent the app from exiting before closing the camera.
      */
+    private Semaphore mCameraOpenCloseLock = new Semaphore(1);
+
+
     private TextureView.SurfaceTextureListener mSurfaceTextureListener
             = new TextureView.SurfaceTextureListener() {
 
         @Override
         public void onSurfaceTextureAvailable(SurfaceTexture surfaceTexture,
                                               int width, int height) {
-            openCamera(width, height);
+//            openCamera(width, height);
         }
 
         @Override
@@ -145,44 +145,6 @@ public class Camera2VideoFragment extends Fragment
 
     };
 
-    /**
-     * The {@link Size} of camera preview.
-     */
-    private Size mPreviewSize;
-
-    /**
-     * The {@link Size} of video recording.
-     */
-    private Size mVideoSize;
-
-    /**
-     * MediaRecorder
-     */
-    private MediaRecorder mMediaRecorder;
-
-    /**
-     * Whether the app is recording video now
-     */
-    private boolean mIsRecordingVideo;
-
-    /**
-     * An additional thread for running tasks that shouldn't block the UI.
-     */
-    private HandlerThread mBackgroundThread;
-
-    /**
-     * A {@link Handler} for running tasks in the background.
-     */
-    private Handler mBackgroundHandler;
-
-    /**
-     * A {@link Semaphore} to prevent the app from exiting before closing the camera.
-     */
-    private Semaphore mCameraOpenCloseLock = new Semaphore(1);
-
-    /**
-     * {@link CameraDevice.StateCallback} is called when {@link CameraDevice} changes its status.
-     */
     private CameraDevice.StateCallback mStateCallback = new CameraDevice.StateCallback() {
 
         @Override
@@ -190,9 +152,9 @@ public class Camera2VideoFragment extends Fragment
             mCameraDevice = cameraDevice;
             startPreview();
             mCameraOpenCloseLock.release();
-            if (null != mTextureView) {
-                configureTransform(mTextureView.getWidth(), mTextureView.getHeight());
-            }
+//            if (null != mTextureView) {
+//                configureTransform(mTextureView.getWidth(), mTextureView.getHeight());
+//            }
         }
 
         @Override
@@ -214,13 +176,6 @@ public class Camera2VideoFragment extends Fragment
         }
 
     };
-    private Integer mSensorOrientation;
-    private String mNextVideoAbsolutePath;
-    private CaptureRequest.Builder mPreviewBuilder;
-
-    public static Camera2VideoFragment newInstance() {
-        return new Camera2VideoFragment();
-    }
 
     /**
      * In this sample, we choose a video size with 3x4 aspect ratio. Also, we don't use sizes
@@ -279,21 +234,29 @@ public class Camera2VideoFragment extends Fragment
 
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
-        mTextureView = (AutoFitTextureView) view.findViewById(R.id.texture);
+//        mTextureView = (AutoFitTextureView) view.findViewById(R.id.texture);
         mButtonVideo = (Button) view.findViewById(R.id.video);
         mButtonVideo.setOnClickListener(this);
         view.findViewById(R.id.info).setOnClickListener(this);
+        mGlsurfaceView= (MyGlSurfaceView) view.findViewById(R.id.glsurfaceView);
+        startBackgroundThread();
+        mGlsurfaceView.setOnSurfacePrepared(new MyGlSurfaceView.OnSurfacePreparedCallBack() {
+            @Override
+            public void onSurfacePrepared() {
+                openCamera(1920, 1080);
+            }
+        });
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        startBackgroundThread();
-        if (mTextureView.isAvailable()) {
-            openCamera(mTextureView.getWidth(), mTextureView.getHeight());
-        } else {
-            mTextureView.setSurfaceTextureListener(mSurfaceTextureListener);
-        }
+
+//        if (mTextureView.isAvailable()) {
+//            openCamera(mTextureView.getWidth(), mTextureView.getHeight());
+//        } else {
+//            mTextureView.setSurfaceTextureListener(mSurfaceTextureListener);
+//        }
     }
 
     @Override
@@ -327,18 +290,12 @@ public class Camera2VideoFragment extends Fragment
         }
     }
 
-    /**
-     * Starts a background thread and its {@link Handler}.
-     */
     private void startBackgroundThread() {
         mBackgroundThread = new HandlerThread("CameraBackground");
         mBackgroundThread.start();
         mBackgroundHandler = new Handler(mBackgroundThread.getLooper());
     }
 
-    /**
-     * Stops the background thread and its {@link Handler}.
-     */
     private void stopBackgroundThread() {
         mBackgroundThread.quitSafely();
         try {
@@ -408,10 +365,8 @@ public class Camera2VideoFragment extends Fragment
         return true;
     }
 
-    /**
-     * Tries to open a {@link CameraDevice}. The result is listened by `mStateCallback`.
-     */
-    @SuppressWarnings("MissingPermission")
+
+    @SuppressLint("MissingPermission")
     private void openCamera(int width, int height) {
         if (!hasPermissionsGranted(VIDEO_PERMISSIONS)) {
             requestVideoPermissions();
@@ -442,14 +397,14 @@ public class Camera2VideoFragment extends Fragment
                     width, height, mVideoSize);
 
             int orientation = getResources().getConfiguration().orientation;
-            if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                mTextureView.setAspectRatio(mPreviewSize.getWidth(), mPreviewSize.getHeight());
-            } else {
-                mTextureView.setAspectRatio(mPreviewSize.getHeight(), mPreviewSize.getWidth());
-            }
-            configureTransform(width, height);
+//            if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//                mTextureView.setAspectRatio(mPreviewSize.getWidth(), mPreviewSize.getHeight());
+//            } else {
+//                mTextureView.setAspectRatio(mPreviewSize.getHeight(), mPreviewSize.getWidth());
+//            }
+//            configureTransform(width, height);
             mMediaRecorder = new MediaRecorder();
-            manager.openCamera(cameraId, mStateCallback, null);
+            manager.openCamera(cameraId, mStateCallback, mBackgroundHandler);
         } catch (CameraAccessException e) {
             Toast.makeText(activity, "Cannot access the camera.", Toast.LENGTH_SHORT).show();
             activity.finish();
@@ -482,16 +437,15 @@ public class Camera2VideoFragment extends Fragment
         }
     }
 
-    /**
-     * Start the camera preview.
-     */
+
     private void startPreview() {
-        if (null == mCameraDevice || !mTextureView.isAvailable() || null == mPreviewSize) {
-            return;
-        }
+//        if (null == mCameraDevice || !mTextureView.isAvailable() || null == mPreviewSize) {
+//            return;
+//        }
         try {
             closePreviewSession();
-            SurfaceTexture texture = mTextureView.getSurfaceTexture();
+//            SurfaceTexture texture = mTextureView.getSurfaceTexture();
+            SurfaceTexture texture = mGlsurfaceView.surfaceTexture;
             assert texture != null;
             texture.setDefaultBufferSize(mPreviewSize.getWidth(), mPreviewSize.getHeight());
             mPreviewBuilder = mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
@@ -521,15 +475,12 @@ public class Camera2VideoFragment extends Fragment
         }
     }
 
-    /**
-     * Update the camera preview. {@link #startPreview()} needs to be called in advance.
-     */
     private void updatePreview() {
         if (null == mCameraDevice) {
             return;
         }
         try {
-            setUpCaptureRequestBuilder(mPreviewBuilder);
+            mPreviewBuilder.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO);
             HandlerThread thread = new HandlerThread("CameraPreview");
             thread.start();
             mPreviewSession.setRepeatingRequest(mPreviewBuilder.build(), null, mBackgroundHandler);
@@ -538,9 +489,6 @@ public class Camera2VideoFragment extends Fragment
         }
     }
 
-    private void setUpCaptureRequestBuilder(CaptureRequest.Builder builder) {
-        builder.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO);
-    }
 
     /**
      * Configures the necessary {@link Matrix} transformation to `mTextureView`.
@@ -552,9 +500,9 @@ public class Camera2VideoFragment extends Fragment
      */
     private void configureTransform(int viewWidth, int viewHeight) {
         Activity activity = getActivity();
-        if (null == mTextureView || null == mPreviewSize || null == activity) {
-            return;
-        }
+//        if (null == mTextureView || null == mPreviewSize || null == activity) {
+//            return;
+//        }
         int rotation = activity.getWindowManager().getDefaultDisplay().getRotation();
         Matrix matrix = new Matrix();
         RectF viewRect = new RectF(0, 0, viewWidth, viewHeight);
@@ -570,7 +518,7 @@ public class Camera2VideoFragment extends Fragment
             matrix.postScale(scale, scale, centerX, centerY);
             matrix.postRotate(90 * (rotation - 2), centerX, centerY);
         }
-        mTextureView.setTransform(matrix);
+//        mTextureView.setTransform(matrix);
     }
 
     private void setUpMediaRecorder() throws IOException {
@@ -609,13 +557,14 @@ public class Camera2VideoFragment extends Fragment
     }
 
     private void startRecordingVideo() {
-        if (null == mCameraDevice || !mTextureView.isAvailable() || null == mPreviewSize) {
-            return;
-        }
+//        if (null == mCameraDevice || !mTextureView.isAvailable() || null == mPreviewSize) {
+//            return;
+//        }
         try {
             closePreviewSession();
             setUpMediaRecorder();
-            SurfaceTexture texture = mTextureView.getSurfaceTexture();
+//            SurfaceTexture texture = mTextureView.getSurfaceTexture();
+            SurfaceTexture texture = mGlsurfaceView.surfaceTexture;
             assert texture != null;
             texture.setDefaultBufferSize(mPreviewSize.getWidth(), mPreviewSize.getHeight());
             mPreviewBuilder = mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_RECORD);

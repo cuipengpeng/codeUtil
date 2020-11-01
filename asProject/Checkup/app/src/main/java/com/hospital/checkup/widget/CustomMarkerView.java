@@ -26,9 +26,9 @@ public class CustomMarkerView extends MarkerView {
         if(highlight.getDataSetIndex()==0){
             tvContent.setText("角度"+((int)e.getY())+"°"); // set the entry-value as the display text
         }else if(highlight.getDataSetIndex()==1){
-            tvContent.setText("速度"+((int)e.getY())+"°"); // set the entry-value as the display text
+            tvContent.setText("速度"+((int)e.getY())+""); // set the entry-value as the display text
         }else if(highlight.getDataSetIndex()==2){
-            tvContent.setText("交互力"+((int)e.getY())+"°"); // set the entry-value as the display text
+            tvContent.setText("交互力"+((int)e.getY())+""); // set the entry-value as the display text
         }
         super.refreshContent(e, highlight);
     }
