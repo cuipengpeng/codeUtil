@@ -32,8 +32,32 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:visibility="visible" />
-
+    <SeekBar
+        android:id="@+id/sb_testFragment_beautyRed"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_above="@+id/sb_testFragment_beautySmooth"
+        android:max="100"
+        android:min="0"
+        android:layout_marginBottom="5dp"/>
+    <SeekBar
+        android:id="@+id/sb_testFragment_beautySmooth"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_above="@+id/sb_testFragment_beautyWhite"
+        android:max="100"
+        android:min="0"
+        android:layout_marginBottom="5dp"/>
+    <SeekBar
+        android:id="@+id/sb_testFragment_beautyWhite"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_above="@+id/rl_testFragment_button"
+        android:max="100"
+        android:min="0"
+        android:layout_marginBottom="5dp"/>
     <FrameLayout
+        android:id="@+id/rl_testFragment_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -48,14 +72,13 @@
             android:layout_gravity="center"
             android:text="record" />
 
-        <ImageButton
+        <Button
             android:id="@+id/info"
-            style="@android:style/Widget.Material.Light.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|left"
-            android:padding="20dp"
-            android:src="@drawable/ic_launcher_background" />
+            android:padding="10dp"
+            android:text="new Page"/>
 
         <Button
             android:id="@+id/switchCamera"

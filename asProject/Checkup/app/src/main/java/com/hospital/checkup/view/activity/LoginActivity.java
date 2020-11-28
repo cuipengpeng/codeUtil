@@ -85,7 +85,8 @@ public class LoginActivity extends BaseUILocalDataActivity {
             case R.id.btn_loginActivity_login:
                 String userName = userNameEditText.getText().toString().trim();
                 String password = passwdEditText.getText().toString().trim();
-                login("132012341660", "123456");
+                login("abc123", "abc123");
+//                login("testuser", "1234abcd");
 
 //                if(userMap.keySet().contains(userName)){
 //                    if(userMap.get(userName).equalsIgnoreCase(password)){
@@ -141,7 +142,7 @@ public class LoginActivity extends BaseUILocalDataActivity {
         Map<String, String> params = new HashMap();
         params.put("username", username);
         params.put("password", passwd);
-        HttpRequest.post(HttpRequest.RequestType.GET,this, HttpRequest.CHECKUP_LOGIN, params, new HttpRequest.HttpResponseCallBack(){
+        HttpRequest.post(HttpRequest.RequestType.POST,this, HttpRequest.CHECKUP_LOGIN, params, new HttpRequest.HttpResponseCallBack(){
 
             @Override
             public void onResponse(Call<String> call, Response<String> response) {

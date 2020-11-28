@@ -1,5 +1,7 @@
 package com.pepe.aplayer.opengl;
 
+import android.content.Context;
+import android.content.Intent;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +13,7 @@ import android.widget.SeekBar;
 import com.pepe.aplayer.R;
 
 
-public class BeautyActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
+public class BeautyImageActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
 
     private GLSurfaceView glSurfaceView;
     private BeautyRenderer mRenderer;
@@ -128,5 +130,10 @@ public class BeautyActivity extends AppCompatActivity implements SeekBar.OnSeekB
 
     protected float range(final int percentage, final float start, final float end) {
         return (end - start) * percentage / 100.0f + start;
+    }
+
+    public static void open(Context context){
+        Intent intent = new Intent(context, BeautyImageActivity.class);
+        context.startActivity(intent);
     }
 }

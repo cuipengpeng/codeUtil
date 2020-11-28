@@ -198,7 +198,8 @@ public class MeasureHomeFragment extends BaseUILocalDataFragment {
         pvOptions.setPicker(options1Items, options2Items, options3Items);//三级选择器
 
         for(int i=0; i<options1Items.size(); i++){
-            if(modelCodeMap.get(modelCode).getModelName().equals(options1Items.get(i))){
+            TestModelBean testModelBean = modelCodeMap.get(modelCode);
+            if(testModelBean!=null && testModelBean.getModelName().equals(options1Items.get(i))){
                 pvOptions.setSelectOptions(i);
                 break;
             }

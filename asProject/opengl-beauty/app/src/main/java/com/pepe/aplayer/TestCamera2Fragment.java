@@ -2,7 +2,6 @@ package com.pepe.aplayer;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Camera;
 import android.graphics.SurfaceTexture;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
@@ -26,32 +25,29 @@ import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.SeekBar;
 
+import com.pepe.aplayer.opengl.BeautyImageActivity;
 import com.pepe.aplayer.test.MyGlSurfaceView;
 import com.pepe.aplayer.util.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Semaphore;
 
-public class TestCamera2Fragment extends Fragment implements View.OnClickListener{
+public class TestCamera2Fragment extends Fragment implements View.OnClickListener,SeekBar.OnSeekBarChangeListener {
 
-    //    private AutoFitTextureView mTextureView;
     private Button mButtonVideo;
     private CameraDevice mCameraDevice;
     private CameraCaptureSession mPreviewCameraCaptureSession;
-    private Size mPreviewSize;
-    private Size mVideoSize;
     private MediaRecorder mMediaRecorder;
-    private boolean mIsRecordingVideo;
     private HandlerThread mBackgroundThread;
     private Handler mBackgroundHandler;
-    private Integer mSensorOrientation;
-    private String mNextVideoAbsolutePath;
     private CaptureRequest.Builder mPreviewBuilder;
     private MyGlSurfaceView mGlsurfaceView;
-    private Semaphore mCameraOpenCloseLock = new Semaphore(1);
     private Integer mCurrentCameraId = CameraCharacteristics.LENS_FACING_BACK;
+    private SeekBar redSeekBar;
+    private SeekBar smoothSeekBar;
+    private SeekBar whiteSeekBar;
 
 
     @Override
@@ -61,13 +57,17 @@ public class TestCamera2Fragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
-//        mTextureView = (AutoFitTextureView) view.findViewById(R.id.texture);
-
-        mButtonVideo = (Button) view.findViewById(R.id.video);
+        mButtonVideo = view.findViewById(R.id.video);
         mButtonVideo.setOnClickListener(this);
+        redSeekBar = view.findViewById(R.id.sb_testFragment_beautyRed);
+        redSeekBar.setOnSeekBarChangeListener(this);
+        smoothSeekBar = view.findViewById(R.id.sb_testFragment_beautySmooth);
+        smoothSeekBar.setOnSeekBarChangeListener(this);
+        whiteSeekBar = view.findViewById(R.id.sb_testFragment_beautyWhite);
+        whiteSeekBar.setOnSeekBarChangeListener(this);
         view.findViewById(R.id.info).setOnClickListener(this);
         view.findViewById(R.id.switchCamera).setOnClickListener(this);
-        mGlsurfaceView= (MyGlSurfaceView) view.findViewById(R.id.glsurfaceView);
+        mGlsurfaceView= view.findViewById(R.id.glsurfaceView);
         startBackgroundThread();
         mGlsurfaceView.setOnSurfacePrepared(new MyGlSurfaceView.OnSurfacePreparedCallBack() {
             @Override
@@ -184,6 +184,7 @@ public class TestCamera2Fragment extends Fragment implements View.OnClickListene
                 openCamera();
                 break;
             case R.id.info:
+                BeautyImageActivity.open(getActivity());
                 break;
             case R.id.video:
                 mPreviewBuilder.set(CaptureRequest.CONTROL_AF_TRIGGER, CaptureRequest.CONTROL_AF_TRIGGER_START);
@@ -198,7 +199,6 @@ public class TestCamera2Fragment extends Fragment implements View.OnClickListene
                     e.printStackTrace();
                 }
                 break;
-                
         }
     }
 
@@ -253,5 +253,29 @@ public class TestCamera2Fragment extends Fragment implements View.OnClickListene
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        switch (seekBar.getId()){
+            case R.id.sb_testFragment_beautyRed:
+//                mRenderer.setTexelOffset(range(progress,minstepoffset,maxstepoffset));
+                break;
+            case R.id.sb_testFragment_beautySmooth:
+                break;
+            case R.id.sb_testFragment_beautyWhite:
+                break;
+        }
+        mGlsurfaceView.requestRender();
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+
     }
 }

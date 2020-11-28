@@ -52,17 +52,17 @@ public class AsyncResponseCallBack implements Callback<String> {
                 mLoadingDialog.dismiss();
             }
 
-            if (response.code() == 200 ){
-//                    && "00".equals(responseJsonObject.getString("resCode"))) {
+            if (response.code() == 200 && "000000".equals(responseJsonObject.getString("code"))) {
                 showPageContentView();
                 onResultFailLisenter.onResponse(call, response.success(responseJsonObject.getString("data")));
-            } else if (3004 == responseJsonObject.getIntValue("resCode")) {
+            } else if ("900001".equals(responseJsonObject.getString("code"))) {
                 //3004  token失效
+                Toast.makeText(BaseApplication.applicationContext, "无效请求~", Toast.LENGTH_SHORT).show();
                 LogUtils.printLog(responseJsonObject.getString("resMsg"));
-                iBaseView.onTokenInvalid();
-            } else if (responseJsonObject.getIntValue("resCode") == 3014) {
+//                iBaseView.onTokenInvalid();
+            } else if ("000001".equals(responseJsonObject.getString("code"))) {
                 //显示统一消息
-                Toast.makeText(BaseApplication.applicationContext, "服务异常，请重试~", Toast.LENGTH_SHORT).show();
+                Toast.makeText(BaseApplication.applicationContext, "请求失败，请重试~", Toast.LENGTH_SHORT).show();
             } else if (responseJsonObject.getBoolean("msgStatus") && iBaseView != null) {
                 //显示服务器端返回的消息
                 showPageContentView();

@@ -61,8 +61,8 @@ public class LogUtil {
 			String tag=null;
 			String logStr=null;
 			if (totalLog.length() > 0 && totalLog.length() <= maxLogLength) {
-				tag= clazzName2 + "--" + funcName2+"("+lineNumber+")--##########";
-				logStr = "jsonStr = " + totalLog;
+				tag= clazzName2 + "--" + funcName2+"("+lineNumber+")";
+				logStr = "##########--jsonStr = " + totalLog;
 				Log.d(tag, logStr);
 				LogUtil.getInstance().writeLogToFile(tag, logStr);
 			} else {
@@ -72,13 +72,13 @@ public class LogUtil {
 					String logContent = totalLog.substring(0, maxLogLength);
 					totalLog = totalLog.replace(logContent, "");
 
-					tag= clazzName2 + "--" + funcName2+"("+lineNumber+")--##";
-					logStr = "jsonStr = " + logContent;
+					tag= clazzName2 + "--" + funcName2+"("+lineNumber+")";
+					logStr = "##--jsonStr = " + logContent;
 					Log.d(tag, logStr);
 					LogUtil.getInstance().writeLogToFile(tag, logStr);
 				}
-				tag= clazzName2 + "--" + funcName2+"("+lineNumber+")--##########";
-				logStr = "jsonStr = " + totalLog;
+				tag= clazzName2 + "--" + funcName2+"("+lineNumber+")";
+				logStr = "##########--jsonStr = " + totalLog;
 				Log.d(tag, logStr);
 				LogUtil.getInstance().writeLogToFile(tag, logStr);
 			}

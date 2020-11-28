@@ -38,11 +38,11 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class HttpRequest {
     //测试环境
-    private static final String APP_INTERFACE_WEB_URL_ENV_TEST = "http://www.perfecservice.com/";
+    private static final String APP_INTERFACE_WEB_URL_ENV_TEST = "https://chuhen.tk/";
     //预发环境
-    private static final String APP_INTERFACE_WEB_URL_ENV_PRE ="https://www.baidu.com/";
+    private static final String APP_INTERFACE_WEB_URL_ENV_PRE ="http://perfecservice.com/";
     // 正式环境
-    private static final String APP_INTERFACE_WEB_URL_ENV_ONLINE ="https://www.baidu.com/";
+    private static final String APP_INTERFACE_WEB_URL_ENV_ONLINE ="https://chuhen.tk/";
 
     //图片上传       测试环境
     private static final String UPLOAD_IMAGE_TEST_ENV_WEB_URL = "https://www.baidu.com/";
@@ -69,9 +69,11 @@ public class HttpRequest {
     public static String UPLOAD_IMAGE_WEB_URL = UPLOAD_IMAGE_TEST_ENV_WEB_URL;
     public static String FACE_DETECT_WEB_URL = FACE_DETECT_TEST_ENV_URL;
 
-    private static final String MOCK_DATA = "mock/14/";
+//    private static final String MOCK_DATA = "mock/14/";
+    private static final String MOCK_DATA = "";
     private static final String H5_SUB_PATH = "dist/#/";
-    private static final String H5_URL = APP_INTERFACE_WEB_URL+H5_SUB_PATH;
+    private static final String H5_DOEMON = "https://chuhen.tk/";
+    private static final String H5_URL = H5_DOEMON+H5_SUB_PATH;
 
     public static void initEnvironment() {
         if(BuildConfig.DEBUG){
@@ -204,9 +206,9 @@ public class HttpRequest {
         params.put("version", DeviceUtil.getAppVersionName(BaseApplication.applicationContext));
         params.put("equipment", DeviceUtil.getDevicecId());
         params.put("mobileSystem", "android");
-//        if(BaseApplication.userInfo!=null && BaseApplication.userInfo.getToken()!=null){
-//            params.put("token", BaseApplication.userInfo.getToken());
-//            params.put("userId", BaseApplication.userInfo.getMobile()+"");
+//        if(BaseApplication.userInfo!=null && BaseApplication.userInfo.getSessionId()!=null){
+//            params.put("token", BaseApplication.userInfo.getSessionId());
+//            params.put("userId", BaseApplication.userInfo.getUserId()+"");
 //        }
         TreeMap<String, String> treeMap = new TreeMap<String, String>();
         treeMap.putAll(params);
@@ -299,10 +301,10 @@ public class HttpRequest {
                             @Override
                             public okhttp3.Response intercept(Chain chain) throws IOException {
                                 Request.Builder builder = chain.request().newBuilder();
-//                                if(BaseApplication.userInfo!=null && BaseApplication.userInfo.getToken()!=null){
-//                                    builder.addHeader("token", BaseApplication.userInfo.getToken())
+                                if(BaseApplication.userInfo!=null && BaseApplication.userInfo.getSessionId()!=null){
+                                    builder.addHeader("Cookie", "username="+BaseApplication.userInfo.getUsername()+"; sid="+BaseApplication.userInfo.getSessionId());
 //                                            .addHeader("userId", BaseApplication.userInfo.getMobile()+"");
-//                                }
+                                }
                                 return chain.proceed(builder.build());
                             }
                         })
