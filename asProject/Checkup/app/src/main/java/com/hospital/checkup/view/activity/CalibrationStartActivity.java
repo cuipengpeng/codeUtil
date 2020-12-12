@@ -7,11 +7,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -24,17 +26,23 @@ import com.hospital.checkup.BuildConfig;
 import com.hospital.checkup.R;
 import com.hospital.checkup.base.BaseApplication;
 import com.hospital.checkup.base.BaseUILocalDataActivity;
+import com.hospital.checkup.bean.UserInfoBean;
 import com.hospital.checkup.bluetooth.BleController;
 import com.hospital.checkup.bluetooth.ConnectCallback;
 import com.hospital.checkup.bluetooth.ScanCallback;
+import com.hospital.checkup.http.HttpRequest;
 import com.hospital.checkup.utils.LogUtils;
 import com.hospital.checkup.widget.CustomMarkerView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Response;
 
 public class CalibrationStartActivity extends BaseUILocalDataActivity {
 
@@ -86,16 +94,16 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
                 disableAllButton();
                 stopButton.setEnabled(true);
                 stopButton.setBackgroundResource(R.drawable.circle_corner_red_bg_normal_2dp);
-//                if (!BleController.getInstance().isEnable()) {
-//                    Toast.makeText(BaseApplication.applicationContext, "请打开蓝牙", Toast.LENGTH_SHORT).show();
-//                    startActivity(new Intent(Settings.ACTION_BLUETOOTH_SETTINGS));
-//                } else {
-//                    if (BleController.getInstance().isConnectok) {
-//                        BleController.getInstance().enableNotification(true, BleController.getInstance().mBleGattCharacteristic);
-//                    } else {
-//                        scanBleDeviceAndConnect();
-//                    }
-//                }
+                if (!BleController.getInstance().isEnable()) {
+                    Toast.makeText(BaseApplication.applicationContext, "请打开蓝牙", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Settings.ACTION_BLUETOOTH_SETTINGS));
+                } else {
+                    if (BleController.getInstance().isConnectok) {
+                        BleController.getInstance().enableNotification(true, BleController.getInstance().mBleGattCharacteristic);
+                    } else {
+                        scanBleDeviceAndConnect();
+                    }
+                }
                 break;
             case R.id.btn_calibrationStartActivity_stop:
                 stopCalibration = true;
@@ -104,7 +112,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
                 saveButton.setBackgroundResource(R.drawable.circle_corner_blue_bg_normal_2dp);
                 resetButton.setEnabled(true);
                 resetButton.setBackgroundResource(R.drawable.circle_corner_red_bg_normal_2dp);
-//                BleController.getInstance().enableNotification(false, BleController.getInstance().mBleGattCharacteristic);
+                BleController.getInstance().enableNotification(false, BleController.getInstance().mBleGattCharacteristic);
                 break;
             case R.id.btn_calibrationStartActivity_save:
                 enableStartButton();
@@ -120,7 +128,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
                 showLegend01 = !showLegend01;
                 if(showLegend01){
                     icon01ImageView.setBackgroundResource(R.drawable.circle_corner_blue_bg_normal_2dp);
-                    logEntryList(entryList01);
+                    printLogEntryList(entryList01);
                     for(int i=0; i<entryList01.size();i++){
                         set1.addEntryOrdered(entryList01.get(i).copy());
                     }
@@ -140,7 +148,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
                 showLegend02 = !showLegend02;
                 if(showLegend02){
                     icon02ImageView.setBackgroundResource(R.drawable.circle_corner_yellow_bg_normal_2dp);
-                    logEntryList(entryList02);
+                    printLogEntryList(entryList02);
                     for(int i=0; i<entryList02.size();i++){
                         set2.addEntryOrdered(entryList02.get(i).copy());
                     }
@@ -160,7 +168,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
                 showLegend03 = !showLegend03;
                 if(showLegend03){
                     icon03ImageView.setBackgroundResource(R.drawable.circle_corner_green_bg_normal_2dp);
-                    logEntryList(entryList03);
+                    printLogEntryList(entryList03);
                     for(int i=0; i<entryList03.size();i++){
                         set3.addEntryOrdered(entryList03.get(i).copy());
                     }
@@ -289,11 +297,11 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
                 }
 
                 LogUtils.printLog("init--0");
-                logEntryList(((LineDataSet)chart.getData().getDataSetByIndex(0)).getEntries());
+                printLogEntryList(((LineDataSet)chart.getData().getDataSetByIndex(0)).getEntries());
                 LogUtils.printLog("init--1");
-                logEntryList(((LineDataSet)chart.getData().getDataSetByIndex(1)).getEntries());
+                printLogEntryList(((LineDataSet)chart.getData().getDataSetByIndex(1)).getEntries());
                 LogUtils.printLog("init--2");
-                logEntryList(((LineDataSet)chart.getData().getDataSetByIndex(2)).getEntries());
+                printLogEntryList(((LineDataSet)chart.getData().getDataSetByIndex(2)).getEntries());
             }
         };
     }
@@ -414,7 +422,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         // AxisDependency.LEFT);
     }
 
-    public static void logEntryList(List<Entry> entryList) {
+    public static void printLogEntryList(List<Entry> entryList) {
         if(BuildConfig.DEBUG){
             StringBuilder stringBuilder = new StringBuilder();
             for(int i=0; i<entryList.size(); i++){
@@ -448,7 +456,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
             boolean findDevice = false;
 
             @Override
-            public void onSuccess() {
+            public void onStopScanBle() {
                 if (findDevice) {
                     Toast.makeText(BaseApplication.applicationContext, "扫描到蓝牙设备，开始连接", Toast.LENGTH_SHORT).show();
                     BleController.getInstance().connect(BleController.DEVICE_ADDRESS, new ConnectCallback() {
@@ -508,6 +516,58 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         disableAllButton();
         startButton.setEnabled(true);
         startButton.setBackgroundResource(R.drawable.circle_corner_green_bg_normal_2dp);
+    }
+
+    public void saveMeasureLog(String username, String passwd){
+        Map<String, String> deviceParams = new HashMap();
+        deviceParams.put("createtime", "");
+        deviceParams.put("deviceId", "");
+        deviceParams.put("deviceName", "");
+        deviceParams.put("deviceRemark", "");
+        deviceParams.put("deviceSerialNo", "");
+        deviceParams.put("status", "");
+        deviceParams.put("updatetime", "");
+
+        Map<String, String> modelParams = new HashMap();
+        modelParams.put("modelId", "");
+        modelParams.put("modelName", "");
+        modelParams.put("modelRemark", "");
+        modelParams.put("status", "");
+
+        Map<String, String> operatorParams = new HashMap();
+        operatorParams.put("createtime", "");
+        operatorParams.put("deviceId", "");
+        operatorParams.put("gender", "");
+        operatorParams.put("operatorCompany", "");
+        operatorParams.put("operatorId", "");
+        operatorParams.put("operatorNameEn", "");
+        operatorParams.put("operatorNameZh", "");
+        operatorParams.put("operatorPassword", "");
+        operatorParams.put("operatorRemark", "");
+        operatorParams.put("updatetime", "");
+
+        Map<String, String> testerParams = new HashMap();
+        testerParams.put("createtime", "");
+        testerParams.put("testName", "");
+        testerParams.put("testGender", "");
+        testerParams.put("testMobile", "");
+        testerParams.put("testRemark", "");
+        testerParams.put("testId", "");
+        testerParams.put("testBirth", "");
+        HttpRequest.post(HttpRequest.RequestType.POST,this, HttpRequest.CHECKUP_LOGIN, testerParams, new HttpRequest.HttpResponseCallBack(){
+
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                BaseApplication.userInfo = JSON.parseObject(response.body().toString().trim(), UserInfoBean.class);
+                startActivity(new Intent(CalibrationStartActivity.this, MainAcyivity.class));
+                finish();
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        });
     }
 
     public static void open(Context context) {

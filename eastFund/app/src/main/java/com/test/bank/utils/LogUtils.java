@@ -58,7 +58,6 @@ public class LogUtils {
             Log.v(tag, msg);
     }
 
-
     public static void printLog(String log) {
         if (BuildConfig.DEBUG) {
             String clazzName2 = new Throwable().getStackTrace()[1].getClassName();
@@ -66,9 +65,8 @@ public class LogUtils {
             int lineNumber = new Throwable().getStackTrace()[1].getLineNumber();
 
             int maxLogLength = 3000;
-            if (log.length() > 0 && log.length() <= maxLogLength) {
+            if (log.length() <= maxLogLength) {
                 Log.d(clazzName2 + "--" + funcName2+"("+lineNumber+")", "##########--jsonStr = " + log);
-//                XLog.d(clazzName2 + "--" + funcName2+"("+lineNumber+")--##########"+"jsonStr = " + log);
             } else {
                 // 由于logcat默认的message长度为4000，因此超过该长度就会截取剩下的字段导致log数据不全
                 // 使用分段的方式来输出足够长度的message
@@ -76,31 +74,9 @@ public class LogUtils {
                     String logContent = log.substring(0, maxLogLength);
                     log = log.replace(logContent, "");
                     Log.d(clazzName2 + "--" + funcName2+"("+lineNumber+")", "##--jsonStr = " + logContent);
-//                    XLog.d(clazzName2 + "--" + funcName2+"("+lineNumber+")--##"+"jsonStr = " + logContent);
                 }
                 Log.d(clazzName2 + "--" + funcName2+"("+lineNumber+")", "##########--jsonStr = " + log);
-//                XLog.d(clazzName2 + "--" + funcName2+"("+lineNumber+")--##########" + "jsonStr = " + log);
             }
         }
     }
-
-    // 由于logcat默认的message长度为4000，因此超过该长度就会截取剩下的字段导致log数据不全
-    // 使用分段的方式来输出足够长度的message
-    public static void showAll(String str) {
-        str = str.trim();
-        int maxLength = 3000;
-        if (TextUtils.isEmpty(str)) {
-            e(" ");
-        } else if (str.length() > 0 && str.length() <= maxLength) {
-            Log.e("zzzzz", str);
-        } else {
-            while (str.length() > maxLength) {
-                String logContent = str.substring(0, maxLength);
-                str = str.replace(logContent, "");
-                Log.e("zzzzz", logContent);
-            }
-            Log.e("zzzzz", str);
-        }
-    }
-
 }

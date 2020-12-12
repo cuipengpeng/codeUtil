@@ -7,8 +7,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.hospital.checkup.R;
 import com.hospital.checkup.base.BaseUILocalDataActivity;
+import com.hospital.checkup.bean.TestModelBean;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -28,6 +30,7 @@ public class CalibrationActivity extends BaseUILocalDataActivity {
     @BindView(R.id.btn_calibrationActivity_measure)
     Button measureButton;
 
+    private static final String KEY_OF_TEST_MODEL_BEAN = "testModelBeanKey";
     private final int CALIBRATION_START = 101;
     private final int CALIBRATION_FINISH = 102;
     private int currentCalibration = CALIBRATION_START;
@@ -73,6 +76,22 @@ public class CalibrationActivity extends BaseUILocalDataActivity {
 
     @Override
     protected void initPageData() {
+        TestModelBean testModelBean = (TestModelBean) getIntent().getSerializableExtra(KEY_OF_TEST_MODEL_BEAN);
+        boolean jump=false;
+        for(TestModelBean.ChildrenBeanX child2:testModelBean.getChildren()){
+            if(child2.isSelected()){
+                for(TestModelBean.ChildrenBeanX.ChildrenBean child3: child2.getChildren()){
+                    if(child3.isSelected()){
+                        Glide.with(this).load(child3.getModelExample()).into(ivCalibrationActivityBody);
+                        jump = true;
+                        break;
+                    }
+                }
+                if(jump){
+                    break;
+                }
+            }
+        }
         randomAngleRunnable = new RandomAngleRunnable();
             randomAngleThread = new Runnable() {
             @Override
@@ -110,8 +129,9 @@ public class CalibrationActivity extends BaseUILocalDataActivity {
         }
     }
 
-    public static void open(Context context) {
+    public static void open(Context context, TestModelBean testModelBean) {
         Intent intent = new Intent(context, CalibrationActivity.class);
+        intent.putExtra(KEY_OF_TEST_MODEL_BEAN, testModelBean);
         context.startActivity(intent);
     }
 }

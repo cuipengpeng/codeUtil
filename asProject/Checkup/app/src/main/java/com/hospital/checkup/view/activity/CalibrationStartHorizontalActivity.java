@@ -16,7 +16,6 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.hospital.checkup.R;
 import com.hospital.checkup.base.BaseUILocalDataActivity;
-import com.hospital.checkup.utils.LogUtils;
 import com.hospital.checkup.widget.CustomMarkerView;
 
 import java.util.ArrayList;
@@ -60,7 +59,7 @@ public class CalibrationStartHorizontalActivity extends BaseUILocalDataActivity 
                 showLegend01 = !showLegend01;
                 if(showLegend01){
                     icon01ImageView.setBackgroundResource(R.drawable.circle_corner_blue_bg_normal_2dp);
-                    CalibrationStartActivity.logEntryList(entryList01);
+                    CalibrationStartActivity.printLogEntryList(entryList01);
                     for(int i=0; i<entryList01.size();i++){
                         set1.addEntryOrdered(entryList01.get(i).copy());
                     }
@@ -80,7 +79,7 @@ public class CalibrationStartHorizontalActivity extends BaseUILocalDataActivity 
                 showLegend02 = !showLegend02;
                 if(showLegend02){
                     icon02ImageView.setBackgroundResource(R.drawable.circle_corner_yellow_bg_normal_2dp);
-                    CalibrationStartActivity.logEntryList(entryList02);
+                    CalibrationStartActivity.printLogEntryList(entryList02);
                     for(int i=0; i<entryList02.size();i++){
                         set2.addEntryOrdered(entryList02.get(i).copy());
                     }
@@ -100,7 +99,7 @@ public class CalibrationStartHorizontalActivity extends BaseUILocalDataActivity 
                 showLegend03 = !showLegend03;
                 if(showLegend03){
                     icon03ImageView.setBackgroundResource(R.drawable.circle_corner_green_bg_normal_2dp);
-                    CalibrationStartActivity.logEntryList(entryList03);
+                    CalibrationStartActivity.printLogEntryList(entryList03);
                     for(int i=0; i<entryList03.size();i++){
                         set3.addEntryOrdered(entryList03.get(i).copy());
                     }

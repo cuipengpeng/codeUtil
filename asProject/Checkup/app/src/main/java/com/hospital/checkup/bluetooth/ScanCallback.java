@@ -7,7 +7,7 @@ public interface ScanCallback {
     /**
      * 扫描完成回调
      */
-    void onSuccess();
+    void onStopScanBle();
 
     /**
      * 扫描过程中,每扫描到一个设备回调一次

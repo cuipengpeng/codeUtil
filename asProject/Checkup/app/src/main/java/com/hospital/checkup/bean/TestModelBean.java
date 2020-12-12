@@ -1,8 +1,9 @@
 package com.hospital.checkup.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class TestModelBean {
+public class TestModelBean implements Serializable{
 
 
     /**
@@ -69,7 +70,7 @@ public class TestModelBean {
         this.children = children;
     }
 
-    public static class ChildrenBeanX {
+    public static class ChildrenBeanX implements Serializable{
         /**
          * modelId : 609766
          * modelName : 屈曲/伸展
@@ -81,15 +82,23 @@ public class TestModelBean {
         private int modelId;
         private String modelName;
         private String modelExample;
+        private boolean selected;
         private int modelType;
         private List<ChildrenBean> children;
-
         public int getModelId() {
             return modelId;
         }
 
         public void setModelId(int modelId) {
             this.modelId = modelId;
+        }
+
+        public boolean isSelected() {
+            return selected;
+        }
+
+        public void setSelected(boolean selected) {
+            this.selected = selected;
         }
 
         public String getModelName() {
@@ -124,7 +133,7 @@ public class TestModelBean {
             this.children = children;
         }
 
-        public static class ChildrenBean {
+        public static class ChildrenBean implements Serializable{
             /**
              * modelId : -36254476
              * modelName : AROM
@@ -136,15 +145,23 @@ public class TestModelBean {
             private int modelId;
             private String modelName;
             private int modelType;
+            private boolean selected =false;
             private String modelExample;
             private String children;
-
             public int getModelId() {
                 return modelId;
             }
 
             public void setModelId(int modelId) {
                 this.modelId = modelId;
+            }
+
+            public boolean isSelected() {
+                return selected;
+            }
+
+            public void setSelected(boolean selected) {
+                this.selected = selected;
             }
 
             public String getModelName() {

@@ -58,7 +58,7 @@ public class LogUtil {
 			int maxLogLength = 3000;
 			String tag=null;
 			String logStr=null;
-			if (totalLog.length() > 0 && totalLog.length() <= maxLogLength) {
+			if (totalLog.length() <= maxLogLength) {
 				tag= clazzName2 + "--" + funcName2+"("+lineNumber+")--##########";
 				logStr = "jsonStr = " + totalLog;
 				Log.d(tag, logStr);

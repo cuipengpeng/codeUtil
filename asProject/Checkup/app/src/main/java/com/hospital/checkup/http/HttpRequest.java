@@ -398,6 +398,10 @@ public class HttpRequest {
      */
     public static final String CHECKUP_LOGIN = MOCK_DATA+"m/api/login";
     /**
+     * 保存测量日志
+     */
+    public static final String SAVE_MEASURE_LOG = MOCK_DATA+"m/api/test-management/logs";
+    /**
      * 保存试者详情数据
      */
     public static final String SAVE_MEASURER_DETAIL_INFO = MOCK_DATA+"m/api/test-management/objs";

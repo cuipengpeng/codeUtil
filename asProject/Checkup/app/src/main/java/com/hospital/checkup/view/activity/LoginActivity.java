@@ -85,12 +85,12 @@ public class LoginActivity extends BaseUILocalDataActivity {
             case R.id.btn_loginActivity_login:
                 String userName = userNameEditText.getText().toString().trim();
                 String password = passwdEditText.getText().toString().trim();
-                login("abc123", "abc123");
-//                login("testuser", "1234abcd");
+//                login("abc123", "abc123");
+                login("testuser", "1234abcd");
 
 //                if(userMap.keySet().contains(userName)){
 //                    if(userMap.get(userName).equalsIgnoreCase(password)){
-//                        login("132012341660", "123456");
+//                        login("testuser", "1234abcd");
 //                    }else {
 //                        Toast.makeText(LoginActivity.this, "密码错误", Toast.LENGTH_SHORT).show();
 //                    }
@@ -113,8 +113,8 @@ public class LoginActivity extends BaseUILocalDataActivity {
 
     @Override
     protected void initPageData() {
-        userMap.put("123456","123456");
-        userMap.put("1","1");
+        userMap.put("testuser","1234abcd");
+        //userMap.put("1","1");
         showBaseUITitle = false;
         BleController.getInstance().init(BaseApplication.applicationContext);
         XXPermissions.with(this).permission(Manifest.permission.WRITE_EXTERNAL_STORAGE,

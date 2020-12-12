@@ -15,26 +15,26 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class LogUtil {
+public class LogToFileUtil {
 	private WriteThread writeThread = null;
 	private SimpleDateFormat mlogTimeFormat = null;
 
-	private static volatile LogUtil logUtil = null;
-	private LogUtil() {
+	private static volatile LogToFileUtil logToFileUtil = null;
+	private LogToFileUtil() {
 		writeThread = new WriteThread();
 		mlogTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
 		writeThread.start();
 	}
 
-	public static LogUtil getInstance() {
-		if (logUtil == null) {
-			synchronized (LogUtil.class) {
-				if (logUtil == null) {
-					logUtil = new LogUtil();
+	public static LogToFileUtil getInstance() {
+		if (logToFileUtil == null) {
+			synchronized (LogToFileUtil.class) {
+				if (logToFileUtil == null) {
+					logToFileUtil = new LogToFileUtil();
 				}
 			}
 		}
-		return logUtil;
+		return logToFileUtil;
 	}
  
 	public static void printLogE(String str, Exception e) {
@@ -60,11 +60,11 @@ public class LogUtil {
 			int maxLogLength = 3000;
 			String tag=null;
 			String logStr=null;
-			if (totalLog.length() > 0 && totalLog.length() <= maxLogLength) {
+			if (totalLog.length() <= maxLogLength) {
 				tag= clazzName2 + "--" + funcName2+"("+lineNumber+")";
 				logStr = "##########--jsonStr = " + totalLog;
 				Log.d(tag, logStr);
-				LogUtil.getInstance().writeLogToFile(tag, logStr);
+				LogToFileUtil.getInstance().writeLogToFile(tag, logStr);
 			} else {
 				// 由于logcat默认的message长度为4000，因此超过该长度就会截取剩下的字段导致log数据不全
 				// 使用分段的方式来输出足够长度的message
@@ -75,12 +75,12 @@ public class LogUtil {
 					tag= clazzName2 + "--" + funcName2+"("+lineNumber+")";
 					logStr = "##--jsonStr = " + logContent;
 					Log.d(tag, logStr);
-					LogUtil.getInstance().writeLogToFile(tag, logStr);
+					LogToFileUtil.getInstance().writeLogToFile(tag, logStr);
 				}
 				tag= clazzName2 + "--" + funcName2+"("+lineNumber+")";
 				logStr = "##########--jsonStr = " + totalLog;
 				Log.d(tag, logStr);
-				LogUtil.getInstance().writeLogToFile(tag, logStr);
+				LogToFileUtil.getInstance().writeLogToFile(tag, logStr);
 			}
 		}
 	}

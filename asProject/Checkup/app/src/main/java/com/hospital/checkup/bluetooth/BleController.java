@@ -64,7 +64,8 @@ public class BleController {
     //此属性一般不用修改
     private static final String BLUETOOTH_NOTIFY_D = "00002902-0000-1000-8000-00805f9b34fb";
     //TODO 以下uuid根据公司硬件改变
-    public static final String DEVICE_ADDRESS = "D1:48:DA:CA:16:0F";
+    public static final String DEVICE_ADDRESS = "E1:60:92:B9:77:B7";
+//    public static final String DEVICE_ADDRESS = "D1:48:DA:CA:16:0F";
     public static final String UUID_SERVICE = "6e400001-b5a3-f393-e0a9-e50e24dcca9e";
     public static final String UUID_NOTIFY = "6e400003-b5a3-f393-e0a9-e50e24dcca9e";
     public static final String UUID_INDICATE = "0000000-0000-0000-8000-00805f9b0000";
@@ -121,15 +122,17 @@ public class BleController {
             if (mScanning){
                 return;
             }
+
             mHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     mScanning = false;
                     //time后停止扫描
                     mBleAdapter.stopLeScan(bleDeviceScanCallback);
-                    scanCallback.onSuccess();
+                    scanCallback.onStopScanBle();
                 }
             }, time <= 0 ? SCAN_TIME : time);
+
             mScanning = true;
             mBleAdapter.startLeScan(bleDeviceScanCallback);
         } else {
@@ -391,33 +394,32 @@ public class BleController {
         //通知数据
         @Override
         public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
-//            LogUtils.printLog("55555555----");
             for(int i=0; i<characteristic.getValue().length;i++){
                 stringBuilder.append((char)characteristic.getValue()[i]);
             }
-            LogUtils.printLog("55555555 str = "+stringBuilder.toString());
+            LogUtils.printLog("55555555 string length = "+stringBuilder.toString().length()+"-- str = "+stringBuilder.toString());
+            //截取以b开头，以e结尾的字符串
             while (stringBuilder.indexOf("b")>=0){
-                LogUtils.printLog("begin str = "+stringBuilder.toString());
-                LogUtils.printLog("string length = "+stringBuilder.toString().length());
+                LogUtils.printLog("string length = "+stringBuilder.toString().length()+"-- str = "+stringBuilder.toString());
                 String substring = stringBuilder.substring(stringBuilder.indexOf("b"));
-                LogUtils.printLog("substring = "+substring);
+                LogUtils.printLog("substring length= "+substring.length()+"-- substring= "+substring);
                 stringBuilder.delete(0, stringBuilder.length());
                 stringBuilder.append(substring);
                 if(stringBuilder.indexOf("e")>=0){
+                    //截取以b开头，以e结尾的字符串
                     String dataStr = stringBuilder.substring(stringBuilder.indexOf("b"),stringBuilder.indexOf("e")+1);
                     LogUtils.printLog("dataStr = "+ dataStr+"   list.size()="+dataPacketList.size());
                     dataPacketList.add(dataStr);
                     String str = stringBuilder.substring(stringBuilder.indexOf("e")+1);
-                    LogUtils.printLog("str = "+str);
+                    LogUtils.printLog("left str = "+str);
                     stringBuilder.delete(0, stringBuilder.length());
                     stringBuilder.append(str);
-                    LogUtils.printLog("string length = "+stringBuilder.toString().length());
-                    LogUtils.printLog("string = "+stringBuilder.toString());
+                    LogUtils.printLog("left string length = "+stringBuilder.toString().length()+"-- left string = "+stringBuilder.toString());
                 }else {
                     break;
                 }
             }
-            LogUtils.printLog("\n\n");
+            LogUtils.printLog("------------------------------");
 //            LogUtils.printLog(HexUtil.bytesToHexString(characteristic.getValue()));
             super.onCharacteristicChanged(gatt, characteristic);
             if (null != mReceiverRequestQueue) {

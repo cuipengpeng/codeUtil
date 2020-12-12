@@ -83,13 +83,39 @@ public class MeasureHomeFragment extends BaseUILocalDataFragment {
     private ArrayList<ArrayList<ArrayList<String>>> options3Items = new ArrayList<>();
 
     private Map<Integer, TestModelBean> modelCodeMap = new HashMap();
+    private TestModelBean selectedTestModelBean = new TestModelBean();
 
     @OnClick({R.id.btn_measureHomeActivity_measure, R.id.ll_measureHomeActivity_addDoctor, R.id.ll_measureHomeActivity_addMeasurer,
             R.id.ll_measureHomeActivity_measureBodyArea, R.id.ll_measureHomeActivity_measureContent, R.id.ll_measureHomeActivity_measureLeftOrRight})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_measureHomeActivity_measure:
-                CalibrationActivity.open(getActivity());
+                TestModelBean modelBean = new TestModelBean();
+                boolean jumpPage = false;
+                for(TestModelBean testModelBean: modelCodeMap.values()){
+                    if(measureBodyTextView.getText().toString().trim().equalsIgnoreCase(testModelBean.getModelName())){
+                        modelBean = testModelBean;
+                        for(TestModelBean.ChildrenBeanX child2: modelBean.getChildren()){
+                            if(measureContentTextView.getText().toString().trim().contains(child2.getModelName())){
+                                child2.setSelected(true);
+                                for(TestModelBean.ChildrenBeanX.ChildrenBean children3 : child2.getChildren()){
+                                    if(measureContentTextView.getText().toString().trim().contains(children3.getModelName())){
+                                        children3.setSelected(true);
+                                        jumpPage = true;
+                                        break;
+                                    }
+                                }
+                                if(jumpPage){
+                                    break;
+                                }
+                            }
+                        }
+                        if(jumpPage){
+                            break;
+                        }
+                    }
+                }
+                CalibrationActivity.open(getActivity(),modelBean);
                 break;
             case R.id.ll_measureHomeActivity_addDoctor:
                 WebViewActivity.open(getActivity(), HttpRequest.H5_ADD_DOCTOR, true);
@@ -140,11 +166,11 @@ public class MeasureHomeFragment extends BaseUILocalDataFragment {
                 LogUtils.printLog(response.body().toString());
                 mTestModelBeanList = JSON.parseArray(response.body().toString().trim(), TestModelBean.class);
                 if(mTestModelBeanList.size()>0){
-                    TestModelBean  testModelBean = mTestModelBeanList.get(0);
-                    measureBodyTextView.setText(testModelBean.getModelName());
-                    measureContentTextView.setText(testModelBean.getChildren().get(0).getModelName()+"、"+testModelBean.getChildren().get(0).getChildren().get(0).getModelName());
+                      selectedTestModelBean = mTestModelBeanList.get(0);
+                    measureBodyTextView.setText(selectedTestModelBean.getModelName());
+                    measureContentTextView.setText(selectedTestModelBean.getChildren().get(0).getModelName()+"、"+selectedTestModelBean.getChildren().get(0).getChildren().get(0).getModelName());
                     for(int i = 0; i< mTestModelBeanList.size(); i++){
-                        modelCodeMap.put(mTestModelBeanList.get(i).getModelCode(), mTestModelBeanList.get(i));
+                        modelCodeMap.put(mTestModelBeanList.get(i).getModelId(), mTestModelBeanList.get(i));
                     }
                     initJsonData();
                 }

@@ -13,7 +13,7 @@ public class LogUtils {
             int lineNumber = new Throwable().getStackTrace()[1].getLineNumber();
 
             int maxLogLength = 2500;
-            if (log.length() > 0 && log.length() <= maxLogLength) {
+            if (log.length() <= maxLogLength) {
                 Log.d(clazzName2 + "--" + funcName2+"("+lineNumber+")--##########", "jsonStr = " + log);
             } else {
                 while (log.length() > maxLogLength) {
