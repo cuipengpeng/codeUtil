@@ -2,15 +2,19 @@ package com.hospital.checkup.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.hospital.checkup.R;
+import com.hospital.checkup.base.BaseApplication;
 import com.hospital.checkup.base.BaseUILocalDataActivity;
 import com.hospital.checkup.bean.TestModelBean;
+import com.hospital.checkup.bluetooth.BleController;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -38,6 +42,11 @@ public class CalibrationActivity extends BaseUILocalDataActivity {
 
     @OnClick({R.id.btn_calibrationActivity_calibration, R.id.btn_calibrationActivity_measure})
     public void onViewClicked(View view) {
+        if (!BleController.getInstance().isEnable()) {
+            Toast.makeText(BaseApplication.applicationContext, "请打开蓝牙", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(Settings.ACTION_BLUETOOTH_SETTINGS));
+            return;
+        }
         switch (view.getId()) {
             case R.id.btn_calibrationActivity_calibration:
                 switch (currentCalibration){

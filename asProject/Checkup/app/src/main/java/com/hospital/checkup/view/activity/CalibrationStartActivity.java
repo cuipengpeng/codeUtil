@@ -451,7 +451,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         unregisterReceiver(mReceiver);
     }
 
-    private void scanBleDeviceAndConnect() {
+    public static void scanBleDeviceAndConnect() {
         BleController.getInstance().scanBle(true, new ScanCallback() {
             boolean findDevice = false;
 

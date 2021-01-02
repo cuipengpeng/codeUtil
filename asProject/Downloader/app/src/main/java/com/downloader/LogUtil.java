@@ -49,18 +49,29 @@ public class LogUtil {
 		printLog(log);
 	}
 
+    //命令行查看当前系统显示的是哪个activity
+    //adb shell dumpsys activity activities | less
+
 	public static void printLog(String totalLog) {
+	   printLog(totalLog, 2,false);
+	}
+	
+		public static void printLog(String totalLog, int level, boolean showTraceLevel) {
 		if (BuildConfig.DEBUG) {
 			String clazzName2 = new Throwable().getStackTrace()[1].getClassName();
 			String funcName2 = new Throwable().getStackTrace()[1].getMethodName();
 			int lineNumber = new Throwable().getStackTrace()[1].getLineNumber();
+			String traceLevel = "";
+            if(showTraceLevel){
+                traceLevel="TraceLevel="+level;
+            }
 
 			int maxLogLength = 3000;
 			String tag=null;
 			String logStr=null;
 			if (totalLog.length() <= maxLogLength) {
-				tag= clazzName2 + "--" + funcName2+"("+lineNumber+")--##########";
-				logStr = "jsonStr = " + totalLog;
+				tag= clazzName2 + "--" + funcName2+"("+lineNumber+")";
+				logStr = traceLevel+"##########--jsonStr = " + totalLog;
 				Log.d(tag, logStr);
 				LogUtil.getInstance().writeLogToFile(tag, logStr);
 			} else {
@@ -70,13 +81,13 @@ public class LogUtil {
 					String logContent = totalLog.substring(0, maxLogLength);
 					totalLog = totalLog.replace(logContent, "");
 
-					tag= clazzName2 + "--" + funcName2+"("+lineNumber+")--##";
-					logStr = "jsonStr = " + logContent;
+					tag= clazzName2 + "--" + funcName2+"("+lineNumber+")";
+					logStr = traceLevel+"##--jsonStr = " + logContent;
 					Log.d(tag, logStr);
 					LogUtil.getInstance().writeLogToFile(tag, logStr);
 				}
-				tag= clazzName2 + "--" + funcName2+"("+lineNumber+")--##########";
-				logStr = "jsonStr = " + totalLog;
+				tag= clazzName2 + "--" + funcName2+"("+lineNumber+")";
+				logStr = traceLevel+"##########--jsonStr = " + totalLog;
 				Log.d(tag, logStr);
 				LogUtil.getInstance().writeLogToFile(tag, logStr);
 			}

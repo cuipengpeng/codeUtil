@@ -57,25 +57,32 @@ public class LogUtils {
         if (isDebug)
             Log.v(tag, msg);
     }
+	
+	public static void printLog(String log) {
+        printLog(log, 2,false);
+    }
 
-    public static void printLog(String log) {
+    public static void printLog(String log, int level, boolean showTraceLevel) {
         if (BuildConfig.DEBUG) {
-            String clazzName2 = new Throwable().getStackTrace()[1].getClassName();
-            String funcName2 = new Throwable().getStackTrace()[1].getMethodName();
-            int lineNumber = new Throwable().getStackTrace()[1].getLineNumber();
-
+            String clazzName2 = new Throwable().getStackTrace()[level].getClassName();
+            String funcName2 = new Throwable().getStackTrace()[level].getMethodName();
+            int lineNumber = new Throwable().getStackTrace()[level].getLineNumber();
+            String traceLevel = "";
+            if(showTraceLevel){
+                traceLevel="TraceLevel="+level;
+            }
             int maxLogLength = 3000;
             if (log.length() <= maxLogLength) {
-                Log.d(clazzName2 + "--" + funcName2+"("+lineNumber+")", "##########--jsonStr = " + log);
+                Log.d(clazzName2 + "--" + funcName2+"("+lineNumber+")", traceLevel+"##########--jsonStr = " + log);
             } else {
                 // 由于logcat默认的message长度为4000，因此超过该长度就会截取剩下的字段导致log数据不全
                 // 使用分段的方式来输出足够长度的message
                 while (log.length() > maxLogLength) {
                     String logContent = log.substring(0, maxLogLength);
                     log = log.replace(logContent, "");
-                    Log.d(clazzName2 + "--" + funcName2+"("+lineNumber+")", "##--jsonStr = " + logContent);
+                    Log.d(clazzName2 + "--" + funcName2+"("+lineNumber+")", traceLevel+"##--jsonStr = " + logContent);
                 }
-                Log.d(clazzName2 + "--" + funcName2+"("+lineNumber+")", "##########--jsonStr = " + log);
+                Log.d(clazzName2 + "--" + funcName2+"("+lineNumber+")", traceLevel+"##########--jsonStr = " + log);
             }
         }
     }

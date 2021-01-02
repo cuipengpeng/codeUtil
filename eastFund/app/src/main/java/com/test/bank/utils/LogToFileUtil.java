@@ -52,17 +52,25 @@ public class LogToFileUtil {
 	}
 
 	public static void printLog(String totalLog) {
+	   printLog(totalLog, 2,false);
+	}
+	
+		public static void printLog(String totalLog, int level, boolean showTraceLevel) {
 		if (BuildConfig.DEBUG) {
 			String clazzName2 = new Throwable().getStackTrace()[1].getClassName();
 			String funcName2 = new Throwable().getStackTrace()[1].getMethodName();
 			int lineNumber = new Throwable().getStackTrace()[1].getLineNumber();
+			String traceLevel = "";
+            if(showTraceLevel){
+                traceLevel="TraceLevel="+level;
+            }
 
 			int maxLogLength = 3000;
 			String tag=null;
 			String logStr=null;
 			if (totalLog.length() <= maxLogLength) {
 				tag= clazzName2 + "--" + funcName2+"("+lineNumber+")";
-				logStr = "##########--jsonStr = " + totalLog;
+				logStr = traceLevel+"##########--jsonStr = " + totalLog;
 				Log.d(tag, logStr);
 				LogToFileUtil.getInstance().writeLogToFile(tag, logStr);
 			} else {
@@ -73,12 +81,12 @@ public class LogToFileUtil {
 					totalLog = totalLog.replace(logContent, "");
 
 					tag= clazzName2 + "--" + funcName2+"("+lineNumber+")";
-					logStr = "##--jsonStr = " + logContent;
+					logStr = traceLevel+"##--jsonStr = " + logContent;
 					Log.d(tag, logStr);
 					LogToFileUtil.getInstance().writeLogToFile(tag, logStr);
 				}
 				tag= clazzName2 + "--" + funcName2+"("+lineNumber+")";
-				logStr = "##########--jsonStr = " + totalLog;
+				logStr = traceLevel+"##########--jsonStr = " + totalLog;
 				Log.d(tag, logStr);
 				LogToFileUtil.getInstance().writeLogToFile(tag, logStr);
 			}

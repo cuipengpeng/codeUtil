@@ -14,12 +14,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.hospital.checkup.R;
+import com.hospital.checkup.base.BaseApplication;
 import com.hospital.checkup.base.BaseUILocalDataFragment;
 import com.hospital.checkup.bean.TestModelBean;
 import com.hospital.checkup.http.HttpRequest;
@@ -90,6 +92,18 @@ public class MeasureHomeFragment extends BaseUILocalDataFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_measureHomeActivity_measure:
+                if(StringUtil.isNull(doctorNameTextView.getText().toString())){
+                    Toast.makeText(BaseApplication.applicationContext, "请输入测量医师", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(StringUtil.isNull(measurerNameTextView.getText().toString())){
+                    Toast.makeText(BaseApplication.applicationContext, "请输入测量被试", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(measureLeftOrRightRelativeLayout.getVisibility()==View.VISIBLE && StringUtil.isNull(measureLeftOrRightTextView.getText().toString())){
+                    Toast.makeText(BaseApplication.applicationContext, "请输入关节左右", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 TestModelBean modelBean = new TestModelBean();
                 boolean jumpPage = false;
                 for(TestModelBean testModelBean: modelCodeMap.values()){
@@ -154,6 +168,9 @@ public class MeasureHomeFragment extends BaseUILocalDataFragment {
                 showPickerView(areaIndex);
             }
         });
+
+        addDoctorImageView.setVisibility(View.GONE);
+        doctorNameTextView.setText(BaseApplication.userInfo.getUsername());
     }
 
 
