@@ -7,7 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
-import android.provider.Settings;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -28,8 +28,8 @@ import com.hospital.checkup.base.BaseApplication;
 import com.hospital.checkup.base.BaseUILocalDataActivity;
 import com.hospital.checkup.bean.UserInfoBean;
 import com.hospital.checkup.bluetooth.BleController;
+import com.hospital.checkup.bluetooth.BleScanCallback;
 import com.hospital.checkup.bluetooth.ConnectCallback;
-import com.hospital.checkup.bluetooth.ScanCallback;
 import com.hospital.checkup.http.HttpRequest;
 import com.hospital.checkup.utils.LogUtils;
 import com.hospital.checkup.widget.CustomMarkerView;
@@ -63,9 +63,9 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
     @BindView(R.id.chart1)
     LineChart chart;
 
-    private Runnable realTimePointThread;
+    private RealTimePointDrawRunnable realTimePointDrawThread;
     private RealTimePointRunnable realTimePointRunnable;
-    private boolean stopCalibration = true;
+    public static boolean stopCalibration = true;
 
     private LineDataSet set1, set2, set3;
     private ArrayList<Entry> entryList01 = new ArrayList<>();
@@ -74,6 +74,9 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
     private boolean showLegend01 = true;
     private boolean showLegend02 = true;
     private boolean showLegend03 = true;
+
+    private final float mYAxisMax = 1000f;
+    private final float mYAxisMin = -1000f;
 
     private  int lineSetcount = 0;
 
@@ -89,30 +92,15 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
                 if(stopCalibration){
                     stopCalibration = false;
                     chart.clear();
-                    new Thread(realTimePointThread).start();
+                    countDownTimer.start();
+                    new Thread(realTimePointDrawThread).start();
                 }
                 disableAllButton();
                 stopButton.setEnabled(true);
                 stopButton.setBackgroundResource(R.drawable.circle_corner_red_bg_normal_2dp);
-                if (!BleController.getInstance().isEnable()) {
-                    Toast.makeText(BaseApplication.applicationContext, "请打开蓝牙", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(Settings.ACTION_BLUETOOTH_SETTINGS));
-                } else {
-                    if (BleController.getInstance().isConnectok) {
-                        BleController.getInstance().enableNotification(true, BleController.getInstance().mBleGattCharacteristic);
-                    } else {
-                        scanBleDeviceAndConnect();
-                    }
-                }
                 break;
             case R.id.btn_calibrationStartActivity_stop:
-                stopCalibration = true;
-                disableAllButton();
-                saveButton.setEnabled(true);
-                saveButton.setBackgroundResource(R.drawable.circle_corner_blue_bg_normal_2dp);
-                resetButton.setEnabled(true);
-                resetButton.setBackgroundResource(R.drawable.circle_corner_red_bg_normal_2dp);
-                BleController.getInstance().enableNotification(false, BleController.getInstance().mBleGattCharacteristic);
+                stopCalibrationDraw();
                 break;
             case R.id.btn_calibrationStartActivity_save:
                 enableStartButton();
@@ -122,7 +110,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
 //                CalibrationStartHorizontalActivity.open(this, entryList01, entryList02, entryList03);
                 break;
             case R.id.rl_calibrationStartActivity_legend01:
-                if(lineSetcount<=1 && showLegend01){
+                if((lineSetcount<=1 && showLegend01) || !stopCalibration){
                     return;
                 }
                 showLegend01 = !showLegend01;
@@ -142,7 +130,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
                 chart.invalidate();
                 break;
             case R.id.rl_calibrationStartActivity_legend02:
-                if(lineSetcount<=1 && showLegend02){
+                if((lineSetcount<=1 && showLegend02) || !stopCalibration){
                     return;
                 }
                 showLegend02 = !showLegend02;
@@ -162,7 +150,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
                 chart.invalidate();
                 break;
             case R.id.rl_calibrationStartActivity_legend03:
-                if(lineSetcount<=1 && showLegend03){
+                if((lineSetcount<=1 && showLegend03) || !stopCalibration){
                     return;
                 }
                 showLegend03 = !showLegend03;
@@ -184,6 +172,29 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         }
     }
 
+    private void stopCalibrationDraw() {
+        stopCalibration = true;
+        BleController.getInstance().dataPacketList.clear();
+        disableAllButton();
+        saveButton.setEnabled(true);
+        saveButton.setBackgroundResource(R.drawable.circle_corner_blue_bg_normal_2dp);
+        resetButton.setEnabled(true);
+        resetButton.setBackgroundResource(R.drawable.circle_corner_red_bg_normal_2dp);
+//      BleController.getInstance().enableNotification(false, BleController.getInstance().mBleGattCharacteristic);
+    }
+
+    CountDownTimer countDownTimer = new CountDownTimer(20000,50){
+        @Override
+        public void onTick(long millisUntilFinished) {
+        }
+
+        @Override
+        public void onFinish() {
+            stopCalibration = true;
+            stopCalibrationDraw();
+        }
+    };
+
     @Override
     protected String getPageTitle() {
         return "标定";
@@ -196,7 +207,8 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
 
     @Override
     protected void initPageData() {
-        if (BleController.getInstance().isEnable() && !BleController.getInstance().isConnectok) {
+        stopCalibration = true;
+        if (BleController.getInstance().isEnable() && !BleController.getInstance().isConnected) {
             scanBleDeviceAndConnect();
         }
         initChart();
@@ -260,8 +272,8 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
 
         YAxis leftAxis = chart.getAxisLeft();
         leftAxis.setTextColor(Color.GRAY);
-        leftAxis.setAxisMaximum(800f);
-        leftAxis.setAxisMinimum(0f);
+        leftAxis.setAxisMaximum(mYAxisMax);
+        leftAxis.setAxisMinimum(mYAxisMin);
         leftAxis.setDrawGridLines(true);
         leftAxis.setGranularityEnabled(true);
 
@@ -275,43 +287,111 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
 //        rightAxis.setGranularityEnabled(false);
 
         realTimePointRunnable = new RealTimePointRunnable();
-        realTimePointThread = new Runnable() {
-            @Override
-            public void run() {
-                entryList01.clear();
-                entryList02.clear();
-                entryList03.clear();
-
-                for(int i=0; i<500;i++){
-                    if(stopCalibration){
-                        lineSetcount = 3;
-                        break;
-                    }
-                    realTimePointRunnable.index = i;
-                    runOnUiThread(realTimePointRunnable);
-                    try {
-                        Thread.sleep(50);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                LogUtils.printLog("init--0");
-                printLogEntryList(((LineDataSet)chart.getData().getDataSetByIndex(0)).getEntries());
-                LogUtils.printLog("init--1");
-                printLogEntryList(((LineDataSet)chart.getData().getDataSetByIndex(1)).getEntries());
-                LogUtils.printLog("init--2");
-                printLogEntryList(((LineDataSet)chart.getData().getDataSetByIndex(2)).getEntries());
-            }
-        };
+        realTimePointDrawThread = new RealTimePointDrawRunnable();
     }
 
     class RealTimePointRunnable implements Runnable{
         public int index =0;
+        public float angle=0f;
+        public float speed=0f;
+        public float strength=0f;
 
         @Override
         public void run() {
-            addEntry(index,300);
+//            addEntry(index,300,angle,speed,strength);
+            addEntry(index,0,angle,speed,strength);
+        }
+    }
+    class RealTimePointDrawRunnable implements Runnable{
+
+        @Override
+        public void run() {
+            entryList01.clear();
+            entryList02.clear();
+            entryList03.clear();
+            int pointIndex=0;
+            String[] pointArray = null;
+            while (true){
+                if(stopCalibration){
+                    lineSetcount = 3;
+                    break;
+                }
+                if(BleController.getInstance().dataPacketList.size()<=0){
+                    continue;
+                }
+                String entryPoint="";
+                try {
+                    entryPoint = BleController.getInstance().dataPacketList.take();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                pointArray = entryPoint.split(",");
+                LogUtils.printLog("entryPoint="+entryPoint+"    --pointArrayLength="+pointArray.length);
+                if(pointArray.length < 21){
+                    continue;
+                }
+                if(pointArray!= null && pointArray.length>20){
+                    try {
+                        realTimePointRunnable.angle = Float.valueOf(pointArray[10]);
+                        realTimePointRunnable.speed = Float.valueOf(pointArray[13]);
+                        realTimePointRunnable.strength = Float.valueOf(pointArray[19])+ Float.valueOf(pointArray[20]);
+                        realTimePointRunnable.index = pointIndex++;
+                    }catch (Exception e){
+                        e.printStackTrace();
+                        continue;
+                    }
+                    float reduce = 100f;
+                    if(realTimePointRunnable.angle>mYAxisMax){
+                        realTimePointRunnable.angle = mYAxisMax-reduce;
+                    }else if(realTimePointRunnable.angle<mYAxisMin){
+                        realTimePointRunnable.angle = mYAxisMin+reduce;
+                    }
+                    if(realTimePointRunnable.speed>mYAxisMax){
+                        realTimePointRunnable.speed = mYAxisMax-reduce;
+                    }else if(realTimePointRunnable.speed<mYAxisMin){
+                        realTimePointRunnable.speed = mYAxisMin+reduce;
+                    }
+                    if(realTimePointRunnable.strength>mYAxisMax){
+                        realTimePointRunnable.strength = mYAxisMax-reduce;
+                    }else if(realTimePointRunnable.strength<mYAxisMin){
+                        realTimePointRunnable.strength = mYAxisMin+reduce;
+                    }
+                    LogUtils.printLog("draw  entryPoint=11111");
+                    runOnUiThread(realTimePointRunnable);
+                }
+
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+//                for(int i=0; i<500;i++){
+//                    if(stopCalibrationDraw){
+//                        lineSetcount = 3;
+//                        break;
+//                    }
+//                    realTimePointRunnable.index = i;
+//                    runOnUiThread(realTimePointRunnable);
+//                    try {
+//                        Thread.sleep(50);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+            LogUtils.printLog("init--0");
+            if(chart.getData() != null){
+                printLogEntryList(((LineDataSet)chart.getData().getDataSetByIndex(0)).getEntries());
+            }
+            LogUtils.printLog("init--1");
+            if(chart.getData() != null){
+                printLogEntryList(((LineDataSet)chart.getData().getDataSetByIndex(1)).getEntries());
+            }
+            LogUtils.printLog("init--2");
+            if(chart.getData() != null){
+                printLogEntryList(((LineDataSet)chart.getData().getDataSetByIndex(2)).getEntries());
+            }
         }
     }
 
@@ -377,7 +457,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         chart.setData(data);
     }
 
-    private void addEntry(int index, float range) {
+    private void addEntry(int index, float range, float angle, float speed, float strength) {
         if (chart.getData() == null || chart.getData().getDataSetCount() <= 0) {
             initLineDataSet();
         }
@@ -385,17 +465,32 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         LineDataSet set2 = (LineDataSet) chart.getData().getDataSetByIndex(1);
         LineDataSet set3 = (LineDataSet) chart.getData().getDataSetByIndex(2);
 
-        float val1 = (float) (Math.random() * range) + 300;
+        float val1 = 0;
+        if(range>0){
+            val1 = (float) (Math.random() * range) + 300;
+        }else {
+            val1=angle;
+        }
         Entry entry01 = new Entry(index, val1);
         entryList01.add(entry01);
         set1.addEntryOrdered(entry01);
 
-        float val2 = (float) (Math.random() * range) + 200;
+        float val2 = 0;
+        if(range>0){
+            val2 = (float) (Math.random() * range) + 200;
+        }else {
+            val2=speed;
+        }
         Entry entry02 = new Entry(index, val2);
         entryList02.add(entry02);
         set2.addEntryOrdered(entry02);
 
-        float val3 = (float) (Math.random() * range) + 350;
+        float val3 = 0;
+        if(range>0){
+            val3 = (float) (Math.random() * range) + 350;
+        }else {
+            val3=strength;
+        }
         Entry entry03 = new Entry(index, val3);
         entryList03.add(entry03);
         set3.addEntryOrdered(entry03);
@@ -451,8 +546,8 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         unregisterReceiver(mReceiver);
     }
 
-    public static void scanBleDeviceAndConnect() {
-        BleController.getInstance().scanBle(true, new ScanCallback() {
+    private void scanBleDeviceAndConnect() {
+        BleController.getInstance().scanBle(true, new BleScanCallback() {
             boolean findDevice = false;
 
             @Override
@@ -467,6 +562,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
 
                         @Override
                         public void onConnFailed() {
+                            Toast.makeText(BaseApplication.applicationContext, "蓝牙连接失败", Toast.LENGTH_SHORT).show();
 
                         }
                     });
@@ -474,10 +570,12 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
             }
 
             @Override
-            public void onScanning(BluetoothDevice device, int rssi, byte[] scanRecord) {
-                if (BleController.DEVICE_ADDRESS.equalsIgnoreCase(device.getAddress())) {
-                    findDevice = true;
-                }
+            public void onLeScan(BluetoothDevice device, int rssi, byte[] scanRecord) {
+                        LogUtils.printLog("deviceName="+device.getName()+"--deviceAddr="+device.getAddress()+"--uuid="+device.getUuids());
+                    //每次扫描到设备会回调此方法,这里一般做些过滤在添加进list列表
+                    if (BleController.DEVICE_ADDRESS.equalsIgnoreCase(device.getAddress())) {
+                        findDevice = true;
+                    }
             }
         });
     }

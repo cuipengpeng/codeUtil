@@ -13,17 +13,17 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
-
-
+import com.hospital.checkup.base.BaseApplication;
 import com.hospital.checkup.utils.HexUtil;
 import com.hospital.checkup.utils.LogUtils;
-
-import java.util.ArrayList;
+import com.hospital.checkup.view.activity.CalibrationStartActivity;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class BleController {
 
@@ -33,7 +33,7 @@ public class BleController {
     private Context mContext;
 
     private StringBuilder stringBuilder = new StringBuilder();
-    private List<String> dataPacketList = new ArrayList<>();
+    public BlockingQueue<String> dataPacketList = new LinkedBlockingQueue<String>();
     private BluetoothAdapter mBleAdapter;
     public BluetoothGatt mBleGatt;
     public BluetoothGattCharacteristic mBleGattCharacteristic;
@@ -53,11 +53,11 @@ public class BleController {
     private HashMap<String, Map<String, BluetoothGattCharacteristic>> servicesMap = new HashMap<>();
 
     //连接请求是否ok
-    public boolean isConnectok = false;
+    public boolean isConnected = false;
     //是否是用户手动断开
-    private boolean isMybreak = false;
+    private boolean isDisconnectByHand = false;
     //连接结果的回调
-    private ConnectCallback connectCallback;
+    private ConnectCallback mConnectCallback;
     //读操作请求队列
     private ReceiverRequestQueue mReceiverRequestQueue = new ReceiverRequestQueue();
 
@@ -87,59 +87,13 @@ public class BleController {
     public BleController init(Context context) {
         if (mContext == null) {
             mContext = context.getApplicationContext();
-            BluetoothManager mBlehManager = (BluetoothManager) mContext.getSystemService(Context.BLUETOOTH_SERVICE);
-            if (null == mBlehManager) {
-                Log.e(TAG, "BluetoothManager init error!");
-            }
-
+            BluetoothManager mBlehManager = (BluetoothManager) BaseApplication.getContext().getSystemService(Context.BLUETOOTH_SERVICE);
             mBleAdapter = mBlehManager.getAdapter();
-            if (null == mBleAdapter) {
-                Log.e(TAG, "BluetoothManager init error!");
-            }
             mGattCallback = new BleGattCallback();
         }
         return this;
     }
 
-
-    /**
-     * 扫描设备
-     *
-     * @param time         指定扫描时间
-     * @param scanCallback 扫描回调
-     */
-    public void scanBle(int time, final boolean startScan, final ScanCallback scanCallback) {
-        if (!isEnable()) {
-            mBleAdapter.enable();
-            Log.e(TAG, "Bluetooth is not open!");
-        }
-//        if (null != mBleGatt) {
-//            mBleGatt.close();
-//        }
-        reset();
-        final BleDevceScanCallback bleDeviceScanCallback = new BleDevceScanCallback(scanCallback);
-        if (startScan) {
-            if (mScanning){
-                return;
-            }
-
-            mHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    mScanning = false;
-                    //time后停止扫描
-                    mBleAdapter.stopLeScan(bleDeviceScanCallback);
-                    scanCallback.onStopScanBle();
-                }
-            }, time <= 0 ? SCAN_TIME : time);
-
-            mScanning = true;
-            mBleAdapter.startLeScan(bleDeviceScanCallback);
-        } else {
-            mScanning = false;
-            mBleAdapter.stopLeScan(bleDeviceScanCallback);
-        }
-    }
 
 
     /**
@@ -148,34 +102,50 @@ public class BleController {
      *
      * @param scanCallback
      */
-    public void scanBle(final boolean startScan, final ScanCallback scanCallback) {
+    public void scanBle(final boolean startScan, final BleScanCallback scanCallback) {
         scanBle(SCAN_TIME, startScan, scanCallback);
     }
 
-
     /**
-     * 连接设备
+     * 扫描设备
      *
-     * @param connectionTimeOut 指定连接超时
-     * @param address           设备mac地址
-     * @param connectCallback   连接回调
+     * @param time         指定扫描时间
+     * @param bleScanCallback 扫描回调
      */
-    public void connect(final int connectionTimeOut, final String address, ConnectCallback connectCallback) {
+    public void scanBle(int time, final boolean startScan, final BleScanCallback bleScanCallback) {
+        if (!isEnable()) {
+            mBleAdapter.enable();
+        }
+//        if (null != mBleGatt) {
+//            mBleGatt.close();
+//        }
+        reset();
+        if (startScan) {
+            if (mScanning){
+                return;
+            }
+            time = time <= 0 ? SCAN_TIME : time;
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mScanning = false;
+                    //time后停止扫描
+                    mBleAdapter.stopLeScan(bleScanCallback);
+                    bleScanCallback.onStopScanBle();
+                }
+            }, time);
 
-        if (mBleAdapter == null || address == null) {
-            Log.e(TAG, "No device found at this address：" + address);
-            return ;
+            mScanning = true;
+            mBleAdapter.startLeScan(bleScanCallback);
+        } else {
+            mScanning = false;
+            mBleAdapter.stopLeScan(bleScanCallback);
         }
-        BluetoothDevice remoteDevice = mBleAdapter.getRemoteDevice(address);
-        if (remoteDevice == null) {
-            Log.w(TAG, "Device not found.  Unable to connect.");
-            return;
-        }
-        this.connectCallback = connectCallback;
-        mBleGatt = remoteDevice.connectGatt(mContext, false, mGattCallback);
-        Log.e(TAG, "connecting mac-address:" + address);
-        delayConnectResponse(connectionTimeOut);
     }
+
+
+
+
 
     /**
      * 连接设备
@@ -186,6 +156,28 @@ public class BleController {
     public void connect(final String address, ConnectCallback connectCallback) {
         connect(CONNECTION_TIME_OUT, address, connectCallback);
     }
+    /**
+     * 连接设备
+     *
+     * @param connectionTimeOut 指定连接超时
+     * @param address           设备mac地址
+     * @param connectCallback   连接回调
+     */
+    public void connect(final int connectionTimeOut, final String address, ConnectCallback connectCallback) {
+        if (mBleAdapter == null ) {
+            mBleAdapter= ((BluetoothManager) BaseApplication.getContext().getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter();
+        }
+        BluetoothDevice remoteDevice = mBleAdapter.getRemoteDevice(address);
+        if (remoteDevice == null) {
+            Log.w(TAG, "Device not found.  Unable to connect.");
+            return;
+        }
+        this.mConnectCallback = connectCallback;
+        mBleGatt = remoteDevice.connectGatt(mContext, false, mGattCallback);
+        Log.e(TAG, "connecting mac-address:" + address);
+        delayConnectResponse(connectionTimeOut);
+    }
+
 
     /**
      * 发送数据
@@ -244,7 +236,7 @@ public class BleController {
      */
     public void closeBleConn() {
         disConnection();
-        isMybreak = true;
+        isDisconnectByHand = true;
         mBleGattCharacteristic = null;
     }
 
@@ -255,17 +247,18 @@ public class BleController {
      * 当前蓝牙是否打开
      */
     public boolean isEnable() {
-        if (null != mBleAdapter) {
-            return mBleAdapter.isEnabled();
+        if (mBleAdapter == null) {
+            mBleAdapter= ((BluetoothManager) BaseApplication.getContext().getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter();
         }
-        return false;
+        return mBleAdapter.isEnabled();
     }
 
     /**
      * 重置数据
      */
     private void reset() {
-        isConnectok = false;
+        isConnected = false;
+        isDisconnectByHand = false;
         servicesMap.clear();
     }
 
@@ -276,18 +269,17 @@ public class BleController {
      */
     private void delayConnectResponse(int connectionTimeOut) {
         mHandler.removeCallbacksAndMessages(null);
+        connectionTimeOut = connectionTimeOut <= 0 ? CONNECTION_TIME_OUT : connectionTimeOut;
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (!isConnectok && !isMybreak) {
+                if (!isConnected && !isDisconnectByHand) {
                     Log.e(TAG, "connect timeout");
                     disConnection();
-                    reConnect();
-                } else {
-                    isMybreak = false;
+//                    reConnect();
                 }
             }
-        }, connectionTimeOut <= 0 ? CONNECTION_TIME_OUT : connectionTimeOut);
+        }, connectionTimeOut);
     }
 
     /**
@@ -298,6 +290,10 @@ public class BleController {
             Log.e(TAG, "disconnection error maybe no init");
             return;
         }
+        if(mConnectCallback != null){
+            mConnectCallback.onConnFailed();
+        }
+        LogUtils.printLog("Ble disconnected !");
         mBleGatt.disconnect();
         reset();
     }
@@ -310,20 +306,20 @@ public class BleController {
         public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
             LogUtils.printLog("111111");
             if (newState == BluetoothProfile.STATE_CONNECTED) { //连接成功
-                isMybreak = false;
-                isConnectok = true;
+                isConnected = true;
+                isDisconnectByHand = false;
                 mBleGatt.discoverServices();
 
-                if (connectCallback != null) {
+                if (mConnectCallback != null) {
                     runOnMainThread(new Runnable() {
                         @Override
                         public void run() {
-                            connectCallback.onConnSuccess();
+                            mConnectCallback.onConnSuccess();
                         }
                     });
                 }
             } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {   //断开连接
-                if (!isMybreak) {
+                if (!isDisconnectByHand) {
                     reConnect();
                 }
                 reset();
@@ -337,19 +333,19 @@ public class BleController {
             LogUtils.printLog("22222");
             super.onServicesDiscovered(gatt, status);
             if (null != mBleGatt && status == BluetoothGatt.GATT_SUCCESS) {
-                List<BluetoothGattService> services = mBleGatt.getServices();
-                for (int i = 0; i < services.size(); i++) {
+                List<BluetoothGattService> servicesList = mBleGatt.getServices();
+                for (int i = 0; i < servicesList.size(); i++) {
                     HashMap<String, BluetoothGattCharacteristic> charMap = new HashMap<>();
-                    BluetoothGattService bluetoothGattService = services.get(i);
+                    BluetoothGattService bluetoothGattService = servicesList.get(i);
                     String serviceUuid = bluetoothGattService.getUuid().toString();
                     LogUtils.printLog("serviceUuid = "+serviceUuid);
-                    List<BluetoothGattCharacteristic> characteristics = bluetoothGattService.getCharacteristics();
-                    for (int j = 0; j < characteristics.size(); j++) {
-                        LogUtils.printLog("characteristics.get(j).getUuid() = "+characteristics.get(j).getUuid().toString());
-                        charMap.put(characteristics.get(j).getUuid().toString(), characteristics.get(j));
-                        if(UUID_NOTIFY.equalsIgnoreCase(characteristics.get(j).getUuid().toString())){
-                            mBleGattCharacteristic = characteristics.get(j);
-                            enableNotification(true, characteristics.get(j));
+                    List<BluetoothGattCharacteristic> characteristicsList = bluetoothGattService.getCharacteristics();
+                    for (int j = 0; j < characteristicsList.size(); j++) {
+                        LogUtils.printLog("characteristics.get(j).getUuid() = "+characteristicsList.get(j).getUuid().toString());
+                        charMap.put(characteristicsList.get(j).getUuid().toString(), characteristicsList.get(j));
+                        if(UUID_NOTIFY.equalsIgnoreCase(characteristicsList.get(j).getUuid().toString())){
+                            mBleGattCharacteristic = characteristicsList.get(j);
+                            enableNotification(true, characteristicsList.get(j));
                         }
                     }
                     servicesMap.put(serviceUuid, charMap);
@@ -397,50 +393,76 @@ public class BleController {
             for(int i=0; i<characteristic.getValue().length;i++){
                 stringBuilder.append((char)characteristic.getValue()[i]);
             }
-            LogUtils.printLog("55555555 string length = "+stringBuilder.toString().length()+"-- str = "+stringBuilder.toString());
+
+//            LogUtils.printLog("55555555 string length = "+stringBuilder.toString().length()+"-- str = "+stringBuilder.toString());
             //截取以b开头，以e结尾的字符串
             while (stringBuilder.indexOf("b")>=0){
-                LogUtils.printLog("string length = "+stringBuilder.toString().length()+"-- str = "+stringBuilder.toString());
+//                LogUtils.printLog("string length = "+stringBuilder.toString().length()+"-- str = "+stringBuilder.toString());
                 String substring = stringBuilder.substring(stringBuilder.indexOf("b"));
-                LogUtils.printLog("substring length= "+substring.length()+"-- substring= "+substring);
+//                LogUtils.printLog("substring length= "+substring.length()+"-- substring= "+substring);
                 stringBuilder.delete(0, stringBuilder.length());
                 stringBuilder.append(substring);
                 if(stringBuilder.indexOf("e")>=0){
                     //截取以b开头，以e结尾的字符串
                     String dataStr = stringBuilder.substring(stringBuilder.indexOf("b"),stringBuilder.indexOf("e")+1);
-                    LogUtils.printLog("dataStr = "+ dataStr+"   list.size()="+dataPacketList.size());
-                    dataPacketList.add(dataStr);
+//                    LogUtils.printLog("dataStr = "+ dataStr+"   list.size()="+dataPacketList.size());
+                    if(!CalibrationStartActivity.stopCalibration){
+                        try {
+                            dataPacketList.put(dataStr);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
                     String str = stringBuilder.substring(stringBuilder.indexOf("e")+1);
-                    LogUtils.printLog("left str = "+str);
+//                    LogUtils.printLog("left str = "+str);
                     stringBuilder.delete(0, stringBuilder.length());
                     stringBuilder.append(str);
-                    LogUtils.printLog("left string length = "+stringBuilder.toString().length()+"-- left string = "+stringBuilder.toString());
+//                    LogUtils.printLog("left string length = "+stringBuilder.toString().length()+"-- left string = "+stringBuilder.toString());
                 }else {
                     break;
                 }
             }
-            LogUtils.printLog("------------------------------");
+//            LogUtils.printLog("------------------------------threadId = "+Thread.currentThread().getId()+"--threadName="+Thread.currentThread().getName());
 //            LogUtils.printLog(HexUtil.bytesToHexString(characteristic.getValue()));
-            super.onCharacteristicChanged(gatt, characteristic);
-            if (null != mReceiverRequestQueue) {
-                HashMap<String, OnReceiverCallback> map = mReceiverRequestQueue.getMap();
-                final byte[] rec = characteristic.getValue();
-                for (String key : mReceiverRequestQueue.getMap().keySet()) {
-                    final OnReceiverCallback onReceiverCallback = map.get(key);
-                    runOnMainThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            onReceiverCallback.onReceiver(rec);
-                        }
-                    });
-                }
-            }
+//            super.onCharacteristicChanged(gatt, characteristic);
+//            printAllThread();
+//            LogUtils.printLog("aaaa");
         }
 
         @Override
         public void onDescriptorRead(BluetoothGatt gatt, BluetoothGattDescriptor descriptor, int status) {
             LogUtils.printLog("66666666");
             super.onDescriptorRead(gatt, descriptor, status);
+        }
+    }
+
+
+    public void printAllThread(){
+        Map<Thread, StackTraceElement[]> stacks = Thread.getAllStackTraces();
+        Set<Thread> set = stacks.keySet();
+        for (Thread key : set) {
+            StackTraceElement[] stackTraceElements = stacks.get(key);
+            Log.d(TAG, "---- print thread: " + key.getName() + " start ----");
+        }
+        System.out.println("************" );
+        ThreadGroup group = Thread.currentThread().getThreadGroup();
+        ThreadGroup topGroup = group;
+        // 遍历线程组树，获取根线程组
+        while (group != null) {
+            topGroup = group;
+            group = group.getParent();
+        }
+        // 激活的线程数再加一倍，防止枚举时有可能刚好有动态线程生成
+        int slackSize = topGroup.activeCount() * 2;
+        Thread[] slackThreads = new Thread[slackSize];
+        // 获取根线程组下的所有线程，返回的actualSize便是最终的线程数
+        int actualSize = topGroup.enumerate(slackThreads);
+        Thread[] atualThreads = new Thread[actualSize];
+        // 复制slackThreads中有效的值到atualThreads
+        System.arraycopy(slackThreads, 0, atualThreads, 0, actualSize);
+        System.out.println("Threads size is " + atualThreads.length);
+        for (Thread thread : atualThreads) {
+            System.out.println("Thread name : " + thread.getName());
         }
     }
 
@@ -452,10 +474,7 @@ public class BleController {
      * @return
      */
     public boolean enableNotification(boolean enable, BluetoothGattCharacteristic characteristic) {
-        if (mBleGatt == null || characteristic == null){
-            return false;
-        }
-        if (!mBleGatt.setCharacteristicNotification(characteristic, enable)){
+        if (mBleGatt == null || characteristic == null || !mBleGatt.setCharacteristicNotification(characteristic, enable)){
             return false;
         }
         BluetoothGattDescriptor descriptor = characteristic.getDescriptor(UUID.fromString(BLUETOOTH_NOTIFY_D));
@@ -533,18 +552,12 @@ public class BleController {
 
     // TODO 此方法断开连接或连接失败时会被调用。可在此处理自动重连,内部代码可自行修改，如发送广播
     private void reConnect() {
-        if (connectCallback != null) {
             runOnMainThread(new Runnable() {
                 @Override
                 public void run() {
-                    connectCallback.onConnFailed();
+                 connect(DEVICE_ADDRESS, mConnectCallback);
                 }
             });
-        }
-
-        Log.e(TAG, "Ble disconnect or connect failed!");
+        LogUtils.printLog("Ble connect failed!, try re-connecting...");
     }
-
-
-
 }

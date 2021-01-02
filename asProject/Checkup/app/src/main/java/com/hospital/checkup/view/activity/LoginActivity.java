@@ -1,12 +1,8 @@
 package com.hospital.checkup.view.activity;
 
 import android.Manifest;
-import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.provider.Settings;
-import android.text.InputType;
 import android.text.Selection;
 import android.text.Spannable;
 import android.text.method.HideReturnsTransformationMethod;
@@ -17,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.hjq.permissions.OnPermission;
@@ -27,18 +22,13 @@ import com.hospital.checkup.base.BaseApplication;
 import com.hospital.checkup.base.BaseUILocalDataActivity;
 import com.hospital.checkup.bean.UserInfoBean;
 import com.hospital.checkup.bluetooth.BleController;
-import com.hospital.checkup.bluetooth.ConnectCallback;
-import com.hospital.checkup.bluetooth.ScanCallback;
 import com.hospital.checkup.http.HttpRequest;
-import com.hospital.checkup.view.fragment.WebViewFragment;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import androidx.annotation.Nullable;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Response;
