@@ -75,11 +75,14 @@
             android:textSize="@dimen/appContentTextSize_15sp"
             android:text="测量说明"
             android:gravity="center_vertical"/>
-        <TextView
+        <EditText
+            android:id="@+id/et_calibrationStartActivity_desc"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
+            android:background="@null"
             android:layout_marginBottom="10dp"
+            android:maxLines="3"
             android:textColor="#0066dd"
             android:textSize="@dimen/appTipTextSize_13sp"
             android:text="开始测量时，请按照相关说明标准执行"

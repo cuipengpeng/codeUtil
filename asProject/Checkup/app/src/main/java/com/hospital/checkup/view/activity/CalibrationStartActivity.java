@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -32,9 +33,14 @@ import com.hospital.checkup.bluetooth.BleScanCallback;
 import com.hospital.checkup.bluetooth.ConnectCallback;
 import com.hospital.checkup.http.HttpRequest;
 import com.hospital.checkup.utils.LogUtils;
+import com.hospital.checkup.utils.RunningDataSingleInstance;
+import com.hospital.checkup.utils.StringUtil;
 import com.hospital.checkup.widget.CustomMarkerView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,6 +66,8 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
     ImageView icon02ImageView;
     @BindView(R.id.iv_calibrationStartActivity_circleIcon03)
     ImageView icon03ImageView;
+    @BindView(R.id.et_calibrationStartActivity_desc)
+    EditText descEditText;
     @BindView(R.id.chart1)
     LineChart chart;
 
@@ -74,7 +82,10 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
     private boolean showLegend01 = true;
     private boolean showLegend02 = true;
     private boolean showLegend03 = true;
+    private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private String startCalibrationTime;
 
+    private long mDuration = 0;
     private final float mYAxisMax = 1000f;
     private final float mYAxisMin = -1000f;
 
@@ -94,6 +105,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
                     chart.clear();
                     countDownTimer.start();
                     new Thread(realTimePointDrawThread).start();
+                    startCalibrationTime = dateFormat.format(new Date());
                 }
                 disableAllButton();
                 stopButton.setEnabled(true);
@@ -104,6 +116,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
                 break;
             case R.id.btn_calibrationStartActivity_save:
                 enableStartButton();
+                saveCalibrationData(BaseApplication.userInfo.getUsername(), "");
                 break;
             case R.id.btn_calibrationStartActivity_reset:
                 enableStartButton();
@@ -174,7 +187,6 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
 
     private void stopCalibrationDraw() {
         stopCalibration = true;
-        BleController.getInstance().dataPacketList.clear();
         disableAllButton();
         saveButton.setEnabled(true);
         saveButton.setBackgroundResource(R.drawable.circle_corner_blue_bg_normal_2dp);
@@ -186,6 +198,9 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
     CountDownTimer countDownTimer = new CountDownTimer(20000,50){
         @Override
         public void onTick(long millisUntilFinished) {
+            if(!stopCalibration){
+                mDuration+=50;
+            }
         }
 
         @Override
@@ -309,6 +324,10 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
             entryList01.clear();
             entryList02.clear();
             entryList03.clear();
+            mDuration = 0;
+            BleController.getInstance().dataPacketList.clear();
+            BleController.getInstance().dataPacketStringBuilder.delete(0,BleController.getInstance().dataPacketStringBuilder.toString().length());
+
             int pointIndex=0;
             String[] pointArray = null;
             while (true){
@@ -383,14 +402,17 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
             LogUtils.printLog("init--0");
             if(chart.getData() != null){
                 printLogEntryList(((LineDataSet)chart.getData().getDataSetByIndex(0)).getEntries());
+                getEntryListYAxisValue(((LineDataSet)chart.getData().getDataSetByIndex(0)).getEntries());
             }
             LogUtils.printLog("init--1");
             if(chart.getData() != null){
                 printLogEntryList(((LineDataSet)chart.getData().getDataSetByIndex(1)).getEntries());
+                getEntryListYAxisValue(((LineDataSet)chart.getData().getDataSetByIndex(1)).getEntries());
             }
             LogUtils.printLog("init--2");
             if(chart.getData() != null){
                 printLogEntryList(((LineDataSet)chart.getData().getDataSetByIndex(2)).getEntries());
+                getEntryListYAxisValue(((LineDataSet)chart.getData().getDataSetByIndex(2)).getEntries());
             }
         }
     }
@@ -526,6 +548,15 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
             LogUtils.printLog(stringBuilder.toString());
         }
     }
+    private static String getEntryListYAxisValue(List<Entry> entryList) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i=0; i<entryList.size(); i++){
+            stringBuilder.append(entryList.get(i).getY()+",");
+        }
+        stringBuilder.deleteCharAt(stringBuilder.length()-1);
+        LogUtils.printLog(stringBuilder.toString());
+        return stringBuilder.toString();
+    }
 
     private void notifyDataSetChangeForChart() {
         //data.addEntry(new Entry(set.getEntryCount(), (float) (Math.random() * 40) + 30f), 0);
@@ -557,6 +588,7 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
                     BleController.getInstance().connect(BleController.DEVICE_ADDRESS, new ConnectCallback() {
                         @Override
                         public void onConnSuccess() {
+                            startCalibrationTime = dateFormat.format(new Date());
                             Toast.makeText(BaseApplication.applicationContext, "连接成功", Toast.LENGTH_SHORT).show();
                         }
 
@@ -616,49 +648,41 @@ public class CalibrationStartActivity extends BaseUILocalDataActivity {
         startButton.setBackgroundResource(R.drawable.circle_corner_green_bg_normal_2dp);
     }
 
-    public void saveMeasureLog(String username, String passwd){
-        Map<String, String> deviceParams = new HashMap();
-        deviceParams.put("createtime", "");
-        deviceParams.put("deviceId", "");
-        deviceParams.put("deviceName", "");
-        deviceParams.put("deviceRemark", "");
-        deviceParams.put("deviceSerialNo", "");
-        deviceParams.put("status", "");
-        deviceParams.put("updatetime", "");
+    public void saveCalibrationData(String username, String passwd){
+        Map<String, String> logParameter = new HashMap();
+        logParameter.put("position", RunningDataSingleInstance.getInstance().getLeftOrRight());
+        logParameter.put("jointAngle", RunningDataSingleInstance.getInstance().getJointAngle());
+        logParameter.put("nearAngle", RunningDataSingleInstance.getInstance().getNearAngle());
+        logParameter.put("distanceAngle", RunningDataSingleInstance.getInstance().getDistanceAngle());
+        logParameter.put("remark", descEditText.getText().toString().trim());
 
-        Map<String, String> modelParams = new HashMap();
-        modelParams.put("modelId", "");
-        modelParams.put("modelName", "");
-        modelParams.put("modelRemark", "");
-        modelParams.put("status", "");
+        Map<String, String> lineDataParams = new HashMap();
+        if(chart.getData() != null){
+            lineDataParams.put("line1",  getEntryListYAxisValue(((LineDataSet)chart.getData().getDataSetByIndex(0)).getEntries()));
+            lineDataParams.put("line2",  getEntryListYAxisValue(((LineDataSet)chart.getData().getDataSetByIndex(0)).getEntries()));
+            lineDataParams.put("line3",  getEntryListYAxisValue(((LineDataSet)chart.getData().getDataSetByIndex(0)).getEntries()));
+            lineDataParams.put("time",  mDuration+"");
+        }
 
-        Map<String, String> operatorParams = new HashMap();
-        operatorParams.put("createtime", "");
-        operatorParams.put("deviceId", "");
-        operatorParams.put("gender", "");
-        operatorParams.put("operatorCompany", "");
-        operatorParams.put("operatorId", "");
-        operatorParams.put("operatorNameEn", "");
-        operatorParams.put("operatorNameZh", "");
-        operatorParams.put("operatorPassword", "");
-        operatorParams.put("operatorRemark", "");
-        operatorParams.put("updatetime", "");
+        Map<String, String> allParams = new HashMap();
+        allParams.put("logDate",startCalibrationTime);
+        allParams.put("logData", BleController.getInstance().dataPacketStringBuilder.toString());
+        allParams.put("logDataJson",JSON.toJSONString(lineDataParams));
+        allParams.put("logParameter",JSON.toJSONString(logParameter));
+        allParams.put("deviceId", "1");
+        allParams.put("operatorId",RunningDataSingleInstance.getInstance().getOperatorID());
+        if(StringUtil.isNull(RunningDataSingleInstance.getInstance().getOperatorID())){
+//            allParams.put("operatorId",BaseApplication.userInfo.getUserId());
+            allParams.put("operatorId","12321");
+        }
+        allParams.put("modelId", RunningDataSingleInstance.getInstance().getModelID());
+        allParams.put("testId", RunningDataSingleInstance.getInstance().getTestID());
 
-        Map<String, String> testerParams = new HashMap();
-        testerParams.put("createtime", "");
-        testerParams.put("testName", "");
-        testerParams.put("testGender", "");
-        testerParams.put("testMobile", "");
-        testerParams.put("testRemark", "");
-        testerParams.put("testId", "");
-        testerParams.put("testBirth", "");
-        HttpRequest.post(HttpRequest.RequestType.POST,this, HttpRequest.CHECKUP_LOGIN, testerParams, new HttpRequest.HttpResponseCallBack(){
+        HttpRequest.post(HttpRequest.RequestType.POST,this, HttpRequest.SAVE_CALIBRATION_DATA, allParams, new HttpRequest.HttpResponseCallBack(){
 
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                BaseApplication.userInfo = JSON.parseObject(response.body().toString().trim(), UserInfoBean.class);
-                startActivity(new Intent(CalibrationStartActivity.this, MainAcyivity.class));
-                finish();
+//                BaseApplication.userInfo = JSON.parseObject(response.body().toString().trim(), UserInfoBean.class);
             }
 
             @Override

@@ -34,6 +34,7 @@ public class BleController {
 
     private StringBuilder stringBuilder = new StringBuilder();
     public BlockingQueue<String> dataPacketList = new LinkedBlockingQueue<String>();
+    public StringBuilder dataPacketStringBuilder = new StringBuilder();
     private BluetoothAdapter mBleAdapter;
     public BluetoothGatt mBleGatt;
     public BluetoothGattCharacteristic mBleGattCharacteristic;
@@ -408,6 +409,7 @@ public class BleController {
 //                    LogUtils.printLog("dataStr = "+ dataStr+"   list.size()="+dataPacketList.size());
                     if(!CalibrationStartActivity.stopCalibration){
                         try {
+                            dataPacketStringBuilder.append(dataStr);
                             dataPacketList.put(dataStr);
                         } catch (InterruptedException e) {
                             e.printStackTrace();

@@ -16,6 +16,7 @@ import com.hospital.checkup.bean.DoctorBean;
 import com.hospital.checkup.bean.MeasurerDetailBean;
 import com.hospital.checkup.http.HttpRequest;
 import com.hospital.checkup.js.JsRequstInterface;
+import com.hospital.checkup.utils.RunningDataSingleInstance;
 import com.hospital.checkup.view.fragment.MeasureHomeFragment;
 import com.hospital.checkup.view.fragment.WebViewFragment;
 
@@ -142,11 +143,13 @@ public class MainAcyivity extends BaseUILocalDataActivity {
              switch (resultCode){
                  case JsRequstInterface.TYPE_ADD_TESTER:
                       MeasurerDetailBean measurerDetailBean = JSON.parseObject(json, MeasurerDetailBean.class);
+                      RunningDataSingleInstance.getInstance().setTestID(measurerDetailBean.getTestId());
                      ((MeasureHomeFragment)bottomMenuFragment01).addUserImageView.setVisibility(View.GONE);
                      ((MeasureHomeFragment)bottomMenuFragment01).measurerNameTextView.setText(measurerDetailBean.getTestName());
                      break;
                  case JsRequstInterface.TYPE_ADD_DOCTOR:
                      DoctorBean doctorBean = JSON.parseObject(json, DoctorBean.class);
+                     RunningDataSingleInstance.getInstance().setOperatorID(doctorBean.getOperatorId());
                      ((MeasureHomeFragment)bottomMenuFragment01).addDoctorImageView.setVisibility(View.GONE);
                      ((MeasureHomeFragment)bottomMenuFragment01).doctorNameTextView.setText(doctorBean.getOperatorNameZh());
                      break;

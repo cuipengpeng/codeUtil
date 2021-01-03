@@ -15,6 +15,7 @@ import com.hospital.checkup.base.BaseApplication;
 import com.hospital.checkup.base.BaseUILocalDataActivity;
 import com.hospital.checkup.bean.TestModelBean;
 import com.hospital.checkup.bluetooth.BleController;
+import com.hospital.checkup.utils.RunningDataSingleInstance;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -101,6 +102,10 @@ public class CalibrationActivity extends BaseUILocalDataActivity {
                 }
             }
         }
+
+        RunningDataSingleInstance.getInstance().setJointAngle(jointAngleTextView.getText().toString());
+        RunningDataSingleInstance.getInstance().setNearAngle(localAngleTextView.getText().toString());
+        RunningDataSingleInstance.getInstance().setDistanceAngle(remoteAngleTextView.getText().toString());
         randomAngleRunnable = new RandomAngleRunnable();
             randomAngleThread = new Runnable() {
             @Override
@@ -132,6 +137,9 @@ public class CalibrationActivity extends BaseUILocalDataActivity {
 
         @Override
         public void run() {
+            RunningDataSingleInstance.getInstance().setJointAngle(angle01+"");
+            RunningDataSingleInstance.getInstance().setNearAngle(angle02+"");
+            RunningDataSingleInstance.getInstance().setDistanceAngle(angle03+"");
             jointAngleTextView.setText(angle01+"");
             localAngleTextView.setText(angle02+"");
             remoteAngleTextView.setText(angle03+"");

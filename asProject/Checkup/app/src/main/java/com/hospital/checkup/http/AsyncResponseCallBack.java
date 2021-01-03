@@ -60,7 +60,7 @@ public class AsyncResponseCallBack implements Callback<String> {
                 Toast.makeText(BaseApplication.applicationContext, "无效请求~", Toast.LENGTH_SHORT).show();
                 LogUtils.printLog(responseJsonObject.getString("resMsg"));
 //                iBaseView.onTokenInvalid();
-            } else if ("000001".equals(responseJsonObject.getString("code"))) {
+            } else if ("000001".equals(responseJsonObject.getString("code"))|| "900099".equals(responseJsonObject.getString("code"))) {
                 //显示统一消息
                 Toast.makeText(BaseApplication.applicationContext, "请求失败，请重试~", Toast.LENGTH_SHORT).show();
             } else if (responseJsonObject.getBoolean("msgStatus") && iBaseView != null) {

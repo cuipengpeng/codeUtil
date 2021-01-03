@@ -3,6 +3,7 @@ package com.hospital.checkup.http;
 import android.content.Context;
 import android.util.Log;
 
+import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.hospital.checkup.BuildConfig;
 import com.hospital.checkup.base.BaseApplication;
@@ -217,6 +218,7 @@ public class HttpRequest {
         params.put("sign", signedContent);
         params = filterEmptyParams(params);
         LogUtils.printLog("url= " + url + "--请求参数：" + params.toString());
+//        LogUtils.printLog("url= " + url + "--请求参数：" + JSON.toJSONString(params));
 
         Call<String> call = null;
         APIService apiService = getApiService(readTime, writeTime, timeOut);
@@ -397,6 +399,10 @@ public class HttpRequest {
      * 登录
      */
     public static final String CHECKUP_LOGIN = MOCK_DATA+"m/api/login";
+    /**
+     *  保存测量的标定数据
+     */
+    public static final String SAVE_CALIBRATION_DATA = MOCK_DATA+"m/api/test-management/logs";
     /**
      * 保存测量日志
      */

@@ -26,6 +26,7 @@ import com.hospital.checkup.base.BaseUILocalDataFragment;
 import com.hospital.checkup.bean.TestModelBean;
 import com.hospital.checkup.http.HttpRequest;
 import com.hospital.checkup.utils.LogUtils;
+import com.hospital.checkup.utils.RunningDataSingleInstance;
 import com.hospital.checkup.utils.ScreenUtils;
 import com.hospital.checkup.utils.StringUtil;
 import com.hospital.checkup.view.activity.CalibrationActivity;
@@ -115,6 +116,7 @@ public class MeasureHomeFragment extends BaseUILocalDataFragment {
                                 for(TestModelBean.ChildrenBeanX.ChildrenBean children3 : child2.getChildren()){
                                     if(measureContentTextView.getText().toString().trim().contains(children3.getModelName())){
                                         children3.setSelected(true);
+                                        RunningDataSingleInstance.getInstance().setModelID(children3.getModelId()+"");
                                         jumpPage = true;
                                         break;
                                     }
@@ -281,10 +283,12 @@ public class MeasureHomeFragment extends BaseUILocalDataFragment {
         cancelTextView.setOnClickListener(v -> dialog.dismiss());
         leftTextView.setOnClickListener(v -> {
             measureLeftOrRightTextView.setText("左");
+            RunningDataSingleInstance.getInstance().setLeftOrRight("左");
             dialog.dismiss();
         });
         rightTextView.setOnClickListener(v -> {
             measureLeftOrRightTextView.setText("右");
+            RunningDataSingleInstance.getInstance().setLeftOrRight("右");
             dialog.dismiss();
         });
         dialog.setContentView(contentView);
