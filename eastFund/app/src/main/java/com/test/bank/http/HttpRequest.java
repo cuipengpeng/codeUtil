@@ -313,6 +313,57 @@ public class HttpRequest {
 //                    httpClientBuilder.addInterceptor(loggingInterceptor);
                     httpClientBuilder.addInterceptor(new LogInterceptor());
                 }
+				try {
+					 //url是以https开头的话，需要此配置
+                    //https 信任指定的单个证书
+//                    CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
+//                    KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+//                    keyStore.load(null);
+//                    String certificateAlias = Integer.toString(0);
+//                    keyStore.setCertificateEntry(certificateAlias, certificateFactory.generateCertificate(BaseApplication.applicationContext.getResources().openRawResource(R.raw.certificate)));
+//                    final TrustManagerFactory trustManagerFactory =TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+//                    trustManagerFactory.init(keyStore);
+//                    TrustManager[] singleCertsManager = trustManagerFactory.getTrustManagers();
+
+                    //https 信任所有的证书
+                    TrustManager[] allCertsManager = new TrustManager[]{new X509TrustManager() {
+                        public X509Certificate[] getAcceptedIssuers() {
+                            return new X509Certificate[0];
+                        }
+
+                        @Override
+                        public void checkClientTrusted(X509Certificate[] certs, String authType) {
+                        }
+
+                        @Override
+                        public void checkServerTrusted(X509Certificate[] certs, String authType) {
+                        }
+                    }};
+
+                    SSLContext sslContext = SSLContext.getInstance("TLS");
+                    //https 信任指定的单个证书
+//                    sslContext.init(null, singleCertsManager, new SecureRandom());
+                    //https 信任所有的证书
+                    sslContext.init(null, allCertsManager, new SecureRandom());
+
+                    httpClientBuilder.sslSocketFactory(sslContext.getSocketFactory());
+                    httpClientBuilder.hostnameVerifier(new HostnameVerifier() {
+                        @Override
+                        public boolean verify(String s, SSLSession sslSession) {
+                            return true;
+                        }
+                    });
+//                    HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
+//                    HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {
+//                        @Override
+//                        public boolean verify(String hostname, SSLSession session) {
+//                            return true;
+//                        }
+//                    });
+
+                }  catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 Retrofit retrofit = new Retrofit.Builder().client(httpClientBuilder.build())
                         .baseUrl(HttpRequest.APP_INTERFACE_WEB_URL)

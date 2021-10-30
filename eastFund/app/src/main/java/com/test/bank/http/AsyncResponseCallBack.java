@@ -33,6 +33,34 @@ public class AsyncResponseCallBack implements Callback<String> {
         this.mLoadingDialog = loadingDialog;
     }
 
+
+//    使用官方提供的JSONObject来解析JSON数据，所以不需要导入第三方jar包。如下：
+//
+//    json字符串转json对象/json数组对象
+//    JSONObject jsonObject = new JSONObject(jsonData);
+//    jsonObject.getJSONObject("result")
+//    jsonObject.getJSONArray("result")
+//
+//    JSONArray jsonArray = new JSONArray(jsonData);
+//    JSONObject jsonObject = jsonArray.getJSONObject(0);
+//
+//for (int i=0; i < jsonArray.length(); i++) {
+//        JSONObject jsonObject = jsonArray.getJSONObject(i);
+//        String id = jsonObject.getString("id");
+//        String name = jsonObject.getString("name");
+//}
+//    google gson库：
+//1、从实体类到JSON字符串
+//    Gson gson = new Gson();
+//    String jsonBDID = gson.toJson(user);
+//2、从JSON字符串到实体类
+//    Gson gson = new Gson();
+//    User user = gson.fromJson(userString, User.class);
+//3、从JSON数组到ArrayList
+//    Gson gson = new Gson();
+//    List userList = gson.fromJson(result,new TypeToken<ArrayList<User>>() {}.getType());
+
+
     @Override
     public void onResponse(Call<String> call, Response<String> response) {
         try {
@@ -98,4 +126,7 @@ public class AsyncResponseCallBack implements Callback<String> {
             onResultFailLisenter.onFailure(call, t);
 //        }
     }
+
+
+
 }

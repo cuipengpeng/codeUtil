@@ -11,13 +11,64 @@
         android:layout_alignParentTop="true"
         android:visibility="gone"/>
 
-    <com.pepe.aplayer.test.MyGlSurfaceView
-        android:id="@+id/glsurfaceView"
+    <com.pepe.aplayer.view.widget.MyGlSurfaceView
+        android:id="@+id/camera2Fragment_glsurfaceView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:visibility="visible" />
+    <LinearLayout
+        android:id="@+id/ll_testFragment_flash"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true">
+        <Button
+            android:id="@+id/btn_testFragment_flashOff"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|left"
+            android:textSize="6sp"
+            android:text="off"/>
+
+        <Button
+            android:id="@+id/btn_testFragment_flashAuto"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:textSize="6sp"
+            android:text="auto" />
+        <Button
+            android:id="@+id/btn_testFragment_flashAlways"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|right"
+            android:textSize="6sp"
+            android:text="on"  />
+
+        <Button
+            android:id="@+id/btn_testFragment_flashTorch"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:textSize="6sp"
+            android:text="torch" />
+
+    </LinearLayout>
+
+    <com.pepe.aplayer.view.widget.VerticalSeekBar
+        android:id="@+id/sb_testFragment_zoom"
+        android:layout_width="25dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/ll_testFragment_flash"
+        android:layout_above="@+id/sb_testFragment_beautyRed"
+        android:max="100"
+        android:min="0"
+        android:layout_marginBottom="5dp"/>
+
     <SeekBar
         android:id="@+id/sb_testFragment_beautyRed"
         android:layout_width="match_parent"
@@ -52,40 +103,86 @@
         android:background="#554285f4"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:orientation="horizontal">
-            <Button
-                android:id="@+id/info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|left"
-                android:textSize="10sp"
-                android:text="new Page"/>
-
-            <Button
-                android:id="@+id/video"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textSize="10sp"
-                android:text="capture" />
-
-            <Button
-                android:id="@+id/takeVideo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textSize="10sp"
-                android:text="takeVideo" />
             <Button
                 android:id="@+id/switchCamera"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
                 android:layout_gravity="center_vertical|right"
-                android:textSize="10sp"
+                android:textSize="6sp"
                 android:text="back  /  front"  />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|left"
+                android:textSize="6sp"
+                android:text=""/>
+
+            <Button
+                android:id="@+id/btn_testFragment_capture"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:textSize="6sp"
+                android:text="capture" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|right"
+                android:textSize="6sp"
+                android:text=""  />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:textSize="6sp"
+                android:text="" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_testFragment_beautyImage"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|left"
+                android:textSize="6sp"
+                android:text="beauty Page"/>
+
+            <Button
+                android:id="@+id/btn_testFragment_captureMode"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:textSize="6sp"
+                android:text="capture mode" />
+
+            <Button
+                android:id="@+id/btn_testFragment_videoMode"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:textSize="6sp"
+                android:text="video mode" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|right"
+                android:textSize="6sp"
+                android:text=""  />
         </LinearLayout>
     </LinearLayout>
 

@@ -1,0 +1,16 @@
+在AndroidManifest.xml中的<application>标签下定义<meta-data>，
+其中android:name是我们自定义的GlideModule的完整路径，而android:value就固定写死GlideModule。注册后glide就可以自动加载https图片了
+<application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.example.mian.OkHttpsGlideModule"
+            android:value="GlideModule"/>
+</application>
+
+https://www.jianshu.com/p/20204e8aeac3
+
+compile 'com.github.bumptech.glide:glide:3.7.0'

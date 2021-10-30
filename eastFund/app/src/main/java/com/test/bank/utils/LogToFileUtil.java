@@ -13,6 +13,8 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class LogToFileUtil {
@@ -51,48 +53,92 @@ public class LogToFileUtil {
 		printLog(log);
 	}
 
-	public static void printLog(String totalLog) {
-	   printLog(totalLog, 2,false);
+	public static void printLog(String log) {
+		//打印运行时接口的具体实现	this.getClass().getName()
+		printLog(log, 2,false);
 	}
-	
-		public static void printLog(String totalLog, int level, boolean showTraceLevel) {
-		if (BuildConfig.DEBUG) {
-			String clazzName2 = new Throwable().getStackTrace()[1].getClassName();
-			String funcName2 = new Throwable().getStackTrace()[1].getMethodName();
-			int lineNumber = new Throwable().getStackTrace()[1].getLineNumber();
-			String traceLevel = "";
-            if(showTraceLevel){
-                traceLevel="TraceLevel="+level;
-            }
 
-			int maxLogLength = 3000;
-			String tag=null;
-			String logStr=null;
-			if (totalLog.length() <= maxLogLength) {
-				tag= clazzName2 + "--" + funcName2+"("+lineNumber+")";
-				logStr = traceLevel+"##########--jsonStr = " + totalLog;
-				Log.d(tag, logStr);
-				LogToFileUtil.getInstance().writeLogToFile(tag, logStr);
-			} else {
-				// 由于logcat默认的message长度为4000，因此超过该长度就会截取剩下的字段导致log数据不全
-				// 使用分段的方式来输出足够长度的message
-				while (totalLog.length() > maxLogLength) {
-					String logContent = totalLog.substring(0, maxLogLength);
-					totalLog = totalLog.replace(logContent, "");
-
-					tag= clazzName2 + "--" + funcName2+"("+lineNumber+")";
-					logStr = traceLevel+"##--jsonStr = " + logContent;
-					Log.d(tag, logStr);
-					LogToFileUtil.getInstance().writeLogToFile(tag, logStr);
-				}
-				tag= clazzName2 + "--" + funcName2+"("+lineNumber+")";
-				logStr = traceLevel+"##########--jsonStr = " + totalLog;
-				Log.d(tag, logStr);
-				LogToFileUtil.getInstance().writeLogToFile(tag, logStr);
+	/**
+	 * print current thread stack frame
+	 */
+	public static void printLog(String log, int level, boolean showTraceLevel) {
+//		UI控件查看工具：<android-sdk>/tools/uiautomatorviewer
+//		查看当前栈顶的Activity的Fragment ：
+//		adb shell dumpsys activity activities | less
+//		adb shell dumpsys activity com.android.camera |less
+//
+//		adb shell dumpsys activity your.package.name
+//		adb shell dumpsys activity com.android.camera |less |grep 'ACTIVITY'
+//		adb shell dumpsys activity activities | sed -En -e '/Running activities/,/Run #0/p'
+//		adb shell dumpsys meminfo | grep pid
+//		adb shell dumpsys cpuinfo | grep pid
+//		adb shell dumpsys activity -h
+//		adb shell dumpsys -h
+//		adb shell dumpsys -l
+		//StackTraceElement[] stackTraceArray = Thread.currentThread().getStackTrace();
+		StackTraceElement[] stackTraceArray = new Throwable().getStackTrace();
+		String tag = "";
+		String traceLevel = "";
+		if(showTraceLevel){
+			StringBuilder stringBuilder = new StringBuilder();
+			int printLevel = level+1;
+			if(printLevel>stackTraceArray.length){
+				printLevel=stackTraceArray.length;
 			}
+//            for(int i=1; i<printLevel; i++){
+//                stringBuilder.append(stackTraceArray[i].getClassName()+"."+stackTraceArray[i].getMethodName()+"("+stackTraceArray[i].getLineNumber()+")--");
+//            }
+			for(int i=(printLevel-1); i>0; i--){
+				stringBuilder.append(stackTraceArray[i].getClassName()+"."+stackTraceArray[i].getMethodName()+"("+stackTraceArray[i].getLineNumber()+")--");
+			}
+			traceLevel=stringBuilder.toString()+"TraceLevel="+level+"--threadName="+Thread.currentThread().getName()+"--threadId="+Thread.currentThread().getId();
+		}else{
+			String clazzName2 = stackTraceArray[level].getClassName();
+			String funcName2 = stackTraceArray[level].getMethodName();
+			int lineNumber = stackTraceArray[level].getLineNumber();
+			tag = clazzName2 + "." + funcName2+"("+lineNumber+")";
+		}
+
+		int maxLogLength = 3000;
+		if (log.length() <= maxLogLength) {
+			Log.d(tag, traceLevel+"##########--jsonStr = " + log);
+		} else {
+			while (log.length() > maxLogLength) {
+				String logContent = log.substring(0, maxLogLength);
+				log = log.replace(logContent, "");
+				Log.d(tag, traceLevel+"##--jsonStr = " + logContent);
+			}
+			Log.d(tag, traceLevel+"##########--jsonStr = " + log);
 		}
 	}
 
+	/**
+	 * java打印当前进程的所有线程
+	 *
+	 * 线程切换Handler.sendMessage()/Thread.start()
+	 */
+	public static void printThread() {
+		Map<Thread, StackTraceElement[]> stacksMap = Thread.getAllStackTraces();
+		Set<Thread> set = stacksMap.keySet();
+		int index =0;
+		for (Thread thread : set) {
+			index++;
+			printLog("================================================  "+index+" / "+set.size());
+			StackTraceElement[] stackTraceElements = stacksMap.get(thread);
+			printLog("---- print thread: name:"+thread.getName()+" id:"+thread.getId()+" Priority:"+thread.getPriority()+" start ------");
+			StringBuilder stringBuilder = new StringBuilder("    ");
+			for (StackTraceElement st : stackTraceElements) {
+				printLog("StackTraceElement: " + st.toString());
+//                stringBuilder.append(st.getClassName()+".")
+//                        .append(st.getMethodName()+"(")
+//                        .append(st.getFileName()+":")
+//                        .append(st.getLineNumber()+")");
+//                printLog("StackTraceElement: " + stringBuilder.toString());
+			}
+			printLog("---- print thread: name:"+thread.getName()+" id:"+thread.getId()+" Priority:"+thread.getPriority()+" end ------");
+		}
+	}
+	
 	private synchronized void writeLogToFile(String tag, String str) {
 		String time = mlogTimeFormat.format(new Date());
 		writeThread.enqueue(time + " " + tag + " " + str);

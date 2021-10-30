@@ -1,4 +1,14 @@
 #!/bin/bash
+
+# buildGradle.sh脚本对build.gradle中配置productFlavors打多渠道包有异常，使用时请把productFlavors配置注释掉.
+
+#gradle
+#gradle tasks
+#gradle help --task <task>
+#gradle tasks --all
+#gradle properties
+
+
 export GRADLE_USER_HOME="$HOME/.gradle/"
 
 buildNumber="$1"
