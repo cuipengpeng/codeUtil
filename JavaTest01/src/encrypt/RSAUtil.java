@@ -223,7 +223,6 @@ public class RSAUtil {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("publicKey--"+publicKey.toString());
 		return publicKey;
 	}
 

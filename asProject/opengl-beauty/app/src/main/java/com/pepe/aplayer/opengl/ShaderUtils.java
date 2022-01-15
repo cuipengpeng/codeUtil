@@ -30,27 +30,10 @@ public class ShaderUtils {
         Log.e("wuwang",op);
     }
 
-    public static int loadShader(int shaderType,String source){
-        int shader= GLES20.glCreateShader(shaderType);
-        if(0!=shader){
-            GLES20.glShaderSource(shader,source);
-            GLES20.glCompileShader(shader);
-            int[] compiled=new int[1];
-            GLES20.glGetShaderiv(shader, GLES20.GL_COMPILE_STATUS,compiled,0);
-            if(compiled[0]==0){
-                Log.e(TAG,"Could not compile shader:"+shaderType);
-                Log.e(TAG,"GLES20 Error:"+ GLES20.glGetShaderInfoLog(shader));
-                GLES20.glDeleteShader(shader);
-                shader=0;
-            }
-        }
-        return shader;
-    }
-
-    public static int createProgram(String vertexSource, String fragmentSource){
-        int vertex=loadShader(GLES20.GL_VERTEX_SHADER,vertexSource);
+    public static int createProgram(Resources res, String vertexSource, String fragmentSource){
+        int vertex=loadShader(GLES20.GL_VERTEX_SHADER,loadFromAssetsFile(vertexSource,res));
         if(vertex==0)return 0;
-        int fragment=loadShader(GLES20.GL_FRAGMENT_SHADER,fragmentSource);
+        int fragment=loadShader(GLES20.GL_FRAGMENT_SHADER,loadFromAssetsFile(fragmentSource,res));
         if(fragment==0)return 0;
         int program= GLES20.glCreateProgram();
         if(program!=0){
@@ -70,11 +53,7 @@ public class ShaderUtils {
         return program;
     }
 
-    public static int createProgram(Resources res, String vertexRes, String fragmentRes){
-        return createProgram(loadFromAssetsFile(vertexRes,res),loadFromAssetsFile(fragmentRes,res));
-    }
-
-    public static String loadFromAssetsFile(String fname, Resources res){
+    private static String loadFromAssetsFile(String fname, Resources res){
         StringBuilder result=new StringBuilder();
         try{
             InputStream is=res.getAssets().open(fname);
@@ -87,6 +66,23 @@ public class ShaderUtils {
             return null;
         }
         return result.toString().replaceAll("\\r\\n","\n");
+    }
+
+    private static int loadShader(int shaderType,String source){
+        int shader= GLES20.glCreateShader(shaderType);
+        if(0!=shader){
+            GLES20.glShaderSource(shader,source);
+            GLES20.glCompileShader(shader);
+            int[] compiled=new int[1];
+            GLES20.glGetShaderiv(shader, GLES20.GL_COMPILE_STATUS,compiled,0);
+            if(compiled[0]==0){
+                Log.e(TAG,"Could not compile shader:"+shaderType);
+                Log.e(TAG,"GLES20 Error:"+ GLES20.glGetShaderInfoLog(shader));
+                GLES20.glDeleteShader(shader);
+                shader=0;
+            }
+        }
+        return shader;
     }
 
     public static String loadFromRaw(Context context, int resId) {

@@ -5,6 +5,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.security.Key;
 import java.security.SecureRandom;
 
@@ -103,6 +106,12 @@ public class Aes {
 			e.printStackTrace();
 		}
 		return "";
+
+//		try {
+//			String urlEncodeStr = URLEncoder.encode("base64Str","UTF-8");
+//		} catch (UnsupportedEncodingException e1) {
+//			e1.printStackTrace();
+//		}
 	}
 
 	/**
@@ -111,6 +120,12 @@ public class Aes {
 	 * @param content
 	 */
 	public static String decryptString(String secretKey, String content) {
+//		try {
+//			String base64Str = URLDecoder.decode("content","UTF-8");
+//		} catch (UnsupportedEncodingException e1) {
+//			e1.printStackTrace();
+//		}
+
 		try {
 			byte[] encryptedBytes = Base64.decode(content);
 			byte[] enCodeFormat = secretKey.getBytes();

@@ -5,6 +5,8 @@ import android.opengl.GLES20;
 import android.os.Environment;
 import android.util.Log;
 
+import com.pepe.aplayer.util.LogUtil;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -26,10 +28,11 @@ public class GLBitmapUtil {
         ByteBuffer buffer = ByteBuffer.allocateDirect(width * height * 4).order(ByteOrder.LITTLE_ENDIAN);
         GLES20.glReadPixels(0, 0, width, height, GLES20.GL_RGBA, GLES20.GL_UNSIGNED_BYTE, buffer);
         buffer.rewind();//reset position
+        LogUtil.printLog("width="+width+"--height="+height);
         int pixelCount = width * height;
         int[] colors = new int[pixelCount];
         buffer.asIntBuffer().get(colors);
-        Log.d("###############", "colors.length=:" +colors.length);
+        LogUtil.printLog("colors.length=:" +colors.length);
 //        for (int i=0; i<colors.length;i++) {
 //            int c = colors[i];   //2.每个int类型的c是接收到的ABGR，但bitmap需要ARGB格式，所以需要交换B和R的位置
 ////            colors[i] = (c & 0xff000000) | (c & 0x00ff0000 >> 16) |(c & 0x0000ff00) | (c & 0x000000ff << 16); //交换B和R，得到ARGB

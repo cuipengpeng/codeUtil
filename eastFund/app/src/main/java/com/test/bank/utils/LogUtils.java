@@ -85,6 +85,11 @@ public class LogUtils {
 //		关闭selinux权限，通过adb命令setenforce 0来关闭（如果是非系统权限的apk,需要执行这步关闭selinux权限的操作，不然后面应用读取prop属性没有权限）；
 //		adb shell setenforce 1	#打开Selinux：设置成模式enforce	
 //		说明：setenforce 修改的状态在设备重启后会失效，需要重新执行命令重新设置。
+//        monkey压测：
+//        https://developer.android.com/studio/test/monkey
+//        https://blog.csdn.net/daihuimaozideren/article/details/77529345
+//        adb shell monkey -p com.mlab.cam --ignore-native-crashes --ignore-crashes --throttle 200 --pct-trackball 0 --pct-syskeys 0 -v --bugreport 3000000
+//        adb shell monkey -v --throttle 200 --ignore-crashes --pct-touch 40 --pct-motion 35 --pct-appswitch 5 --pct-anyevent 5 --pct-trackball 0 --pct-syskeys 5 --pct-pinchzoom 5 -p com.mlab.cam --bugreport 3000000
 //
 //		adb shell dumpsys activity com.android.camera |less |grep 'ACTIVITY'
 //		adb shell dumpsys activity activities | sed -En -e '/Running activities/,/Run #0/p'
@@ -93,6 +98,7 @@ public class LogUtils {
 //		adb shell dumpsys activity -h
 //		adb shell dumpsys -h
 //		adb shell dumpsys -l
+
         //StackTraceElement[] stackTraceArray = Thread.currentThread().getStackTrace();
         StackTraceElement[] stackTraceArray = new Throwable().getStackTrace();
         String tag = "";

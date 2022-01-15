@@ -117,8 +117,10 @@ public class MyGlSurfaceView extends GLSurfaceView implements GLSurfaceView.Rend
         fragFloatBuffer = (FloatBuffer) ByteBuffer.allocateDirect(fragPositionArray.length*4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(fragPositionArray).position(0);
         mOrderShortBuffer = (ShortBuffer) ByteBuffer.allocateDirect(ORDERS.length * 2).order(ByteOrder.nativeOrder()).asShortBuffer().put(ORDERS).position(0);
 
-        mProgram = ShaderUtils.createProgram(ShaderUtils.loadFromAssetsFile("vetext_sharder.glsl", getResources()),
-                                            ShaderUtils.loadFromAssetsFile("fragment_sharder.glsl", getResources()));
+        mProgram = ShaderUtils.createProgram(getResources(),"vetext_sharder.glsl","fragment_sharder.glsl");
+        //获取shader脚本中的属性信息
+//        参数一：program指定要查询的程序对象。
+//        参数二：shader脚本中属性变量的名称
         aVertPosition = GLES20.glGetAttribLocation(mProgram, "aVertPosition");
         aTexPosition = GLES20.glGetAttribLocation(mProgram, "aTexPosition");
         uMVPMatrix = GLES20.glGetUniformLocation(mProgram, "uMVPMatrix");
@@ -163,8 +165,11 @@ public class MyGlSurfaceView extends GLSurfaceView implements GLSurfaceView.Rend
 
     @Override
     public void onDrawFrame(GL10 gl) {
-        GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
+        //GL_COLOR_BUFFER_BIT表示颜色缓冲区、GL_DEPTH_BUFFER_BIT表示深度缓冲区，GL_STENCIL_BUFFER_BIT表示模板缓冲区
+        //二维渲染只需清空颜色缓冲COLOR_BUFFER，三维渲染则需清空颜色缓冲COLOR_BUFFER和深度缓冲DEPTH_BUFFER
+        GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT | GLES20.GL_STENCIL_BUFFER_BIT);
         GLES20.glClearColor(1,0,0,0.5f);
+//        GLES20.glViewport(0, 0, width,height);
 
         if(frameAvalible){
             synchronized (this){
@@ -175,18 +180,36 @@ public class MyGlSurfaceView extends GLSurfaceView implements GLSurfaceView.Rend
         }
 
         GLES20.glUseProgram(mProgram);
+//        GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
+//        GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, texture);
+//        GLES20.glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, texture);
 
+        //启用顶点属性数组
         GLES20.glEnableVertexAttribArray(aVertPosition);
-        GLES20.glVertexAttribPointer(aVertPosition,2,GLES20.GL_FLOAT, false, 0, vertFloatBuffer);
         GLES20.glEnableVertexAttribArray(aTexPosition);
+//        参数一：顶点着色器位置属性（即"position"）
+//        参数二：每一个顶点信息由几个值组成，这个值必须位1，2，3或4
+//        参数三：顶点信息的数据类型
+//        参数四：GL_FALSE表示不要将数据类型标准化
+//        参数五：数组中每个元素之间的间隔步长
+//        参数六：数组的首地址
+        //为顶点属性赋值
+        GLES20.glVertexAttribPointer(aVertPosition,2,GLES20.GL_FLOAT, false, 0, vertFloatBuffer);
         GLES20.glVertexAttribPointer(aTexPosition,2,GLES20.GL_FLOAT, false, 0, fragFloatBuffer);
 
         GLES20.glUniformMatrix4fv(uMVPMatrix,1,false, projectionMatrix, 0);
         GLES20.glUniformMatrix4fv(uTexMatrix,1,false, textureMatrix, 0);
         GLES20.glUniformMatrix4fv(mColorMatrixId, 1, true, COLOR_MATRIX, 0);
 
+//        参数一：GL_TRIANGLES表示三角形
+//        参数二：0表示数组第一个值的位置
+//        参数三：表示数组长度
         GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP,0,4);
 //        GLES20.glDrawElements(GLES20.GL_TRIANGLES, ORDERS.length, GLES20.GL_UNSIGNED_SHORT, mOrderShortBuffer);
+
+//        渲染完毕，关闭顶点属性数组
+//        GLES20.glDisableVertexAttribArray(aVertPosition);
+//        GLES20.glDisableVertexAttribArray(aTexPosition);
     }
 
     @Override

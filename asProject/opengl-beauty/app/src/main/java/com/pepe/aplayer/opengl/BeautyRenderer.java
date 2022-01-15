@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.WindowManager;
 
 import com.pepe.aplayer.R;
+import com.pepe.aplayer.util.LogUtil;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -83,12 +84,12 @@ public class BeautyRenderer implements GLSurfaceView.Renderer{
     public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
         GLES20.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
+        LogUtil.printLog("onSurfaceCreated--00");
         vertexCoordFloatBuffer = (FloatBuffer) ByteBuffer.allocateDirect(vertexPositionArray.length*4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(vertexPositionArray).position(0);
         fragCoordFloatBuffer = (FloatBuffer) ByteBuffer.allocateDirect(fragmentPositionArray.length*4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(fragmentPositionArray).position(0);
 
-        texture = createTexture(R.mipmap.liu);
-        textureProgram = ShaderUtils.createProgram(ShaderUtils.loadFromAssetsFile("vertex_beauty.glsl", context.getResources()),
-                                                    ShaderUtils.loadFromAssetsFile("fragment_beauty.glsl", context.getResources()));
+        texture = TextureUtil.createTexture(BitmapFactory.decodeResource(context.getResources(), R.mipmap.liu));
+        textureProgram = ShaderUtils.createProgram(context.getResources(),"vertex_beauty.glsl","fragment_beauty.glsl");
 
         vPosition = GLES20.glGetAttribLocation(textureProgram, "vPosition");
         texCoord = GLES20.glGetAttribLocation(textureProgram, "vCoordinate");
@@ -105,7 +106,7 @@ public class BeautyRenderer implements GLSurfaceView.Renderer{
     public void onSurfaceChanged(GL10 gl10, int width, int height) {
         GLES20.glViewport(0, 0, width,height);
 
-        Log.d("##################", "onSurfaceChanged--1111");
+        LogUtil.printLog("onSurfaceChanged--1111  width="+width+"--height="+height);
 //        MatrixHelper.perspectiveM(projectionMatrix,0,45,(float)width/(float)height,1f,10f);
         MatrixHelper.perspectiveM(projectionMatrix,0,90,(float)width/(float)height,1f,10f);
 
@@ -126,12 +127,20 @@ public class BeautyRenderer implements GLSurfaceView.Renderer{
 
     @Override
     public void onDrawFrame(GL10 gl10) {
+//        GLES20.glViewport(0, 0, mWidth,mHeight);
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT | GLES20.GL_STENCIL_BUFFER_BIT);
         GLES20.glClearColor(0f,0f,0f, 1f);
+//        GLES20.glViewport(0, 0, mWidth,mHeight);
+
+        LogUtil.printLog("onDrawFrame--22");
 
 //        textureProgram.useProgram();
 //        textureProgram.setUniforms(projectionMatrix,texture);
         GLES20.glUseProgram(textureProgram);
+//        GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
+//        GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, texture);
+//        GLES20.glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, texture);
+
         GLES20.glUniformMatrix4fv(uMVPMatrix, 1,false, projectionMatrix, 0);
         GLES20.glEnableVertexAttribArray(vPosition);
         GLES20.glEnableVertexAttribArray(texCoord);
@@ -146,6 +155,8 @@ public class BeautyRenderer implements GLSurfaceView.Renderer{
 //        picture.bindData(textureProgram);
 //        picture.draw();
         GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, 4);
+//        GLES20.glDrawElements(GLES20.GL_TRIANGLES, ORDERS.length, GLES20.GL_UNSIGNED_SHORT, mOrderShortBuffer);
+
 
 
         // 获取GLSurfaceView的图片并保存
@@ -214,26 +225,5 @@ public class BeautyRenderer implements GLSurfaceView.Renderer{
         isTakePicture =true;
     }
 
-    private int createTexture(int resid){
-        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), resid);
-        int[] texture=new int[1];
-        if(bitmap!=null&&!bitmap.isRecycled()){
-            //生成纹理
-            GLES20.glGenTextures(1,texture,0);
-            //生成纹理
-            GLES20.glBindTexture(GLES20.GL_TEXTURE_2D,texture[0]);
-            //设置缩小过滤为使用纹理中坐标最接近的一个像素的颜色作为需要绘制的像素颜色
-            GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MIN_FILTER,GLES20.GL_NEAREST);
-            //设置放大过滤为使用纹理中坐标最接近的若干个颜色，通过加权平均算法得到需要绘制的像素颜色
-            GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D,GLES20.GL_TEXTURE_MAG_FILTER,GLES20.GL_LINEAR);
-            //设置环绕方向S，截取纹理坐标到[1/2n,1-1/2n]。将导致永远不会与border融合
-            GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_S,GLES20.GL_CLAMP_TO_EDGE);
-            //设置环绕方向T，截取纹理坐标到[1/2n,1-1/2n]。将导致永远不会与border融合
-            GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_T,GLES20.GL_CLAMP_TO_EDGE);
-            //根据以上指定的参数，生成一个2D纹理
-            GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, bitmap, 0);
-            return texture[0];
-        }
-        return 0;
-    }
+
 }

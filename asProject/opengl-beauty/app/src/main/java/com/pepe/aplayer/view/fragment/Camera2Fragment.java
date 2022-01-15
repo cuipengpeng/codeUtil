@@ -64,50 +64,55 @@ public class Camera2Fragment extends Fragment implements View.OnClickListener,Se
     // global var
     private CameraDevice mCameraDevice;
     private Integer mCurrentCameraId = CameraCharacteristics.LENS_FACING_BACK;
-    private boolean mJpegMirror = false;
     private CameraCharacteristics mCameraCharacteristics;
+    private CameraCaptureSession mPreviewCameraCaptureSession;
+    private CaptureRequest.Builder mPreviewRequestBuilder;
+    private MyGlSurfaceView mGlsurfaceView;
+    private Surface mPreviewSurface;
+    private boolean mJpegMirror = false;
+
     private final float BASIC_ZOOM_RATIO = 1.0f;
     private float mZoomRatio = BASIC_ZOOM_RATIO;
+
     private final int MODE_CAPTURE = 1001;
     private final int MODE_VIDEO = 1002;
     private int mCurrentMode = MODE_CAPTURE;
+
     private final int FLASH_STATE_OFF=101;
     private final int FLASH_STATE_AUTO=102;
     private final int FLASH_STATE_ALWAYS=103;
     private final int FLASH_STATE_TORCH=104;
     private int mCurrentFlash =FLASH_STATE_OFF;
+
     private final int PRECAPTURE_STATE_PREVIEW = 0;
-    private final int PRECAPTURE_STATE_WAITING_FOCUS = 1;
-    private final int PRECAPTURE_STATE_AE_PRECAPTURE = 2;
+    private final int PRECAPTURE_STATE_AE_PRECAPTURE = 1;
+    private final int PRECAPTURE_STATE_WAITING_FOCUS = 2;
     private final int PRECAPTURE_STATE_CAPTURE = 3;
     private int mPrecaptureState = PRECAPTURE_STATE_PREVIEW;
 
+    private MediaRecorder mMediaRecorder;
+    private boolean mIsRecordingVideo = false;
+    private ImageReader mImageReader;
+    private Size mCapturePreviewSize;
+    private Size mJpegSize;
+    private Size mVideoPreviewSize;
+    private Size mVideoSize;
+
+    private HandlerThread mBackgroundThread;
+    private Handler mBackgroundHandler;
+    private SeekBar zoomSeekBar;
+    private SeekBar redSeekBar;
+    private SeekBar smoothSeekBar;
+    private SeekBar whiteSeekBar;
     private Button mCaptureButton;
     private Button mTakeVideoButton;
     private Button mFlashOffButton;
     private Button mFlashAutoButton;
     private Button mFlashAlwaysButton;
     private Button mFlashTorchButton;
-    private CameraCaptureSession mPreviewCameraCaptureSession;
-    private MediaRecorder mMediaRecorder;
-    private boolean mIsRecordingVideo = false;
-    private HandlerThread mBackgroundThread;
-    private ImageReader mImageReader;
-    private Size mCapturePreviewSize;
-    private Size mJpegSize;
-    private Size mVideoPreviewSize;
-    private Size mVideoSize;
-    private Handler mBackgroundHandler;
-    private CaptureRequest.Builder mPreviewRequestBuilder;
-    private MyGlSurfaceView mGlsurfaceView;
-    private SeekBar zoomSeekBar;
-    private SeekBar redSeekBar;
-    private SeekBar smoothSeekBar;
-    private SeekBar whiteSeekBar;
     private Button videoMode;
     private Button captureModeButton;
     private String mNextVideoAbsolutePath;
-    private Surface mPreviewSurface;
 
     private int mSensorOrientation;
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
@@ -177,6 +182,7 @@ public class Camera2Fragment extends Fragment implements View.OnClickListener,Se
                             //前置摄像头 没有对焦功能？
                             capture();
                         }else {
+//                            preCaptureExposure();
                             preCaptureLockFocus();
                         }
                         break;
@@ -475,7 +481,6 @@ public class Camera2Fragment extends Fragment implements View.OnClickListener,Se
             }
 
             setFlash(mPreviewRequestBuilder);
-
             setZoomRatio(mPreviewRequestBuilder);
 
 //                                    mPreviewCameraCaptureSession.setRepeatingBurst(captureRequestList,null, mBackgroundHandler);
@@ -581,6 +586,11 @@ public class Camera2Fragment extends Fragment implements View.OnClickListener,Se
             // 镜像水平翻转
             matrix.postScale(-1, 1);
             Bitmap convertBmp = Bitmap.createBitmap(bmp, 0, 0, w, h, matrix, true);
+            if(convertBmp!=bmp){
+                bmp.recycle();
+//                System.gc();
+//                Runtime.getRuntime().gc();
+            }
             return convertBmp;
         }
     }
@@ -619,6 +629,15 @@ public class Camera2Fragment extends Fragment implements View.OnClickListener,Se
             Integer awbState = captureResult.get(CaptureResult.CONTROL_AWB_STATE);
             LogUtil.printLog("afState="+afState+"--aeState="+aeState+"--awbState="+awbState+"--mPrecaptureState="+mPrecaptureState);
             switch (mPrecaptureState){
+                case PRECAPTURE_STATE_AE_PRECAPTURE:
+                    if(aeState==null || aeState==CaptureResult.CONTROL_AE_STATE_CONVERGED){
+                        if(aeState!=null
+                                &&(aeState==CaptureResult.CONTROL_AE_STATE_FLASH_REQUIRED || aeState == CaptureResult.CONTROL_AE_STATE_PRECAPTURE)){
+                            mCurrentFlash = FLASH_STATE_ALWAYS;
+                        }
+                        preCaptureLockFocus();
+                    }
+                    break;
                 case PRECAPTURE_STATE_WAITING_FOCUS:
                    if(afState == null
                      || afState == CaptureResult.CONTROL_AF_STATE_FOCUSED_LOCKED
@@ -637,15 +656,6 @@ public class Camera2Fragment extends Fragment implements View.OnClickListener,Se
 //                     }else if(afState == CaptureResult.CONTROL_AF_STATE_INACTIVE){
 //                            preCaptureLockFocus();
 //                     }
-                    break;
-                case PRECAPTURE_STATE_AE_PRECAPTURE:
-                    if(aeState==null || aeState==CaptureResult.CONTROL_AE_STATE_CONVERGED){
-                        if(aeState!=null && (aeState==CaptureResult.CONTROL_AE_STATE_FLASH_REQUIRED
-                                || aeState == CaptureResult.CONTROL_AE_STATE_PRECAPTURE)){
-                            mCurrentFlash = FLASH_STATE_ALWAYS;
-                        }
-                        preCaptureLockFocus();
-                    }
                     break;
                 case PRECAPTURE_STATE_CAPTURE:
                     setRepeatingRequest();
@@ -671,10 +681,10 @@ public class Camera2Fragment extends Fragment implements View.OnClickListener,Se
 //            captureRequestBuilder.set(CaptureRequest.CONTROL_MODE, CaptureRequest.CONTROL_MODE_AUTO);
 
             setFlash(captureRequestBuilder);
-
             setZoomRatio(captureRequestBuilder);
 
             int rotation = getActivity().getWindowManager().getDefaultDisplay().getRotation();
+            LogUtil.printLog("rotation="+rotation);
             captureRequestBuilder.set(CaptureRequest.JPEG_ORIENTATION, getOrientation(rotation));
 
             //拍照时将mPreviewSurface添加到captureRequestBuilder中，若不添加则会有拍照瞬间预览画面就会少了一帧,相当于卡了一下。
@@ -847,11 +857,9 @@ public class Camera2Fragment extends Fragment implements View.OnClickListener,Se
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-
     }
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-
     }
 }

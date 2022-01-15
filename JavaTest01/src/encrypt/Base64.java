@@ -2,8 +2,10 @@
 package encrypt;
 
 /**
- * Base64 工具类
  * 
+ *  Base64.encode()-->URLEncoder.encode(str,"UTF-8")-->http
+ *
+ *	http-->URLDecoder.decode(str,"UTF-8")-->Base64.decode()
  */
 public final class Base64 {
 
