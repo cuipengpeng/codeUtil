@@ -138,8 +138,11 @@ public class MyGlSurfaceView extends GLSurfaceView implements GLSurfaceView.Rend
         //gl_Position = aVertPosition;
 //        gl_Position = uMVPMatrix * aVertPosition;
         onSurfacePreparedCallBack.onSurfacePrepared();
+//        告诉OpenGL应把渲染之后的图形绘制在窗体的哪个区域。
+//        参数X，Y指定了视见区域的左下角在窗口中的位置，一般情况下为（0，0），Width和Height指定了视见区域的宽度和高度。
         GLES20.glViewport(0, 0, width,height);
 
+        //设置模型矩阵
         Matrix.setIdentityM(modelMatrix,0);
 //        Matrix.translateM(modelMatrix,0,0f,0f,-1.5f);
 //        Matrix.rotateM(modelMatrix,0,-45f,0f,0f,1f);
@@ -193,11 +196,20 @@ public class MyGlSurfaceView extends GLSurfaceView implements GLSurfaceView.Rend
 //        参数四：GL_FALSE表示不要将数据类型标准化
 //        参数五：数组中每个元素之间的间隔步长
 //        参数六：数组的首地址
+//        shader属性赋值时，只有attribute属性需要告诉opengl其解析结构及如何解析，因为attribute vec4传递可少于4个float的数组， 但必须告诉顶点属性指针如何解析。其他类型属性如Uniform等直接赋值即可。
+//        attribute属性赋值时Stride步长参数: 要么为0，要么=vertexPerSizeCount*4Float
+//                uniform修饰的和mat4类型的数据必须传递指定相等长度的数组
         //为顶点属性赋值
         GLES20.glVertexAttribPointer(aVertPosition,2,GLES20.GL_FLOAT, false, 0, vertFloatBuffer);
         GLES20.glVertexAttribPointer(aTexPosition,2,GLES20.GL_FLOAT, false, 0, fragFloatBuffer);
 
+//        参数一location : uniform的位置。
+//        参数二count : 需要加载数据的数组元素的数量或者需要修改的矩阵的数量。
+//        参数三transpose : 指明矩阵是列优先(column major)矩阵（GL_FALSE）还是行优先(row major)矩阵（GL_TRUE）。
+//        参数四value : 指向由count个元素的数组的指针。
+        // 将最终MVP变换矩阵传入shader程序
         GLES20.glUniformMatrix4fv(uMVPMatrix,1,false, projectionMatrix, 0);
+        // 将最终纹理矩阵传入shader程序
         GLES20.glUniformMatrix4fv(uTexMatrix,1,false, textureMatrix, 0);
         GLES20.glUniformMatrix4fv(mColorMatrixId, 1, true, COLOR_MATRIX, 0);
 
