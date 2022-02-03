@@ -44,6 +44,7 @@ public class EGLUtils {
         };
         eglSurface = EGL14.eglCreateWindowSurface(eglDis, configs[0], surface, surfaceAttr, 0);
 
+        //将EGLDisplay、EGLSurface、EGLContext绑定起来
         EGL14.eglMakeCurrent(eglDis, eglSurface, eglSurface, eglCtx);
 
     }

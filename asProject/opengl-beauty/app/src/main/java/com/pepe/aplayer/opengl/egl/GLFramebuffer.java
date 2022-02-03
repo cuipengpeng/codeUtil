@@ -119,11 +119,13 @@ public class GLFramebuffer {
     }
 
     public SurfaceTexture getSurfaceTexture(){
-        surfaceTexture = new SurfaceTexture(textures[1]);
+        if(surfaceTexture == null){
+            surfaceTexture = new SurfaceTexture(textures[1]);
+        }
         return surfaceTexture;
     }
 
-    public void drawFrame(){
+    public void bindTexture(){
         GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
         GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, textures[0]);
     }
@@ -145,6 +147,7 @@ public class GLFramebuffer {
         GLES20.glClear(GLES20.GL_DEPTH_BUFFER_BIT | GLES20.GL_COLOR_BUFFER_BIT);
         GLES20.glViewport(0, 0, width, height);
         GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, 4);
+        //openGL中的好多都是全局变量，如GLES20.GL_FRAMEBUFFER，用完马上就要释放
         GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, 0);
     }
 

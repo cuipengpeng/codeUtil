@@ -205,7 +205,7 @@ public class DoubleSurfaceView extends LinearLayout {
 
                 GLES20.glViewport(rect.left,rect.top,rect.width(),rect.height());
 
-                mFramebuffer.drawFrame();
+                mFramebuffer.bindTexture();
 
                 renderer.drawFrame();
                 mEglUtils.swap();
@@ -259,7 +259,7 @@ public class DoubleSurfaceView extends LinearLayout {
 
                 GLES20.glViewport(rect.left,rect.top,rect.width(),rect.height());
 
-                mFramebuffer.drawFrame();
+                mFramebuffer.bindTexture();
                 renderer.drawFrame();
                 eglUtils.swap();
 
