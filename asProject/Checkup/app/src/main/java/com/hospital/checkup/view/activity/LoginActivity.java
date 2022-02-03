@@ -77,6 +77,8 @@ public class LoginActivity extends BaseUILocalDataActivity {
                 String password = passwdEditText.getText().toString().trim();
 //                login("abc123", "abc123");
                 login("testuser", "1234abcd");
+//                startActivity(new Intent(LoginActivity.this, MainAcyivity.class));
+
 
 //                if(userMap.keySet().contains(userName)){
 //                    if(userMap.get(userName).equalsIgnoreCase(password)){

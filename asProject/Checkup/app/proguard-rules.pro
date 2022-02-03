@@ -24,7 +24,7 @@
 -keep class android.support.** {*;}
 -keep public class com.google.vending.licensing.ILicensingService
 -keep public class com.android.vending.licensing.ILicensingService
--keep public class * extends android.support.v4.**
+#-keep public class * extends android.support.v4.**
 -keep public class * extends android.support.v7.**
 -keep public class * extends android.support.annotation.**
 -keep public class com.meetvr.aicamera.personal.util.ImageSelectUtils
