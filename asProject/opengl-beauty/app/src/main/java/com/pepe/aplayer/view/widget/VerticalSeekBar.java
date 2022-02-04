@@ -6,9 +6,11 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 
+import androidx.appcompat.widget.AppCompatSeekBar;
+
 import com.pepe.aplayer.util.LogUtil;
 
-public class VerticalSeekBar extends android.support.v7.widget.AppCompatSeekBar {
+public class VerticalSeekBar extends AppCompatSeekBar {
  
     public VerticalSeekBar(Context context) {
         super(context);

@@ -16,9 +16,6 @@ import android.opengl.EGL14;
 import android.opengl.GLES20;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.content.PermissionChecker;
 import android.util.AttributeSet;
 import android.util.Size;
 import android.view.LayoutInflater;
@@ -26,6 +23,10 @@ import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.LinearLayout;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.PermissionChecker;
 
 import com.pepe.aplayer.R;
 import com.pepe.aplayer.opengl.egl.EGLUtils;
