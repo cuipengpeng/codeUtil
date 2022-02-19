@@ -10,11 +10,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.pepe.aplayer.R;
+import com.pepe.aplayer.view.adapter.SurfaceAdapter;
+import com.pepe.aplayer.view.widget.DoubleSurfaceView;
 
 
 public class TestDoubleSurfaceActivity extends AppCompatActivity {
+
+    private DoubleSurfaceView doubleSurfaceView;
+    private RecyclerView recyclerView;
+    private SurfaceAdapter surfaceAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +34,13 @@ public class TestDoubleSurfaceActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_test);
+        doubleSurfaceView = findViewById(R.id.sv_testActivity_double);
+        recyclerView = findViewById(R.id.rv_testActivity_rv);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL,false));
+        surfaceAdapter = new SurfaceAdapter(getApplication());
+        recyclerView.setAdapter(surfaceAdapter);
+        surfaceAdapter.notifyDataSetChanged();
+        doubleSurfaceView.setSurfaceAdapter(surfaceAdapter);
     }
 
     @Override

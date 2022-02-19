@@ -86,11 +86,11 @@ public class GLFramebuffer {
 
         GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
         GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, textures[0]);
-
         GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MIN_FILTER,
                 GLES20.GL_NEAREST);
         GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MAG_FILTER,
                 GLES20.GL_LINEAR);
+
         GLES20.glTexImage2D(GLES20.GL_TEXTURE_2D, 0, GLES20.GL_RGBA, width, height, 0, GLES20.GL_RGBA, GLES20.GL_UNSIGNED_BYTE, null);
         GLES20.glFramebufferTexture2D(GLES20.GL_FRAMEBUFFER, GLES20.GL_COLOR_ATTACHMENT0, GLES20.GL_TEXTURE_2D, textures[0], 0);
 
@@ -136,15 +136,20 @@ public class GLFramebuffer {
 
 
 
+        GLES20.glClear(GLES20.GL_DEPTH_BUFFER_BIT | GLES20.GL_COLOR_BUFFER_BIT);
         GLES20.glUseProgram(programId);
-        GLES20.glActiveTexture(GLES20.GL_TEXTURE1);
-        GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, textures[1]);
+        GLES20.glActiveTexture(GLES20.GL_TEXTURE1);//激活绑定的纹理单元
+//        GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, textures[1]);//即数据类型，数据名？
+        GLES20.glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, textures[1]);//即数据类型，数据名？
+        //https://blog.csdn.net/mumuzi_1/article/details/62047112
+        //注意，我们使用glform1i设置uniform采样器的位置值，或者说纹理单元。通过glUniform1i的设置，我们保证每个uniform采样器对应着正确的纹理单元。
+        //纹理id.纹理类型，  纹理单元，  采样器.采样函数texture2D
+        //定义哪个uniform采样器对应哪个纹理单元， "1"即纹理单元GLES20.GL_TEXTURE1
         GLES20.glUniform1i(uTextureSamplerHandle,1);
         GLES20.glUniformMatrix4fv(uSTMMatrixHandle, 1, false, mSTMatrix, 0);
 
 
         GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, frameBuffers[0]);
-        GLES20.glClear(GLES20.GL_DEPTH_BUFFER_BIT | GLES20.GL_COLOR_BUFFER_BIT);
         GLES20.glViewport(0, 0, width, height);
         GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, 4);
         //openGL中的好多都是全局变量，如GLES20.GL_FRAMEBUFFER，用完马上就要释放

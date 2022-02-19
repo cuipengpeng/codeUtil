@@ -32,12 +32,16 @@ import com.pepe.aplayer.R;
 import com.pepe.aplayer.opengl.egl.EGLUtils;
 import com.pepe.aplayer.opengl.egl.GLFramebuffer;
 import com.pepe.aplayer.opengl.egl.GLRenderer;
+import com.pepe.aplayer.util.LogUtil;
+import com.pepe.aplayer.view.adapter.SurfaceAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class DoubleSurfaceView extends LinearLayout {
 
@@ -51,6 +55,7 @@ public class DoubleSurfaceView extends LinearLayout {
 
     private final Object mObject1 = new Object();
     private final Object mObject2 = new Object();
+    private final Object[] mObjectArray003 = new Object[SurfaceAdapter.COUNT];
 
     private String mCameraId;
     private CameraManager mCameraManager;
@@ -132,6 +137,8 @@ public class DoubleSurfaceView extends LinearLayout {
 
     }
 
+    private Executor executor = Executors.newFixedThreadPool(SurfaceAdapter.COUNT);
+
     public class SurfaceRunnable1 implements Runnable{
         @Override
         public void run() {
@@ -141,7 +148,9 @@ public class DoubleSurfaceView extends LinearLayout {
             mEglUtils = new EGLUtils();
             mEglUtils.initEGL(EGL14.EGL_NO_CONTEXT,mSurfaceView1.getHolder().getSurface());
             renderer.initShader();
-
+            for(int i=0;i<SurfaceAdapter.COUNT;i++){
+                mObjectArray003[i]= new Object();
+            }
 
             Size mPreviewSize =  getPreferredPreviewSize(mSizes, screenWidth1, screenHeight1);
             int previewWidth = mPreviewSize.getHeight();
@@ -181,6 +190,13 @@ public class DoubleSurfaceView extends LinearLayout {
                 public void run() {
                     Thread thread = new Thread(new SurfaceRunnable2());
                     thread.start();
+//                    new SurfaceRunnable2().run();
+
+                    for(int i=0;i<SurfaceAdapter.COUNT;i++){
+//                        Thread thread003 = new Thread(new SurfaceRunnable003(i));
+//                        thread003.start();
+                        executor.execute(new SurfaceRunnable003(i));
+                    }
                 }
             });
 
@@ -201,6 +217,11 @@ public class DoubleSurfaceView extends LinearLayout {
                 synchronized (mObject2) {
                     mObject2.notifyAll();
                 }
+                for(int i=0;i<SurfaceAdapter.COUNT;i++){
+                    synchronized (mObjectArray003[i]) {
+                        mObjectArray003[i].notifyAll();
+                    }
+                }
 
                 GLES20.glClear(GLES20.GL_DEPTH_BUFFER_BIT | GLES20.GL_COLOR_BUFFER_BIT);
 
@@ -210,7 +231,6 @@ public class DoubleSurfaceView extends LinearLayout {
 
                 renderer.drawFrame();
                 mEglUtils.swap();
-
             }
             mEglUtils.release();
         }
@@ -245,6 +265,7 @@ public class DoubleSurfaceView extends LinearLayout {
             rect.bottom = top + viewHeight;
 
             while (true){
+
                 synchronized (mObject2) {
                     try {
                         mObject2.wait();
@@ -266,6 +287,64 @@ public class DoubleSurfaceView extends LinearLayout {
 
             }
             eglUtils.release();
+        }
+    }
+
+
+    private SurfaceAdapter mSurfaceAdapter;
+    public void setSurfaceAdapter(SurfaceAdapter surfaceAdapter){
+        mSurfaceAdapter = surfaceAdapter;
+    }
+
+    public class SurfaceRunnable003 implements Runnable{
+        private int mIndex = 0;
+        public SurfaceRunnable003(int index){
+            mIndex = index;
+        }
+
+        @Override
+        public void run() {
+
+//            for(int i=0; i<SurfaceAdapter.COUNT;i++){
+                mSurfaceAdapter.eGLUtilsArray[mIndex] = new  EGLUtils();
+                mSurfaceAdapter.eGLUtilsArray[mIndex].initEGL(mEglUtils.getContext(),mSurfaceAdapter.surfaceViewArray[mIndex].getHolder().getSurface());
+                mSurfaceAdapter.gLRendererArray[mIndex] = new  GLRenderer(getContext());
+                mSurfaceAdapter.gLRendererArray[mIndex].initShader();
+//            }
+
+            while (true){
+
+                synchronized (mObjectArray003[mIndex]) {
+                    try {
+                        LogUtil.printLog(" mObject003.wait()");
+
+                        mObjectArray003[mIndex].wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                if(mSurfaceTexture == null){
+                    break;
+                }
+
+                GLES20.glClear(GLES20.GL_DEPTH_BUFFER_BIT | GLES20.GL_COLOR_BUFFER_BIT);
+//                for(int i=0; i<SurfaceAdapter.COUNT;i++){
+                    LogUtil.printLog(" draw");
+//                    GLES20.glViewport(i*200, 0, 200,200);//TODO 宽.高
+                    mFramebuffer.bindTexture();
+                    mSurfaceAdapter.gLRendererArray[mIndex].drawFrame();
+//                }
+//                for(int i=0; i<SurfaceAdapter.COUNT;i++){
+                    LogUtil.printLog(" swap");
+                    mSurfaceAdapter.eGLUtilsArray[mIndex].swap();
+//                    GLES20.glFlush();
+//                }
+            }
+
+//            for(int i=0; i<SurfaceAdapter.COUNT;i++){
+                mSurfaceAdapter.eGLUtilsArray[mIndex].release();
+//            }
         }
     }
 
