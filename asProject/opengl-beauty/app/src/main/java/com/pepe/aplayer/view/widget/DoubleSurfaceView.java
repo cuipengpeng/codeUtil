@@ -309,6 +309,7 @@ public class DoubleSurfaceView extends LinearLayout {
                 mSurfaceAdapter.eGLUtilsArray[mIndex] = new  EGLUtils();
                 mSurfaceAdapter.eGLUtilsArray[mIndex].initEGL(mEglUtils.getContext(),mSurfaceAdapter.surfaceViewArray[mIndex].getHolder().getSurface());
                 mSurfaceAdapter.gLRendererArray[mIndex] = new  GLRenderer(getContext());
+                mSurfaceAdapter.gLRendererArray[mIndex].setColorID(mIndex);
                 mSurfaceAdapter.gLRendererArray[mIndex].initShader();
 //            }
 
