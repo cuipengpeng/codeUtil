@@ -25,9 +25,10 @@ public class Aes {
 	//jdk默认只能使用16字节的秘钥，要使用24和32字节秘钥，需另下载jar包覆盖jdk自身的jar包(美国加密算法出口限制)
 	public final static String secretKey = "Px0D34a7VnT6sqkn";// (128、192、256位即16字节，24字节，32字节)
 	private static final String ALGORITHM = "AES";// 对称加密算法。可选AES，DES，DESede
-	private static final String TRANSFORMATION = "AES/CBC/PKCS5Padding";
-	private static final String TRANSFORMATION_FILE = "AES/ECB/PKCS5Padding";//"AES" 六种加密模式(ECB、CBC、CFB、OFB、CTR、PCBC)
+	// "加密算法/加密模式/填充方式"
+	private static final String TRANSFORMATION = "AES/CBC/PKCS5Padding";//"AES" 六种加密模式(ECB、CBC、CFB、OFB、CTR、PCBC)
 	//填充方式：PKCS5Padding、PKCS7Padding、ISO10126Padding、NoPadding、ZerosPadding、ansix923
+	private static final String TRANSFORMATION_FILE = "AES/ECB/PKCS5Padding";
 	private final static String ENCODEING = "UTF-8";	//UTF-8、UTF-16、GBK、GB2312、ISO-8859-1、US-ASCII
 	private static final String IV_STRING = "16-Bytes--String";
 	//jdk默认只能使用16字节的秘钥，要使用24和32字节秘钥，需另下载jar包覆盖jdk自身的jar包(美国加密算法出口限制)
