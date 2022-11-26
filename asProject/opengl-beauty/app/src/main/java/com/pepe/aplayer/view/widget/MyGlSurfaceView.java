@@ -1,20 +1,33 @@
 package com.pepe.aplayer.view.widget;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
+import android.provider.MediaStore;
 import android.util.AttributeSet;
+import android.widget.Toast;
 
 import com.pepe.aplayer.opengl.ShaderUtils;
 import com.pepe.aplayer.opengl.TextureUtil;
 import com.pepe.aplayer.util.LogUtil;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -71,8 +84,8 @@ public class MyGlSurfaceView extends GLSurfaceView implements GLSurfaceView.Rend
 //    };
 
 
-
-
+    private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH_mm_ss");
+    public volatile boolean mCapturing = false;
 
     private ShortBuffer mOrderShortBuffer;
     private int mColorMatrixId;
@@ -222,6 +235,58 @@ public class MyGlSurfaceView extends GLSurfaceView implements GLSurfaceView.Rend
 //        渲染完毕，关闭顶点属性数组
 //        GLES20.glDisableVertexAttribArray(aVertPosition);
 //        GLES20.glDisableVertexAttribArray(aTexPosition);
+
+        if(mCapturing){
+            mCapturing = false;
+            capture();
+        }
+    }
+
+    private void capture() {
+        ByteBuffer captureBuffer = ByteBuffer.allocate(1920 * 1080 * 4);
+        captureBuffer.order(ByteOrder.nativeOrder());
+        captureBuffer.rewind();
+//        GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, frame.getFrameBuffer());
+        GLES20.glReadPixels(0, 0, 1080, 1920, GLES20.GL_RGBA, GL10.GL_UNSIGNED_BYTE, captureBuffer);
+        final Bitmap bmp = Bitmap.createBitmap(1080, 1920, Bitmap.Config.ARGB_8888);
+        bmp.copyPixelsFromBuffer(captureBuffer);
+        android.graphics.Matrix matrix = new android.graphics.Matrix();
+        //镜像竖直翻转
+        matrix.postScale(1, -1);
+        final Bitmap bitmap = Bitmap.createBitmap(bmp, 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    String imgName = System.currentTimeMillis() + ".jpg";
+                    String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Camera/" + imgName;
+//                    File f = new File(path);
+
+                    File f = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), dateFormat.format(new Date())+"-"+System.currentTimeMillis() + ".jpg");
+                    if (f.exists()) {
+                        boolean exist = f.delete();
+                    }
+                    FileOutputStream fileOutputStream = new FileOutputStream(f);
+//                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
+                    fileOutputStream.flush();
+                    fileOutputStream.close();
+                    bitmap.recycle();
+//                    ContentValues currentVideoValues = new ContentValues();
+//                    currentVideoValues.put(MediaStore.Images.Media.TITLE, title);
+//                    currentVideoValues.put(MediaStore.Images.Media.DISPLAY_NAME, title);
+//                    currentVideoValues.put(MediaStore.Images.Media.DATE_TAKEN, System.currentTimeMillis());
+//                    currentVideoValues.put(MediaStore.Images.Media.MIME_TYPE, "image/png");
+//                    currentVideoValues.put(MediaStore.Images.Media.DATA, path);
+//                    currentVideoValues.put(MediaStore.Images.Media.DESCRIPTION, "com.smzh.aglframework");
+//                    currentVideoValues.put(MediaStore.Images.Media.SIZE, f.length());
+//                    getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, currentVideoValues);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
     @Override

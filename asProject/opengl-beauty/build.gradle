@@ -8,19 +8,25 @@ buildscript {
         maven { url 'https://maven.aliyun.com/repository/jcenter' }
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
-        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
-        maven { url 'http://maven.aliyun.com/nexus/content/repositories/releases/' }
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'
+				allowInsecureProtocol=true
+				}
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/releases/' 
+				  allowInsecureProtocol=true
+				}
         maven {url 'https://maven.fabric.io/public'}
-        maven { url 'http://developer.huawei.com/repo/' }
+        //maven { url 'http://developer.huawei.com/repo/' }
         maven { url 'https://jitpack.io' }
-        jcenter(){ url 'http://jcenter.bintray.com/'}
+       // jcenter(){ url 'http://jcenter.bintray.com/'
+		//		 allowInsecureProtocol=true
+			//	}
         mavenCentral()
         google()
         jcenter()
     }
 	
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath 'com.android.tools.build:gradle:4.2.2'
         
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -35,12 +41,18 @@ allprojects {
         maven { url 'https://maven.aliyun.com/repository/jcenter' }
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
-        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
-        maven { url 'http://maven.aliyun.com/nexus/content/repositories/releases/' }
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'
+				allowInsecureProtocol=true
+				}
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/releases/' 
+				  allowInsecureProtocol=true
+				}
         maven {url 'https://maven.fabric.io/public'}
-        maven { url 'http://developer.huawei.com/repo/' }
+       // maven { url 'http://developer.huawei.com/repo/' }
         maven { url 'https://jitpack.io' }
-        jcenter(){ url 'http://jcenter.bintray.com/'}
+       // jcenter(){ url 'http://jcenter.bintray.com/'
+		//			allowInsecureProtocol=true
+		//		}
         mavenCentral()
         google()
         jcenter()

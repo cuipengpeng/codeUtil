@@ -101,7 +101,7 @@ public class LogUtils {
 
         //StackTraceElement[] stackTraceArray = Thread.currentThread().getStackTrace();
         StackTraceElement[] stackTraceArray = new Throwable().getStackTrace();
-        String tag = "";
+        String tag = "aaaaaa";
         String traceLevel = "";
         if(showTraceLevel){
             StringBuilder stringBuilder = new StringBuilder();
@@ -120,7 +120,7 @@ public class LogUtils {
             String clazzName2 = stackTraceArray[level].getClassName();
             String funcName2 = stackTraceArray[level].getMethodName();
             int lineNumber = stackTraceArray[level].getLineNumber();
-            tag = clazzName2 + "." + funcName2+"("+lineNumber+")";
+            traceLevel = clazzName2 + "." + funcName2+"("+lineNumber+")";
         }
 
         int maxLogLength = 3000;

@@ -26,11 +26,16 @@ public class Aes {
 	public final static String secretKey = "Px0D34a7VnT6sqkn";// (128、192、256位即16字节，24字节，32字节)
 	private static final String ALGORITHM = "AES";// 对称加密算法。可选AES，DES，DESede
 	private static final String TRANSFORMATION = "AES/CBC/PKCS5Padding";
-	private static final String TRANSFORMATION_FILE = "AES/ECB/PKCS5Padding";//"AES" 四种模式(ECB、CBC、CFB、OFB)
-	private final static String ENCODEING = "UTF-8";
+	private static final String TRANSFORMATION_FILE = "AES/ECB/PKCS5Padding";//"AES" 六种加密模式(ECB、CBC、CFB、OFB、CTR、PCBC)
+	//填充方式：PKCS5Padding、PKCS7Padding、ISO10126Padding、NoPadding、ZerosPadding、ansix923
+	private final static String ENCODEING = "UTF-8";	//UTF-8、UTF-16、GBK、GB2312、ISO-8859-1、US-ASCII
 	private static final String IV_STRING = "16-Bytes--String";
 	//jdk默认只能使用16字节的秘钥，要使用24和32字节秘钥，需另下载jar包覆盖jdk自身的jar包(美国加密算法出口限制)
     private static final int KEY_SIZE = 128;//秘钥长度(128、192、256位即16字节，24字节，32字节)
+
+//    CBC加密需要一个十六位的key(密钥)和一个十六位iv(偏移量)，CBC安全比较常用
+//    ECB加密不需要iv，ECB是最简单的块密码加密模式。接收到的数据中只有密钥而没有偏移量，故使用ECB处理密文。
+//    在除ECB以外的所有加密方式中，都需要用到偏移量IV对加密结果进行随机化。
 
 
 	public static void main(String[] args) {
@@ -46,7 +51,7 @@ public class Aes {
 //	        encryptFile(secretKey,  "D:\\t1.mp4", "D:\\t1-encrypted1.mp4");
 //	        encryptFile(secretKey,  "D:\\t1-encrypted1.mp4", "D:\\t1-encrypted2.mp4");
 //	        decryptFile(secretKey,  "D:\\t1-encrypted2.mp4", "D:\\t1_decrypted1.mp4");
-//	        decryptFile(secretKey,  "D:\\t1_decrypted1.mp4", "D:\\t1_decrypted2.mp4");
+//          	decryptFile(secretKey,  "D:\\t1_decrypted1.mp4", "D:\\t1_decrypted2.mp4");
 	        
 	        long end = System.currentTimeMillis();
 	        System.err.println("耗时：" + (end-begin)/1000 + "秒");
@@ -69,7 +74,7 @@ public class Aes {
         KeyGenerator keyGenerator = KeyGenerator.getInstance(ALGORITHM);
         SecureRandom secureRandom;
         if (seed != null && !"".equals(seed)) {
-            secureRandom = new SecureRandom(seed.getBytes());
+            secureRandom = new SecureRandom(seed.getBytes(ENCODEING));
         } else {
             secureRandom = new SecureRandom();
         }
@@ -90,9 +95,9 @@ public class Aes {
 		}
 		try {
 			byte[] byteContent = content.getBytes(ENCODEING);
-			byte[] enCodeFormat = secretKey.getBytes();
+			byte[] enCodeFormat = secretKey.getBytes(ENCODEING);
 			SecretKeySpec secretKeySpec = new SecretKeySpec(enCodeFormat, ALGORITHM);
-			byte[] initParam = IV_STRING.getBytes();
+			byte[] initParam = IV_STRING.getBytes(ENCODEING);
 			IvParameterSpec ivParameterSpec = new IvParameterSpec(initParam);
 			Cipher cipher = Cipher.getInstance(TRANSFORMATION);
 			cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec, ivParameterSpec);
@@ -128,9 +133,9 @@ public class Aes {
 
 		try {
 			byte[] encryptedBytes = Base64.decode(content);
-			byte[] enCodeFormat = secretKey.getBytes();
+			byte[] enCodeFormat = secretKey.getBytes(ENCODEING);
 			SecretKeySpec secretKeySpec = new SecretKeySpec(enCodeFormat, ALGORITHM);
-			byte[] initParam = IV_STRING.getBytes();
+			byte[] initParam = IV_STRING.getBytes(ENCODEING);
 			IvParameterSpec ivParameterSpec = new IvParameterSpec(initParam);
 			Cipher cipher = Cipher.getInstance(TRANSFORMATION);
 			cipher.init(Cipher.DECRYPT_MODE, secretKeySpec, ivParameterSpec);
@@ -163,7 +168,7 @@ public class Aes {
 				destFile.createNewFile();
 				InputStream in = new FileInputStream(sourceFile);
 				OutputStream out = new FileOutputStream(destFile);
-				Key secretKey = new SecretKeySpec(key.getBytes(), ALGORITHM);
+				Key secretKey = new SecretKeySpec(key.getBytes(ENCODEING), ALGORITHM);
 				Cipher cipher = Cipher.getInstance(TRANSFORMATION_FILE);
 				cipher.init(Cipher.ENCRYPT_MODE, secretKey);
 				CipherInputStream cin = new CipherInputStream(in, cipher);
@@ -203,7 +208,7 @@ public class Aes {
 				destFile.createNewFile();
 				FileInputStream in = new FileInputStream(sourceFile);
 				FileOutputStream out = new FileOutputStream(destFile);
-				Key secretKey = new SecretKeySpec(key.getBytes(), ALGORITHM);
+				Key secretKey = new SecretKeySpec(key.getBytes(ENCODEING), ALGORITHM);
 				Cipher cipher = Cipher.getInstance(TRANSFORMATION_FILE);
 				cipher.init(Cipher.DECRYPT_MODE, secretKey);
 				CipherOutputStream cout = new CipherOutputStream(out, cipher);

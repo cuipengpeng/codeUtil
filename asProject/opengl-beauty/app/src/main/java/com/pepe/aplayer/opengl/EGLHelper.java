@@ -113,6 +113,9 @@ public class EGLHelper {
         mEgl.eglDestroySurface(mEglDisplay, mEglSurface);
         mEgl.eglDestroyContext(mEglDisplay, mEglContext);
         mEgl.eglTerminate(mEglDisplay);
+        mEglSurface=null;
+        mEglContext=null;
+        mEglDisplay=null;
     }
 
     private EGLSurface createSurface(int[] attr){
