@@ -32,16 +32,22 @@ public class Beauty extends AFilter {
     public Beauty(Resources res) {
         super(res);
         setFlag(0);
+        vertexFileName = "beauty.vert";
+        fragmentFileName = "beauty.frag";
+    }
+
+    @Override
+    protected void initPropertyLocation() {
+        gHaaCoef= GLES20.glGetUniformLocation(programId,"aaCoef");
+        gHmixCoef= GLES20.glGetUniformLocation(programId,"mixCoef");
+        gHiternum= GLES20.glGetUniformLocation(programId,"iternum");
+        gHWidth= GLES20.glGetUniformLocation(programId,"mWidth");
+        gHHeight= GLES20.glGetUniformLocation(programId,"mHeight");
     }
 
     @Override
     protected void onCreate() {
-        createProgramByAssetsFile("beauty.vert", "beauty.frag");
-        gHaaCoef= GLES20.glGetUniformLocation(mProgram,"aaCoef");
-        gHmixCoef= GLES20.glGetUniformLocation(mProgram,"mixCoef");
-        gHiternum= GLES20.glGetUniformLocation(mProgram,"iternum");
-        gHWidth= GLES20.glGetUniformLocation(mProgram,"mWidth");
-        gHHeight= GLES20.glGetUniformLocation(mProgram,"mHeight");
+
     }
 
     @Override

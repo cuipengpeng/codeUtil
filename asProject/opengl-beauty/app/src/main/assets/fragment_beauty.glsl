@@ -16,8 +16,9 @@ const highp mat3 saturateMatrix = mat3(
     -0.0228, -0.0228, 1.1772);
 
 highp vec2 blurCoordinates[24];
+//https://blog.csdn.net/King1425/article/details/77776931
 
-    highp float hardLight(highp float color) {
+highp float hardLight(highp float color) {
     if (color <= 0.5)
         color = color * color * 2.0;
     else

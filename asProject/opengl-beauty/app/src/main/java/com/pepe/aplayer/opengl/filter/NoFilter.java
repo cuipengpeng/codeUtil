@@ -10,12 +10,17 @@ public class NoFilter extends AFilter {
 
     public NoFilter(Resources res) {
         super(res);
+        vertexFileName = "base_vertex.sh";
+        fragmentFileName = "base_fragment.sh";
+    }
+
+    @Override
+    protected void initPropertyLocation() {
+
     }
 
     @Override
     protected void onCreate() {
-        createProgramByAssetsFile("base_vertex.sh",
-            "base_fragment.sh");
     }
 
     @Override

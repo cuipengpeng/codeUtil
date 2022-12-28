@@ -44,8 +44,15 @@ import androidx.fragment.app.Fragment;
 import com.pepe.aplayer.R;
 import com.pepe.aplayer.base.BaseApplication;
 import com.pepe.aplayer.opengl.BeautyImageActivity;
-import com.pepe.aplayer.view.widget.MyGlSurfaceView;
+import com.pepe.aplayer.opengl.filter.AFilter;
+import com.pepe.aplayer.opengl.filter.CamerPreviewFilter;
+import com.pepe.aplayer.opengl.filter.CombineFilter;
+import com.pepe.aplayer.opengl.filter.LookupFilter;
+import com.pepe.aplayer.opengl.filter.SmoothFilter;
+import com.pepe.aplayer.opengl.filter.StickerFilter;
+import com.pepe.aplayer.opengl.filter.WhiteFilter;
 import com.pepe.aplayer.util.LogUtil;
+import com.pepe.aplayer.view.widget.MyGlSurfaceView;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -64,7 +71,7 @@ public class Camera2Fragment extends Fragment implements View.OnClickListener,Se
 
     // global var
     private CameraDevice mCameraDevice;
-    private Integer mCurrentCameraId = CameraCharacteristics.LENS_FACING_BACK;
+    public static int mCurrentCameraId = CameraCharacteristics.LENS_FACING_BACK;
     private CameraCharacteristics mCameraCharacteristics;
     private CameraCaptureSession mPreviewCameraCaptureSession;
     private CaptureRequest.Builder mPreviewRequestBuilder;
@@ -378,7 +385,7 @@ public class Camera2Fragment extends Fragment implements View.OnClickListener,Se
              mJpegSize = Collections.max(Arrays.asList(jpegSizeArray), new CompareSizesByArea());
             Size[] capturePreviewSizeArray = streamConfigurationMap.getOutputSizes(SurfaceTexture.class);
             mCapturePreviewSize = chooseOptimizedPreviewSize(capturePreviewSizeArray, 1920, 1080, mJpegSize);
-
+            mGlsurfaceView.mCapturePreviewSize = mCapturePreviewSize;
             Size[] videoSizeArray = streamConfigurationMap.getOutputSizes(MediaRecorder.class);
             mVideoSize = chooseVideoSize(videoSizeArray);
             Size[] videoPreviewSizeArray = streamConfigurationMap.getOutputSizes(SurfaceTexture.class);
@@ -408,6 +415,12 @@ public class Camera2Fragment extends Fragment implements View.OnClickListener,Se
                 @Override
                 public void onOpened(CameraDevice camera) {
                     mCameraDevice = camera;
+                    updateFilter();
+                    if(mGlsurfaceView.previewFilter==null){
+                        mGlsurfaceView.previewFilter=new CamerPreviewFilter(getContext());
+                    }else {
+                        mGlsurfaceView.previewFilter.updateOesTextureCoordinate();
+                    }
                     startPreview(true);
                 }
 
@@ -628,7 +641,7 @@ public class Camera2Fragment extends Fragment implements View.OnClickListener,Se
             Integer aeState = captureResult.get(CaptureResult.CONTROL_AE_STATE);
             Integer afState = captureResult.get(CaptureResult.CONTROL_AF_STATE);
             Integer awbState = captureResult.get(CaptureResult.CONTROL_AWB_STATE);
-            LogUtil.printLog("afState="+afState+"--aeState="+aeState+"--awbState="+awbState+"--mPrecaptureState="+mPrecaptureState);
+//            LogUtil.printLog("afState="+afState+"--aeState="+aeState+"--awbState="+awbState+"--mPrecaptureState="+mPrecaptureState);
             switch (mPrecaptureState){
                 case PRECAPTURE_STATE_AE_PRECAPTURE:
                     if(aeState==null || aeState==CaptureResult.CONTROL_AE_STATE_CONVERGED){
@@ -819,6 +832,15 @@ public class Camera2Fragment extends Fragment implements View.OnClickListener,Se
         mMediaRecorder.setVideoEncodingBitRate(10000000);
         mMediaRecorder.setVideoFrameRate(30);
         mMediaRecorder.setVideoSize(mVideoSize.getWidth(), mVideoSize.getHeight());
+
+//        mMediaRecorder.setAudioChannels(2);
+//        mMediaRecorder.setAudioSamplingRate(44100);
+//        mMediaRecorder.setAudioEncodingBitRate(44100*2*16);
+//        mMediaRecorder.setMaxDuration(CameraSettings.DEFAULT_VIDEO_DURATION);
+//        mMediaRecorder.setLocation((float) mLocation.getLatitude(), (float) mLocation.getLongitude());
+//        mMediaRecorder.setOnErrorListener();
+//        mMediaRecorder.setOnInfoListener();
+
         int rotation = activity.getWindowManager().getDefaultDisplay().getRotation();
         switch (mSensorOrientation) {
             case SENSOR_ORIENTATION_DEFAULT_DEGREES:
@@ -838,16 +860,21 @@ public class Camera2Fragment extends Fragment implements View.OnClickListener,Se
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        LogUtil.printLog("progress="+progress);
         switch (seekBar.getId()){
             case R.id.sb_testFragment_beautyRed:
 //                mRenderer.setTexelOffset(range(progress,minstepoffset,maxstepoffset));
                 mGlsurfaceView.requestRender();
                 break;
             case R.id.sb_testFragment_beautySmooth:
-                mGlsurfaceView.requestRender();
+                smoothLevel = progress;
+                updateFilter();
+//                mGlsurfaceView.requestRender();
                 break;
             case R.id.sb_testFragment_beautyWhite:
-                mGlsurfaceView.requestRender();
+                whiteLevel = progress;
+                updateFilter();
+//                mGlsurfaceView.requestRender();
                 break;
             case R.id.sb_testFragment_zoom:
                 float maxZoomRatio = mCameraCharacteristics.get(CameraCharacteristics.SCALER_AVAILABLE_MAX_DIGITAL_ZOOM);
@@ -864,4 +891,51 @@ public class Camera2Fragment extends Fragment implements View.OnClickListener,Se
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
     }
+
+    private List<AFilter> filters = new ArrayList<>();
+    private int whiteLevel;
+    private int smoothLevel;
+    private boolean showSticker = true;
+
+    private WhiteFilter whiteFilter;
+    private SmoothFilter smoothFilter;
+    private StickerFilter stickerFilter;
+    private LookupFilter lookupFilter;
+
+    private void updateFilter() {
+        filters.clear();
+        if (whiteLevel > 0) {
+            if (whiteFilter == null) {
+                whiteFilter = new WhiteFilter(BaseApplication.mContext);
+            }
+            LogUtil.printLog("whiteLevel="+whiteLevel);
+            whiteFilter.setWhiteLevel(whiteLevel / 100f);
+            filters.add(whiteFilter);
+        }
+
+        if (smoothLevel > 0) {
+            if (smoothFilter == null) {
+                smoothFilter = new SmoothFilter(BaseApplication.mContext);
+            }
+            LogUtil.printLog("smoothLevel="+smoothLevel);
+            smoothFilter.setSmoothLevel(smoothLevel / 100f);
+            filters.add(smoothFilter);
+        }
+
+        if (lookupFilter != null) {
+            filters.add(lookupFilter);
+        }
+
+        //贴纸fliter必须作为filtrGroup的最后一个(即screenFilter的前一个)，否则该图层会被之后的filter改变图片颜色。
+        if (showSticker) {
+            if (stickerFilter == null) {
+                stickerFilter = new StickerFilter(BaseApplication.mContext);
+                stickerFilter.setBitmap(BitmapFactory.decodeResource(BaseApplication.mContext.getResources(), R.drawable.sticker));
+            }
+            filters.add(stickerFilter);
+        }
+
+        mGlsurfaceView.setmCurrentFilter(CombineFilter.getCombineFilter(filters));
+    }
+
 }

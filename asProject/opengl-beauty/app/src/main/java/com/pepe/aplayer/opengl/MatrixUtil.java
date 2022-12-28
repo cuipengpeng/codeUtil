@@ -1,28 +1,17 @@
-/*
- *
- * FastDrawerHelper.java
- * 
- * Created by Wuwang on 2016/11/17
- * Copyright © 2016年 深圳哎吖科技. All rights reserved.
- */
 package com.pepe.aplayer.opengl;
 
 import android.opengl.Matrix;
 
-/**
- * Description:
- */
-public enum MatrixUtils {
-    ;
+
+public class MatrixUtil {
+
     public static final int TYPE_FITXY=0;
     public static final int TYPE_CENTERCROP=1;
     public static final int TYPE_CENTERINSIDE=2;
     public static final int TYPE_FITSTART=3;
     public static final int TYPE_FITEND=4;
 
-    MatrixUtils(){
-
-    }
+    private MatrixUtil(){ }
 
     /**
      * use {@link #getMatrix} instead
@@ -44,8 +33,7 @@ public enum MatrixUtils {
         }
     }
 
-    public static void getMatrix(float[] matrix,int type,int imgWidth,int imgHeight,int viewWidth,
-                                 int viewHeight){
+    public static void getMatrix(float[] matrix,int type,int imgWidth,int imgHeight,int viewWidth, int viewHeight){
         if(imgHeight>0&&imgWidth>0&&viewWidth>0&&viewHeight>0){
             float[] projection=new float[16];
             float[] camera=new float[16];
@@ -128,11 +116,37 @@ public enum MatrixUtils {
 
     public static float[] getOriginalMatrix(){
         return new float[]{
-            1,0,0,0,
-            0,1,0,0,
-            0,0,1,0,
-            0,0,0,1
+                1,0,0,0,
+                0,1,0,0,
+                0,0,1,0,
+                0,0,0,1
         };
+    }
+
+    public static void perspectiveM(float[] m, int offset,
+        float fovy, float aspect, float zNear, float zFar) {
+        float f = 1.0f / (float) Math.tan(fovy * (Math.PI / 360.0));
+        float rangeReciprocal = 1.0f / (zNear - zFar);
+
+        m[offset + 0] = f / aspect;
+        m[offset + 1] = 0.0f;
+        m[offset + 2] = 0.0f;
+        m[offset + 3] = 0.0f;
+
+        m[offset + 4] = 0.0f;
+        m[offset + 5] = f;
+        m[offset + 6] = 0.0f;
+        m[offset + 7] = 0.0f;
+
+        m[offset + 8] = 0.0f;
+        m[offset + 9] = 0.0f;
+        m[offset + 10] = (zFar + zNear) * rangeReciprocal;
+        m[offset + 11] = -1.0f;
+
+        m[offset + 12] = 0.0f;
+        m[offset + 13] = 0.0f;
+        m[offset + 14] = 2.0f * zFar * zNear * rangeReciprocal;
+        m[offset + 15] = 0.0f;
     }
 
 }

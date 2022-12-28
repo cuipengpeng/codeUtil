@@ -11,7 +11,7 @@ import android.content.res.Resources;
 import android.opengl.GLES20;
 import android.util.Log;
 
-import com.pepe.aplayer.opengl.MatrixUtils;
+import com.pepe.aplayer.opengl.MatrixUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 /**
  * Description:
  */
-public class GroupFilter extends AFilter{
+public class GroupFilter extends AFilter {
 
     private Queue<AFilter> mFilterQueue;
     private List<AFilter> mFilters;
@@ -36,6 +36,11 @@ public class GroupFilter extends AFilter{
     }
 
     @Override
+    protected void initPropertyLocation() {
+        //nothing
+    }
+
+    @Override
     protected void initBuffer() {
 
     }
@@ -43,7 +48,7 @@ public class GroupFilter extends AFilter{
     public void addFilter(final AFilter filter){
         //绘制到frameBuffer上和绘制到屏幕上的纹理坐标是不一样的
         //Android屏幕相对GL世界的纹理Y轴翻转
-        MatrixUtils.flip(filter.getMatrix(),false,true);
+        MatrixUtil.flip(filter.getMatrix(),false,true);
         mFilterQueue.add(filter);
     }
 
@@ -86,7 +91,7 @@ public class GroupFilter extends AFilter{
                 }else{
                     filter.setTextureId(fTexture[(textureIndex-1)%2]);
                 }
-                filter.draw();
+//                filter.draw(new Frame());
                 unBindFrame();
                 textureIndex++;
             }

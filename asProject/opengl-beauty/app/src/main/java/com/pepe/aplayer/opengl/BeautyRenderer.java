@@ -2,13 +2,10 @@ package com.pepe.aplayer.opengl;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
-import android.opengl.GLUtils;
 import android.opengl.Matrix;
-import android.util.Log;
 import android.view.WindowManager;
 
 import com.pepe.aplayer.R;
@@ -108,7 +105,7 @@ public class BeautyRenderer implements GLSurfaceView.Renderer{
 
         LogUtil.printLog("onSurfaceChanged--1111  width="+width+"--height="+height);
 //        MatrixHelper.perspectiveM(projectionMatrix,0,45,(float)width/(float)height,1f,10f);
-        MatrixHelper.perspectiveM(projectionMatrix,0,90,(float)width/(float)height,1f,10f);
+        MatrixUtil.perspectiveM(projectionMatrix,0,90,(float)width/(float)height,1f,10f);
 
         Matrix.setIdentityM(modelMatrix,0);
 //        Matrix.translateM(modelMatrix,0,0f,0f,-2.5f);

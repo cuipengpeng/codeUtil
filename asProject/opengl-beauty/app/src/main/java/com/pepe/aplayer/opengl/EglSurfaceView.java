@@ -6,6 +6,7 @@ import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import com.pepe.aplayer.opengl.egl.EGLHelper;
 import com.pepe.aplayer.view.widget.MyGlSurfaceView;
 
 import java.lang.ref.WeakReference;

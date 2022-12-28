@@ -12,10 +12,13 @@ import android.os.Handler;
 import android.os.Looper;
 import android.provider.MediaStore;
 import android.util.AttributeSet;
+import android.util.Size;
 import android.widget.Toast;
 
 import com.pepe.aplayer.opengl.ShaderUtils;
 import com.pepe.aplayer.opengl.TextureUtil;
+import com.pepe.aplayer.opengl.filter.AFilter;
+import com.pepe.aplayer.opengl.filter.CamerPreviewFilter;
 import com.pepe.aplayer.util.LogUtil;
 
 import java.io.File;
@@ -102,7 +105,10 @@ public class MyGlSurfaceView extends GLSurfaceView implements GLSurfaceView.Rend
     private float[] projectionMatrix = new float[16];
     private float[] mvpMatrix = new float[16];
     private float[] textureMatrix = new float[16];
-
+    public Size mCapturePreviewSize;
+    public CamerPreviewFilter previewFilter;
+    private AFilter mCurrentFilter;
+    private AFilter mOldFilter;
     private int mProgram;
 
     private boolean frameAvalible = false;
@@ -294,6 +300,12 @@ public class MyGlSurfaceView extends GLSurfaceView implements GLSurfaceView.Rend
         synchronized (this){
             frameAvalible = true;
         }
+        requestRender();
+    }
+
+    public void setmCurrentFilter(final AFilter filter) {
+        mOldFilter = mCurrentFilter;
+        this.mCurrentFilter = filter;
         requestRender();
     }
 

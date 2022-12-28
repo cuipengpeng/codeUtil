@@ -7,14 +7,22 @@
  */
 package com.pepe.aplayer.opengl.filter;
 
+import static android.opengl.GLES20.glBindTexture;
+
+import android.content.Context;
 import android.content.res.Resources;
 import android.opengl.GLES20;
 import android.util.Log;
 import android.util.SparseArray;
 
-import com.pepe.aplayer.opengl.MatrixUtils;
+import com.pepe.aplayer.R;
+import com.pepe.aplayer.opengl.MatrixUtil;
+import com.pepe.aplayer.util.LogUtil;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -37,29 +45,27 @@ public abstract class AFilter {
     /**
      * 单位矩阵
      */
-    public static final float[] OM= MatrixUtils.getOriginalMatrix();
-    /**
-     * 程序句柄
-     */
-    protected int mProgram;
+    public static final float[] OM= MatrixUtil.getOriginalMatrix();
+
     /**
      * 顶点坐标句柄
      */
-    protected int mHPosition;
+    protected int glAttrPosition;
     /**
      * 纹理坐标句柄
      */
-    protected int mHCoord;
+    protected int glAttrTextureCoordinate;
     /**
      * 总变换矩阵句柄
      */
-    protected int mHMatrix;
+    protected int textureMatrix;
     /**
      * 默认纹理贴图句柄
      */
-    protected int mHTexture;
+    protected int glUniformTexture;
 
     protected Resources mRes;
+    protected Context context;
 
 
     /**
@@ -70,7 +76,7 @@ public abstract class AFilter {
     /**
      * 纹理坐标Buffer
      */
-    protected FloatBuffer mTexBuffer;
+    protected FloatBuffer textureCords;
 
     /**
      * 索引坐标Buffer
@@ -85,27 +91,45 @@ public abstract class AFilter {
     private int textureId=0;
     //顶点坐标
     private float pos[] = {
-        -1.0f,  1.0f,
-        -1.0f, -1.0f,
-        1.0f, 1.0f,
-        1.0f,  -1.0f,
+            -1.0f, -1.0f,
+            1.0f, -1.0f,
+            -1.0f, 1.0f,
+            1.0f, 1.0f
     };
 
     //纹理坐标
-    private float[] coord={
-        0.0f, 0.0f,
-        0.0f,  1.0f,
-        1.0f,  0.0f,
-        1.0f, 1.0f,
+    protected float[] coord={
+            0.0f, 0.0f,
+            1.0f, 0.0f,
+            0.0f, 1.0f,
+            1.0f, 1.0f
     };
 
     private SparseArray<boolean[]> mBools;
     private SparseArray<int[]> mInts;
     private SparseArray<float[]> mFloats;
+    private int outputWidth;
+    private int outputHeight;
 
     public AFilter(Resources mRes){
         this.mRes=mRes;
         initBuffer();
+    }
+    public AFilter(){
+    }
+
+    public AFilter(Context context) {
+        this(context, R.raw.single_input_v, R.raw.texture_f);
+    }
+
+    public AFilter(Context context, int fragmentResId) {
+        this(context, R.raw.single_input_v, fragmentResId);
+    }
+
+    public AFilter(Context context, int vertexResId, int fragmentResId) {
+        this.context = context;
+        this.vertexResId = vertexResId;
+        this.fragmentResId = fragmentResId;
     }
 
     public final void create(){
@@ -116,12 +140,116 @@ public abstract class AFilter {
         onSizeChanged(width,height);
     }
 
-    public void draw(){
-        onClear();
-        onUseProgram();
-        onSetExpandData();
-        onBindTexture();
-        onDraw();
+
+
+
+    protected boolean hasInit =false;
+    protected int programId;
+    protected String vertexFileName;
+    protected String fragmentFileName;
+    private int vertexResId;
+    private int fragmentResId;
+
+    private FloatBuffer cubeBuffer = ByteBuffer.allocateDirect(8 * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    private FloatBuffer textureBuffer = ByteBuffer.allocateDirect(8 * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    protected boolean isRenderScreen=false;
+    protected Frame mframe;
+
+    protected  void initPropertyLocation(){
+
+    };
+    protected void onDrawArraysPre(Frame frame){
+    };
+    protected void onDrawArraysAfter(Frame frame){
+    };
+
+    protected void bindTexture(int textureId) {
+        glBindTexture(GLES20.GL_TEXTURE_2D, textureId);
+    }
+
+    public Frame draw(Frame frame){
+        LogUtil.printLog("11111----"+this.getClass().getName()+"--frameBuffer="+frame.getFrameBuffer()+"--frame="+frame.hashCode());
+
+        if(!hasInit){
+            LogUtil.printLog("000000---"+this.getClass().getName()+"--hasInit="+hasInit);
+            programId = createGlProgram(readGlShader(context,vertexResId),readGlShader(context,fragmentResId));
+//            programId = createGlProgram(readResourceString(mRes,vertexFileName),readResourceString(mRes,fragmentFileName));
+//            glAttrPosition = GLES20.glGetAttribLocation(programId, "vPosition");
+//            glAttrTextureCoordinate = GLES20.glGetAttribLocation(programId,"vCoord");
+//            textureMatrix = GLES20.glGetUniformLocation(programId,"vMatrix");
+//            glUniformTexture = GLES20.glGetUniformLocation(programId,"vTexture");
+            glAttrPosition = GLES20.glGetAttribLocation(programId, "position");
+            glAttrTextureCoordinate = GLES20.glGetAttribLocation(programId, "inputTextureCoordinate");
+            glUniformTexture = GLES20.glGetUniformLocation(programId, "inputImageTexture");
+            initPropertyLocation();
+            textureBuffer.clear();
+            textureBuffer.put(coord).position(0);
+            cubeBuffer.clear();
+            cubeBuffer.put(pos).position(0);
+            hasInit = true;
+        }
+        if (programId <= 0) {
+            return frame;
+        }
+
+
+//        GLES20.glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+//        GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
+
+
+        if(mframe ==null){
+            LogUtil.printLog("33333---"+this.getClass().getName()+"--frameBuffer="+frame.getFrameBuffer()+"--frame="+frame.hashCode());
+            mframe = Frame.createOffScreemFrame(1080, 1920);
+        }
+        Log.d("#####", "onUseProgram()  mProgram="+ programId);
+        GLES20.glUseProgram(programId);
+        onDrawArraysPre(AFilter.this.mframe);
+
+
+//        onSetExpandData();
+
+        if (isRenderScreen) {
+            GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, 0);
+        } else {
+            GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, mframe.getFrameBuffer());
+        }
+        GLES20.glActiveTexture(GLES20.GL_TEXTURE0+textureType);
+//        GLES20.glBindTexture(GLES20.GL_TEXTURE_2D,getTextureId());
+        bindTexture(frame.getTextureId());
+        GLES20.glUniform1i(glUniformTexture,textureType);
+
+        GLES20.glEnableVertexAttribArray(glAttrPosition);
+        GLES20.glVertexAttribPointer(glAttrPosition,2, GLES20.GL_FLOAT, false, 0,cubeBuffer);
+        GLES20.glEnableVertexAttribArray(glAttrTextureCoordinate);
+        GLES20.glVertexAttribPointer(glAttrTextureCoordinate, 2, GLES20.GL_FLOAT, false, 0, textureBuffer);
+
+        GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP,0,4);
+        Log.d("#####", "glDrawArrays 2222  mProgram="+ programId +"--"+this.getClass().getName());
+
+        GLES20.glDisableVertexAttribArray(glAttrPosition);
+        GLES20.glDisableVertexAttribArray(glAttrTextureCoordinate);
+        GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, 0);
+
+        if (isRenderScreen) {
+            return null;
+        } else {
+            onDrawArraysAfter(AFilter.this.mframe);
+            return AFilter.this.mframe;
+        }
+    }
+
+
+    public void destroy() {
+        hasInit = false;
+        if (mframe != null) {
+            int[] frameBufferTextures = {mframe.getTextureId()};
+            GLES20.glDeleteTextures(frameBufferTextures.length, frameBufferTextures, 0);
+            int[] frameBuffers = {mframe.getFrameBuffer()};
+            GLES20.glDeleteFramebuffers(frameBuffers.length, frameBuffers, 0);
+        }
+        mframe = null;
+        outputWidth = 0;
+        outputHeight = 0;
     }
 
     public void setMatrix(float[] matrix){
@@ -206,20 +334,14 @@ public abstract class AFilter {
     /**
      * 实现此方法，完成程序的创建，可直接调用createProgram来实现
      */
-    protected abstract void onCreate();
-    protected abstract void onSizeChanged(int width,int height);
+    protected void onCreate(){
 
-    protected final void createProgram(String vertex, String fragment){
-        mProgram= uCreateGlProgram(vertex,fragment);
-        mHPosition= GLES20.glGetAttribLocation(mProgram, "vPosition");
-        mHCoord= GLES20.glGetAttribLocation(mProgram,"vCoord");
-        mHMatrix= GLES20.glGetUniformLocation(mProgram,"vMatrix");
-        mHTexture= GLES20.glGetUniformLocation(mProgram,"vTexture");
-    }
+    };
+    protected void onSizeChanged(int width,int height){
 
-    protected final void createProgramByAssetsFile(String vertex, String fragment){
-        createProgram(uRes(mRes,vertex),uRes(mRes,fragment));
-    }
+    };
+
+
 
     /**
      * Buffer初始化
@@ -232,54 +354,23 @@ public abstract class AFilter {
         mVerBuffer.position(0);
         ByteBuffer b= ByteBuffer.allocateDirect(32);
         b.order(ByteOrder.nativeOrder());
-        mTexBuffer=b.asFloatBuffer();
-        mTexBuffer.put(coord);
-        mTexBuffer.position(0);
+        textureCords =b.asFloatBuffer();
+        textureCords.put(coord);
+        textureCords.position(0);
     }
 
-    protected void onUseProgram(){
-        Log.d("#####", "onUseProgram()  mProgram="+mProgram);
-        GLES20.glUseProgram(mProgram);
-    }
 
-    /**
-     * 启用顶点坐标和纹理坐标进行绘制
-     */
-    protected void onDraw(){
-        GLES20.glEnableVertexAttribArray(mHPosition);
-        GLES20.glVertexAttribPointer(mHPosition,2, GLES20.GL_FLOAT, false, 0,mVerBuffer);
-        GLES20.glEnableVertexAttribArray(mHCoord);
-        GLES20.glVertexAttribPointer(mHCoord, 2, GLES20.GL_FLOAT, false, 0, mTexBuffer);
-        GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP,0,4);
-        Log.d("#####", "glDrawArrays 2222  mProgram="+mProgram+"--"+this.getClass().getName());
 
-        GLES20.glDisableVertexAttribArray(mHPosition);
-        GLES20.glDisableVertexAttribArray(mHCoord);
-    }
 
-    /**
-     * 清除画布
-     */
-    protected void onClear(){
-        GLES20.glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-        GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
-    }
+
 
     /**
      * 设置其他扩展数据
      */
     protected void onSetExpandData(){
-        GLES20.glUniformMatrix4fv(mHMatrix,1,false,matrix,0);
+        GLES20.glUniformMatrix4fv(textureMatrix,1,false,matrix,0);
     }
 
-    /**
-     * 绑定默认纹理
-     */
-    protected void onBindTexture(){
-        GLES20.glActiveTexture(GLES20.GL_TEXTURE0+textureType);
-        GLES20.glBindTexture(GLES20.GL_TEXTURE_2D,getTextureId());
-        GLES20.glUniform1i(mHTexture,textureType);
-    }
 
     public static void glError(int code, Object index){
         if(DEBUG&&code!=0){
@@ -287,8 +378,12 @@ public abstract class AFilter {
         }
     }
 
+
+
+
+
     //通过路径加载Assets中的文本内容
-    public static String uRes(Resources mRes, String path){
+    public static String readResourceString(Resources mRes, String path){
         StringBuilder result=new StringBuilder();
         try{
             InputStream is=mRes.getAssets().open(path);
@@ -303,11 +398,28 @@ public abstract class AFilter {
         return result.toString().replaceAll("\\r\\n","\n");
     }
 
+    static String readGlShader(Context context, int resourceId) {
+        StringBuilder builder = new StringBuilder();
+        InputStream inputStream = context.getResources().openRawResource(resourceId);
+        InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+        BufferedReader reader = new BufferedReader(inputStreamReader);
+        String line;
+        try {
+            while ((line = reader.readLine()) != null) {
+                builder.append(line);
+                builder.append("\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return builder.toString();
+    }
+
     //创建GL程序
-    public static int uCreateGlProgram(String vertexSource, String fragmentSource){
-        int vertex=uLoadShader(GLES20.GL_VERTEX_SHADER,vertexSource);
+    public static int createGlProgram(String vertexSource, String fragmentSource){
+        int vertex=loadShader(GLES20.GL_VERTEX_SHADER,vertexSource);
         if(vertex==0)return 0;
-        int fragment=uLoadShader(GLES20.GL_FRAGMENT_SHADER,fragmentSource);
+        int fragment=loadShader(GLES20.GL_FRAGMENT_SHADER,fragmentSource);
         if(fragment==0)return 0;
         int program= GLES20.glCreateProgram();
         if(program!=0){
@@ -326,7 +438,7 @@ public abstract class AFilter {
     }
 
     //加载shader
-    public static int uLoadShader(int shaderType, String source){
+    public static int loadShader(int shaderType, String source){
         int shader= GLES20.glCreateShader(shaderType);
         if(0!=shader){
             GLES20.glShaderSource(shader,source);

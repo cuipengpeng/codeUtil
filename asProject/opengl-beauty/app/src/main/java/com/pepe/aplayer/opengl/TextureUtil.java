@@ -20,6 +20,8 @@ import android.text.TextPaint;
 import java.io.IOException;
 import java.io.InputStream;
 
+import javax.microedition.khronos.opengles.GL10;
+
 public class TextureUtil {
 
     public static int initTexture(Resources resources, int drawableId) {
@@ -119,6 +121,41 @@ public class TextureUtil {
         GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, bitmapTmp, 0);
         bitmapTmp.recycle();
         return textureId;
+    }
+
+    public static int createFrameBuffer(int previewWidth, int previewHeight){
+        int textureId = createTextureId(GLES20.GL_TEXTURE_2D,previewWidth, previewHeight);
+
+        int[] frameBuffer = new int[1];
+        GLES20.glGenFramebuffers(1, frameBuffer, 0);
+        GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, frameBuffer[0]);
+        GLES20.glFramebufferTexture2D(GLES20.GL_FRAMEBUFFER, GLES20.GL_COLOR_ATTACHMENT0, GLES20.GL_TEXTURE_2D, textureId, 0);
+        return frameBuffer[0];
+    }
+
+    public static int createOesTextureId(){
+        int textureId = createTextureId(GLES11Ext.GL_TEXTURE_EXTERNAL_OES,0, 0);
+        return textureId;
+    }
+
+    public static int createTexture2D(int previewWidth, int previewHeight){
+        int textureId = createTextureId(GLES20.GL_TEXTURE_2D,previewWidth, previewHeight);
+        return textureId;
+    }
+
+    private static int createTextureId(final int textureType, int previewWidth, int previewHeight){
+        int[] tex = new int[1];
+        GLES20.glGenTextures(1, tex, 0);
+        GLES20.glBindTexture(textureType, tex[0]);
+        if(textureType==GLES20.GL_TEXTURE_2D){
+            GLES20.glTexImage2D(GLES20.GL_TEXTURE_2D, 0, GLES20.GL_RGBA, previewWidth, previewHeight, 0, GLES20.GL_RGBA, GLES20.GL_UNSIGNED_BYTE, null);
+        }
+        GLES20.glTexParameterf(textureType, GL10.GL_TEXTURE_MIN_FILTER, GL10.GL_NEAREST);
+        GLES20.glTexParameterf(textureType, GL10.GL_TEXTURE_MAG_FILTER, GL10.GL_LINEAR);
+        GLES20.glTexParameterf(textureType, GL10.GL_TEXTURE_WRAP_S, GL10.GL_CLAMP_TO_EDGE);
+        GLES20.glTexParameterf(textureType, GL10.GL_TEXTURE_WRAP_T, GL10.GL_CLAMP_TO_EDGE);
+        GLES20.glBindTexture(textureType, 0);
+        return tex[0];
     }
 
     public static int initTextureOES() {
@@ -293,4 +330,39 @@ public class TextureUtil {
 
         return textures[0];
     }
+
+
+    public static final int NO_TEXTURE = -1;
+
+    public static int loadTexture(final Bitmap img, final int usedTexId) {
+        return loadTexture(img, usedTexId, true);
+    }
+
+    public static int loadTexture(final Bitmap img, final int usedTexId, final boolean recycle) {
+        int textures[] = new int[1];
+        if (usedTexId == NO_TEXTURE) {
+            GLES20.glGenTextures(1, textures, 0);
+            GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, textures[0]);
+            GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D,
+                    GLES20.GL_TEXTURE_MAG_FILTER, GLES20.GL_LINEAR);
+            GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D,
+                    GLES20.GL_TEXTURE_MIN_FILTER, GLES20.GL_LINEAR);
+            GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D,
+                    GLES20.GL_TEXTURE_WRAP_S, GLES20.GL_CLAMP_TO_EDGE);
+            GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D,
+                    GLES20.GL_TEXTURE_WRAP_T, GLES20.GL_CLAMP_TO_EDGE);
+
+            //TODO 将图片变成一个纹理id
+            GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, img, 0);
+        } else {
+            GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, usedTexId);
+            GLUtils.texSubImage2D(GLES20.GL_TEXTURE_2D, 0, 0, 0, img);
+            textures[0] = usedTexId;
+        }
+        if (recycle) {
+            img.recycle();
+        }
+        return textures[0];
+    }
+
 }

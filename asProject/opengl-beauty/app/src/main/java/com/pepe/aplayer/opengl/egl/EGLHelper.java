@@ -1,4 +1,4 @@
-package com.pepe.aplayer.opengl;
+package com.pepe.aplayer.opengl.egl;
 
 
 
