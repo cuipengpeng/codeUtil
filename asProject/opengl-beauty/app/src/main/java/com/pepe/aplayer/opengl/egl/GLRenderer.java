@@ -3,7 +3,6 @@ package com.pepe.aplayer.opengl.egl;
 import android.content.Context;
 import android.opengl.GLES20;
 
-import com.pepe.aplayer.R;
 import com.pepe.aplayer.opengl.ShaderUtils;
 
 import java.nio.ByteBuffer;
@@ -91,7 +90,7 @@ public class GLRenderer {
     }
 
     public void initShader(){
-        programId = ShaderUtils.createProgram(context.getResources(),"bitmapVertexShader.glsl", "bitmapFragmentShader.glsl");
+        programId = ShaderUtils.createProgramFromAssetsFile(context.getResources(),"bitmapVertexShader.glsl", "bitmapFragmentShader.glsl");
         aPositionHandle = GLES20.glGetAttribLocation(programId, "aPosition");
         uTextureSamplerHandle = GLES20.glGetUniformLocation(programId, "sTexture");
         aTextureCoordHandle = GLES20.glGetAttribLocation(programId, "aTexCoord");

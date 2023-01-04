@@ -3,9 +3,9 @@ package encrypt;
 
 /**
  * 
- *  Base64.encode()-->URLEncoder.encode(str,"UTF-8")-->http
+ *  encryptedString-->Base64.encode()-->URLEncoder.encode(str,"UTF-8")-->http
  *
- *	http-->URLDecoder.decode(str,"UTF-8")-->Base64.decode()
+ *	http-->URLDecoder.decode(str,"UTF-8")-->Base64.decode()-->decryptedString
  */
 public final class Base64 {
 

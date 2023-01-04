@@ -1,0 +1,91 @@
+public final static SimpleDateFormat yyyy_MM_dd_HH_mm_ss_SS = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SS", Locale.getDefault());
+
+			Writer writer = new StringWriter();
+			PrintWriter printWriter = new PrintWriter(writer);
+			ex.printStackTrace(printWriter);
+			Throwable cause = ex.getCause();
+			while (cause != null) {
+				cause.printStackTrace(printWriter);
+				cause = cause.getCause();
+			}
+			printWriter.close();
+			String stringBuilder = writer.toString();
+
+			//			MailInfo sender = new MailInfo()
+//					.setUser("qualitymarket5566@163.com")
+//					.setPass("9fmarket123")
+//					.setFrom("qualitymarket5566@163.com")
+//					.setTo("qualitymarket5566@163.com")
+//					.setHost("smtp.163.com")
+//					.setPort("465")
+//					.setSubject("【CrashLog】  " + yyyy_MM_dd_HH_mm_ss_SS.format(Calendar.getInstance().getTime()))
+//					.setBody(stringBuilder);
+//
+			MailInfo sender = new MailInfo()
+					.setUser("cuipengpeng@9fbank.com.cn")
+					.setPass("Cui15101")
+					.setPass(AESUtil.decrypt(new ConstantsUtil().sayHello(), "12345678"))
+					.setFrom("cuipengpeng@9fbank.com.cn")
+					.setTo("cuipengpeng@9fbank.com.cn")
+					.setHost("smtp.qq.com")
+					.setPort("465")
+					.setSubject("【CrashLog】  " + yyyy_MM_dd_HH_mm_ss_SS.format(Calendar.getInstance().getTime()))
+					.setBody(stringBuilder);
+			sender.init();
+			sendCrashMail(sender);
+			//此处非常关键 如果处理了，让主程序继续运行3秒再退出，保证异步的写操作能及时完成
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+	private void sendCrashMail(final MailInfo sender) {
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						sender.send();
+					} catch (MessagingException e) {
+						e.printStackTrace();
+					}
+				}
+			}).start();
+	}
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+private UncaughtExceptionHandler uncaught = new UncaughtExceptionHandler() {
+		@Override
+		public void uncaughtException(Thread thread, Throwable ex) {
+			ex.printStackTrace();
+		}
+}	
+
+@Override
+public void onCreate() {
+		super.onCreate();
+		HttpRequest.initEnvironment();
+		mContext = this;
+		Thread.setDefaultUncaughtExceptionHandler(uncaught);
+}
+	
+	
+	
+	
+	
+	
+	

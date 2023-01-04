@@ -85,8 +85,8 @@ public class BeautyRenderer implements GLSurfaceView.Renderer{
         vertexCoordFloatBuffer = (FloatBuffer) ByteBuffer.allocateDirect(vertexPositionArray.length*4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(vertexPositionArray).position(0);
         fragCoordFloatBuffer = (FloatBuffer) ByteBuffer.allocateDirect(fragmentPositionArray.length*4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(fragmentPositionArray).position(0);
 
-        texture = TextureUtil.createTexture(BitmapFactory.decodeResource(context.getResources(), R.mipmap.liu));
-        textureProgram = ShaderUtils.createProgram(context.getResources(),"vertex_beauty.glsl","fragment_beauty.glsl");
+        texture = TextureUtil.createBitmapTextureId(BitmapFactory.decodeResource(context.getResources(), R.mipmap.liu));
+        textureProgram = ShaderUtils.createProgramFromAssetsFile(context.getResources(),"vertex_beauty.glsl","fragment_beauty.glsl");
 
         vPosition = GLES20.glGetAttribLocation(textureProgram, "vPosition");
         texCoord = GLES20.glGetAttribLocation(textureProgram, "vCoordinate");

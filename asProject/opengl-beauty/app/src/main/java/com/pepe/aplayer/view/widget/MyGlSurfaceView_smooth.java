@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
+import android.opengl.Matrix;
 import android.os.Environment;
 import android.util.AttributeSet;
 import android.util.Size;
@@ -13,6 +14,7 @@ import com.pepe.aplayer.opengl.filter.AFilter;
 import com.pepe.aplayer.opengl.filter.CamerPreviewFilter;
 import com.pepe.aplayer.opengl.filter.Frame;
 import com.pepe.aplayer.opengl.filter.RenderScreenFilter;
+import com.pepe.aplayer.util.LogUtil;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -92,18 +94,27 @@ public class MyGlSurfaceView_smooth extends GLSurfaceView implements GLSurfaceVi
     private int aTexPosition;
     private int uMVPMatrix;
     private int uTexMatrix;
-    private int mTextureId;
     private float[] modelMatrix = new float[16];
     private float[] viewMatrix = new float[16];
     private float[] projectionMatrix = new float[16];
     private float[] mvpMatrix = new float[16];
     private float[] textureMatrix = new float[16];
-
     private int mProgram;
 
     private boolean frameAvalible = false;
     public SurfaceTexture surfaceTexture;
-//    public Surface surface;
+    public CamerPreviewFilter previewFilter;
+    private RenderScreenFilter screenFilter;
+    private Frame oesFrame;
+    private AFilter mCurrentFilterGroup;
+    private AFilter mOldFilterGroup;
+    public Size mCapturePreviewSize;
+
+    public void setmCurrentFilterGroup(final AFilter filter) {
+        mOldFilterGroup = mCurrentFilterGroup;
+        this.mCurrentFilterGroup = filter;
+        requestRender();
+    }
 
     public MyGlSurfaceView_smooth(Context context) {
         this(context,null);
@@ -124,17 +135,8 @@ public class MyGlSurfaceView_smooth extends GLSurfaceView implements GLSurfaceVi
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-//        whiteLevel = 50;
-//        smoothLevel = 50;
-//        updateFilter();
-//        previewFilter = new CamerPreviewFilter(getContext());
-//        screenFilter = new RenderScreenFilter(getContext());
         surfaceTexture.attachToGLContext(previewFilter.getOesTextureId());
 
-//        vertFloatBuffer = (FloatBuffer) ByteBuffer.allocateDirect(vertPositionArray.length*4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(vertPositionArray).position(0);
-//        fragFloatBuffer = (FloatBuffer) ByteBuffer.allocateDirect(fragPositionArray.length*4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(fragPositionArray).position(0);
-//        mOrderShortBuffer = (ShortBuffer) ByteBuffer.allocateDirect(ORDERS.length * 2).order(ByteOrder.nativeOrder()).asShortBuffer().put(ORDERS).position(0);
-//
 //        mProgram = ShaderUtils.createProgram(getResources(),"vetext_sharder.glsl","fragment_sharder.glsl");
 //        //获取shader脚本中的属性信息
 ////        参数一：program指定要查询的程序对象。
@@ -144,59 +146,43 @@ public class MyGlSurfaceView_smooth extends GLSurfaceView implements GLSurfaceVi
 //        uMVPMatrix = GLES20.glGetUniformLocation(mProgram, "uMVPMatrix");
 //        uTexMatrix = GLES20.glGetUniformLocation(mProgram, "uTexMatrix");
 //        mColorMatrixId = GLES20.glGetUniformLocation(mProgram, "uColorMatrix");
-//
-//        mTextureId = TextureUtil.initTextureOES();
-//        surfaceTexture.attachToGLContext(mTextureId);
-//        LogUtil.printLog("1111111");
-//        surface = new Surface(surfaceTexture);
+
+//        vertFloatBuffer = (FloatBuffer) ByteBuffer.allocateDirect(vertPositionArray.length*4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(vertPositionArray).position(0);
+//        fragFloatBuffer = (FloatBuffer) ByteBuffer.allocateDirect(fragPositionArray.length*4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(fragPositionArray).position(0);
+//        mOrderShortBuffer = (ShortBuffer) ByteBuffer.allocateDirect(ORDERS.length * 2).order(ByteOrder.nativeOrder()).asShortBuffer().put(ORDERS).position(0);
     }
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
         //gl_Position = aVertPosition;
-////        gl_Position = uMVPMatrix * aVertPosition;
-//        onSurfacePreparedCallBack.onSurfacePrepared();
-////        告诉OpenGL应把渲染之后的图形绘制在窗体的哪个区域。
-////        参数X，Y指定了视见区域的左下角在窗口中的位置，一般情况下为（0，0），Width和Height指定了视见区域的宽度和高度。
-//        GLES20.glViewport(0, 0, width,height);
-//
-//        //设置模型矩阵
-//        Matrix.setIdentityM(modelMatrix,0);
-////        Matrix.translateM(modelMatrix,0,0f,0f,-1.5f);
-////        Matrix.rotateM(modelMatrix,0,-45f,0f,0f,1f);
-////        Matrix.scaleM(modelMatrix,0,1.1f,2.1f,0f);
-//
-//        //计算宽高比
-//        float ratio=(float)width/height;
-//        LogUtil.printLog("width="+width+"--height="+height+"--ratio="+ratio);
-//        //设置透视投影
-//        Matrix.frustumM(projectionMatrix, 0, -ratio, ratio, -1, 1, 6f, 1000);
-////        Matrix.frustumM(projectionMatrix, 0, -1, 1, -1, 1, 6f, 1000);
-////        MatrixHelper.perspectiveM(projectionMatrix,0,25 ,(float)width/(float)height,1f,10f);
-//        //设置相机位置
-//        Matrix.setLookAtM(viewMatrix, 0, 0, 0, 6.0001f, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
-//
-//        //计算变换矩阵
-//        final float[] tempMatrix = new float[16];
-//        Matrix.multiplyMM(tempMatrix,0,viewMatrix,0,modelMatrix,0);
-//        System.arraycopy(tempMatrix,0,viewMatrix,0,tempMatrix.length);
-//        Matrix.multiplyMM(tempMatrix,0, projectionMatrix,0,viewMatrix,0);
-//        System.arraycopy(tempMatrix,0,projectionMatrix,0,tempMatrix.length);
-    }
+//        gl_Position = uMVPMatrix * aVertPosition;
+        onSurfacePreparedCallBack.onSurfacePrepared();
+//        告诉OpenGL应把渲染之后的图形绘制在窗体的哪个区域。
+//        参数X，Y指定了视见区域的左下角在窗口中的位置，一般情况下为（0，0），Width和Height指定了视见区域的宽度和高度。
+        GLES20.glViewport(0, 0, width,height);
 
-    public CamerPreviewFilter previewFilter;
-    RenderScreenFilter screenFilter;
-    Frame oesFrame;
-    private AFilter mCurrentFilter;
-    private AFilter mOldFilter;
+        //设置模型矩阵
+        Matrix.setIdentityM(modelMatrix,0);
+//        Matrix.translateM(modelMatrix,0,0f,0f,-1.5f);
+//        Matrix.rotateM(modelMatrix,0,-45f,0f,0f,1f);
+//        Matrix.scaleM(modelMatrix,0,1.1f,2.1f,0f);
 
-    public Size mCapturePreviewSize;
+        //计算宽高比
+        float ratio=(float)width/height;
+        LogUtil.printLog("width="+width+"--height="+height+"--ratio="+ratio);
+        //设置透视投影
+        Matrix.frustumM(projectionMatrix, 0, -ratio, ratio, -1, 1, 6f, 1000);
+//        Matrix.frustumM(projectionMatrix, 0, -1, 1, -1, 1, 6f, 1000);
+//        MatrixHelper.perspectiveM(projectionMatrix,0,25 ,(float)width/(float)height,1f,10f);
+        //设置相机位置
+        Matrix.setLookAtM(viewMatrix, 0, 0, 0, 6.0001f, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
 
-
-    public void setmCurrentFilter(final AFilter filter) {
-         mOldFilter = mCurrentFilter;
-        this.mCurrentFilter = filter;
-        requestRender();
+        //计算变换矩阵
+        final float[] tempMatrix = new float[16];
+        Matrix.multiplyMM(tempMatrix,0,viewMatrix,0,modelMatrix,0);
+        System.arraycopy(tempMatrix,0,viewMatrix,0,tempMatrix.length);
+        Matrix.multiplyMM(tempMatrix,0, projectionMatrix,0,viewMatrix,0);
+        System.arraycopy(tempMatrix,0,projectionMatrix,0,tempMatrix.length);
     }
 
     @Override
@@ -207,12 +193,9 @@ public class MyGlSurfaceView_smooth extends GLSurfaceView implements GLSurfaceVi
         GLES20.glClearColor(1,0,0,0.5f);
 //        GLES20.glViewport(0, 0, width,height);
 
-//        final IFilter oldFilter = mCurrentFilter;
-//        AGLRenderer.this.filter = mCurrentFilter;
-        if (mOldFilter != null) {
-            mOldFilter.destroy();
+        if (mOldFilterGroup != null) {
+            mOldFilterGroup.destroy();
         }
-
         if(oesFrame==null){
             oesFrame = new Frame(0, previewFilter.getOesTextureId(), mCapturePreviewSize.getWidth(), mCapturePreviewSize.getHeight());
         }
@@ -226,17 +209,9 @@ public class MyGlSurfaceView_smooth extends GLSurfaceView implements GLSurfaceVi
         }
 
         Frame frame = previewFilter.draw(oesFrame);
-
-//        if (filter != null && !disable) {
-        if (mCurrentFilter != null) {
-            frame = mCurrentFilter.draw(frame);
+        if (mCurrentFilterGroup != null) {
+            frame = mCurrentFilterGroup.draw(frame);
         }
-
-//        if (needCapture && !isCapturing) {
-//            isCapturing = true;
-//            capture(frame);
-//        }
-
 //        screenFilter.setVerticesCoordination(Transform.adjustVetices(frame.getTextureWidth(), frame.getTextureHeight(), outWidth, outHeight));
         screenFilter.draw(frame);
 
@@ -281,10 +256,10 @@ public class MyGlSurfaceView_smooth extends GLSurfaceView implements GLSurfaceVi
 ////        GLES20.glDisableVertexAttribArray(aVertPosition);
 ////        GLES20.glDisableVertexAttribArray(aTexPosition);
 //
-//        if(mCapturing){
-//            mCapturing = false;
-//            capture();
-//        }
+        if(mCapturing){
+            mCapturing = false;
+            capture();
+        }
     }
 
     private void capture() {

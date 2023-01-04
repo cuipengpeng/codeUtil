@@ -30,10 +30,10 @@ public class ShaderUtils {
         Log.e("wuwang",op);
     }
 
-    public static int createProgram(Resources res, String vertexSource, String fragmentSource){
-        int vertex=loadShader(GLES20.GL_VERTEX_SHADER,loadFromAssetsFile(vertexSource,res));
+    public static int createProgramFromAssetsFile(Resources res, String vertexAssetsFileName, String fragmentAssetsFileName){
+        int vertex= createShader(GLES20.GL_VERTEX_SHADER, getStringFromgetAssetsFile(vertexAssetsFileName,res));
         if(vertex==0)return 0;
-        int fragment=loadShader(GLES20.GL_FRAGMENT_SHADER,loadFromAssetsFile(fragmentSource,res));
+        int fragment= createShader(GLES20.GL_FRAGMENT_SHADER, getStringFromgetAssetsFile(fragmentAssetsFileName,res));
         if(fragment==0)return 0;
         int program= GLES20.glCreateProgram();
         if(program!=0){
@@ -53,7 +53,29 @@ public class ShaderUtils {
         return program;
     }
 
-    private static String loadFromAssetsFile(String fname, Resources res){
+    //创建GL程序
+    public static int createProgramFromString(String vertexSource, String fragmentSource){
+        int vertex=createShader(GLES20.GL_VERTEX_SHADER,vertexSource);
+        if(vertex==0)return 0;
+        int fragment=createShader(GLES20.GL_FRAGMENT_SHADER,fragmentSource);
+        if(fragment==0)return 0;
+        int program= GLES20.glCreateProgram();
+        if(program!=0){
+            GLES20.glAttachShader(program,vertex);
+            GLES20.glAttachShader(program,fragment);
+            GLES20.glLinkProgram(program);
+            int[] linkStatus=new int[1];
+            GLES20.glGetProgramiv(program, GLES20.GL_LINK_STATUS,linkStatus,0);
+            if(linkStatus[0]!= GLES20.GL_TRUE){
+                Log.e(TAG,"Could not link program:"+ GLES20.glGetProgramInfoLog(program));
+                GLES20.glDeleteProgram(program);
+                program=0;
+            }
+        }
+        return program;
+    }
+
+    private static String getStringFromgetAssetsFile(String fname, Resources res){
         StringBuilder result=new StringBuilder();
         try{
             InputStream is=res.getAssets().open(fname);
@@ -68,7 +90,7 @@ public class ShaderUtils {
         return result.toString().replaceAll("\\r\\n","\n");
     }
 
-    private static int loadShader(int shaderType,String source){
+    private static int createShader(int shaderType, String source){
         int shader= GLES20.glCreateShader(shaderType);
         if(0!=shader){
             GLES20.glShaderSource(shader,source);
@@ -85,11 +107,11 @@ public class ShaderUtils {
         return shader;
     }
 
-    public static String loadFromRaw(Context context, int resId) {
+    public static String getStringFromRaw(Context context, int resId) {
+        StringBuilder sb = new StringBuilder();
         InputStream inputStream = context.getResources().openRawResource(resId);
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-            StringBuilder sb = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
                 sb.append(line).append("\n");

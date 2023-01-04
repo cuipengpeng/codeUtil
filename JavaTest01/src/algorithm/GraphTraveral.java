@@ -3,11 +3,11 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
-* Õâ¸öÀý×ÓÊÇÍ¼¼´¾ØÕóµÄÉî¶ÈÓÅÏÈËÑË÷ºÍ¹ã¶ÈÓÅÏÈ±éÀúµÄÁ½ÖÖ·½Ê½
-* Í¨¹ýËü£¬Ê¹ÎÒÀ´Àí½âÍ¼µÄ±éÀú 
+* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¹ï¿½ï¿½ï¿½ï¿½ï¿½È±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½Ê½
+* Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½Ä±ï¿½ï¿½ï¿½ 
 */
 public class GraphTraveral{
-// ÁÚ½Ó¾ØÕó´æ´¢Í¼ 
+// ï¿½Ú½Ó¾ï¿½ï¿½ï¿½æ´¢Í¼ 
 // --A B C D E F G H I 
 // A 0 1 0 0 0 1 1 0 0 
 // B 1 0 1 0 0 0 1 0 1 
@@ -19,70 +19,70 @@ public class GraphTraveral{
 // H 0 0 0 1 1 0 1 0 0 
 // I 0 1 1 1 0 0 0 0 0 
 
-// ¶¥µãÊý 
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 private int number = 9; 
-// ¼ÇÂ¼¶¥µãÊÇ·ñ±»·ÃÎÊ 
+// ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ñ±»·ï¿½ï¿½ï¿½ 
 private boolean[] flag; 
-// ¶¥µã 
+// ï¿½ï¿½ï¿½ï¿½ 
 private String[] vertexs = { "A", "B", "C", "D", "E", "F", "G", "H", "I" }; 
-// ±ß 
+// ï¿½ï¿½ 
 private int[][] edges = { 
 { 0, 1, 0, 0, 0, 1, 1, 0, 0 }, { 1, 0, 1, 0, 0, 0, 1, 0, 1 }, { 0, 1, 0, 1, 0, 0, 0, 0, 1 }, 
 { 0, 0, 1, 0, 1, 0, 1, 1, 1 }, { 0, 0, 0, 1, 0, 1, 0, 1, 0 }, { 1, 0, 0, 0, 1, 0, 1, 0, 0 }, 
 { 0, 1, 0, 1, 0, 1, 0, 1, 0 }, { 0, 0, 0, 1, 1, 0, 1, 0, 0 }, { 0, 1, 1, 1, 0, 0, 0, 0, 0 } 
 }; 
 
-// Í¼µÄÉî¶È±éÀú²Ù×÷(µÝ¹é) 
+// Í¼ï¿½ï¿½ï¿½ï¿½È±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½Ý¹ï¿½) 
 void DFSTraverse() { 
-flag = new boolean[number]; 
-for (int i = 0; i < number; i++) { 
-if (flag[i] == false) {// µ±Ç°¶¥µãÃ»ÓÐ±»·ÃÎÊ 
-DFS(i); 
-} 
-} 
+	flag = new boolean[number]; 
+	for (int i = 0; i < number; i++) { 
+		if (flag[i] == false) {// ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½ 
+			DFS(i); 
+		} 
+	} 
 } 
 
-// Í¼µÄÉî¶ÈÓÅÏÈµÝ¹éËã·¨ 
+// Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÈµÝ¹ï¿½ï¿½ã·¨ 
 void DFS(int i) { 
-flag[i] = true;// µÚi¸ö¶¥µã±»·ÃÎÊ 
-System.out.print(vertexs[i] + " "); 
-for (int j = 0; j < number; j++) { 
-if (flag[j] == false && edges[i][j] == 1) { 
-DFS(j); 
-} 
-} 
+	flag[i] = true;// ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ã±»ï¿½ï¿½ï¿½ï¿½ 
+	System.out.print(vertexs[i] + " "); 
+	for (int j = 0; j < number; j++) { 
+		if (flag[j] == false && edges[i][j] == 1) { 
+			DFS(j); 
+		} 
+	} 
 } 
 
-// Í¼µÄ¹ã¶È±éÀú²Ù×÷ 
+// Í¼ï¿½Ä¹ï¿½È±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 void BFSTraverse() { 
-flag = new boolean[number]; 
-Queue<Integer> queue = new LinkedList<Integer>(); 
-for (int i = 0; i < number; i++) { 
-if (flag[i] == false) { 
-flag[i] = true; 
-System.out.print(vertexs[i] + " "); 
-queue.add(i); 
-while (!queue.isEmpty()) { 
-int j = queue.poll(); 
-for (int k = 0; k < number; k++) { 
-if (edges[j][k] == 1 && flag[k] == false) { 
-flag[k] = true; 
-System.out.print(vertexs[k] + " "); 
-queue.add(k); 
-} 
-} 
-} 
-} 
-} 
+	flag = new boolean[number]; 
+	Queue<Integer> queue = new LinkedList<Integer>(); 
+	for (int i = 0; i < number; i++) { 
+		if (flag[i] == false) { 
+			flag[i] = true; 
+			System.out.print(vertexs[i] + " "); 
+			queue.add(i); 
+			while (!queue.isEmpty()) { 
+				int j = queue.poll(); 
+				for (int k = 0; k < number; k++) { 
+					if (edges[j][k] == 1 && flag[k] == false) { 
+						flag[k] = true; 
+						System.out.print(vertexs[k] + " "); 
+						queue.add(k); 
+					} 
+				} 
+			} 
+		} 
+	} 
 } 
 
-// ²âÊÔ 
-public static void main(String[] args) { 
-GraphTraveral graph = new GraphTraveral(); 
-System.out.println("Í¼µÄÉî¶È±éÀú²Ù×÷(µÝ¹é):"); 
-graph.DFSTraverse(); 
-System.out.println("\n-------------"); 
-System.out.println("Í¼µÄ¹ã¶È±éÀú²Ù×÷:"); 
-graph.BFSTraverse(); 
-}
+// ï¿½ï¿½ï¿½ï¿½ 
+	public static void main(String[] args) { 
+		GraphTraveral graph = new GraphTraveral(); 
+		System.out.println("Í¼ï¿½ï¿½ï¿½ï¿½È±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½Ý¹ï¿½):"); 
+		graph.DFSTraverse(); 
+		System.out.println("\n-------------"); 
+		System.out.println("Í¼ï¿½Ä¹ï¿½È±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:"); 
+		graph.BFSTraverse(); 
+	}
 }

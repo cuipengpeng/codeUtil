@@ -18,6 +18,11 @@ import java.util.Set;
  */
 public class MD5 {
 
+	public static void main(String[] args) {
+		String content = "fasdfasdfasdfnmmw,enrsudfnsmndfe";
+		System.out.println("src content= "+content);
+		System.out.println("md5 value= "+md5(content));
+	}
 
     public static String sign(Map<String, String> param) {
         return md5(sortData(param));

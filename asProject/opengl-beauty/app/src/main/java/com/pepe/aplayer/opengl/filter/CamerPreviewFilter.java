@@ -7,6 +7,7 @@ import android.hardware.camera2.CameraCharacteristics;
 import android.opengl.GLES11Ext;
 
 import com.pepe.aplayer.R;
+import com.pepe.aplayer.opengl.TextureUtil;
 import com.pepe.aplayer.view.fragment.Camera2Fragment;
 
 
@@ -30,7 +31,7 @@ public class CamerPreviewFilter extends AFilter {
 
     public int getOesTextureId(){
         if(oesTextureId==-1){
-            oesTextureId = Frame.createOesTextureId();
+            oesTextureId = TextureUtil.createOesTextureId();
         }
         return oesTextureId;
     }

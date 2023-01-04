@@ -869,12 +869,10 @@ public class Camera2Fragment extends Fragment implements View.OnClickListener,Se
             case R.id.sb_testFragment_beautySmooth:
                 smoothLevel = progress;
                 updateFilter();
-//                mGlsurfaceView.requestRender();
                 break;
             case R.id.sb_testFragment_beautyWhite:
                 whiteLevel = progress;
                 updateFilter();
-//                mGlsurfaceView.requestRender();
                 break;
             case R.id.sb_testFragment_zoom:
                 float maxZoomRatio = mCameraCharacteristics.get(CameraCharacteristics.SCALER_AVAILABLE_MAX_DIGITAL_ZOOM);
@@ -935,7 +933,7 @@ public class Camera2Fragment extends Fragment implements View.OnClickListener,Se
             filters.add(stickerFilter);
         }
 
-        mGlsurfaceView.setmCurrentFilter(CombineFilter.getCombineFilter(filters));
+        mGlsurfaceView.setmCurrentFilterGroup(CombineFilter.getCombineFilter(filters));
     }
 
 }

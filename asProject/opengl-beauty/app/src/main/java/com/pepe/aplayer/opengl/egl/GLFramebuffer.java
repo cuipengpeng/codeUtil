@@ -5,7 +5,6 @@ import android.graphics.SurfaceTexture;
 import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
 
-import com.pepe.aplayer.R;
 import com.pepe.aplayer.opengl.ShaderUtils;
 
 import java.nio.ByteBuffer;
@@ -63,7 +62,7 @@ public class GLFramebuffer {
         textureVertexBuffer.position(0);
     }
     public void initFramebuffer(int width,int height){
-        programId = ShaderUtils.createProgram(context.getResources(),"vertexShader.glsl", "fragmentShader.glsl");
+        programId = ShaderUtils.createProgramFromAssetsFile(context.getResources(),"vertexShader.glsl", "fragmentShader.glsl");
         aPositionHandle = GLES20.glGetAttribLocation(programId, "aPosition");
         uSTMMatrixHandle = GLES20.glGetUniformLocation(programId, "uSTMatrix");
         uTextureSamplerHandle = GLES20.glGetUniformLocation(programId, "sTexture");
@@ -80,7 +79,7 @@ public class GLFramebuffer {
         GLES20.glGenFramebuffers(1, frameBuffers, 0);
         GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, frameBuffers[0]);
 
-
+        //FBO离屏绘制绑定的纹理类型必须是GLES20.GL_TEXTURE_2D，视频帧绑定的纹理类型必须是GLES11Ext.GL_TEXTURE_EXTERNAL_OES
         textures = new int[2];
         GLES20.glGenTextures(2, textures, 0);
 

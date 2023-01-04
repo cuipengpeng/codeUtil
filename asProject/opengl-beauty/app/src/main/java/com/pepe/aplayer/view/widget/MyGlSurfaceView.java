@@ -99,7 +99,6 @@ public class MyGlSurfaceView extends GLSurfaceView implements GLSurfaceView.Rend
     private int aTexPosition;
     private int uMVPMatrix;
     private int uTexMatrix;
-    private int mTextureId;
     private float[] modelMatrix = new float[16];
     private float[] viewMatrix = new float[16];
     private float[] projectionMatrix = new float[16];
@@ -113,7 +112,6 @@ public class MyGlSurfaceView extends GLSurfaceView implements GLSurfaceView.Rend
 
     private boolean frameAvalible = false;
     public SurfaceTexture surfaceTexture;
-//    public Surface surface;
 
     public MyGlSurfaceView(Context context) {
         this(context,null);
@@ -132,11 +130,8 @@ public class MyGlSurfaceView extends GLSurfaceView implements GLSurfaceView.Rend
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        vertFloatBuffer = (FloatBuffer) ByteBuffer.allocateDirect(vertPositionArray.length*4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(vertPositionArray).position(0);
-        fragFloatBuffer = (FloatBuffer) ByteBuffer.allocateDirect(fragPositionArray.length*4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(fragPositionArray).position(0);
-        mOrderShortBuffer = (ShortBuffer) ByteBuffer.allocateDirect(ORDERS.length * 2).order(ByteOrder.nativeOrder()).asShortBuffer().put(ORDERS).position(0);
-
-        mProgram = ShaderUtils.createProgram(getResources(),"vetext_sharder.glsl","fragment_sharder.glsl");
+        surfaceTexture.attachToGLContext(TextureUtil.createOesTextureId());
+        mProgram = ShaderUtils.createProgramFromAssetsFile(getResources(),"vetext_sharder.glsl","fragment_sharder.glsl");
         //获取shader脚本中的属性信息
 //        参数一：program指定要查询的程序对象。
 //        参数二：shader脚本中属性变量的名称
@@ -145,11 +140,11 @@ public class MyGlSurfaceView extends GLSurfaceView implements GLSurfaceView.Rend
         uMVPMatrix = GLES20.glGetUniformLocation(mProgram, "uMVPMatrix");
         uTexMatrix = GLES20.glGetUniformLocation(mProgram, "uTexMatrix");
         mColorMatrixId = GLES20.glGetUniformLocation(mProgram, "uColorMatrix");
-
-        mTextureId = TextureUtil.initTextureOES();
-        surfaceTexture.attachToGLContext(mTextureId);
         LogUtil.printLog("1111111");
-//        surface = new Surface(surfaceTexture);
+
+        vertFloatBuffer = (FloatBuffer) ByteBuffer.allocateDirect(vertPositionArray.length*4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(vertPositionArray).position(0);
+        fragFloatBuffer = (FloatBuffer) ByteBuffer.allocateDirect(fragPositionArray.length*4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(fragPositionArray).position(0);
+        mOrderShortBuffer = (ShortBuffer) ByteBuffer.allocateDirect(ORDERS.length * 2).order(ByteOrder.nativeOrder()).asShortBuffer().put(ORDERS).position(0);
     }
 
     @Override
@@ -303,7 +298,7 @@ public class MyGlSurfaceView extends GLSurfaceView implements GLSurfaceView.Rend
         requestRender();
     }
 
-    public void setmCurrentFilter(final AFilter filter) {
+    public void setmCurrentFilterGroup(final AFilter filter) {
         mOldFilter = mCurrentFilter;
         this.mCurrentFilter = filter;
         requestRender();

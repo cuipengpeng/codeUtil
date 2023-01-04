@@ -4,16 +4,20 @@ import java.util.Queue;
 import java.util.Stack;
 
 /**
- * ¶þ²æÊ÷Éî¶ÈÓÅÏÈ±éÀú(Depth First Search)·ÖÎª£ºÇ°Ðò(¸ù×óÓÒ)¡¢ÖÐÐò(×ó¸ùÓÒ)¡¢ºóÐò(×óÓÒ¸ù)
-¶þ²æÊ÷±éÀúÊÇ¸ù¾Ý¸ù½ÚµãµÄË³ÐòÃüÃûµÄ£¬ÆäÈýÖÖ±éÀú·½Ê½¶¼ÊÇÏÈ×óºóÓÒ¡£·ÖÎªÈýÖÖ£ºÇ°Ðò(¸ù×óÓÒ)¡¢ÖÐÐò(×ó¸ùÓÒ)¡¢ºóÐò(×óÓÒ¸ù)£¬ÖÐÐò±éÀú×îÎªÖØÒª¡£
-Òò´ËÎÒÃÇ¿ÉÒÔÀûÓÃ¶ÑÕ»µÄÏÈ½øºó³öµÄÌØµã£¬ÏÖ½«ÓÒ×ÓÊ÷Ñ¹Õ»£¬ÔÙ½«×ó×ÓÊ÷Ñ¹Õ»£¬ÕâÑù×ó×ÓÊ÷¾ÍÎ»ÓÚÕ»¶¥£¬¿ÉÒÔ±£Ö¤½áµãµÄ×ó×ÓÊ÷ÏÈÓëÓÒ×ÓÊ÷±»±éÀú¡£
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È±ï¿½ï¿½ï¿½(Depth First Search)ï¿½ï¿½Îªï¿½ï¿½Ç°ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Ò¸ï¿½)
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½ï¿½Ý¸ï¿½ï¿½Úµï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¡ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½Ö£ï¿½Ç°ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Ò¸ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Òªï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½Õ»ï¿½ï¿½ï¿½È½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµã£¬ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹Õ»ï¿½ï¿½ï¿½Ù½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹Õ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-¹ã¶ÈÓÅÏÈËÑË÷(Breadth First Search),ÓÖ½Ð¿í¶ÈÓÅÏÈËÑË÷»òºáÏòÓÅÏÈËÑË÷£¬ÊÇ´Ó¸ù½áµã¿ªÊ¼ÑØ×ÅÊ÷µÄ¿í¶ÈÒ»²ãÒ»²ã²ãËÑË÷±éÀú£¬¿ÉÒÔÀûÓÃ¶ÓÁÐÊµÏÖ¹ã¶ÈÓÅÏÈËÑË÷¡£
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(Breadth First Search),ï¿½Ö½Ð¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç´Ó¸ï¿½ï¿½ï¿½ã¿ªÊ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Ò»ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½Êµï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  *
+ *
+ *	https://leetcode-cn.com/
+ *	https://paperswithcode.com/ 
+ *	https://www.nowcoder.com/
  */
 class BinaryTreeTraveral {
  
-    // ¶þ²æÊ÷½Úµã
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
     public static class BinaryTreeNode {
         int value;
         BinaryTreeNode left;
@@ -33,12 +37,12 @@ class BinaryTreeTraveral {
  
     }
  
-    // ·ÃÎÊÊ÷µÄ½Úµã
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä½Úµï¿½
     public static void visit(BinaryTreeNode node) {
         System.out.println(node.value);
     }
  
-    /** µÝ¹éÊµÏÖ¶þ²æÊ÷µÄÏÈÐò±éÀú */
+    /** ï¿½Ý¹ï¿½Êµï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     public static void preOrder(BinaryTreeNode node) {
         if (node != null) {
             visit(node);
@@ -47,7 +51,7 @@ class BinaryTreeTraveral {
         }
     }
  
-    /** µÝ¹éÊµÏÖ¶þ²æÊ÷µÄÖÐÐò±éÀú */
+    /** ï¿½Ý¹ï¿½Êµï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     public static void inOrder(BinaryTreeNode node) {
         if (node != null) {
             inOrder(node.left);
@@ -56,7 +60,7 @@ class BinaryTreeTraveral {
         }
     }
  
-    /** µÝ¹éÊµÏÖ¶þ²æÊ÷µÄºóÐò±éÀú */
+    /** ï¿½Ý¹ï¿½Êµï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     public static void postOrder(BinaryTreeNode node) {
         if (node != null) {
             postOrder(node.left);
@@ -65,20 +69,20 @@ class BinaryTreeTraveral {
         }
     }
  
-    /** ·ÇµÝ¹éÊµÏÖ¶þ²æÊ÷µÄÏÈÐò±éÀú */
+    /** ï¿½ÇµÝ¹ï¿½Êµï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     public static void iterativePreorder(BinaryTreeNode node) {
         Stack<BinaryTreeNode> stack = new Stack<>();
         if (node != null) {
             stack.push(node);
             while (!stack.empty()) {
                 node = stack.pop();
-                // ÏÈ·ÃÎÊ½Úµã
+                // ï¿½È·ï¿½ï¿½Ê½Úµï¿½
                 visit(node);
-                // °ÑÓÒ×Ó½áµãÑ¹ÈëÕ»
+                // ï¿½ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½Ñ¹ï¿½ï¿½Õ»
                 if (node.right != null) {
                     stack.push(node.right);
                 }
-                // °Ñ×ó×Ó½áµãÑ¹ÈëÕ»
+                // ï¿½ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½Ñ¹ï¿½ï¿½Õ»
                 if (node.left != null) {
                     stack.push(node.left);
                 }
@@ -86,66 +90,66 @@ class BinaryTreeTraveral {
         }
     }
  
-    /** ·ÇµÝ¹éÊµÏÖ¶þ²æÊ÷µÄÖÐÐò±éÀú */
+    /** ï¿½ÇµÝ¹ï¿½Êµï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     public static void iterativeInOrder(BinaryTreeNode root) {
         Stack<BinaryTreeNode> stack = new Stack<>();
-        BinaryTreeNode node = root;
-        while (node != null || stack.size() > 0) {
-            // °Ñµ±Ç°½ÚµãµÄËùÓÐ×ó²à×Ó½áµãÑ¹ÈëÕ»
-            while (node != null) {
-                stack.push(node);
-                node = node.left;
+        BinaryTreeNode currentNode = root;
+        while (currentNode != null || stack.size() > 0) {
+            // ï¿½Ñµï¿½Ç°ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½Ñ¹ï¿½ï¿½Õ»
+            while (currentNode != null) {
+                stack.push(currentNode);
+                currentNode = currentNode.left;
             }
-            // ·ÃÎÊ½Úµã£¬´¦Àí¸Ã½ÚµãµÄÓÒ×ÓÊ÷
+            // ï¿½ï¿½ï¿½Ê½Úµã£¬ï¿½ï¿½ï¿½ï¿½Ã½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             if (stack.size() > 0) {
-                node = stack.pop();
-                visit(node);
-                node = node.right;
+                currentNode = stack.pop();
+                visit(currentNode);
+                currentNode = currentNode.right;
             }
         }
     }
  
-    /** ·ÇµÝ¹éÊ¹ÓÃµ¥Õ»ÊµÏÖ¶þ²æÊ÷ºóÐò±éÀú */
+    /** ï¿½ÇµÝ¹ï¿½Ê¹ï¿½Ãµï¿½Õ»Êµï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     public static void iterativePostOrder(BinaryTreeNode root) {
         Stack<BinaryTreeNode> stack = new Stack<>();
-        BinaryTreeNode node = root;
-        // ·ÃÎÊ¸ù½ÚµãÊ±ÅÐ¶ÏÆäÓÒ×ÓÊ÷ÊÇ¹»±»·ÃÎÊ¹ý
-        BinaryTreeNode preNode = null;
-        while (node != null || stack.size() > 0) {
-            // °Ñµ±Ç°½ÚµãµÄ×ó²à½ÚµãÈ«²¿ÈëÕ»
-            while (node != null) {
-                stack.push(node);
-                node = node.left;
+        BinaryTreeNode currentNode = root;
+        // ï¿½ï¿½ï¿½Ê¸ï¿½ï¿½Úµï¿½Ê±ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½
+        BinaryTreeNode hasPrintedNode = null;
+        while (currentNode != null || stack.size() > 0) {
+            // ï¿½Ñµï¿½Ç°ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½È«ï¿½ï¿½ï¿½ï¿½Õ»
+            while (currentNode != null) {
+                stack.push(currentNode);
+                currentNode = currentNode.left;
             }
             if (stack.size() > 0) {
-                BinaryTreeNode temp = stack.peek().right;
-                // Ò»¸ö¸ù½Úµã±»·ÃÎÊµÄÇ°ÌáÊÇ£ºÎÞÓÒ×ÓÊ÷»òÓÒ×ÓÊ÷ÒÑ±»·ÃÎÊ¹ý
-                if (temp == null || temp == preNode) {
-                    node = stack.pop();
-                    visit(node);
-                    preNode = node;// ¼ÇÂ¼¸Õ±»·ÃÎÊ¹ýµÄ½Úµã
-                    node = null;
+                BinaryTreeNode tempRight = stack.peek().right;
+                // Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Úµã±»ï¿½ï¿½ï¿½Êµï¿½Ç°ï¿½ï¿½ï¿½Ç£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ±ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½
+                if (tempRight == null || tempRight == hasPrintedNode) {
+                    currentNode = stack.pop();
+                    visit(currentNode);
+                    hasPrintedNode = currentNode;// ï¿½ï¿½Â¼ï¿½Õ±ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Ä½Úµï¿½
+                    currentNode = null;
                 } else {
-                    // ´¦ÀíÓÒ×ÓÊ÷
-                    node = temp;
+                    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    currentNode = tempRight;
                 }
             }
         }
     }
  
-    /** ·ÇµÝ¹éÊ¹ÓÃË«Õ»ÊµÏÖ¶þ²æÊ÷ºóÐò±éÀú */
+    /** ï¿½ÇµÝ¹ï¿½Ê¹ï¿½ï¿½Ë«Õ»Êµï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     public static void iterativePostOrderByTwoStacks(BinaryTreeNode root) {
         Stack<BinaryTreeNode> stack = new Stack<>();
         Stack<BinaryTreeNode> temp = new Stack<>();
         BinaryTreeNode node = root;
         while (node != null || stack.size() > 0) {
-            // °Ñµ±Ç°½ÚµãºÍÆäÓÒ²à×Ó½áµãÍÆÈëÕ»
+            // ï¿½Ñµï¿½Ç°ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ»
             while (node != null) {
                 stack.push(node);
                 temp.push(node);
                 node = node.right;
             }
-            // ´¦ÀíÕ»¶¥½ÚµãµÄ×ó×ÓÊ÷
+            // ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             if (stack.size() > 0) {
                 node = stack.pop();
                 node = node.left;
@@ -157,7 +161,7 @@ class BinaryTreeTraveral {
         }
     }
  
-    /** ¶þ²æÊ÷¹ã¶ÈÓÅÏÈ±éÀú¡ª¡ª²ãÐò±éÀú */
+    /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     public static void layerTraversal(BinaryTreeNode root) {
         Queue<BinaryTreeNode> queue = new LinkedList<>();
  
@@ -180,7 +184,7 @@ class BinaryTreeTraveral {
  
     public static void main(String[] args) {
  
-        // ¹¹Ôì¶þ²æÊ÷
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         // 1
         // / \
         // 2 3
@@ -204,21 +208,21 @@ class BinaryTreeTraveral {
         node3.right = node7;
         node5.right = node6;
         node7.left = node8;
-        System.out.println("¶þ²æÊ÷ÏÈÐò±éÀú");
+        System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         preOrder(root);
-        System.out.println("¶þ²æÊ÷ÏÈÐò±éÀú·ÇµÝ¹é");
+        System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÇµÝ¹ï¿½");
         iterativePreorder(root);
-        System.out.println("¶þ²æÊ÷ÖÐÐò±éÀú");
+        System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         inOrder(root);
-        System.out.println("¶þ²æÊ÷ÖÐÐò±éÀú·ÇµÝ¹é");
+        System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÇµÝ¹ï¿½");
         iterativeInOrder(root);
-        System.out.println("¶þ²æÊ÷ºóÐò±éÀú");
+        System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         postOrder(root);
-        System.out.println("¶þ²æÊ÷µ¥Õ»·ÇµÝ¹éºóÐò±éÀú");
+        System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ÇµÝ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         iterativePostOrder(root);
-        System.out.println("¶þ²æÊ÷Ë«Õ»·ÇµÝ¹éºóÐò±éÀú");
+        System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë«Õ»ï¿½ÇµÝ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         iterativePostOrderByTwoStacks(root);
-        System.out.println("¶þ²æÊ÷¹ã¶ÈÓÅÏÈ±éÀú-²ãÊ÷Ðò±éÀú");
+        System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È±ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         layerTraversal(root);
     }
 }

@@ -17,6 +17,7 @@ public class QuickSort {
 		}
 	}
 
+	//one for circle+tow if judge，recursion call
 	//low:�������߽�ֵ����ʼΪ0
 	//high:������ұ߽�ֵ����ʼΪlength-1
 	//https://blog.csdn.net/troubleshooter/article/details/80421861
@@ -27,16 +28,17 @@ public class QuickSort {
 	    }
 
 	    int lowBaseValue = arr[lowPosition];
-	    int swapMiddlePosition=lowPosition;
+	    int smallerCountPosition=lowPosition;
+		//one for circle divide the arr into two parts： smaller and bigger
 	    for(int j=lowPosition+1;j<=highPosition;j++){
 	        if(arr[j]<lowBaseValue){        //a[j] is smaller than pivot
-	            swapMiddlePosition++;    
+	            smallerCountPosition++;    
 	            //System.out.println("swapMiddlePosition="+swapMiddlePosition+"--j="+j);
 	            //System.out.println("swapMiddlePositionValue="+arr[swapMiddlePosition]+"--jValue="+arr[j]);
-	            if(swapMiddlePosition!=j){
+	            if(smallerCountPosition!=j){
 	     	       //Swap pivot to middle position
-	         	   int temp = arr[swapMiddlePosition];
-	         	   arr[swapMiddlePosition] = arr[j];
+	         	   int temp = arr[smallerCountPosition];
+	         	   arr[smallerCountPosition] = arr[j];
 	         	   arr[j] = temp;
 	            }
 
@@ -44,10 +46,10 @@ public class QuickSort {
 	    }
 	       //Swap pivot to middle position
 		   int temp2 = arr[lowPosition];
-		   arr[lowPosition] = arr[swapMiddlePosition];
-		   arr[swapMiddlePosition] = temp2;
+		   arr[lowPosition] = arr[smallerCountPosition];
+		   arr[smallerCountPosition] = temp2;
 		   
-	    quikSort(arr,lowPosition,swapMiddlePosition-1);       
-	    quikSort(arr,swapMiddlePosition+1,highPosition);
+	    quikSort(arr,lowPosition,smallerCountPosition-1);       
+	    quikSort(arr,smallerCountPosition+1,highPosition);
 	}
 }

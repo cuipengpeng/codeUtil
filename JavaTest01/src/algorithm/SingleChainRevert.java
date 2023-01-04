@@ -9,22 +9,25 @@ public class SingleChainRevert {
 //		4-->3-->2-->1
 		
 //		������ת: ���θ�ֵ����ָ������ݽ���
-		Node first;//ָ��firstʼ�ղ���
-		Node head = null;//ָ������ͷ�������ϱ仯
-		Node tmp;   //exchange data
-		first = head;
+		
+		Node root = new Node();
+		
+		Node first = root;//ָ��firstʼ�ղ���
+		Node head = root;//ָ������ͷ�������ϱ仯
+		Node tmp = null; //exchange data
 		while(first.next!=null){
 		        tmp=first.next;
 		        first.next = tmp.next;
 		        tmp.next=head;
-		        head=tmp;//����head�ڵ���Ϊ������õ�����ľ��
+		        head=tmp;// update head node
 		}
-		
 //		���������������������: ���ݹ����
 //		��α�����ʵ�֣�
 	}
 	
-	class Node{
+	static class Node{
+		public Node() {}
+		String value;
 		Node next;
 	}
 

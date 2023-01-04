@@ -227,6 +227,8 @@ public class AFragment extends Fragment {
                         buffer.get(imageByteArray);
                         image.close();
 
+//                        避免线程异步Image.closed
+//                        https://blog.csdn.net/a260724032/article/details/103228875
 //                        Image最好不要跨线程调用，而是传递image里的byteArray
                         mHandler.post(new ImageSaver(imageByteArray));
                     }
